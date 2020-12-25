@@ -1,0 +1,161 @@
+<template>
+  <section class="doc-list">
+    <van-nav-bar title="我的預約" left-text="返回" left-arrow @click-left="$router.push('login')">
+      <template #right>
+        <van-tag round v-if="commentFilter" type="primary" class="ml-2" @click="commentFilter = ''">離開留言區</van-tag>
+      </template>
+    </van-nav-bar>
+
+    <van-field
+      v-if="showLeavelMsg"
+      autofocus="true"
+      v-model="myMsg"
+      rows="5"
+      autosize
+      label="留言"
+      type="textarea"
+      maxlength="150"
+      placeholder="请输入留言"
+      show-word-limit
+    >
+      <template #button>
+        <van-tag type="primary" class="ml-2" @click="addComment(myMsg, true)">新增</van-tag>
+        <van-tag type="danger" class="ml-2" @click="showLeavelMsg = false">取消</van-tag>
+      </template>
+    </van-field>
+    <div></div>
+
+    <main v-for="(item, i) in myOrders" :key="i" class="doc-item mt-1">
+      <van-card @click="viewDetail(item)" :price="item.details.price" currency="NT" :desc="getDesc(item)" :title="getTitle(item)" :thumb="getImgPath(item, i)">
+        <template #tags>
+          <van-tag plain type="danger">{{ $formatStatus(item.status) }}</van-tag>
+          <van-tag plain type="primary" class="ml-2" @click="viewComment(item)">留言{{ item.comment.length }}則</van-tag>
+          <van-tag type="primary" class="ml-2" @click="addComment()" v-if="commentFilter">新增留言</van-tag>
+        </template>
+        <!-- <template #footer>
+          <van-tag type="warning" plain v-if="commentFilter" class="mr-2">我的留言</van-tag>
+          <van-tag type="success" plain v-if="commentFilter">{{ item.details.name }}醫師的留言</van-tag>
+          <van-button size="mini" class="mr-2" v-if="!commentFilter">標籤</van-button>
+        </template> -->
+      </van-card>
+    </main>
+    <nav v-if="commentFilter" style="color:white;font-size:14px;" class="mt-1">
+      <div class="comment-dtc px-2 py-2" v-for="(item, i) in myOrders[0].comment" :key="i" :style="item.docComment ? 'background:#1f7cd3;' : 'background:#0f579b;'">
+        <div class="mb-1">{{ $twDate(item.commentAt) }}</div>
+        <div style="padding-right:50px;">{{ item.docComment || item.userComment }}</div>
+        <div style="float:right;margin-top:-30px;">
+          <img v-if="item.docComment" src="https://www.cgh.org.tw/rwd101/Store/bImages/b07907.jpg" width="30" height="30" style="border-radius:50%;" />
+          <img v-if="!item.docComment" src="person.svg" width="30" height="30" style="border-radius:50%;color:red;" />
+        </div>
+      </div>
+    </nav>
+  </section>
+</template>
+
+<script>
+import Vue from "vue";
+import faker from "faker";
+import { store, mutations, actions } from "@/store/global.js";
+
+export default {
+  name: "login",
+  data() {
+    return {
+      docs: [],
+      skip: 0,
+      orders: [],
+      commentFilter: "",
+      showLeavelMsg: false,
+      myMsg: "",
+    };
+  },
+  computed: {
+    myOrders() {
+      if (!this.commentFilter) {
+        return this.orders;
+      }
+      return this.orders.filter((s) => s.doctorPhone == this.commentFilter);
+    },
+  },
+  methods: {
+    async addComment(msg, userClick) {
+      if (!msg && !userClick) {
+        this.myMsg = "";
+        this.showLeavelMsg = true;
+      } else if (msg) {
+        const obj = { docComment: "", commentAt: new Date().toISOString(), rating: 0, userComment: msg };
+        this.myOrders[0].comment.unshift(obj);
+        await actions.updateOrder(this.myOrders[0]);
+        this.orders = [...this.orders];
+        this.commentFilter = "";
+        this.showLeavelMsg = false;
+      }
+    },
+    viewComment(item) {},
+    viewDetail(item) {
+      this.commentFilter = item.doctorPhone;
+    },
+    getDesc(item) {
+      return "專長: " + item.details.description;
+    },
+    getTitle(item) {
+      return item.details.name + " | " + item.details.hospital + " | " + item.details.title + " @ " + this.$twDate(item.orderDate) + " 預約";
+    },
+    getImgPath(item, i) {
+      // alert(JSON.stringify(store.imgPrefix + item.cover.url));
+      //return store.imgPrefix + item.details.cover.url;
+      return store.docImgs[i];
+      //return item.details.cover.url;
+    },
+    async getDDL() {
+      let qs = "orderPhoneNum_eq=" + sessionStorage.phone;
+      const { count, items } = await actions.getOrders(qs);
+      //this.orders = items;
+      qs = items.map((s) => "phone_in=" + s.doctorPhone).join("&");
+      const { items: docs } = await actions.getDoctors(qs);
+      docs.forEach((s) => (items.find((s2) => s2.doctorPhone == s.phone).details = s));
+      this.orders = items;
+    },
+  },
+  mounted() {
+    this.getDDL();
+  },
+  watch: {},
+};
+</script>
+<i18n>
+{
+  "zh-tw": {
+    "title": "名醫會館"
+    
+  },
+  "zh-cn": {
+    "title": "名医会馆"
+  }
+}
+</i18n>
+
+<style lang="scss" scoped>
+.doc-list {
+  background: var(--strapi-blue);
+  width: 100vw;
+  height: 100vh;
+  margin-bottom: 90px;
+  color: white;
+  //overflow-y: auto;
+  header {
+    font-size: 20px;
+    text-align: center;
+    padding-top: 3px;
+  }
+}
+.doc-item {
+  border-bottom: 1px solid #ebedf0;
+}
+.comment-dtc {
+  margin-bottom: 2px;
+  padding-right: 4px;
+  font-size: 12px;
+}
+//1px solid #ebedf0
+</style>
