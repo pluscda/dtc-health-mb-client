@@ -5,7 +5,7 @@ import axios from "axios";
 import { store } from "../store/global";
 
 let config = {
-  baseURL: process.env.NODE_ENV === 'production'? '' : `http://${location.hostname}:1337/`,
+  baseURL: process.env.NODE_ENV === 'production'? 'https://dtchealth.datacom.com.tw/' : `http://${location.hostname}:1337/`,
   headers: {
     "Content-Type": "application/json"
   },
