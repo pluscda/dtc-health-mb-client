@@ -63,10 +63,14 @@ export default {
     },
     async connectWithStrapi() {
       try {
-        const { jwt } = await this.loginStrapi();
-        if (!jwt) {
-          this.registerStrapi();
+        const { jwt: jwt1 } = await this.loginStrapi();
+        if (!jwt1) {
+          const { jwt: jwt2 } = await this.registerStrapi().catch((e) => {
+            alert("something wrong");
+            return;
+          });
         }
+        this.jwt = jwt1 || jwt2;
         sessionStorage.token = this.jwt;
         localStorage.token = this.jwt;
         this.user = JSON.stringify(this.user, null, 2);
