@@ -72,14 +72,14 @@ export default {
           });
           this.jwt = jwt2;
         }
-
         sessionStorage.token = this.jwt;
         localStorage.token = this.jwt;
         this.user = JSON.stringify(this.user, null, 2);
         this.showMask = false;
         mutations.login(this.phone);
       } catch (e) {
-        location.reload();
+        this.showMask = false;
+        //location.reload();
         Vue.$toast.error("請檢查驗證號碼" + e);
       }
     },
@@ -101,7 +101,6 @@ export default {
           alert("this is not for doctor; you will be logout at once");
           mutations.logout();
         }
-        this.jwt = jwt;
         return { jwt };
       }
     },
@@ -114,7 +113,6 @@ export default {
             alert("this is not for doctor; you will be logout at once");
             mutations.logout();
           }
-          this.jwt = jwt;
         }
         return { jwt };
       } catch (e) {
