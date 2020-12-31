@@ -36,6 +36,11 @@ const routes = [
     component: () => import("../components/CancerAtLung.vue"),
   },
   {
+    path: '/canceratother',
+    name: 'canceratother',
+    component: () => import("../components/CancerAtOther.vue"),
+  },
+  {
     path: '/myorderlist',
     name: 'myorderlist',
     component: () => import("../views/MyOrderList.vue"),
