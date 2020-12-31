@@ -12,7 +12,7 @@
 
 <script>
 import { store, mutations, actions } from "@/store/global.js";
-const strs = ["腦癌", "眼癌", "鼻腔／鼻竇癌", "鼻咽癌", "口腔／口咽癌", "甲狀腺癌", "唾液腺癌", "喉腔／下咽癌"];
+const strs = ["腦癌", "眼癌", "鼻腔/鼻竇癌", "鼻咽癌", "口腔/口咽癌", "甲狀腺癌", "唾液腺癌", "喉腔/下咽癌"];
 const items = [
   "thumbnail_n5_Gcu_YDM_1_I2_Yz_MW_Yk_ZDO_3_Im_Nm_NT_Mw_Q3_Lt92_Yuc2cth_Wcuw2cz5_S_Mw9y_L6_M_Hc0_R_Ha_fc86d4ece1.jpg",
   "thumbnail_7705798_2d286d376f.jpg",
