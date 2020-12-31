@@ -1,6 +1,6 @@
 <template>
   <section class="dtc-head-cancer">
-    heart
+    <van-nav-bar title="心血管疾病線上諮詢" left-text="返回" left-arrow @click-left="onClickLeft" @click-right="onClickRight" />
   </section>
 </template>
 

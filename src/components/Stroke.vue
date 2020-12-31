@@ -1,6 +1,18 @@
 <template>
   <section class="dtc-head-cancer">
-    stroke
+    <van-nav-bar title="中風線上諮詢" left-text="返回" left-arrow @click-left="onClickLeft" @click-right="onClickRight" />
+    <main class="px-2">
+      <p class="py-3">
+        中風（英語：Stroke），又稱作腦血管事件（英語：Cerebrovascular event，簡稱CVE）、腦血管意外（英語：Cerebrovascular
+        accident，簡稱CVA）、腦血管病變（英語：Cerebrovascular incident，CVI）、或腦病突發（英語：Brain attack）、腦卒中，是指腦部缺血造成的腦細胞死亡。
+      </p>
+
+      <p>
+        中風分為兩種類型：一種是由血管阻塞所造成的缺血性腦中風（英語：brain ischemia）；一種是由出血所造成的出血性腦中風（英語：intracranial hemorrhagic stroke)。
+        不論是缺血性或是出血性腦中風都會造成腦功能異常[。 常見的中風症狀包括無法移動單側的肢體或者是一邊的身體出現無力、無法理解別人的話、不能說話（英語：Expressive
+        aphasia）、暈昡、其中一邊的視野看不到（英語：Homonymous hemianopsia）等等。
+      </p>
+    </main>
   </section>
 </template>
 
@@ -30,19 +42,20 @@ export default {
 
 <style lang="scss" scoped>
 .dtc-head-cancer {
-  background: white;
+  background: black;
   width: 100vw;
-  color: #3570ec;
+  color: white;
   display: grid;
   grid-template-rows: max-content 1fr;
   position: relative;
   min-height: 100vh;
-  margin-bottom: 70px;
+}
+p {
+  line-height: 22px;
 }
 .grid-2-img {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(auto-fit, 150px);
   gap: 0.2rem;
   > div {
     position: relative;
