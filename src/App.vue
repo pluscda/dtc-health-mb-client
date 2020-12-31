@@ -49,16 +49,16 @@ export default {
         this.active = 3;
       }
       window.scrollTo({
-        top: 0,
+        top: -60,
         left: 0,
       }),
         setTimeout(
           () =>
             window.scrollTo({
-              top: 0,
+              top: -60,
               left: 0,
             }),
-          2000
+          500
         );
     },
   },
