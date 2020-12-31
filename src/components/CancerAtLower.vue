@@ -47,7 +47,7 @@ export default {
 .grid-2-img {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(4, 150px);
+  grid-template-rows: repeat(auto-fit, 150px);
   gap: 0.2rem;
   padding: 3px;
   > div {
