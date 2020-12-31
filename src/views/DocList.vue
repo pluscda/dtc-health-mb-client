@@ -113,7 +113,7 @@ export default {
 .doc-list {
   background: var(--strapi-blue);
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   color: white;
   header {
     font-size: 20px;

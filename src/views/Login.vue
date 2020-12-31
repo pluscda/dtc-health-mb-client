@@ -24,21 +24,21 @@
 </template>
 
 <script>
-import { store, mutations, actions } from "@/store/global.js";
-import PhoneLogin from "@/components/auth/PhoneLogin.vue";
+import { store, mutations, actions } from '@/store/global.js';
+import PhoneLogin from '@/components/auth/PhoneLogin.vue';
 
-const titles = ["預約紀錄(6)", "提問(5)", "意見反饋(1)", "我的收藏(2)", "系統設置"];
+const titles = ['預約紀錄(6)', '提問(5)', '意見反饋(1)', '我的收藏(2)', '系統設置'];
 
-const labels = ["共有6筆記錄", "你有一則已答覆", "廠商有兩則反饋", "你有兩個收藏", "客製化個人設定"];
+const labels = ['共有6筆記錄', '你有一則已答覆', '廠商有兩則反饋', '你有兩個收藏', '客製化個人設定'];
 
 export default {
-  name: "loginHome",
+  name: 'loginHome',
   data() {
     return {
       titles,
       labels,
       phone: sessionStorage.phone,
-      idDoc: location.href.includes("isdoc=true"),
+      idDoc: location.href.includes('isdoc=true'),
     };
   },
   computed: {
@@ -46,7 +46,7 @@ export default {
       return sessionStorage.isLogin || store.isLogin;
     },
     myPhone() {
-      const phone = sessionStorage.phone ? sessionStorage.phone.slice(0, 6) : "";
+      const phone = sessionStorage.phone ? sessionStorage.phone.slice(0, 6) : '';
       return phone;
     },
   },
@@ -56,13 +56,13 @@ export default {
   methods: {
     open(item, i) {
       if (i == 0) {
-        this.$router.push("myorderlist");
+        this.$router.push('myorderlist');
       }
     },
     logout() {
       mutations.logout();
       store.activeTab = 0;
-      this.$router.push("home");
+      this.$router.push('home');
       location.reload(true);
     },
   },
@@ -90,7 +90,7 @@ export default {
   width: 100vw;
   color: var(--light);
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   overflow: hidden;
   display: grid;
 }
