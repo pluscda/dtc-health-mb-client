@@ -74,7 +74,9 @@ export default {
 html,
 body {
   scroll-behavior: smooth;
+  max-height: 100vh;
   overflow: hidden;
+  overflow-y: auto !important;
 }
 #app {
   margin: 0px;
@@ -85,9 +87,6 @@ body {
   color: var(--dark);
   background: var(--snap-blue) !important;
   width: 100vw;
-  max-height: 100vh;
-  overflow: hidden;
-  overflow-y: auto !important;
 }
 .grecaptcha-badge {
   opacity: 0 !important;
