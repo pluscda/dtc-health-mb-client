@@ -118,7 +118,6 @@ export default {
   header {
     font-size: 20px;
     text-align: center;
-    padding-top: 3px;
   }
 }
 .doc-item {

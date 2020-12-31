@@ -48,14 +48,18 @@ export default {
       } else if (to.path.includes('login')) {
         this.active = 3;
       }
-      setTimeout(
-        () =>
-          window.scrollTo({
-            top: 0,
-            left: 0,
-          }),
-        1500
-      );
+      window.scrollTo({
+        top: 0,
+        left: 0,
+      }),
+        setTimeout(
+          () =>
+            window.scrollTo({
+              top: 0,
+              left: 0,
+            }),
+          2000
+        );
     },
   },
 };
