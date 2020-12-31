@@ -1,9 +1,9 @@
 <template>
   <section class="dtc-head-cancer">
-    <van-nav-bar title="胸部" left-text="返回" left-arrow @click-left="onClickLeft" @click-right="onClickRight" />
+    <van-nav-bar title="骨盆腔" left-text="返回" left-arrow @click-left="onClickLeft" @click-right="onClickRight" />
     <nav class="grid-2-img">
       <div v-for="(item, i) in items" :key="i" :data-msg="item.text">
-        <img :src="item.src" />
+        <img :src="item.src + '.jpg'" />
       </div>
     </nav>
   </section>
@@ -11,8 +11,8 @@
 
 <script>
 import { store, mutations, actions } from "@/store/global.js";
-const strs = ["食道癌", "肺癌", "乳癌"];
-const items = ["thumbnail_shutterstock_1511820146_889e63f558.jpg", "thumbnail_59fad74a620f2_6a1a6ee578.jpg", "thumbnail_22741_a3c56a949c.jpg"].map((s, i) => ({
+const strs = ["腎臟癌", "卵巢癌", "子宮體癌", "子宮頸癌", "膀胱癌", "前列腺癌", "陰道癌", "睪丸癌"];
+const items = ["150 (7)", "150 (8)", "150 (9)", "150 (10)", "150 (11)", "150 (12)", "150 (13)", "150 (14)"].map((s, i) => ({
   src: s,
   text: strs[i],
 }));
@@ -46,8 +46,9 @@ export default {
 .grid-2-img {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(2, 150px);
+  grid-template-rows: repeat(4, 150px);
   gap: 0.2rem;
+  padding: 3px;
   > div {
     position: relative;
     height: 150px;
