@@ -4,7 +4,7 @@
     <van-tabbar v-model="active" style="z-index:8;" v-if="!isDoc">
       <van-tabbar-item icon="home-o" @click="$router.push('home')">{{ $t("醫療首頁") }}</van-tabbar-item>
       <van-tabbar-item icon="search" @click="$router.push('doclist')">{{ $t("找醫師") }}</van-tabbar-item>
-      <van-tabbar-item icon="friends-o" @click="$router.push('file')">{{ $t("標籤") }}</van-tabbar-item>
+      <van-tabbar-item hidden icon="friends-o" @click="$router.push('file')">{{ $t("標籤") }}</van-tabbar-item>
       <van-tabbar-item icon="setting-o" @click="$router.push('login')">{{ $t("我的") }}</van-tabbar-item>
     </van-tabbar>
   </div>
