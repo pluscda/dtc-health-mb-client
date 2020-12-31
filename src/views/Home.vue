@@ -151,7 +151,7 @@ const cancerCatsImg = [
   "thumbnail_615f71b7_5bf2_4cf5_ad0f_44c307b60448_a6a4058942.jpg",
 ];
 const cancerCats = ["頭頸部", "胸部", "腹部", "骨盆腔"].map((s, i) => ({ value: i + 1, text: s }));
-const other = { value: "5", text: "其他部位" };
+const other = { value: 99, text: "其他部位" };
 export default {
   name: "home",
   data() {
