@@ -21,11 +21,11 @@
     <main class="faster2">
       <div>
         <span>✣</span>
-        <span class="fast-span" :data-msg="$t('各大醫院快速看病')">{{ $t("預約掛號") }}</span>
+        <span class="fast-span" data-msg="線上諮詢">心血管疾病</span>
       </div>
       <div class="ml-2">
         <span style="background:#878ede;">❁</span>
-        <span class="fast-span" :data-msg="$t('專家名醫在線解答')">{{ $t("找名醫") }}</span>
+        <span class="fast-span" data-msg="中風線上諮詢">腦血管事件</span>
       </div>
     </main>
     <main class="hot-search">
