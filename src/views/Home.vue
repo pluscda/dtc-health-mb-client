@@ -38,7 +38,7 @@
     </main>
     <main class="faster2">
       <div @click="$router.push('/heart')">
-        <span>♥️</span>
+        <span style="color:white !important;background:#878ede;">♥️</span>
         <span class="fast-span" data-msg="線上諮詢">心血管疾病</span>
       </div>
       <div class="ml-2" @click="$router.push('/stroke')">
@@ -157,13 +157,19 @@ export default {
       cancerCats,
       cancerCatsImg,
       onlines,
+      showBottom: false,
     };
   },
   components: {
     HomeHeader,
   },
   methods: {
-    //async viewCancerByCat(item) {},
+    // visibleHandler(isVisible) {
+    //   if (isVisible) {
+    //     alert();
+    //     this.showBottom = true;
+    //   }
+    // },
     async viewList(item) {
       const obj = { id: item.cid, name: item.name };
       const str = queryString.stringify(obj);
@@ -187,7 +193,6 @@ export default {
   padding: 3px;
   margin-bottom: 90px;
   overflow: hidden !important;
-  // overflow-x: hidden !important;
 }
 </style>
 

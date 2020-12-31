@@ -71,6 +71,11 @@ export default {
 </i18n>
 
 <style lang="scss">
+html,
+body {
+  scroll-behavior: smooth;
+  overflow: hidden;
+}
 #app {
   margin: 0px;
   padding: 0px;
@@ -80,14 +85,9 @@ export default {
   color: var(--dark);
   background: var(--snap-blue) !important;
   width: 100vw;
-  //max-height: 100vh;
-  overflow-x: hidden !important;
-}
-html,
-body {
-  scroll-behavior: smooth;
+  max-height: 100vh;
+  overflow: hidden;
   overflow-y: auto !important;
-  overflow-x: hidden !important;
 }
 .grecaptcha-badge {
   opacity: 0 !important;
