@@ -11,8 +11,11 @@ import i18n from './i18n'
 import './plugins/vant.js'
 // /import './registerServiceWorker'
 import VueToast from "vue-toast-notification";
+
 // Import one of available themes
 import "vue-toast-notification/dist/theme-default.css";
+
+import './registerServiceWorker'
 //import 'vue-toast-notification/dist/theme-sugar.css';
 
 Vue.use(VueToast, { position: "top" });
