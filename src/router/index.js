@@ -21,6 +21,21 @@ const routes = [
     component: () => import("../views/Login.vue"),
   },
   {
+    path: '/canceratab',
+    name: 'canceratab',
+    component: () => import("../components/CancerAtAb.vue"),
+  },
+  {
+    path: '/cancerathead',
+    name: 'cancerathead',
+    component: () => import("../components/CancerAtHead.vue"),
+  },
+  {
+    path: '/canceratlung',
+    name: 'canceratlung',
+    component: () => import("../components/CancerAtLung.vue"),
+  },
+  {
     path: '/myorderlist',
     name: 'myorderlist',
     component: () => import("../views/MyOrderList.vue"),
