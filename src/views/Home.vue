@@ -46,7 +46,7 @@
         <span class="fast-span" data-msg="中風線上諮詢">腦血管事件</span>
       </div>
     </main>
-    <main class="inquery">
+    <main class="inquery" style="margin-bottom:60px;">
       <h2 style="font-size:22px;margin-bottom:10px;">
         線上病理諮詢 <span>{{ $t('省時省心名醫指導好的快') }}</span>
       </h2>
