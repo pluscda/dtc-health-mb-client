@@ -41,10 +41,10 @@
         {{ $t("選科室問醫生") }} <span>{{ $t("自選科室專屬醫師對症下藥") }}</span>
       </h4>
       <nav class="grid-2-img">
-        <div v-for="(item, i) in cancerCats" :key="item">
+        <div v-for="(item, i) in cancerCats" :key="item" :data-msg="item.text" @click="viewCancerByCat(item)">
           <img :src="cancerCatsImg[i]" />
         </div>
-        <div style="grid-column:1/-1">
+        <div style="grid-column:1/-1" data-msg="其他部位" @click="viewCancerByCat(other)">
           <img src="small_dreamstime_s_75581102_8295cb0072.jpg" />
         </div>
       </nav>
@@ -151,6 +151,7 @@ const cancerCatsImg = [
   "thumbnail_615f71b7_5bf2_4cf5_ad0f_44c307b60448_a6a4058942.jpg",
 ];
 const cancerCats = ["頭頸部", "胸部", "腹部", "骨盆腔"].map((s, i) => ({ value: i + 1, text: s }));
+const other = { value: "5", text: "其他部位" };
 export default {
   name: "home",
   data() {
@@ -160,12 +161,16 @@ export default {
       cancers: [],
       cancerCats,
       cancerCatsImg,
+      other,
     };
   },
   components: {
     HomeHeader,
   },
   methods: {
+    async viewCancerByCat(item) {
+      //
+    },
     async viewList(item) {
       const obj = { id: item.cid, name: item.name };
       const str = queryString.stringify(obj);
@@ -426,14 +431,29 @@ h4 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(3, 150px);
-  gap: 1rem;
+  gap: 0.2rem;
   > div {
+    position: relative;
     height: 150px;
     img {
       width: 100%;
       height: 100%;
       display: inline-block;
       object-fit: cover;
+    }
+    &::after {
+      position: absolute;
+      content: attr(data-msg);
+      color: var(--light);
+      background: rgba(#000, 0.4);
+      font-size: 20px;
+      text-align: center;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 2;
+      line-height: 150px;
     }
   }
 }
