@@ -10,11 +10,9 @@
         <div>線上健康照護諮詢</div>
         <div class="dtc-private">{{ $t("private") }}</div>
         <footer class="faster-footer" style="margin-left:10px;">
-          <div>{{ $t("w1") }}</div>
-          <div>/</div>
-          <div>{{ $t("w2") }}</div>
-          <div>/</div>
-          <div>{{ $t("w3") }}</div>
+          <van-button plain size="small" type="info">護理照護</van-button>
+          <van-button plain size="small" type="primary">復健照護</van-button>
+          <van-button plain size="small" type="warning">營養照護</van-button>
         </footer>
       </div>
     </main>
@@ -249,7 +247,7 @@ export default {
   position: absolute;
   display: grid;
   grid-template-columns: repeat(10, max-content);
-  gap: 2px;
+  gap: 8px;
   top: 78px;
   left: 2px;
   font-size: 12px;
