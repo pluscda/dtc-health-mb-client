@@ -31,7 +31,7 @@
     <main class="hot-search">
       <div></div>
       <div>{{ $t("熱搜") }}:</div>
-      <div v-for="(item, i) in cancers.slice(0, 6)" :key="i" style="margin-left:7px;color:blue;font-size:14px;">
+      <div v-for="(item, i) in cancers.slice(5, 10)" :key="i" style="margin-left:7px;color:blue;font-size:14px;">
         {{ $t(item.name) }}
       </div>
     </main>
