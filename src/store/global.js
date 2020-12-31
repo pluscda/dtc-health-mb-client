@@ -28,6 +28,7 @@ const docImgs = [
 // remove hard coded password here; hide the password in server side 
 let PASSWORD = "weR168@healther.dtc.tw"
 const init = {
+  cancerCats:[],
   docImgs,
   isLogin: false,
   fireUid:'',
@@ -59,6 +60,14 @@ export let actions = {
   },
   async updateOrder(item){
      return axios.put('orders/' + item.id, item);
+  },
+  async getCancerCats(){
+    if(store.cancerCats.length > 0){
+      return store.cancerCats;
+    }
+    const cats =  await axios.get("cancer-cats");
+    store.cancerCats = cats;
+    return cats;
   },
   async getDoctors(qs){
     const url = "doctors?" + qs;
