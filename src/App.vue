@@ -87,6 +87,7 @@ body {
   color: var(--dark);
   background: var(--snap-blue) !important;
   width: 100vw;
+  overflow: hidden !important;
 }
 .grecaptcha-badge {
   opacity: 0 !important;
@@ -96,4 +97,3 @@ body {
   z-index: -1;
 }
 </style>
-<style></style>
