@@ -20,7 +20,7 @@
     </main>
     <main class="faster2">
       <div>
-        <span>✣</span>
+        <span>♥️</span>
         <span class="fast-span" data-msg="線上諮詢">心血管疾病</span>
       </div>
       <div class="ml-2">
@@ -311,7 +311,7 @@ export default {
   position: relative;
   &::after {
     position: absolute;
-    font-size: 12px;
+    font-size: 14px;
     top: 30px;
     width: 200px;
     left: 0px;
