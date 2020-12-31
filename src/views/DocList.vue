@@ -19,20 +19,20 @@
 </template>
 
 <script>
-import Vue from "vue";
-import faker from "faker";
-import { store, mutations, actions } from "@/store/global.js";
+import Vue from 'vue';
+import faker from 'faker';
+import { store, mutations, actions } from '@/store/global.js';
 
 export default {
-  name: "login",
+  name: 'login',
   data() {
     return {
-      id: "",
-      name: "",
+      id: '',
+      name: '',
       docs: [],
       skip: 0,
-      cat: "",
-      searchBy: "",
+      cat: '',
+      searchBy: '',
     };
   },
   methods: {
@@ -40,7 +40,7 @@ export default {
       const obj = {
         orderPhoneNum: sessionStorage.phone,
         paidAmount: item.price,
-        status: "waiting", // process and finish
+        status: 'waiting', // process and finish
         orderDate: new Date().toISOString(),
         doctorPhone: item.phone,
         isCancer: true,
@@ -49,18 +49,18 @@ export default {
         docHasCopy: false,
         comment: [
           {
-            docComment: "需要你的癌症報告,請你用郵件寄出",
+            docComment: '需要你的癌症報告,請你用郵件寄出',
             commentAt: new Date().toISOString(),
             rating: 0,
-            userComment: "",
+            userComment: '',
           },
         ],
       };
       try {
         await actions.addOrder(obj);
-        Vue.$toast.success("order created");
+        Vue.$toast.success('order created');
       } catch (e) {
-        Vue.$toast.error("order fail");
+        Vue.$toast.error('order fail');
       }
     },
     getBooksNum() {
@@ -73,17 +73,17 @@ export default {
       //alert();
     },
     getDesc(item) {
-      return "專長: " + item.description;
+      return '專長: ' + item.description;
     },
     getTitle(item) {
-      return item.name + " | " + item.hospital + " | " + item.title;
+      return item.name + ' | ' + item.hospital + ' | ' + item.title;
     },
     getImgPath(item, i) {
       return store.docImgs[i];
       //return item.cover.url; // at aws now
     },
     async getDDL() {
-      const url = this.id ? "doctors?cid_eq=" + this.id : `doctors?_limit=30&_start=${this.skip}`;
+      const url = this.id ? 'doctors?cid_eq=' + this.id : `doctors?_limit=30&_start=${this.skip}`;
       this.docs = await axios.get(url);
     },
   },
@@ -91,7 +91,7 @@ export default {
     const { id, name } = this.$route.query;
     this.id = +id;
     this.name = name;
-    this.searchBy = name ? name : "熱門醫生";
+    this.searchBy = name ? name : '熱門醫生';
     this.getDDL();
   },
   watch: {},
@@ -113,7 +113,6 @@ export default {
 .doc-list {
   background: var(--strapi-blue);
   width: 100vw;
-  margin-bottom: 90px;
   height: 100vh;
   color: white;
   header {
