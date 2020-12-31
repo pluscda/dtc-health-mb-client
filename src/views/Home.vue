@@ -429,7 +429,7 @@ h4 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(3, 150px);
-  gap: 0.2rem;
+  gap: 0.1rem;
   > div {
     position: relative;
     height: 150px;
