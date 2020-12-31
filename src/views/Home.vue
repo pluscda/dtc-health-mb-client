@@ -19,11 +19,11 @@
       </div>
     </main>
     <main class="faster2">
-      <div>
+      <div @click="$router.push('/heart')">
         <span>♥️</span>
         <span class="fast-span" data-msg="線上諮詢">心血管疾病</span>
       </div>
-      <div class="ml-2">
+      <div class="ml-2" @click="$router.push('/stroke')">
         <span style="background:#878ede;">❁</span>
         <span class="fast-span" data-msg="中風線上諮詢">腦血管事件</span>
       </div>
