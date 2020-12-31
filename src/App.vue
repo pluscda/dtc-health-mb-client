@@ -2,21 +2,21 @@
   <div id="app">
     <router-view></router-view>
     <van-tabbar v-model="active" style="z-index:8;" v-if="!isDoc">
-      <van-tabbar-item icon="home-o" @click="$router.push('home')">{{ $t("醫療首頁") }}</van-tabbar-item>
-      <van-tabbar-item icon="search" @click="$router.push('doclist')">{{ $t("找醫師") }}</van-tabbar-item>
-      <van-tabbar-item hidden icon="friends-o" @click="$router.push('file')">{{ $t("標籤") }}</van-tabbar-item>
-      <van-tabbar-item icon="setting-o" @click="$router.push('login')">{{ $t("我的") }}</van-tabbar-item>
+      <van-tabbar-item icon="home-o" @click="$router.push('home')">{{ $t('醫療首頁') }}</van-tabbar-item>
+      <van-tabbar-item icon="search" @click="$router.push('doclist')">{{ $t('找醫師') }}</van-tabbar-item>
+      <van-tabbar-item hidden icon="friends-o" @click="$router.push('file')">{{ $t('標籤') }}</van-tabbar-item>
+      <van-tabbar-item icon="setting-o" @click="$router.push('login')">{{ $t('我的') }}</van-tabbar-item>
     </van-tabbar>
   </div>
 </template>
 
 <script>
-import { store, mutations, actions } from "@/store/global.js";
+import { store, mutations, actions } from '@/store/global.js';
 
-import Vue from "vue";
+import Vue from 'vue';
 
 export default {
-  name: "app",
+  name: 'app',
   data() {
     return {
       active: 0,
@@ -27,12 +27,12 @@ export default {
       return store.isLogin;
     },
     isDoc() {
-      return location.href.includes("isdoc=true");
+      return location.href.includes('isdoc=true');
     },
   },
   methods: {
     goDocList() {
-      this.$router.push("doclist");
+      this.$router.push('doclist');
     },
   },
   components: {},
@@ -41,13 +41,19 @@ export default {
   },
   watch: {
     $route(to, from) {
-      if (to.path.includes("home")) {
+      if (to.path.includes('home')) {
         this.active = 0;
-      } else if (to.path.includes("doclist")) {
+      } else if (to.path.includes('doclist')) {
         this.active = 1;
-      } else if (to.path.includes("login")) {
+      } else if (to.path.includes('login')) {
         this.active = 3;
       }
+      setTimeout(() =>{window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      }), 200)
+
     },
   },
 };
