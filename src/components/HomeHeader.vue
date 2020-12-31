@@ -10,7 +10,7 @@
       <div v-if="$i18n.locale == 'zh-tw'" class="dtc-lang-switch" @click="$root.$i18n.locale = 'zh-cn'">繁</div>
       <div v-else class="dtc-lang-switch" @click="$root.$i18n.locale = 'zh-tw'">簡</div>
     </main>
-    <van-search background="var(--snap-blue)" v-model="searchBy" shape="round" class="mx-4 mt-2" placeholder="醫院 | 醫生名 | 病名"></van-search>
+    <van-search background="var(--snap-blue)" v-model="searchBy" shape="round" class="mt-1" placeholder="醫院 | 醫生名 | 病名"></van-search>
   </div>
 </template>
 
