@@ -12,7 +12,7 @@
 <script>
 import { store, mutations, actions } from "@/store/global.js";
 const strs = ["肝癌", "膽管癌", "膽囊癌", "結腸癌", "胃癌", "胰臟癌"];
-const items = ["150 (2)", "150 (3)", "150 (4)", "150 (5)", "150 (6)", "150"].map((s, i) => ({
+const items = ["150 (17)", "150 (3)", "150 (4)", "150 (5)", "150 (6)", "150"].map((s, i) => ({
   src: s,
   text: strs[i],
 }));
