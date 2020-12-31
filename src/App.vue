@@ -54,7 +54,7 @@ export default {
             top: 0,
             left: 0,
           }),
-        1000
+        1500
       );
     },
   },
