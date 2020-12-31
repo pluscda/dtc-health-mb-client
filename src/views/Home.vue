@@ -7,7 +7,7 @@
       </div>
       <div class="right mt-2">
         <h3 style="margin-left:10px;"></h3>
-        <div>{{ $t("oneMin") }}</div>
+        <div>線上健康照護諮詢</div>
         <div class="dtc-private">{{ $t("private") }}</div>
         <footer class="faster-footer" style="margin-left:10px;">
           <div>{{ $t("w1") }}</div>
@@ -66,6 +66,7 @@
         </div>
       </nav>
     </main>
+    <div style="text-align:center;" class="mt-4">沒有更多了</div>
   </div>
 </template>
 <i18n>
@@ -230,7 +231,7 @@ export default {
       clip-path: polygon(10% 1%, 100% 0%, 100% 99%, 10% 100%, 0% 50%);
       background: linear-gradient(to right, #da5afa, #3570ec);
       height: 30px;
-      width: 110px;
+      width: 140px;
       text-align: center;
       color: white;
       font-size: 12px;
