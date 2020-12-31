@@ -57,6 +57,8 @@ export default {
   display: grid;
   grid-template-rows: max-content 1fr;
   position: relative;
+  min-height: 100vh;
+  margin-bottom: 70px;
 }
 .grid-2-img {
   display: grid;
