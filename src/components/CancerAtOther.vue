@@ -1,20 +1,26 @@
 <template>
   <section class="dtc-head-cancer">
-    <van-nav-bar title="癌症篩選科系頭頸部" left-text="返回" left-arrow @click-left="onClickLeft" @click-right="onClickRight" />
+    <van-nav-bar title="胸部" left-text="返回" left-arrow @click-left="onClickLeft" @click-right="onClickRight" />
+    <nav class="grid-2-img">
+      <div v-for="(item, i) in items" :key="i" :data-msg="item.text">
+        <img :src="item.src" />
+      </div>
+    </nav>
   </section>
 </template>
 
 <script>
 import { store, mutations, actions } from "@/store/global.js";
-
+const strs = ["食道癌", "肺癌", "乳癌"];
+const items = ["thumbnail_shutterstock_1511820146_889e63f558.jpg", "thumbnail_59fad74a620f2_6a1a6ee578.jpg", "thumbnail_22741_a3c56a949c.jpg"].map((s, i) => ({
+  src: s,
+  text: strs[i],
+}));
 export default {
-  name: "login",
+  name: "lung",
   data() {
     return {
-      username: "",
-      password: "",
-      password2: "",
-      showLoginPwd: true,
+      items,
     };
   },
   methods: {
@@ -29,11 +35,42 @@ export default {
 
 <style lang="scss" scoped>
 .dtc-head-cancer {
-  background: #eaf8ff;
+  background: white;
   width: 100vw;
   color: #3570ec;
   display: grid;
   grid-template-rows: max-content 1fr;
   position: relative;
+  height: 100vh;
+}
+.grid-2-img {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(2, 150px);
+  gap: 0.2rem;
+  > div {
+    position: relative;
+    height: 150px;
+    img {
+      width: 100%;
+      height: 100%;
+      display: inline-block;
+      object-fit: cover;
+    }
+    &::after {
+      position: absolute;
+      content: attr(data-msg);
+      color: var(--light);
+      background: rgba(#000, 0.4);
+      font-size: 20px;
+      text-align: center;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 2;
+      line-height: 150px;
+    }
+  }
 }
 </style>
