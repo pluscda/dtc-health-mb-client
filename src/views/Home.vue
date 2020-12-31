@@ -186,7 +186,8 @@ export default {
   width: 100vw;
   padding: 3px;
   margin-bottom: 90px;
-  overflow-x: hidden !important;
+  overflow: hidden !important;
+  // overflow-x: hidden !important;
 }
 </style>
 
@@ -198,6 +199,7 @@ export default {
   margin-top: 1rem;
   display: grid;
   background: var(--light);
+
   grid-template-columns: max-content max-content;
   color: black;
   .img1 {
