@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.3baa9aab43e47a110e7e3dddf479188a.js"
+  "/precache-manifest.8c68832b4fe1e6e6a2718879acbb700d.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "vant-mobile"});
