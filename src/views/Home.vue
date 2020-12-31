@@ -41,10 +41,10 @@
         {{ $t("選科室問醫生") }} <span>{{ $t("自選科室專屬醫師對症下藥") }}</span>
       </h4>
       <nav class="grid-2-img">
-        <div v-for="(item, i) in cancerCats" :key="item" :data-msg="item.text" @click="viewCancerByCat(item)">
+        <div v-for="(item, i) in cancerCats" :key="item" :data-msg="item.text" @click="$router.push(item.path)">
           <img :src="cancerCatsImg[i]" />
         </div>
-        <div style="grid-column:1/-1" data-msg="其他部位" @click="viewCancerByCat(other)">
+        <div style="grid-column:1/-1" data-msg="其他部位" @click="$router.push(item.path)">
           <img src="small_dreamstime_s_75581102_8295cb0072.jpg" />
         </div>
       </nav>
@@ -150,8 +150,9 @@ const cancerCatsImg = [
   "thumbnail_20150801031535563_4e9f6ee0d9.jpg",
   "thumbnail_615f71b7_5bf2_4cf5_ad0f_44c307b60448_a6a4058942.jpg",
 ];
-const cancerCats = ["頭頸部", "胸部", "腹部", "骨盆腔"].map((s, i) => ({ value: i + 1, text: s }));
-const other = { value: 5, text: "其他部位" };
+const cancerPaths = ["/cancerathead", "/canceratlung", "/canceratab", "/canceratlower"];
+const cancerCats = ["頭頸部", "胸部", "腹部", "骨盆腔"].map((s, i) => ({ value: i + 1, text: s, path: cancerPaths[i] }));
+const other = { value: 5, text: "其他部位", path: "/canceratother" };
 export default {
   name: "home",
   data() {
@@ -168,9 +169,7 @@ export default {
     HomeHeader,
   },
   methods: {
-    async viewCancerByCat(item) {
-      //
-    },
+    //async viewCancerByCat(item) {},
     async viewList(item) {
       const obj = { id: item.cid, name: item.name };
       const str = queryString.stringify(obj);

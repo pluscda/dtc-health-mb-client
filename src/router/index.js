@@ -31,6 +31,11 @@ const routes = [
     component: () => import("../components/CancerAtHead.vue"),
   },
   {
+    path: '/canceratlower',
+    name: 'canceratlower',
+    component: () => import("../components/CancerAtLower.vue"),
+  },
+  {
     path: '/canceratlung',
     name: 'canceratlung',
     component: () => import("../components/CancerAtLung.vue"),
