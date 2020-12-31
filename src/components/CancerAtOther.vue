@@ -1,6 +1,6 @@
 <template>
   <section class="dtc-head-cancer">
-    <van-nav-bar title="頭頸部" left-text="返回" left-arrow @click-left="onClickLeft" @click-right="onClickRight" />
+    <van-nav-bar title="癌症篩選科系頭頸部" left-text="返回" left-arrow @click-left="onClickLeft" @click-right="onClickRight" />
   </section>
 </template>
 
