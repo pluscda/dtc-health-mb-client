@@ -40,10 +40,12 @@
       <h4 class="mb-2">
         {{ $t("選科室問醫生") }} <span>{{ $t("自選科室專屬醫師對症下藥") }}</span>
       </h4>
-      <nav class="list-grid-icons">
-        <div @click="viewList(item)" v-for="(item, i) in cancers" :key="item.name" :data-msg="$t(item.name)" :class="i > 4 ? 'items-text2' : 'items-text'">
-          <img :src="'https://unsplash.it/60/6' + i" />
-          <!-- <span> {{ $t(item) }}</span> -->
+      <nav class="grid-2-img">
+        <div v-for="(item, i) in cancerCats" :key="item">
+          <img :src="cancerCatsImg[i]" />
+        </div>
+        <div style="grid-column:1/-1">
+          <img src="small_dreamstime_s_75581102_8295cb0072.jpg" />
         </div>
       </nav>
     </main>
@@ -87,7 +89,7 @@
     "甲狀腺癌":"甲狀腺癌",
     "各大醫院快速看病":"各大醫院快速看病",
     "專家名醫在線解答":"專家名醫在線解答",
-    "選科室問醫生":"選科室 問醫生",
+    "選科室問醫生":"癌症篩選科系 問醫生",
     "醫療首頁":"醫療首頁",
     "我的":"我的",
     "找醫師":"找醫師",
@@ -141,7 +143,14 @@ import { store, mutations, actions } from "@/store/global.js";
 import queryString from "query-string";
 import HomeHeader from "@/components/HomeHeader";
 let types = "大腸癌,肺癌,女性乳癌,肝癌,口腔癌,攝護腺癌,甲狀腺癌,胃癌,皮膚癌,食道癌".split(",");
-
+//thumbnail_dreamstime_s_75581102_8295cb0072.jpg
+const cancerCatsImg = [
+  "thumbnail__f0e0837881.jpg",
+  "thumbnail_1544194965_4229027033_wn_9cfd7b444e.jpg",
+  "thumbnail_20150801031535563_4e9f6ee0d9.jpg",
+  "thumbnail_615f71b7_5bf2_4cf5_ad0f_44c307b60448_a6a4058942.jpg",
+];
+const cancerCats = ["頭頸部", "胸部", "腹部", "骨盆腔"].map((s, i) => ({ value: i + 1, text: s }));
 export default {
   name: "home",
   data() {
@@ -149,6 +158,8 @@ export default {
       types,
       active: 0,
       cancers: [],
+      cancerCats,
+      cancerCatsImg,
     };
   },
   components: {
@@ -409,5 +420,21 @@ h4 {
 .love-btn {
   border: 1px solid #3570ec;
   color: #3570ec;
+}
+
+.grid-2-img {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, 150px);
+  gap: 1rem;
+  > div {
+    height: 150px;
+    img {
+      width: 100%;
+      height: 100%;
+      display: inline-block;
+      object-fit: cover;
+    }
+  }
 }
 </style>
