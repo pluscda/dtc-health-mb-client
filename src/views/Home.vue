@@ -1,6 +1,26 @@
 <template>
   <div class="my-homepage">
     <HomeHeader></HomeHeader>
+    <main class="hot-search">
+      <div></div>
+      <div>{{ $t("熱搜") }}:</div>
+      <div v-for="(item, i) in cancers.slice(5, 10)" :key="i" style="margin-left:7px;color:blue;font-size:14px;">
+        {{ $t(item.name) }}
+      </div>
+    </main>
+    <main class="icon-search">
+      <h4 class="mb-2">
+        {{ $t("選科室問醫生") }} <span>{{ $t("自選科室專屬醫師對症下藥") }}</span>
+      </h4>
+      <nav class="grid-2-img">
+        <div v-for="(item, i) in cancerCats" :key="item" :data-msg="item.text" @click="$router.push(item.path)">
+          <img :src="cancerCatsImg[i]" />
+        </div>
+        <div style="grid-column:1/-1" data-msg="其他部位" @click="$router.push('/canceratother')">
+          <img src="small_dreamstime_s_75581102_8295cb0072.jpg" />
+        </div>
+      </nav>
+    </main>
     <main class="fast-ask-doc">
       <div class="left">
         <img class="img1" src="thumbnail_image001_6397d39324.jpg" />
@@ -26,45 +46,16 @@
         <span class="fast-span" data-msg="中風線上諮詢">腦血管事件</span>
       </div>
     </main>
-    <main class="hot-search">
-      <div></div>
-      <div>{{ $t("熱搜") }}:</div>
-      <div v-for="(item, i) in cancers.slice(5, 10)" :key="i" style="margin-left:7px;color:blue;font-size:14px;">
-        {{ $t(item.name) }}
-      </div>
-    </main>
-
-    <main class="icon-search">
-      <h4 class="mb-2">
-        {{ $t("選科室問醫生") }} <span>{{ $t("自選科室專屬醫師對症下藥") }}</span>
-      </h4>
-      <nav class="grid-2-img">
-        <div v-for="(item, i) in cancerCats" :key="item" :data-msg="item.text" @click="$router.push(item.path)">
-          <img :src="cancerCatsImg[i]" />
-        </div>
-        <div style="grid-column:1/-1" data-msg="其他部位" @click="$router.push('/canceratother')">
-          <img src="small_dreamstime_s_75581102_8295cb0072.jpg" />
-        </div>
-      </nav>
-    </main>
     <main class="inquery">
-      <h2 style="font-size:23px;">
-        {{ $t("專業諮詢") }} <span>{{ $t("省時省心名醫指導好的快") }}</span>
+      <h2 style="font-size:22px;margin-bottom:10px;">
+        線上病理諮詢 <span>{{ $t("省時省心名醫指導好的快") }}</span>
       </h2>
-      <nav class="grid-2">
-        <div>
-          <div class="button-dtc mt-3">{{ $t("月經異常") }}</div>
-          <h4 class="mt-3">{{ $t("關愛女性健康") }}</h4>
-          <img src="yoga.gif" />
-        </div>
-        <div>
-          <div class="button-dtc love-btn mt-3">{{ $t("伴侶出軌") }}</div>
-          <h4 class="mt-3">{{ $t("愛情急診室") }}</h4>
-          <img src="phone.gif" />
+      <nav class="grid-2-img">
+        <div v-for="(item, i) in onlines" :key="i" :data-msg="item.text">
+          <img :src="item.src + '.jpg'" />
         </div>
       </nav>
     </main>
-    <div style="text-align:center;" class="mt-4">沒有更多了</div>
   </div>
 </template>
 <i18n>
@@ -151,7 +142,11 @@ const cancerCatsImg = [
 ];
 const cancerPaths = ["/cancerathead", "/canceratlung", "/canceratab", "/canceratlower"];
 const cancerCats = ["頭頸部", "胸部", "腹部", "骨盆腔"].map((s, i) => ({ value: i + 1, text: s, path: cancerPaths[i] }));
-
+const strs = "家醫科、老年醫學科、神經科、泌尿科、眼科、婦產科、皮膚科、眼科、小兒科、成年慢性病".split("、");
+const onlines = ["150 (7)", "150 (8)", "150 (9)", "150 (10)", "150 (11)", "150 (12)", "150 (13)", "150 (14)", "150 (15)", "150 (16)"].map((s, i) => ({
+  src: s,
+  text: strs[i],
+}));
 export default {
   name: "home",
   data() {
@@ -161,6 +156,7 @@ export default {
       cancers: [],
       cancerCats,
       cancerCatsImg,
+      onlines,
     };
   },
   components: {
@@ -358,13 +354,11 @@ export default {
 }
 
 .inquery {
-  margin-top: 50px;
   background: white;
-  min-height: 300px;
+
   h2 {
-    letter-spacing: 3px;
     padding-top: 10px;
-    padding-left: 7px;
+    font-size: 15px;
     span {
       font-size: 13px;
       color: darken(#ebedf0, 22);

@@ -63,17 +63,7 @@ export default {
 }
 .search-by {
   position: relative;
-  input {
-    display: inline-block;
-    border-radius: 80px;
-    border: none;
-    padding: 0.7rem;
-    padding-left: 2rem !important;
-    font-size: 13px;
-    color: black;
-    box-shadow: 0 0 0 1px #bababa;
-    width: 170px;
-  }
+
   .search-icon {
     position: absolute;
     left: 12px;
