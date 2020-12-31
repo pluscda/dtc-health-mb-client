@@ -28,11 +28,11 @@
       <div class="right mt-2">
         <h3 style="margin-left:10px;"></h3>
         <div>線上健康照護諮詢</div>
-        <div class="dtc-private">{{ $t("private") }}</div>
+        <div class="dtc-private ml-2">{{ $t("private") }}</div>
         <footer class="faster-footer" style="margin-left:10px;">
-          <van-button plain size="small" type="info">護理照護</van-button>
-          <van-button plain size="small" type="primary">復健照護</van-button>
-          <van-button plain size="small" type="warning">營養照護</van-button>
+          <van-button plain size="small" type="info"><van-icon name="friends" style="transform:translateY(2px)" />護理照護</van-button>
+          <van-button plain size="small" type="danger"><van-icon name="like" style="transform:translateY(2px)" />復健照護</van-button>
+          <van-button plain size="small" type="primary"><van-icon name="gem" style="transform:translateY(2px)" />營養照護</van-button>
         </footer>
       </div>
     </main>
@@ -79,7 +79,7 @@
     "甲狀腺癌":"甲狀腺癌",
     "各大醫院快速看病":"各大醫院快速看病",
     "專家名醫在線解答":"專家名醫在線解答",
-    "選科室問醫生":"癌症篩選科系 問醫生",
+    "選科室問醫生":"癌症篩選科系",
     "醫療首頁":"醫療首頁",
     "我的":"我的",
     "找醫師":"找醫師",
@@ -289,17 +289,18 @@ export default {
 }
 .hot-search {
   margin-top: 10px;
-  height: 30px;
+  height: 40px;
   width: 100%;
   background: var(--light);
-  line-height: 30px;
+  line-height: 40px;
   display: grid;
   grid-template-columns: repeat(120, max-content);
   > div:first-child {
     width: 5px;
     height: 20px;
     background: #8faef1;
-    margin-top: 5px;
+    margin-top: 10px;
+    margin-right: 4px;
   }
 }
 .fast-span {
