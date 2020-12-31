@@ -44,7 +44,7 @@
         <div v-for="(item, i) in cancerCats" :key="item" :data-msg="item.text" @click="$router.push(item.path)">
           <img :src="cancerCatsImg[i]" />
         </div>
-        <div style="grid-column:1/-1" data-msg="其他部位" @click="$router.push(item.path)">
+        <div style="grid-column:1/-1" data-msg="其他部位" @click="$router.push('/canceratother')">
           <img src="small_dreamstime_s_75581102_8295cb0072.jpg" />
         </div>
       </nav>
@@ -152,7 +152,7 @@ const cancerCatsImg = [
 ];
 const cancerPaths = ["/cancerathead", "/canceratlung", "/canceratab", "/canceratlower"];
 const cancerCats = ["頭頸部", "胸部", "腹部", "骨盆腔"].map((s, i) => ({ value: i + 1, text: s, path: cancerPaths[i] }));
-const other = { value: 5, text: "其他部位", path: "/canceratother" };
+
 export default {
   name: "home",
   data() {
@@ -162,7 +162,6 @@ export default {
       cancers: [],
       cancerCats,
       cancerCatsImg,
-      other,
     };
   },
   components: {
