@@ -14,7 +14,7 @@
       </h4>
       <nav class="grid-2-img">
         <div v-for="(item, i) in cancerCats" :key="item" :data-msg="item.text" @click="$router.push(item.path)">
-          <img :src="cancerCatsImg[i]" />
+          <img :src="cancerCatsImg[i]" width="208" hieght="156" />
         </div>
         <div style="grid-column:1/-1" data-msg="其他部位" @click="$router.push('/canceratother')">
           <img src="small_dreamstime_s_75581102_8295cb0072.jpg" />
@@ -46,13 +46,13 @@
         <span class="fast-span" data-msg="中風線上諮詢">腦血管事件</span>
       </div>
     </main>
-    <main class="inquery">
+    <main class="inquery mb-4">
       <h2 style="font-size:22px;margin-bottom:10px;">
         線上病理諮詢 <span>{{ $t('省時省心名醫指導好的快') }}</span>
       </h2>
-      <nav class="grid-2-img">
+      <nav class="grid-2-img mb-4">
         <div v-for="(item, i) in onlines" :key="i" :data-msg="item.text">
-          <img :src="item.src + '.jpg'" />
+          <img :src="item.src + '.jpg'" width="208" hieght="156" />
         </div>
       </nav>
     </main>
