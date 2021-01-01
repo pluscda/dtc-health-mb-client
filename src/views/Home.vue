@@ -14,7 +14,7 @@
       </h4>
       <nav class="grid-2-img">
         <div v-for="(item, i) in cancerCats" :key="item" :data-msg="item.text" @click="$router.push(item.path)">
-          <img :src="cancerCatsImg[i]" width="208" hieght="156" />
+          <img :src="cancerCatsImg[i]" width="208" hieght="156" :alt="item.text" />
         </div>
         <div style="grid-column:1/-1" data-msg="其他部位" @click="$router.push('/canceratother')">
           <img src="small_dreamstime_s_75581102_8295cb0072.jpg" />
@@ -52,7 +52,7 @@
       </h2>
       <nav class="grid-2-img mb-4">
         <div v-for="(item, i) in onlines" :key="i" :data-msg="item.text">
-          <img :src="item.src + '.jpg'" width="208" hieght="156" />
+          <img :src="item.src + '.jpg'" :alt="item.text" width="208" hieght="156" />
         </div>
       </nav>
     </main>

@@ -3,7 +3,7 @@
     <van-nav-bar title="骨盆腔" left-text="返回" left-arrow @click-left="onClickLeft" @click-right="onClickRight" />
     <nav class="grid-2-img">
       <div v-for="(item, i) in items" :key="i" :data-msg="item.text">
-        <img :src="item.src + '.jpg'" />
+        <img :src="item.src + '.jpg'" with="245" height="150" :alt="item.text" />
       </div>
     </nav>
   </section>
