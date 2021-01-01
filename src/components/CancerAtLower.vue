@@ -17,7 +17,7 @@ const items = ['150 (7)', '150 (8)', '150 (9)', '150 (10)', '150 (11)', '150 (12
   text: strs[i],
 }));
 export default {
-  name: 'lung',
+  name: 'clower',
   data() {
     return {
       items,

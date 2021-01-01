@@ -17,7 +17,7 @@ const items = ['150 (17)', '150 (3)', '150 (4)', '150 (5)', '150 (6)', '150'].ma
   text: strs[i],
 }));
 export default {
-  name: 'lung',
+  name: 'lungab',
   data() {
     return {
       items,

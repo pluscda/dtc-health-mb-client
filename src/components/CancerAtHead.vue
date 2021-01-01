@@ -28,7 +28,7 @@ const items = [
 }));
 
 export default {
-  name: 'login',
+  name: 'chead',
   data() {
     return {
       items,
