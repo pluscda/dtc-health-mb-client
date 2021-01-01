@@ -93,6 +93,8 @@ export default {
     this.name = name;
     this.searchBy = name ? name : '熱門醫生';
     this.getDDL();
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
   },
   watch: {},
 };
@@ -115,6 +117,7 @@ export default {
   width: 100vw;
   min-height: 100vh;
   color: white;
+  position: relative;
   header {
     font-size: 20px;
     text-align: center;

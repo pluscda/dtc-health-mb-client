@@ -41,6 +41,7 @@ export default {
   },
   watch: {
     $route(to, from) {
+      document.documentElement.scrollIntoView();
       if (to.path.includes('home')) {
         this.active = 0;
       } else if (to.path.includes('doclist')) {
@@ -48,18 +49,6 @@ export default {
       } else if (to.path.includes('login')) {
         this.active = 3;
       }
-      window.scrollTo({
-        top: -60,
-        left: 0,
-      }),
-        setTimeout(
-          () =>
-            window.scrollTo({
-              top: -60,
-              left: 0,
-            }),
-          500
-        );
     },
   },
 };
@@ -85,9 +74,12 @@ export default {
 <style lang="scss">
 html,
 body {
+  scroll-behavior: smooth;
   max-height: 100vh;
   overflow: hidden;
   overflow-y: auto !important;
+  margin: 0px;
+  padding: 0px;
 }
 #app {
   margin: 0px;

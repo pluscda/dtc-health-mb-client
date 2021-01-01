@@ -183,6 +183,10 @@ export default {
   mounted() {
     store.activeTab = 0;
     this.getDDL();
+    this.$nextTick(() => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+    });
   },
 };
 </script>
@@ -191,7 +195,10 @@ export default {
 .my-homepage {
   width: 100vw;
   padding: 3px;
+  padding-top: 0px;
+  margin-top: 3px;
   overflow: hidden !important;
+  position: relative;
 }
 </style>
 
