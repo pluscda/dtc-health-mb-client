@@ -10,14 +10,14 @@
 </template>
 
 <script>
-import { store, mutations, actions } from "@/store/global.js";
-const strs = ["肝癌", "膽管癌", "膽囊癌", "結腸癌", "胃癌", "胰臟癌"];
-const items = ["150 (17)", "150 (3)", "150 (4)", "150 (5)", "150 (6)", "150"].map((s, i) => ({
+import { store, mutations, actions } from '@/store/global.js';
+const strs = ['肝癌', '膽管癌', '膽囊癌', '結腸癌', '胃癌', '胰臟癌'];
+const items = ['150 (17)', '150 (3)', '150 (4)', '150 (5)', '150 (6)', '150'].map((s, i) => ({
   src: s,
   text: strs[i],
 }));
 export default {
-  name: "lung",
+  name: 'lung',
   data() {
     return {
       items,
@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     onClickLeft() {
-      this.$router.push("/home");
+      this.$router.push('/home');
     },
   },
   mounted() {},
@@ -48,7 +48,7 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(auto-fit, 150px);
-  gap: 0.2rem;
+  grid-gap: 0.2rem;
   padding: 3px;
   > div {
     position: relative;

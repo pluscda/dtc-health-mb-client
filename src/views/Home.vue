@@ -228,6 +228,7 @@ export default {
     display: grid;
     grid-template-columns: repeat(3, max-content);
     gap: 2px;
+    grid-gap: 2px;
     h3 {
       font-size: 15px;
       margin-top: 10px;
