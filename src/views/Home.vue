@@ -56,7 +56,6 @@
         </div>
       </nav>
     </main>
-    <div style="height:60px;"></div>
   </div>
 </template>
 <i18n>
@@ -185,7 +184,7 @@ export default {
   },
   mounted() {
     store.activeTab = 0;
-    this.getDDL();
+    // this.getDDL();
   },
 };
 </script>

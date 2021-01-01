@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <router-view></router-view>
-
     <van-tabbar v-model="active" style="z-index:8;">
       <van-tabbar-item icon="home-o" @click="$router.push('home')">{{ $t('醫療首頁') }}</van-tabbar-item>
       <van-tabbar-item icon="search" @click="$router.push('doclist')">{{ $t('找醫師') }}</van-tabbar-item>
@@ -69,8 +68,7 @@ export default {
 <style lang="scss">
 html,
 body {
-  scroll-behavior: smooth;
-  max-height: 100vh;
+  scroll-behavior: auto; //smooth;
   overflow: hidden;
   overflow-y: auto !important;
   margin: 0px;
