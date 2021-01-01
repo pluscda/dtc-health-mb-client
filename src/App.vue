@@ -68,11 +68,12 @@ export default {
 <style lang="scss">
 html,
 body {
-  scroll-behavior: auto; //smooth;
+  scroll-behavior: smooth;
   overflow: hidden;
   overflow-y: auto !important;
   margin: 0px;
   padding: 0px;
+  box-sizing: border-box;
 }
 #app {
   margin: 0px;
@@ -83,6 +84,7 @@ body {
   color: var(--dark);
   background: var(--snap-blue) !important;
   width: 100vw;
+  min-height: 100vh;
   overflow: hidden !important;
 }
 .grecaptcha-badge {
