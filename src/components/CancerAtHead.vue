@@ -4,7 +4,7 @@
 
     <nav class="grid-2-img">
       <div v-for="(item, i) in items" :key="i" :data-msg="item.text">
-        <img :src="item.src" with="245" height="150" :alt="itm.text" />
+        <img :src="item.src" with="245" height="150" :alt="item.text" />
       </div>
     </nav>
   </section>
