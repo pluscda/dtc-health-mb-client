@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <router-view></router-view>
+
     <van-tabbar v-model="active" style="z-index:8;">
       <van-tabbar-item icon="home-o" @click="$router.push('home')">{{ $t('醫療首頁') }}</van-tabbar-item>
       <van-tabbar-item icon="search" @click="$router.push('doclist')">{{ $t('找醫師') }}</van-tabbar-item>
@@ -34,7 +35,8 @@ export default {
   },
   watch: {
     $route(to, from) {
-      document.documentElement.scrollIntoView();
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      scrollTop = 0;
       if (to.path.includes('home')) {
         this.active = 0;
       } else if (to.path.includes('doclist')) {
@@ -91,5 +93,9 @@ body {
   width: 0px !important;
   height: 0px !important;
   z-index: -1;
+}
+.page-view {
+  min-height: 50px;
+  height: 50px;
 }
 </style>
