@@ -184,7 +184,7 @@ export default {
   },
   mounted() {
     store.activeTab = 0;
-    // this.getDDL();
+    this.getDDL();
   },
 };
 </script>

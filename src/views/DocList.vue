@@ -89,11 +89,11 @@ export default {
     },
   },
   mounted() {
-    // const { id, name } = this.$route.query;
-    // this.id = +id;
-    // this.name = name;
-    // this.searchBy = name ? name : '熱門醫生';
-    //this.getDDL();
+    const { id, name } = this.$route.query;
+    this.id = +id;
+    this.name = name;
+    this.searchBy = name ? name : '熱門醫生';
+    this.getDDL();
   },
   watch: {},
 };
