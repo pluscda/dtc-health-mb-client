@@ -1,5 +1,5 @@
 <template>
-  <section class="doc-list">
+  <section class="doc-list pt-2">
     <header>快速找名醫</header>
     <van-search background="#1c1b7e" v-model="searchBy" shape="round" class="mx-4 mt-2" placeholder="醫院 | 醫生名 | 病名"></van-search>
     <h3 class="mt-3 ml-4 mb-4">{{ name }}熱門醫生</h3>
