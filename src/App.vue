@@ -2,10 +2,10 @@
   <div id="app">
     <router-view></router-view>
     <van-tabbar v-model="active" style="z-index:8;">
-      <van-tabbar-item icon="home-o" @click="$router.push('home')">{{ $t('醫療首頁') }}</van-tabbar-item>
-      <van-tabbar-item icon="search" @click="$router.push('doclist')">{{ $t('找醫師') }}</van-tabbar-item>
-      <van-tabbar-item hidden icon="friends-o" @click="$router.push('file')">{{ $t('標籤') }}</van-tabbar-item>
-      <van-tabbar-item icon="setting-o" @click="$router.push('login')">{{ $t('我的') }}</van-tabbar-item>
+      <van-tabbar-item icon="home-o" @click="tabClick('/home')">{{ $t('醫療首頁') }}</van-tabbar-item>
+      <van-tabbar-item icon="search" @click="tabClick('/doclist')">{{ $t('找醫師') }}</van-tabbar-item>
+      <van-tabbar-item hidden icon="friends-o" @click="tabClick('/file')">{{ $t('標籤') }}</van-tabbar-item>
+      <van-tabbar-item icon="setting-o" @click="tabClick('/login')">{{ $t('我的') }}</van-tabbar-item>
     </van-tabbar>
   </div>
 </template>
@@ -27,11 +27,14 @@ export default {
       return store.isLogin;
     },
   },
-  methods: {},
-  components: {},
-  mounted() {
-    //actions.recaptch("sign-in-button");
+  methods: {
+    tabClick(name) {
+      window.scroll(0, 0);
+      requestAnimationFrame(() => this.$router.push(name));
+    },
   },
+  components: {},
+  mounted() {},
   watch: {
     $route(to, from) {
       var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
@@ -43,6 +46,10 @@ export default {
       } else if (to.path.includes('login')) {
         this.active = 3;
       }
+      requestAnimationFrame(() => {
+        window.scroll(0, 0);
+        window.scrollTop = 0;
+      });
     },
   },
 };
