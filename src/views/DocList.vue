@@ -20,11 +20,10 @@
 
 <script>
 import Vue from 'vue';
-import faker from 'faker';
 import { store, mutations, actions } from '@/store/global.js';
 
 export default {
-  name: 'login',
+  name: 'docList',
   data() {
     return {
       id: '',
@@ -83,18 +82,18 @@ export default {
       //return item.cover.url; // at aws now
     },
     async getDDL() {
-      const url = this.id ? 'doctors?cid_eq=' + this.id : `doctors?_limit=30&_start=${this.skip}`;
-      this.docs = await axios.get(url);
+      try {
+        const url = this.id ? 'doctors?cid_eq=' + this.id : `doctors?_limit=30&_start=${this.skip}`;
+        this.docs = await axios.get(url);
+      } catch (e) {}
     },
   },
   mounted() {
-    const { id, name } = this.$route.query;
-    this.id = +id;
-    this.name = name;
-    this.searchBy = name ? name : '熱門醫生';
-    this.getDDL();
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
+    // const { id, name } = this.$route.query;
+    // this.id = +id;
+    // this.name = name;
+    // this.searchBy = name ? name : '熱門醫生';
+    //this.getDDL();
   },
   watch: {},
 };

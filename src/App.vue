@@ -26,15 +26,8 @@ export default {
     isLogin() {
       return store.isLogin;
     },
-    isDoc() {
-      return location.href.includes('isdoc=true');
-    },
   },
-  methods: {
-    goDocList() {
-      this.$router.push('doclist');
-    },
-  },
+  methods: {},
   components: {},
   mounted() {
     //actions.recaptch("sign-in-button");

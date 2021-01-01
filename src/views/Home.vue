@@ -176,17 +176,15 @@ export default {
       this.$router.push('doclist?' + str);
     },
     async getDDL() {
-      this.cancers = await actions.getCancerTypes();
-      store.cancers = [...this.cancers];
+      try {
+        this.cancers = await actions.getCancerTypes();
+        store.cancers = [...this.cancers];
+      } catch (e) {}
     },
   },
   mounted() {
     store.activeTab = 0;
     this.getDDL();
-    this.$nextTick(() => {
-      window.scrollTo(0, 0);
-      document.documentElement.scrollTop = 0;
-    });
   },
 };
 </script>
