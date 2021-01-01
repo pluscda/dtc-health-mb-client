@@ -196,9 +196,10 @@ export default {
   width: 100vw;
   padding: 3px;
   padding-top: 0px;
-  margin-top: 3px;
   overflow: hidden !important;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 </style>
 

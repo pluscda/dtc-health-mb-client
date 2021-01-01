@@ -118,6 +118,8 @@ export default {
   min-height: 100vh;
   color: white;
   position: relative;
+  display: flex;
+  flex-direction: column;
   header {
     font-size: 20px;
     text-align: center;
