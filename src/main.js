@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import './plugins/axios'
 import "./assets/reset.css"
+import "./assets/utility.css"
 import moment from "dayjs"
 import App from './App.vue'
 import router from './router'
