@@ -38,7 +38,7 @@
     </main>
     <main class="faster2">
       <div @click="$router.push('/heart')">
-        <span style="color:white !important;background:#878ede;">♥️</span>
+        <span> <img src="heart.svg" width="30" height="30" style="transform:translateY(-3px);display:inline-block;"/></span>
         <span class="fast-span" data-msg="線上諮詢">心血管疾病</span>
       </div>
       <div class="ml-2" @click="$router.push('/stroke')">
