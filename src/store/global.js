@@ -6,13 +6,11 @@ let PASSWORD = "weR168@healther.dtc.tw"
 const init = {
   cancerCats:[],
   isLogin: false,
-  fireUid:'',
   PASSWORD,
   activeTab: 0,
   cancers:[],
   imgPrefix: process.env.NODE_ENV === 'production'? 'https://dtc-health.herokuapp.com' : `http://${location.hostname}:1337`,
   isDoctor: false,
-  fakeImg: 'https://www.cgh.org.tw/rwd101/Store/bImages/b07907.jpg',
   MIN_NON_CANCER_NUM: 34,
 };
 export let store = Vue.observable({
