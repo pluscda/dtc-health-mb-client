@@ -20,7 +20,6 @@
 <script>
 import Vue from "vue";
 import { store, mutations, actions } from "@/store/global.js";
-import faker from "faker";
 export default {
   name: "docList",
   data() {
@@ -62,10 +61,7 @@ export default {
       }
     },
     getBooksNum() {
-      return faker.random.number({
-        min: 1,
-        max: 10,
-      });
+      return 3;
     },
     viewDetail(item) {
       //alert();
