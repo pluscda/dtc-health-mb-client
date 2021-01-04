@@ -30,7 +30,7 @@
         <template #tags>
           <van-tag plain type="danger">{{ $formatStatus(item.status) }}</van-tag>
           <van-tag plain type="primary" style="transform:translateX(5px)" @click="viewComment(item)">可查看留言為{{ item.comment.length }}則</van-tag>
-          <van-tag type="primary" class="ml-2" @click="addComment()" v-if="commentFilter">新增留言</van-tag>
+          <van-tag type="primary" class="ml-2" style="transform:translateX(15px)" @click="addComment()" v-if="commentFilter">新增留言</van-tag>
         </template>
         <template #footer>
           <van-tag type="success" v-if="item.status == 'finish'">再次預約</van-tag>
@@ -51,19 +51,19 @@
 </template>
 
 <script>
-import Vue from "vue";
-import { store, mutations, actions } from "@/store/global.js";
+import Vue from 'vue';
+import { store, mutations, actions } from '@/store/global.js';
 
 export default {
-  name: "login",
+  name: 'login',
   data() {
     return {
       docs: [],
       skip: 0,
       orders: [],
-      commentFilter: "",
+      commentFilter: '',
       showLeavelMsg: false,
-      myMsg: "",
+      myMsg: '',
     };
   },
   computed: {
@@ -79,7 +79,7 @@ export default {
       const obj = {
         orderPhoneNum: sessionStorage.phone,
         paidAmount: item.details.price,
-        status: "waiting", // process and finish
+        status: 'waiting', // process and finish
         orderDate: new Date().toISOString(),
         doctorPhone: item.details.phone,
         isCancer: item.details.cid < store.MIN_NON_CANCER_NUM ? true : false,
@@ -90,34 +90,34 @@ export default {
           item.details.cid < store.MIN_NON_CANCER_NUM
             ? [
                 {
-                  docComment: "需要你的癌症報告,請你用郵件寄出",
+                  docComment: '需要你的癌症報告,請你用郵件寄出',
                   commentAt: new Date().toISOString(),
                   rating: 0,
-                  userComment: "",
+                  userComment: '',
                 },
               ]
             : [],
       };
       try {
         await actions.addOrder(obj);
-        Vue.$toast.success("你已預約成功");
+        Vue.$toast.success('你已預約成功');
         await this.getOrderHistoryList();
       } catch (e) {
-        Vue.$toast.error("order fail");
+        Vue.$toast.error('order fail');
       } finally {
-        sessionStorage.orderedDocPhone = "";
+        sessionStorage.orderedDocPhone = '';
       }
     },
     async addComment(msg, userClick) {
       if (!msg && !userClick) {
-        this.myMsg = "";
+        this.myMsg = '';
         this.showLeavelMsg = true;
       } else if (msg) {
-        const obj = { docComment: "", commentAt: new Date().toISOString(), rating: 0, userComment: msg };
+        const obj = { docComment: '', commentAt: new Date().toISOString(), rating: 0, userComment: msg };
         this.myOrders[0].comment.unshift(obj);
         await actions.updateOrder(this.myOrders[0]);
         this.orders = [...this.orders];
-        this.commentFilter = "";
+        this.commentFilter = '';
         this.showLeavelMsg = false;
       }
     },
@@ -126,21 +126,21 @@ export default {
       this.commentFilter = item.doctorPhone;
     },
     getDesc(item) {
-      return "專長: " + item.details.description;
+      return '專長: ' + item.details.description;
     },
     getTitle(item) {
-      return item.details.name + " | " + item.details.hospital + " | " + item.details.title + " @ " + this.$twDate(item.orderDate) + " 預約成功";
+      return item.details.name + ' | ' + item.details.hospital + ' | ' + item.details.title + ' @ ' + this.$twDate(item.orderDate) + ' 預約成功';
     },
     getImgPath(item, i) {
       return store.imgPrefix + item.details.cover.url;
     },
     async getOrderHistoryList() {
       store.isApiLoading = true;
-      let qs = "orderPhoneNum_eq=" + sessionStorage.phone;
-      qs += "&_sort=orderDate:desc";
+      let qs = 'orderPhoneNum_eq=' + sessionStorage.phone;
+      qs += '&_sort=orderDate:desc';
       try {
         const { count, items } = await actions.getOrders(qs);
-        qs = items.map((s) => "phone_in=" + s.doctorPhone).join("&");
+        qs = items.map((s) => 'phone_in=' + s.doctorPhone).join('&');
         const { items: docs } = await actions.getDoctors(qs);
         // attach the doctor detail into each order here
         docs.forEach((s) => (items.find((s2) => s2.doctorPhone == s.phone).details = s));
