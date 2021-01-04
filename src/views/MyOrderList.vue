@@ -138,13 +138,16 @@ export default {
       store.isApiLoading = true;
       let qs = "orderPhoneNum_eq=" + sessionStorage.phone;
       qs += "&_sort=orderDate:desc";
-      const { count, items } = await actions.getOrders(qs);
-      qs = items.map((s) => "phone_in=" + s.doctorPhone).join("&");
-      const { items: docs } = await actions.getDoctors(qs);
-      // attach the doctor detail into each order here
-      docs.forEach((s) => (items.find((s2) => s2.doctorPhone == s.phone).details = s));
-      this.orders = items;
-      store.isApiLoading = false;
+      try {
+        const { count, items } = await actions.getOrders(qs);
+        qs = items.map((s) => "phone_in=" + s.doctorPhone).join("&");
+        const { items: docs } = await actions.getDoctors(qs);
+        // attach the doctor detail into each order here
+        docs.forEach((s) => (items.find((s2) => s2.doctorPhone == s.phone).details = s));
+        this.orders = items;
+      } finally {
+        store.isApiLoading = false;
+      }
     },
   },
   mounted() {

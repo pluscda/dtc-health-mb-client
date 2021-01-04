@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <van-overlay :show="loadingApi" style="display:grid; place-items:center;">
+    <van-overlay :show="loadingApi" style="display:grid; place-items:center;z-index:9999999">
       <van-loading type="spinner" />
     </van-overlay>
     <router-view></router-view>
