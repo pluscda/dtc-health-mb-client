@@ -78,7 +78,6 @@ export default {
     },
     getImgPath(item, i) {
       return store.docImgs[i];
-      //return item.cover.url; // at aws now
     },
     async getDDL() {
       try {
