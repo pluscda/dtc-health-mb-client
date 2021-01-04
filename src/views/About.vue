@@ -1,5 +1,5 @@
 <template>
-  <section class="dtc-about">
+  <section class="dtc-about mt-2">
     <h4 class="dtc-logo">名醫會館</h4>
     <header class="my-header">
       <h4 class="mb-3">會館館長: 何慶華</h4>
