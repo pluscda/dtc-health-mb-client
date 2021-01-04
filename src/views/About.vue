@@ -53,5 +53,9 @@ export default {
   width: 100vw;
   display: grid;
   position: relative;
+  img {
+    display: inline-block;
+    width: 100vw;
+  }
 }
 </style>
