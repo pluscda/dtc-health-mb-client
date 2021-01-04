@@ -41,7 +41,6 @@ export default {
       requestAnimationFrame(() => this.$router.push(name));
     },
   },
-  components: {},
   mounted() {},
   watch: {
     $route(to, from) {
