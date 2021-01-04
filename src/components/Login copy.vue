@@ -4,8 +4,6 @@
 
 <script>
 import { store, mutations, actions } from "@/store/global.js";
-import firebase from "firebase/app";
-import "firebase/auth";
 export default {
   name: "login",
   data() {

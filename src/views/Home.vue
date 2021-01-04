@@ -136,7 +136,7 @@ import { store, mutations, actions } from "@/store/global.js";
 import queryString from "query-string";
 import HomeHeader from "@/components/HomeHeader";
 let types = "大腸癌,肺癌,女性乳癌,肝癌,口腔癌,攝護腺癌,甲狀腺癌,胃癌,皮膚癌,食道癌".split(",");
-//thumbnail_dreamstime_s_75581102_8295cb0072.jpg
+
 const cancerCatsImg = [
   "thumbnail__f0e0837881.jpg",
   "thumbnail_1544194965_4229027033_wn_9cfd7b444e.jpg",
@@ -144,7 +144,6 @@ const cancerCatsImg = [
   "thumbnail_615f71b7_5bf2_4cf5_ad0f_44c307b60448_a6a4058942.jpg",
 ];
 
-//成年慢性病
 const cancerPaths = ["/cancerathead", "/canceratlung", "/canceratab", "/canceratlower"];
 const cancerCats = ["頭頸部", "胸部", "腹部", "骨盆腔"].map((s, i) => ({ value: i + 1, text: s, path: cancerPaths[i] }));
 const strs = "家醫科、老年醫學科、神經科、泌尿科、眼科、婦產科、皮膚科、小兒科".split("、");
