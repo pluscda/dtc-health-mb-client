@@ -29,14 +29,12 @@
       <van-card @click="viewDetail(item)" :price="item.details.price" currency="NT" :desc="getDesc(item)" :title="getTitle(item)" :thumb="getImgPath(item, i)">
         <template #tags>
           <van-tag plain type="danger">{{ $formatStatus(item.status) }}</van-tag>
-          <van-tag plain type="primary" class="ml-2" @click="viewComment(item)">留言{{ item.comment.length }}則</van-tag>
+          <van-tag plain type="primary" style="transform:translateX(5px)" @click="viewComment(item)">可查看留言為{{ item.comment.length }}則</van-tag>
           <van-tag type="primary" class="ml-2" @click="addComment()" v-if="commentFilter">新增留言</van-tag>
         </template>
-        <!-- <template #footer>
-          <van-tag type="warning" plain v-if="commentFilter" class="mr-2">我的留言</van-tag>
-          <van-tag type="success" plain v-if="commentFilter">{{ item.details.name }}醫師的留言</van-tag>
-          <van-button size="mini" class="mr-2" v-if="!commentFilter">標籤</van-button>
-        </template> -->
+        <template #footer>
+          <van-tag type="success" v-if="item.status == 'finish'">再次預約</van-tag>
+        </template>
       </van-card>
     </main>
     <nav v-if="commentFilter" style="color:white;font-size:14px;" class="mt-1">
@@ -98,7 +96,7 @@ export default {
       return "專長: " + item.details.description;
     },
     getTitle(item) {
-      return item.details.name + " | " + item.details.hospital + " | " + item.details.title + " @ " + this.$twDate(item.orderDate) + " 預約";
+      return item.details.name + " | " + item.details.hospital + " | " + item.details.title + " @ " + this.$twDate(item.orderDate) + " 預約成功";
     },
     getImgPath(item, i) {
       // alert(JSON.stringify(store.imgPrefix + item.cover.url));
@@ -108,6 +106,7 @@ export default {
     },
     async getDDL() {
       let qs = "orderPhoneNum_eq=" + sessionStorage.phone;
+      qs += "&_sort=orderDate:desc";
       const { count, items } = await actions.getOrders(qs);
       qs = items.map((s) => "phone_in=" + s.doctorPhone).join("&");
       const { items: docs } = await actions.getDoctors(qs);
