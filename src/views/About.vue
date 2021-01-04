@@ -39,8 +39,8 @@ export default {
 
 <style lang="scss" scoped>
 .dtc-about {
-  background: transparent url("/background.svg") top left 100vw 100vh no-repeat;
-  background-size: cover;
+  background: transparent url("/background.svg") top left 100vw 100vh no-repeat !important;
+  background-size: cover !important;
   width: 100vw;
   position: relative;
   display: flex;
