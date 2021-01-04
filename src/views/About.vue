@@ -18,32 +18,10 @@
 
 <script>
 import { store, mutations, actions } from "@/store/global.js";
-import firebase from "firebase/app";
-import "firebase/auth";
 export default {
   name: "about",
   data() {
-    return {
-      username: "",
-      password: "",
-      password2: "",
-      showLoginPwd: true,
-    };
-  },
-  methods: {
-    async register() {
-      try {
-        const obj = { username: this.username, password: this.password };
-        const { jwt, user } = await actions.registerUser(obj);
-        sessionStorage.token = jwt;
-      } catch (e) {
-        alert(e);
-      }
-    },
-  },
-  mounted() {},
-  watch: {
-    showLoginPwd() {},
+    return {};
   },
 };
 </script>
@@ -61,10 +39,14 @@ export default {
 
 <style lang="scss" scoped>
 .dtc-about {
-  background: transparent url("/background.svg") top left 100% 100% no-repeat;
+  background: transparent url("/background.svg") top left 100vw 100vh no-repeat;
   background-size: cover;
   width: 100vw;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 100px;
   .my-header {
     display: grid;
     padding: 2.5rem;
