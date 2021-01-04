@@ -63,7 +63,6 @@ export default {
     },
     logout() {
       mutations.logout();
-      store.activeTab = 0;
       this.$router.push("home");
       location.reload(true);
     },
@@ -74,7 +73,6 @@ export default {
     },
   },
   mounted() {
-    store.activeTab = 3;
     this.checkQueryString();
   },
   watch: {},

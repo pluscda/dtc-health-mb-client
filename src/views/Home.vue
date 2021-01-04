@@ -169,12 +169,6 @@ export default {
     HomeHeader,
   },
   methods: {
-    // visibleHandler(isVisible) {
-    //   if (isVisible) {
-    //     alert();
-    //     this.showBottom = true;
-    //   }
-    // },
     async viewList(item) {
       const obj = { id: item.cid, name: item.name };
       const str = queryString.stringify(obj);
@@ -188,7 +182,6 @@ export default {
     },
   },
   mounted() {
-    store.activeTab = 0;
     this.getDDL();
   },
 };

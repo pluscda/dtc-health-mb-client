@@ -7,7 +7,6 @@ const init = {
   cancerCats:[],
   isLogin: false,
   PASSWORD,
-  activeTab: 0,
   cancers:[],
   imgPrefix: process.env.NODE_ENV === 'production'? 'https://dtc-health.herokuapp.com' : `http://${location.hostname}:1337`,
   isDoctor: false,
