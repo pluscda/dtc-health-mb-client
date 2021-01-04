@@ -75,6 +75,39 @@ export default {
     },
   },
   methods: {
+    async book(item) {
+      const obj = {
+        orderPhoneNum: sessionStorage.phone,
+        paidAmount: item.details.price,
+        status: "waiting", // process and finish
+        orderDate: new Date().toISOString(),
+        doctorPhone: item.details.phone,
+        isCancer: item.details.cid < 34 ? true : false,
+        hardCopyReceived: false,
+        copySendBack: false,
+        docHasCopy: false,
+        comment:
+          item.details.cid < 34
+            ? [
+                {
+                  docComment: "需要你的癌症報告,請你用郵件寄出",
+                  commentAt: new Date().toISOString(),
+                  rating: 0,
+                  userComment: "",
+                },
+              ]
+            : [],
+      };
+      try {
+        await actions.addOrder(obj);
+        Vue.$toast.success("你已預約成功");
+        await this.getDDL();
+      } catch (e) {
+        Vue.$toast.error("order fail");
+      } finally {
+        sessionStorage.orderedDocPhone = "";
+      }
+    },
     async addComment(msg, userClick) {
       if (!msg && !userClick) {
         this.myMsg = "";
@@ -110,6 +143,7 @@ export default {
       const { count, items } = await actions.getOrders(qs);
       qs = items.map((s) => "phone_in=" + s.doctorPhone).join("&");
       const { items: docs } = await actions.getDoctors(qs);
+      // attache the doctor detail into each order here
       docs.forEach((s) => (items.find((s2) => s2.doctorPhone == s.phone).details = s));
       this.orders = items;
     },

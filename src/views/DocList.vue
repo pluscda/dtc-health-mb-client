@@ -59,18 +59,21 @@ export default {
         status: "waiting", // process and finish
         orderDate: new Date().toISOString(),
         doctorPhone: item.phone,
-        isCancer: true,
+        isCancer: item.cid < 34 ? true : false,
         hardCopyReceived: false,
         copySendBack: false,
         docHasCopy: false,
-        comment: [
-          {
-            docComment: "需要你的癌症報告,請你用郵件寄出",
-            commentAt: new Date().toISOString(),
-            rating: 0,
-            userComment: "",
-          },
-        ],
+        comment:
+          item.cid < 34
+            ? [
+                {
+                  docComment: "需要你的癌症報告,請你用郵件寄出",
+                  commentAt: new Date().toISOString(),
+                  rating: 0,
+                  userComment: "",
+                },
+              ]
+            : [],
       };
       try {
         await actions.addOrder(obj);
