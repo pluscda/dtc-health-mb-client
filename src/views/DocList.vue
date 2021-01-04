@@ -99,7 +99,6 @@ export default {
       return item.name + " | " + item.hospital + " | " + item.title;
     },
     getImgPath(item, i) {
-      //return store.docImgs[i];
       return store.imgPrefix + item.cover.url;
     },
     async getDocList() {

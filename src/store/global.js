@@ -1,24 +1,10 @@
 import Vue from "vue";
 import firebase from "firebase/app";
 import "firebase/auth";
-const docImgs = [
-"https://wwwv.tsgh.ndmctsgh.edu.tw/files/web/192/doctor/10004/24954/%E9%A5%92%E6%A8%B9%E6%96%87_%E5%A4%A7%E9%A0%AD%E7%85%A7.jpg",
-"https://wwwv.tsgh.ndmctsgh.edu.tw/files/web/192/doctor/10004/24954/%E6%9D%8E%E5%AE%B6%E6%94%BF_%E6%8A%B1%E8%83%B8%E7%85%A7.jpg",
-"https://wwwv.tsgh.ndmctsgh.edu.tw/files/web/192/doctor/10004/24954/%E9%99%B3%E6%98%AD%E4%BB%B0_%E6%8A%B1%E8%83%B8%E7%85%A7.jpg",
-"https://wwwv.tsgh.ndmctsgh.edu.tw/files/web/192/doctor/10004/24954/%E6%BA%AB%E5%AE%B6%E6%94%BF_%E5%A4%A7%E9%A0%AD%E7%85%A7.jpg",
-"https://www.jst-hosp.com.cn/Sites/Uploaded/UserUpLoad/20200918/20200918163607.jpg",
-"https://www.jst-hosp.com.cn/Sites/Uploaded/UserUpLoad/20200916/20200916152956.jpg",
-"https://www.jst-hosp.com.cn/Sites/Uploaded/UserUpLoad/20200917/20200917165621.jpg",
-"https://www.jst-hosp.com.cn/Sites/Uploaded/UserUpLoad/20200923/20200923092343.jpg",
-"https://www.jst-hosp.com.cn/Sites/Uploaded/UserUpLoad/20200917/20200917165828.jpg",
-"https://www.jst-hosp.com.cn/Sites/Uploaded/UserUpLoad/20200918/20200918154501.jpg",
-"https://www.jst-hosp.com.cn/Sites/Uploaded/UserUpLoad/20200917/20200917170115.jpg"
-]
 // remove hard coded password here; hide the password in server side 
 let PASSWORD = "weR168@healther.dtc.tw"
 const init = {
   cancerCats:[],
-  docImgs,
   isLogin: false,
   fireUid:'',
   PASSWORD,

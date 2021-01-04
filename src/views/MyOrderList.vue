@@ -132,9 +132,6 @@ export default {
       return item.details.name + " | " + item.details.hospital + " | " + item.details.title + " @ " + this.$twDate(item.orderDate) + " 預約成功";
     },
     getImgPath(item, i) {
-      // alert(JSON.stringify(store.imgPrefix + item.cover.url));
-      //return store.imgPrefix + item.details.cover.url;
-      //return store.docImgs[i];
       return store.imgPrefix + item.details.cover.url;
     },
     async getOrderHistoryList() {
