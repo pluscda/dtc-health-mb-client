@@ -16,7 +16,6 @@ export let store = Vue.observable({
   ...init,
 });
 
-
 function recaptch(id){
     try{ 
       if(!window.recaptchaVerifier)
@@ -94,7 +93,6 @@ export let actions = {
       }    
   },
  
-   
 };
 export let mutations = {
   login(phone) {

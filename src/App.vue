@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <van-overlay :show="loadingApi" style="display:grid; place-items:center;">
+      <van-loading type="spinner" />
+    </van-overlay>
     <router-view></router-view>
     <van-tabbar v-model="active" style="z-index:8;">
       <van-tabbar-item icon="home-o" @click="tabClick('/home')">{{ $t("醫療首頁") }}</van-tabbar-item>
@@ -25,6 +28,9 @@ export default {
   computed: {
     isLogin() {
       return store.isLogin;
+    },
+    loadingApi() {
+      return store.isApiLoading;
     },
   },
   methods: {
