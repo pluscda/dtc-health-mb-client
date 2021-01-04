@@ -30,7 +30,7 @@
         <template #tags>
           <van-tag plain type="danger">{{ $formatStatus(item.status) }}</van-tag>
           <van-tag plain type="primary" style="transform:translateX(5px)" @click="viewComment(item)">可查看留言為{{ item.comment.length }}則</van-tag>
-          <van-tag type="primary" class="ml-2" style="transform:translateX(15px)" @click="addComment()" v-if="commentFilter">新增留言</van-tag>
+          <van-tag type="primary" class="ml-2" style="transform:translateX(10px)" @click="addComment()" v-if="commentFilter">新增留言</van-tag>
         </template>
         <template #footer>
           <van-tag type="success" v-if="item.status == 'finish'">再次預約</van-tag>
