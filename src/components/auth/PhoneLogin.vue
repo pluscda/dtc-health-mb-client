@@ -43,7 +43,7 @@ export default {
   props: ["callback"],
   computed: {
     isLogin() {
-      return sessionStorage.isLogin || store.isLogin;
+      return sessionStorage.token || store.isLogin;
     },
     enableLogin() {
       return this.code && this.code.length == 6 && !isNaN(this.code) && this.needCode;

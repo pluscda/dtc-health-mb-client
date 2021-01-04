@@ -99,7 +99,6 @@ export let actions = {
 export let mutations = {
   login(phone) {
     store.isLogin = true;
-    sessionStorage.isLogin = "true";
     sessionStorage.phone = phone;
   },
   async logout() {

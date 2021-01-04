@@ -23,7 +23,7 @@ export default {
   },
   computed: {
     isLogin() {
-      return sessionStorage.isLogin || store.isLogin;
+      return sessionStorage.token || store.isLogin;
     },
     myPhone() {
       const phone = sessionStorage.phone ? sessionStorage.phone.slice(0, 9) : "";
