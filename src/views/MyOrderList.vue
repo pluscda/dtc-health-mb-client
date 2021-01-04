@@ -135,6 +135,7 @@ export default {
       return store.imgPrefix + item.details.cover.url;
     },
     async getOrderHistoryList() {
+      store.isApiLoading = true;
       let qs = "orderPhoneNum_eq=" + sessionStorage.phone;
       qs += "&_sort=orderDate:desc";
       const { count, items } = await actions.getOrders(qs);
@@ -143,6 +144,7 @@ export default {
       // attach the doctor detail into each order here
       docs.forEach((s) => (items.find((s2) => s2.doctorPhone == s.phone).details = s));
       this.orders = items;
+      store.isApiLoading = false;
     },
   },
   mounted() {

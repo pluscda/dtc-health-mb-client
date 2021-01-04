@@ -120,8 +120,10 @@ export default {
     this.name = name;
     this.searchBy = name ? name : "熱門醫生";
     // await order is important here
+    store.isApiLoading = true;
     await this.getOrderHistory();
     await this.getDocList();
+    store.isApiLoading = false;
   },
   watch: {},
 };
