@@ -11,7 +11,7 @@
         <template #footer>
           <van-button size="mini" class="mr-2">收藏</van-button>
           <van-button size="mini" class="mr-2" @click="book(item)" v-if="isOrderAble(item)">預約</van-button>
-          <van-tag plain type="primary" v-else>您已預約</van-tag>
+          <van-tag plain class="mr-2" style="transform:translate3d(4px,5px,0)" type="primary" v-else>您已預約: {{ getWaitStatus(item) }}</van-tag>
         </template>
       </van-card>
     </main>
@@ -42,6 +42,10 @@ export default {
   methods: {
     isOrderAble(item) {
       return !this.unFinishOrders.find((s) => s.orderPhoneNum == sessionStorage.phone && s.doctorPhone == item.phone);
+    },
+    getWaitStatus(item) {
+      const status = this.unFinishOrders.find((s) => s.orderPhoneNum == sessionStorage.phone && s.doctorPhone == item.phone).status;
+      return status == "process" ? "狀態為醫師處理中" : "狀態為等待醫師回覆中";
     },
     async book(item) {
       sessionStorage.orderedDocPhone = item.phone;
