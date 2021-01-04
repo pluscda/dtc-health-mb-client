@@ -75,6 +75,11 @@ const routes = [
     name: 'file',
     component: () => import("../views/FileList.vue"),
   },
+  {
+    path: '/about',
+    name: 'about',
+    component: () => import("../views/About.vue"),
+  },
 
 ]
 

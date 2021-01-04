@@ -1,5 +1,7 @@
 <template>
-  <section class="dtc-login"></section>
+  <section class="dtc-about">
+    <img src="doctor.png" />
+  </section>
 </template>
 
 <script>
@@ -7,7 +9,7 @@ import { store, mutations, actions } from "@/store/global.js";
 import firebase from "firebase/app";
 import "firebase/auth";
 export default {
-  name: "login",
+  name: "about",
   data() {
     return {
       username: "",
@@ -46,12 +48,10 @@ export default {
 </i18n>
 
 <style lang="scss" scoped>
-.dtc-login {
+.dtc-about {
   background: #eaf8ff;
   width: 100vw;
-  color: #3570ec;
   display: grid;
-  grid-template-rows: max-content 1fr;
   position: relative;
 }
 </style>
