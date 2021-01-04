@@ -1,7 +1,7 @@
 <template>
   <section class="dtc-login" :style="isLogin ? '' : 'justify-content: center;'">
     <nav v-if="!isLogin">
-      <PhoneLogin></PhoneLogin>
+      <PhoneLogin :callback="callback"></PhoneLogin>
     </nav>
     <nav class="login" v-else v-show="!isDoc">
       <h2>
@@ -40,6 +40,7 @@ export default {
       labels,
       phone: sessionStorage.phone,
       idDoc: location.href.includes("isdoc=true"),
+      callback: "",
     };
   },
   computed: {
@@ -66,9 +67,15 @@ export default {
       this.$router.push("home");
       location.reload(true);
     },
+    checkQueryString() {
+      const str = location.search ? location.search.replace("?", "") : "";
+      const { callback } = queryString.parse(str);
+      this.callback = callback;
+    },
   },
   mounted() {
     store.activeTab = 4;
+    this.checkQueryString();
   },
   watch: {},
 };

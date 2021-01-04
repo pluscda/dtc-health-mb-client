@@ -54,7 +54,6 @@
 
 <script>
 import Vue from "vue";
-import faker from "faker";
 import { store, mutations, actions } from "@/store/global.js";
 
 export default {
