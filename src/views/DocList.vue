@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     isOrderAble(item) {
-      return !this.unFinishOrders.find((s) => s.OrderPhoneNum == sessionStorage.phone && s.doctorPhone == item.phone);
+      return !this.unFinishOrders.find((s) => s.orderPhoneNum == sessionStorage.phone && s.doctorPhone == item.phone);
     },
     async book(item) {
       sessionStorage.orderedDocPhone = item.phone;
@@ -104,6 +104,7 @@ export default {
       let qs = "orderPhoneNum_eq=" + sessionStorage.phone;
       const { count, items } = await actions.getOrders(qs);
       this.myPreviousOrders = items;
+      //alert(items.length);
     },
   },
   async mounted() {
@@ -111,6 +112,7 @@ export default {
     this.id = +id;
     this.name = name;
     this.searchBy = name ? name : "熱門醫生";
+    // await order is important here
     await this.getOrderHistory();
     await this.getDocList();
   },
