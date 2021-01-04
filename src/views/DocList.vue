@@ -10,7 +10,7 @@
           <van-tag plain type="danger">可預約數量剩餘({{ getBooksNum() }})</van-tag>
         </template>
         <template #footer>
-          <van-button size="mini" class="mr-2">標籤</van-button>
+          <van-button size="mini" class="mr-2">收藏</van-button>
           <van-button size="mini" class="mr-2" @click="book(item)">預約</van-button>
         </template>
       </van-card>
