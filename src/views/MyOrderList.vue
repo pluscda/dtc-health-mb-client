@@ -109,7 +109,6 @@ export default {
     async getDDL() {
       let qs = "orderPhoneNum_eq=" + sessionStorage.phone;
       const { count, items } = await actions.getOrders(qs);
-      //this.orders = items;
       qs = items.map((s) => "phone_in=" + s.doctorPhone).join("&");
       const { items: docs } = await actions.getDoctors(qs);
       docs.forEach((s) => (items.find((s2) => s2.doctorPhone == s.phone).details = s));

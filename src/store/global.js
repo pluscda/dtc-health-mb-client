@@ -80,7 +80,6 @@ export let actions = {
       return await axios.post('orders', item);
   },
   async getCancerTypes(){
-
      return await axios.get('cancer-types');
   },
   
