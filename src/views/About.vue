@@ -2,7 +2,7 @@
   <section class="dtc-about mt-2">
     <h4 class="dtc-logo">名醫會館</h4>
     <header class="my-header">
-      <h4 class="mb-3">會館館長: 何慶華</h4>
+      <h4 class="mb-3">館長: 何慶華</h4>
       <h4 class="mb-3">美國約翰霍普金斯</h4>
       <h4 class="mb-4">醫學管理博士</h4>
       <img src="plants.svg" />
@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import { store, mutations, actions } from "@/store/global.js";
+import { store, mutations, actions } from '@/store/global.js';
 export default {
-  name: "about",
+  name: 'about',
   data() {
     return {};
   },
@@ -40,7 +40,7 @@ export default {
 
 <style lang="scss" scoped>
 .dtc-about {
-  background: transparent url("/background.svg") top left 100vw 100vh no-repeat !important;
+  background: transparent url('/background.svg') top left 100vw 100vh no-repeat !important;
   background-size: cover !important;
   width: 100vw;
   position: relative;
@@ -54,7 +54,7 @@ export default {
     grid-template-columns: 1fr;
     &::after {
       position: absolute;
-      content: url("/doctor.svg");
+      content: url('/doctor.svg');
       width: auto;
       height: 100%;
       top: 30px;

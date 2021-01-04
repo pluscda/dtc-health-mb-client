@@ -1,5 +1,5 @@
 [{
       "relation": ["delegate_permission/common.handle_all_urls"],
-      "target" : { "namespace": "android_app", "package_name": "app.web.ddeeee_4f963.twa",
-                   "sha256_cert_fingerprints": ["3E:30:07:85:CF:A3:36:46:D9:AB:1C:C5:D5:CE:36:0A:91:19:12:53:0F:2F:20:9A:71:93:3C:68:8C:40:52:C8"] }
+      "target" : { "namespace": "android_app", "package_name": "app.netlify.blissful_pare_6f396c.twa",
+                   "sha256_cert_fingerprints": ["F3:C1:AE:C3:F7:E9:4D:5D:02:30:D5:86:C8:7E:62:CE:92:58:7D:D6:53:64:08:83:3F:EB:F3:5D:5F:EB:61:EE"] }
     }]
