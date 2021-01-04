@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     isLogin() {
-      return store.isLogin;
+      return sessionStorage.token || store.isLogin;
     },
     loadingApi() {
       return store.isApiLoading;
