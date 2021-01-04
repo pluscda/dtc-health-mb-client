@@ -43,6 +43,8 @@ export default {
         this.active = 0;
       } else if (to.path.includes("doclist")) {
         this.active = 1;
+      } else if (to.path.includes("about")) {
+        this.active = 2;
       } else if (to.path.includes("login")) {
         this.active = 3;
       }
