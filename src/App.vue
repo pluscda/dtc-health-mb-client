@@ -15,7 +15,6 @@
 
 <script>
 import { store, mutations, actions } from "@/store/global.js";
-
 import Vue from "vue";
 
 export default {
