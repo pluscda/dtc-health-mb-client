@@ -6,7 +6,7 @@
       <h4 class="mb-4">醫學管理博士</h4>
       <img src="plants.svg" />
     </header>
-    <footer class="px-4 pt-3">
+    <footer class="px-5 pt-3">
       <h5>
         宗旨: 有鑑於國內各大醫院名醫掛號困難，一般重大及緊急病患家屬沒有管 道斟詢名醫意見，「名醫會館」藉由互聯網科技技術提供病患家屬以手機通
         訊，可以即時找到相關的名醫徵詢醫療方面的寶貴意見，爭取有效的健康方案。
@@ -61,8 +61,7 @@ export default {
 
 <style lang="scss" scoped>
 .dtc-about {
-  height: 100 vw;
-  background: transparent url("/background.svg") center center 100% 100% no-repeat;
+  background: transparent url("/background.svg") top left 100% 100% no-repeat;
   background-size: cover;
   width: 100vw;
   position: relative;
@@ -76,7 +75,7 @@ export default {
       width: auto;
       height: 100%;
       top: 10px;
-      right: 40px;
+      right: 20px;
     }
   }
   h5 {
