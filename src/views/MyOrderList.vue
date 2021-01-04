@@ -82,12 +82,12 @@ export default {
         status: "waiting", // process and finish
         orderDate: new Date().toISOString(),
         doctorPhone: item.details.phone,
-        isCancer: item.details.cid < 34 ? true : false,
+        isCancer: item.details.cid < store.MIN_NON_CANCER_NUM ? true : false,
         hardCopyReceived: false,
         copySendBack: false,
         docHasCopy: false,
         comment:
-          item.details.cid < 34
+          item.details.cid < store.MIN_NON_CANCER_NUM
             ? [
                 {
                   docComment: "需要你的癌症報告,請你用郵件寄出",
@@ -101,7 +101,7 @@ export default {
       try {
         await actions.addOrder(obj);
         Vue.$toast.success("你已預約成功");
-        await this.getDDL();
+        await this.getOrderHistoryList();
       } catch (e) {
         Vue.$toast.error("order fail");
       } finally {
@@ -134,22 +134,22 @@ export default {
     getImgPath(item, i) {
       // alert(JSON.stringify(store.imgPrefix + item.cover.url));
       //return store.imgPrefix + item.details.cover.url;
-      return store.docImgs[i];
-      //return item.details.cover.url;
+      //return store.docImgs[i];
+      return item.details.cover.url;
     },
-    async getDDL() {
+    async getOrderHistoryList() {
       let qs = "orderPhoneNum_eq=" + sessionStorage.phone;
       qs += "&_sort=orderDate:desc";
       const { count, items } = await actions.getOrders(qs);
       qs = items.map((s) => "phone_in=" + s.doctorPhone).join("&");
       const { items: docs } = await actions.getDoctors(qs);
-      // attache the doctor detail into each order here
+      // attach the doctor detail into each order here
       docs.forEach((s) => (items.find((s2) => s2.doctorPhone == s.phone).details = s));
       this.orders = items;
     },
   },
   mounted() {
-    this.getDDL();
+    this.getOrderHistoryList();
   },
   watch: {},
 };

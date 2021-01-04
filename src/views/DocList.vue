@@ -59,12 +59,12 @@ export default {
         status: "waiting", // process and finish
         orderDate: new Date().toISOString(),
         doctorPhone: item.phone,
-        isCancer: item.cid < 34 ? true : false,
+        isCancer: item.cid < store.MIN_NON_CANCER_NUM ? true : false,
         hardCopyReceived: false,
         copySendBack: false,
         docHasCopy: false,
         comment:
-          item.cid < 34
+          item.cid < store.MIN_NON_CANCER_NUM
             ? [
                 {
                   docComment: "需要你的癌症報告,請你用郵件寄出",
@@ -99,7 +99,8 @@ export default {
       return item.name + " | " + item.hospital + " | " + item.title;
     },
     getImgPath(item, i) {
-      return store.docImgs[i];
+      //return store.docImgs[i];
+      return "https://dtc-health.herokuapp.com" + item.cover.url;
     },
     async getDocList() {
       try {
