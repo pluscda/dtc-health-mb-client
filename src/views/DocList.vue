@@ -34,6 +34,11 @@ export default {
   },
   methods: {
     async book(item) {
+      sessionStorage.orderedDocPhone = item.phone;
+      if (!sessionStorage.token) {
+        this.$router.push("/login?callback=doclist");
+        return;
+      }
       const obj = {
         orderPhoneNum: sessionStorage.phone,
         paidAmount: item.price,
@@ -58,6 +63,8 @@ export default {
         Vue.$toast.success("order created");
       } catch (e) {
         Vue.$toast.error("order fail");
+      } finally {
+        sessionStorage.orderedDocPhone = "";
       }
     },
     getBooksNum() {
