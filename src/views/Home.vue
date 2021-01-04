@@ -3,14 +3,14 @@
     <HomeHeader></HomeHeader>
     <main class="hot-search">
       <div></div>
-      <div>{{ $t('熱搜') }}:</div>
+      <div>{{ $t("熱搜") }}:</div>
       <div v-for="(item, i) in cancers.slice(5, 10)" :key="i" style="margin-left:7px;color:blue;font-size:14px;">
         {{ $t(item.name) }}
       </div>
     </main>
     <main class="icon-search">
       <h4 class="mb-2">
-        {{ $t('選科室問醫生') }} <span>{{ $t('自選科室專屬醫師對症下藥') }}</span>
+        {{ $t("選科室問醫生") }} <span>{{ $t("自選科室專屬醫師對症下藥") }}</span>
       </h4>
       <nav class="grid-2-img">
         <div v-for="(item, i) in cancerCats" :key="item" :data-msg="item.text" @click="$router.push(item.path)">
@@ -28,7 +28,7 @@
       <div class="right mt-2">
         <h3 style="margin-left:10px;"></h3>
         <div>線上健康照護諮詢</div>
-        <div class="dtc-private ml-2">{{ $t('private') }}</div>
+        <div class="dtc-private ml-2">{{ $t("private") }}</div>
         <footer class="faster-footer" style="margin-left:10px;">
           <van-button plain size="small" type="info"><van-icon name="friends" style="transform:translateY(2px)" />護理照護</van-button>
           <van-button plain size="small" type="danger"><van-icon name="like" style="transform:translateY(2px)" />復健照護</van-button>
@@ -48,7 +48,7 @@
     </main>
     <main class="inquery mb-4">
       <h2 style="font-size:22px;margin-bottom:10px;">
-        線上病理諮詢 <span>{{ $t('省時省心名醫指導好的快') }}</span>
+        線上病理諮詢 <span>{{ $t("省時省心名醫指導好的快") }}</span>
       </h2>
       <nav class="grid-2-img mb-4">
         <div v-for="(item, i) in onlines" :key="i" :data-msg="item.text">
@@ -129,26 +129,26 @@
 }
 </i18n>
 <script>
-import { store, mutations, actions } from '@/store/global.js';
-import queryString from 'query-string';
-import HomeHeader from '@/components/HomeHeader';
-let types = '大腸癌,肺癌,女性乳癌,肝癌,口腔癌,攝護腺癌,甲狀腺癌,胃癌,皮膚癌,食道癌'.split(',');
+import { store, mutations, actions } from "@/store/global.js";
+import queryString from "query-string";
+import HomeHeader from "@/components/HomeHeader";
+let types = "大腸癌,肺癌,女性乳癌,肝癌,口腔癌,攝護腺癌,甲狀腺癌,胃癌,皮膚癌,食道癌".split(",");
 //thumbnail_dreamstime_s_75581102_8295cb0072.jpg
 const cancerCatsImg = [
-  'thumbnail__f0e0837881.jpg',
-  'thumbnail_1544194965_4229027033_wn_9cfd7b444e.jpg',
-  'thumbnail_20150801031535563_4e9f6ee0d9.jpg',
-  'thumbnail_615f71b7_5bf2_4cf5_ad0f_44c307b60448_a6a4058942.jpg',
+  "thumbnail__f0e0837881.jpg",
+  "thumbnail_1544194965_4229027033_wn_9cfd7b444e.jpg",
+  "thumbnail_20150801031535563_4e9f6ee0d9.jpg",
+  "thumbnail_615f71b7_5bf2_4cf5_ad0f_44c307b60448_a6a4058942.jpg",
 ];
-const cancerPaths = ['/cancerathead', '/canceratlung', '/canceratab', '/canceratlower'];
-const cancerCats = ['頭頸部', '胸部', '腹部', '骨盆腔'].map((s, i) => ({ value: i + 1, text: s, path: cancerPaths[i] }));
-const strs = '家醫科、老年醫學科、神經科、泌尿科、眼科、婦產科、皮膚科、眼科、小兒科、成年慢性病'.split('、');
-const onlines = ['150 (7)', '150 (8)', '150 (9)', '150 (10)', '150 (11)', '150 (12)', '150 (13)', '150 (14)', '150 (15)', '150 (16)'].map((s, i) => ({
+const cancerPaths = ["/cancerathead", "/canceratlung", "/canceratab", "/canceratlower"];
+const cancerCats = ["頭頸部", "胸部", "腹部", "骨盆腔"].map((s, i) => ({ value: i + 1, text: s, path: cancerPaths[i] }));
+const strs = "家醫科、老年醫學科、神經科、泌尿科、眼科、婦產科、皮膚科、眼科、小兒科、成年慢性病".split("、");
+const onlines = ["150 (7)", "150 (8)", "150 (9)", "150 (10)", "150 (11)", "150 (12)", "150 (13)", "150 (14)", "150 (15)", "150 (16)"].map((s, i) => ({
   src: s,
   text: strs[i],
 }));
 export default {
-  name: 'home',
+  name: "home",
   data() {
     return {
       types,
@@ -173,7 +173,7 @@ export default {
     async viewList(item) {
       const obj = { id: item.cid, name: item.name };
       const str = queryString.stringify(obj);
-      this.$router.push('doclist?' + str);
+      this.$router.push("doclist?" + str);
     },
     async getDDL() {
       try {
