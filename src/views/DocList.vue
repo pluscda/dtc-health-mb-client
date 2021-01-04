@@ -100,9 +100,9 @@ export default {
     },
     getImgPath(item, i) {
       //return store.docImgs[i];
-      return store.imgPrefix ++ item.cover.url;
+      return store.imgPrefix + item.cover.url;
     },
-    async getDocList()
+    async getDocList() {
       try {
         const url = this.id ? "doctors?cid_eq=" + this.id : `doctors?_limit=30&_start=${this.skip}`;
         this.docs = await axios.get(url);
