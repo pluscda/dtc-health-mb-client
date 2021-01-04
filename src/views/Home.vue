@@ -54,6 +54,9 @@
         <div v-for="(item, i) in onlines" :key="i" :data-msg="item.text">
           <img :src="item.src + '.jpg'" :alt="item.text" width="208" hieght="156" />
         </div>
+        <div style="grid-column:1/-1" data-msg="成年慢性病" @click="$router.push('/doclist')">
+          <img src="https://unsplash.it/500/336" />
+        </div>
       </nav>
     </main>
   </div>
@@ -140,10 +143,12 @@ const cancerCatsImg = [
   "thumbnail_20150801031535563_4e9f6ee0d9.jpg",
   "thumbnail_615f71b7_5bf2_4cf5_ad0f_44c307b60448_a6a4058942.jpg",
 ];
+
+//成年慢性病
 const cancerPaths = ["/cancerathead", "/canceratlung", "/canceratab", "/canceratlower"];
 const cancerCats = ["頭頸部", "胸部", "腹部", "骨盆腔"].map((s, i) => ({ value: i + 1, text: s, path: cancerPaths[i] }));
-const strs = "家醫科、老年醫學科、神經科、泌尿科、眼科、婦產科、皮膚科、眼科、小兒科、成年慢性病".split("、");
-const onlines = ["150 (7)", "150 (8)", "150 (9)", "150 (10)", "150 (11)", "150 (12)", "150 (13)", "150 (14)", "150 (15)", "150 (16)"].map((s, i) => ({
+const strs = "家醫科、老年醫學科、神經科、泌尿科、眼科、婦產科、皮膚科、小兒科".split("、");
+const onlines = ["150 (7)", "150 (8)", "150 (9)", "150 (10)", "150 (11)", "150 (12)", "150 (13)", "150 (14)"].map((s, i) => ({
   src: s,
   text: strs[i],
 }));
