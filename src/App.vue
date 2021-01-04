@@ -48,10 +48,6 @@ export default {
       } else if (to.path.includes("login")) {
         this.active = 3;
       }
-      requestAnimationFrame(() => {
-        window.scroll(0, 0);
-        window.scrollTop = 0;
-      });
     },
   },
 };

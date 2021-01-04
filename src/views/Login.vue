@@ -74,7 +74,7 @@ export default {
     },
   },
   mounted() {
-    store.activeTab = 4;
+    store.activeTab = 3;
     this.checkQueryString();
   },
   watch: {},
