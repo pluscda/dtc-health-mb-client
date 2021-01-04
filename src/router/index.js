@@ -12,7 +12,7 @@ const routes = [
   },
   {
     path: '/home',
-    name: 'Home',
+    name: 'Home2',
     component: Home
   },
   {
@@ -59,11 +59,6 @@ const routes = [
     path: '/myorderlist',
     name: 'myorderlist',
     component: () => import("../views/MyOrderList.vue"),
-  },
-  {
-    path: '/dtc/login',
-    name: 'login',
-    component: () => import("../views/Login.vue"),
   },
   {
     path: '/doclist',

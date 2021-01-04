@@ -111,8 +111,8 @@ export default {
     this.id = +id;
     this.name = name;
     this.searchBy = name ? name : "熱門醫生";
-    await this.getDocList();
     await this.getOrderHistory();
+    await this.getDocList();
   },
   watch: {},
 };
