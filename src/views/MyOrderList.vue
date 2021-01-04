@@ -135,7 +135,7 @@ export default {
       // alert(JSON.stringify(store.imgPrefix + item.cover.url));
       //return store.imgPrefix + item.details.cover.url;
       //return store.docImgs[i];
-      return item.details.cover.url;
+      return store.imgPrefix + item.details.cover.url;
     },
     async getOrderHistoryList() {
       let qs = "orderPhoneNum_eq=" + sessionStorage.phone;
