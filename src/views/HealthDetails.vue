@@ -1,13 +1,13 @@
 <template>
   <div>
-    cat2
+    cat23
   </div>
 </template>
 
 <script>
-import HelloWorld from "@/components/HelloI18n";
+import HelloWorld from '@/components/HelloI18n';
 export default {
-  name: "app",
+  name: 'app',
   components: {
     HelloWorld,
   },

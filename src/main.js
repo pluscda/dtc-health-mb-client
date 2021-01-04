@@ -1,18 +1,18 @@
 import Vue from 'vue'
-import './plugins/bootstrap-vue'
 import './plugins/axios'
 import "./assets/reset.css"
-import moment from "moment"
-// import "@fortawesome/fontawesome-free/css/all.css";
-// import "@fortawesome/fontawesome-free/js/all.js";
+import "./assets/utility.css"
+import moment from "dayjs"
 import App from './App.vue'
 import router from './router'
 import i18n from './i18n'
 import './plugins/vant.js'
-// /import './registerServiceWorker'
 import VueToast from "vue-toast-notification";
+
 // Import one of available themes
 import "vue-toast-notification/dist/theme-default.css";
+
+import './registerServiceWorker'
 //import 'vue-toast-notification/dist/theme-sugar.css';
 
 Vue.use(VueToast, { position: "top" });

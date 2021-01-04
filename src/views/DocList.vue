@@ -1,8 +1,7 @@
 <template>
-  <section class="doc-list">
+  <section class="doc-list pt-2">
     <header>快速找名醫</header>
     <van-search background="#1c1b7e" v-model="searchBy" shape="round" class="mx-4 mt-2" placeholder="醫院 | 醫生名 | 病名"></van-search>
-    <h3 class="mt-3 ml-4 mb-4">{{ name }}熱門醫生</h3>
 
     <main v-for="(item, i) in docs" :key="i" class="doc-item mt-1">
       <van-card @click="viewDetail(item)" :price="item.price" currency="NT" :desc="getDesc(item)" :title="getTitle(item)" :thumb="getImgPath(item, i)">
@@ -20,11 +19,10 @@
 
 <script>
 import Vue from "vue";
-import faker from "faker";
 import { store, mutations, actions } from "@/store/global.js";
-
+import faker from "faker";
 export default {
-  name: "login",
+  name: "docList",
   data() {
     return {
       id: "",
@@ -83,8 +81,10 @@ export default {
       //return item.cover.url; // at aws now
     },
     async getDDL() {
-      const url = this.id ? "doctors?cid_eq=" + this.id : `doctors?_limit=30&_start=${this.skip}`;
-      this.docs = await axios.get(url);
+      try {
+        const url = this.id ? "doctors?cid_eq=" + this.id : `doctors?_limit=30&_start=${this.skip}`;
+        this.docs = await axios.get(url);
+      } catch (e) {}
     },
   },
   mounted() {
@@ -113,13 +113,15 @@ export default {
 .doc-list {
   background: var(--strapi-blue);
   width: 100vw;
-  margin-bottom: 90px;
-  height: 100vh;
+  min-height: 100vh;
   color: white;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 100px;
   header {
     font-size: 20px;
     text-align: center;
-    padding-top: 3px;
   }
 }
 .doc-item {
