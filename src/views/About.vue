@@ -1,5 +1,6 @@
 <template>
   <section class="dtc-about">
+    <h4 class="dtc-logo">名醫會館</h4>
     <header class="my-header">
       <h4 class="mb-3">會館館長: 何慶華</h4>
       <h4 class="mb-3">美國約翰霍普金斯</h4>
@@ -56,12 +57,20 @@ export default {
       content: url("/doctor.svg");
       width: auto;
       height: 100%;
-      top: 10px;
+      top: 30px;
       right: 20px;
     }
   }
   h5 {
     line-height: 2rem;
   }
+}
+.dtc-logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #3570ec;
+  transform: translateX(10px);
+  text-align: center;
+  margin-bottom: 0rem;
 }
 </style>

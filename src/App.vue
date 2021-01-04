@@ -29,7 +29,10 @@ export default {
   },
   methods: {
     tabClick(name) {
-      window.scroll(0, 0);
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
       requestAnimationFrame(() => this.$router.push(name));
     },
   },
@@ -37,8 +40,6 @@ export default {
   mounted() {},
   watch: {
     $route(to, from) {
-      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-      scrollTop = 0;
       if (to.path.includes("home")) {
         this.active = 0;
       } else if (to.path.includes("doclist")) {
