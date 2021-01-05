@@ -147,6 +147,8 @@ export default {
         // attach the doctor detail into each order here
         docs.forEach((s) => (items.find((s2) => s2.doctorPhone == s.phone).details = s));
         this.orders = items;
+      } catch (e) {
+        alert("error getOrderHistoryList: " + e);
       } finally {
         this.loadingApi = false;
       }
