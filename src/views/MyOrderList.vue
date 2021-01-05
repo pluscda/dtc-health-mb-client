@@ -1,13 +1,13 @@
 <template>
   <section class="doc-list">
-    <van-overlay :show="loadingApi" style="text-align:center;">
-      <van-loading type="spinner" />
-    </van-overlay>
     <van-nav-bar title="我的預約紀錄" left-text="返回" left-arrow @click-left="$router.push('login')">
       <template #right>
         <van-tag round v-if="commentFilter" type="primary" class="ml-2" @click="commentFilter = ''">離開留言區</van-tag>
       </template>
     </van-nav-bar>
+    <van-overlay :show="loadingApi" style="text-align:center;">
+      <van-loading type="spinner" />
+    </van-overlay>
 
     <van-field
       v-if="showLeavelMsg"
