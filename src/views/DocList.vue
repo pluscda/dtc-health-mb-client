@@ -90,7 +90,7 @@ export default {
       return 3;
     },
     viewDetail(item) {
-      //alert();
+      this.$router.push("doctordetails");
     },
     getDesc(item) {
       return "專長: " + item.description;
