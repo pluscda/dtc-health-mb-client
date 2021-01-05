@@ -20,7 +20,8 @@
         <van-icon name="vip-card" color="var(--bs-orange)" size="60px" />
         <h4 class="pt-3">線上諮詢</h4>
         <div></div>
-        <h4 class="pt-3" style="color:var(--bs-orange)">2000<span style="font-size:15px;">元</span></h4>
+        <van-button round color="var(--bs-orange)" style="transform:translateY(6px)">訂閱服務2000元</van-button>
+        <!-- <h4 class="pt-3" style="color:var(--bs-orange)">2000<span style="font-size:15px;">元</span></h4> -->
         <nav class="how2-subtitle mt-2">
           <div>
             <van-icon name="medal" size="20px" color="var(--orange)" />
@@ -44,7 +45,7 @@
       </main>
     </nav>
     <h4 class="mt-4" style="transform:translateX(10px)">服務流程</h4>
-    <footer class="detail-footer pb-5 pr-1">
+    <footer class="detail-footer pb-5 pr-1 mb-5">
       <span data-msg="線上預約">
         <img src="card.svg" />
       </span>
