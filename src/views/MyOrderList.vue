@@ -1,6 +1,6 @@
 <template>
   <section class="doc-list">
-    <van-overlay :show="loadingApi" style="display:grid; place-items:center;z-index:9999999">
+    <van-overlay :show="loadingApi" style="z-index:999;text-align:center;">
       <van-loading type="spinner" />
     </van-overlay>
     <van-nav-bar title="我的預約紀錄" left-text="返回" left-arrow @click-left="$router.push('login')">

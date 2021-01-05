@@ -1,6 +1,6 @@
 <template>
   <section class="doc-list pt-2">
-    <van-overlay :show="loadingApi" style="display:grid; place-items:center;z-index:9999999">
+    <van-overlay :show="loadingApi" style="z-index:9999;text-align:center">
       <van-loading type="spinner" />
     </van-overlay>
     <header>快速找名醫</header>
