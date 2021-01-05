@@ -1,6 +1,6 @@
 <template>
   <section class="doc-list">
-    <van-overlay :show="loadingApi" style="z-index:999;text-align:center;">
+    <van-overlay :show="loadingApi" style="text-align:center;">
       <van-loading type="spinner" />
     </van-overlay>
     <van-nav-bar title="我的預約紀錄" left-text="返回" left-arrow @click-left="$router.push('login')">
@@ -174,7 +174,7 @@ export default {
 
 <style lang="scss" scoped>
 .doc-list {
-  background: var(--strapi-blue);
+  //background: var(--strapi-blue);
   width: 100vw;
   height: 100vh;
   margin-bottom: 90px;
