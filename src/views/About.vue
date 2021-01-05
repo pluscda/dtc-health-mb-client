@@ -3,7 +3,7 @@
     <h4 style="color:#3570EC;font-size:24px;text-align:center">名醫會館館長</h4>
 
     <div class="mt-4 head-desc">
-      <img src="https://unsplash.it/128/128" width="126" height="126" class="head-img" />
+      <img src="doctor.svg" width="126" height="126" class="head-img" />
     </div>
 
     <div class="head-desc name mt-3">何慶華</div>
@@ -29,21 +29,6 @@
         </p>
       </main>
     </div>
-
-    <!-- <h4 class="dtc-logo">名醫會館</h4>
-    <header class="my-header">
-      <h4 class="mb-3">會館館長: 何慶華</h4>
-      <h4 class="mb-3">美國約翰霍普金斯</h4>
-      <h4 class="mb-4">醫學管理博士</h4>
-      <img src="plants.svg" />
-    </header>
-    <footer class="px-5 pt-3">
-      <h5>
-        宗旨: 有鑑於國內各大醫院名醫掛號困難，一般重大及緊急病患家屬沒有管 道斟詢名醫意見，「名醫會館」藉由互聯網科技技術提供病患家屬以手機通
-        訊，可以即時找到相關的名醫徵詢醫療方面的寶貴意見，爭取有效的健康方案。
-      </h5>
-      <h5 class="mt-4">目標: 提供病患正確就醫知識、找對醫生、遠離病痛。</h5>
-    </footer> -->
   </section>
 </template>
 
@@ -85,6 +70,7 @@ export default {
 }
 .head-img {
   border-radius: 100%;
+  filter: drop-shadow(3px 3px 1px rgba(0, 0, 0, 0.7));
 }
 
 .name {
