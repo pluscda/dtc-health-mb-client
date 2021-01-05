@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import { store, mutations, actions } from "@/store/global.js";
+import { store, mutations, actions } from '@/store/global.js';
 export default {
-  name: "about",
+  name: 'about',
   data() {
     return {};
   },
@@ -40,7 +40,7 @@ export default {
 
 <style lang="scss" scoped>
 .dtc-about {
-  background: transparent url("/background.svg") top left 100vw 100vh no-repeat !important;
+  background: transparent url('/background.svg') top left 100vw 100vh no-repeat !important;
   background-size: cover !important;
   width: 100vw;
   position: relative;
@@ -54,7 +54,7 @@ export default {
     grid-template-columns: 1fr;
     &::after {
       position: absolute;
-      content: url("/doctor.svg");
+      content: url('/doctor.svg');
       width: auto;
       height: 100%;
       top: 30px;

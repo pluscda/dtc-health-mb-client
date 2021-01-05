@@ -61,7 +61,8 @@ export let actions = {
     return {count, items};
   },
   async addOrder(item){
-      return await axios.post('orders', item);
+      const obj =  await axios.post('orders', item);
+      return obj;
   },
   async getCancerTypes(){
      return await axios.get('cancer-types');
