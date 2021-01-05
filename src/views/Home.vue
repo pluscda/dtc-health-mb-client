@@ -30,18 +30,24 @@
         <div>線上健康照護諮詢</div>
         <div class="dtc-private ml-2">{{ $t("private") }}</div>
         <footer class="faster-footer" style="margin-left:10px;">
-          <van-button plain size="small" type="info"><van-icon name="friends" style="transform:translateY(2px)" />護理照護</van-button>
-          <van-button plain size="small" type="danger"><van-icon name="like" style="transform:translateY(2px)" />復健照護</van-button>
-          <van-button plain size="small" type="primary"><van-icon name="gem" style="transform:translateY(2px)" />營養照護</van-button>
+          <van-button @click="$router.push(`doclist?searchBy=護理照護`)" plain size="small" type="info"
+            ><van-icon name="friends" style="transform:translateY(2px)" />護理照護</van-button
+          >
+          <van-button @click="$router.push(`doclist?searchBy=復健照護`)" plain size="small" type="danger"
+            ><van-icon name="like" style="transform:translateY(2px)" />復健照護</van-button
+          >
+          <van-button @click="$router.push(`doclist?searchBy=營養照護`)" plain size="small" type="primary"
+            ><van-icon name="gem" style="transform:translateY(2px)" />營養照護</van-button
+          >
         </footer>
       </div>
     </main>
     <main class="faster2">
-      <div @click="$router.push('/heart')">
+      <div @click="$router.push(`doclist?searchBy=心血管疾病線上諮詢`)">
         <span> <img src="heart.svg" width="20" height="20" style="transform:translateY(-3px);display:inline-block;"/></span>
         <span class="fast-span" data-msg="線上諮詢">心血管疾病</span>
       </div>
-      <div class="ml-2" @click="$router.push('/stroke')">
+      <div class="ml-2" @click="$router.push(`doclist?searchBy=中風線上諮詢`)">
         <span style="background:#878ede;">❁</span>
         <span class="fast-span" data-msg="中風線上諮詢">腦血管事件</span>
       </div>

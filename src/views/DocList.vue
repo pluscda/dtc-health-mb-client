@@ -111,14 +111,13 @@ export default {
       let qs = "orderPhoneNum_eq=" + sessionStorage.phone;
       const { count, items } = await actions.getOrders(qs);
       this.myPreviousOrders = items;
-      //alert(items.length);
     },
   },
   async mounted() {
-    const { id, name } = this.$route.query;
+    const { id, searchBy } = this.$route.query;
     this.id = +id;
-    this.name = name;
-    this.searchBy = name ? name : "熱門醫生";
+    this.name = searchBy;
+    this.searchBy = searchBy ? searchBy : "熱門醫生";
     try {
       store.isApiLoading = true;
       await this.getOrderHistory();
