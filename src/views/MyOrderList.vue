@@ -28,7 +28,7 @@
     </van-field>
     <div></div>
 
-    <main v-for="(item, i) in orders" :key="i" class="doc-item mt-1" v-if="item.details">
+    <main v-for="(item, i) in myOrders" :key="i" class="doc-item mt-1" v-if="item.details">
       <van-card @click="viewDetail(item)" :price="item.details.price" currency="NT" :desc="getDesc(item)" :title="getTitle(item)" :thumb="getImgPath(item, i)">
         <template #tags>
           <van-tag plain type="danger">{{ $formatStatus(item.status) }}</van-tag>
@@ -41,7 +41,7 @@
       </van-card>
     </main>
     <nav v-if="commentFilter" style="color:white;font-size:14px;" class="mt-1">
-      <div class="comment-dtc px-2 py-2" v-for="(item, i) in orders[0].comment" :key="i" :style="item.docComment ? 'background:#1f7cd3;' : 'background:#0f579b;'">
+      <div class="comment-dtc px-2 py-2" v-for="(item, i) in myOrders[0].comment" :key="i" :style="item.docComment ? 'background:#1f7cd3;' : 'background:#0f579b;'">
         <div class="mb-1">{{ $twDate(item.commentAt) }}</div>
         <div style="padding-right:50px;">{{ item.docComment || item.userComment }}</div>
         <div style="float:right;margin-top:-30px;">
@@ -54,30 +54,37 @@
 </template>
 
 <script>
-import Vue from "vue";
-import { store, mutations, actions } from "@/store/global.js";
+import Vue from 'vue';
+import { store, mutations, actions } from '@/store/global.js';
 
 export default {
-  name: "login",
+  name: 'login',
   data() {
     return {
       docs: [],
       skip: 0,
       orders: [],
-      commentFilter: "",
+      commentFilter: '',
       showLeavelMsg: false,
-      myMsg: "",
-      price: "",
+      myMsg: '',
+      price: '',
       loadingApi: false,
     };
   },
-  computed: {},
+  computed: {
+    myOrders() {
+      if (!this.commentFilter) {
+        return this.orders;
+      }
+      return this.orders.filter((s) => s.doctorPhone == this.commentFilter);
+    },
+  },
   methods: {
     async book(item) {
       const obj = {
         orderPhoneNum: sessionStorage.phone,
         paidAmount: item.details.price,
-        status: "waiting", // process and finish
+        status: 'waiting', // process and finish
         orderDate: new Date().toISOString(),
         doctorPhone: item.details.phone,
         isCancer: item.details.cid < store.MIN_NON_CANCER_NUM ? true : false,
@@ -88,10 +95,10 @@ export default {
           item.details.cid < store.MIN_NON_CANCER_NUM
             ? [
                 {
-                  docComment: "需要你的癌症報告,請你用郵件寄出",
+                  docComment: '需要你的癌症報告,請你用郵件寄出',
                   commentAt: new Date().toISOString(),
                   rating: 0,
-                  userComment: "",
+                  userComment: '',
                 },
               ]
             : [],
@@ -99,56 +106,58 @@ export default {
       try {
         this.loadingApi = true;
         await actions.addOrder(obj);
-        Vue.$toast.success("你已預約成功");
+        Vue.$toast.success('你已預約成功');
         await this.getOrderHistoryList();
       } catch (e) {
-        Vue.$toast.error("order fail");
+        Vue.$toast.error('order fail');
       } finally {
-        sessionStorage.orderedDocPhone = "";
+        sessionStorage.orderedDocPhone = '';
         this.loadingApi = false;
       }
     },
     async addComment(msg, userClick) {
       if (!msg && !userClick) {
-        this.myMsg = "";
+        this.myMsg = '';
         this.showLeavelMsg = true;
       } else if (msg) {
-        const obj = { docComment: "", commentAt: new Date().toISOString(), rating: 0, userComment: msg };
-        this.orders[0].comment.unshift(obj);
-        await actions.updateOrder(this.orders[0]);
+        const obj = { docComment: '', commentAt: new Date().toISOString(), rating: 0, userComment: msg };
+        this.myOrders[0].comment.unshift(obj);
+        await actions.updateOrder(this.myOrders[0]);
         this.orders = [...this.orders];
-        this.commentFilter = "";
+        this.commentFilter = '';
         this.showLeavelMsg = false;
       }
     },
-    viewComment(item) {},
+    viewComment(item) {
+      this.commentFilter = item.doctorPhone;
+    },
     viewDetail(item) {
       this.commentFilter = item.doctorPhone;
     },
     getDesc(item) {
-      return "專長: " + item.details.description;
+      return '專長: ' + item.details.description;
     },
     getTitle(item) {
-      return item.details.name + " | " + item.details.hospital + " | " + item.details.title + " @ " + this.$twDate(item.orderDate) + " 預約成功";
+      return item.details.name + ' | ' + item.details.hospital + ' | ' + item.details.title + ' @ ' + this.$twDate(item.orderDate) + ' 預約成功';
     },
     getImgPath(item, i) {
       return store.imgPrefix + item.details.cover.url;
     },
     async getOrderHistoryList() {
       this.orders = [];
-      let qs = "orderPhoneNum_eq=" + sessionStorage.phone;
-      qs += "&_sort=orderDate:desc";
+      let qs = 'orderPhoneNum_eq=' + sessionStorage.phone;
+      qs += '&_sort=orderDate:desc';
       try {
         this.loadingApi = true;
         const { count, items } = await actions.getOrders(qs);
-        const mySet = new Set(items.map((s) => "phone_in=" + s.doctorPhone));
-        qs = [...mySet].join("&");
+        const mySet = new Set(items.map((s) => 'phone_in=' + s.doctorPhone));
+        qs = [...mySet].join('&');
         const { items: docs } = await actions.getDoctors(qs);
         // attach the doctor detail into each order here
         docs.forEach((s) => (items.find((s2) => s2.doctorPhone == s.phone).details = s));
         this.orders = items;
       } catch (e) {
-        alert("error getOrderHistoryList: " + e);
+        alert('error getOrderHistoryList: ' + e);
       } finally {
         this.loadingApi = false;
       }
