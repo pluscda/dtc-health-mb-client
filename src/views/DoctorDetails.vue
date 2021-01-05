@@ -20,7 +20,27 @@
         <van-icon name="vip-card" color="var(--bs-orange)" size="60px" />
         <h4 class="pt-3">線上諮詢</h4>
         <div></div>
-        <div class="pt-4" style="color:var(--bs-orange)">NT2000<span style="font-size:12px;">元</span></div>
+        <h4 class="pt-3" style="color:var(--bs-orange)">2000<span style="font-size:15px;">元</span></h4>
+        <nav class="how2-subtitle mt-2">
+          <div>
+            <van-icon name="medal" size="24px" color="var(--orange)" />
+            <p>醫生真實</p>
+          </div>
+          <div>
+            <van-icon name="coupon" size="24px" color="var(--orange)" />
+            <p>未接診隨時退</p>
+          </div>
+          <div>
+            <van-icon name="service" size="24px" color="var(--orange)" />
+            <p>不滿意可申訴退款</p>
+          </div>
+        </nav>
+        <footer class="mt-2 how2-footer">
+          <p>1. 用戶透過實體寄件方式,寄出病史。</p>
+          <p>2. 醫生問診不限交流質數。</p>
+          <p>3. 醫生給出明確建議後問診結束。</p>
+          <p>4. 醫生接診後問診最常開啟72小時, 預期自動結束。</p>
+        </footer>
       </main>
     </nav>
   </section>
@@ -64,9 +84,9 @@ export default {
 .how2 {
   display: grid;
   place-items: center;
-  > main {
+  > main:first-child {
     width: 97vw;
-    height: 250px;
+    height: auto;
     background: var(--bs-light);
     border-radius: 15px;
     filter: drop-shadow(6px 6px 7px rgba(0, 0, 0, 0.7));
@@ -77,5 +97,24 @@ export default {
 .how2-title {
   display: grid;
   grid-template-columns: 70px max-content 1fr max-content;
+}
+.how2-subtitle {
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  justify-content: space-around;
+  > div {
+    display: grid;
+    grid-template-columns: max-content max-content;
+  }
+}
+.how2-footer {
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: 1fr;
+  p {
+    margin-bottom: 0.6rem;
+    margin-left: 1rem;
+  }
 }
 </style>
