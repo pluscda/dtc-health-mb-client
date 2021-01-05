@@ -25,7 +25,7 @@
     </van-field>
     <div></div>
 
-    <main v-for="(item, i) in myOrders" :key="i" class="doc-item mt-1">
+    <main v-for="(item, i) in orders" :key="i" class="doc-item mt-1" v-if="item.details">
       <van-card @click="viewDetail(item)" :price="item.details.price" currency="NT" :desc="getDesc(item)" :title="getTitle(item)" :thumb="getImgPath(item, i)">
         <template #tags>
           <van-tag plain type="danger">{{ $formatStatus(item.status) }}</van-tag>
@@ -38,7 +38,7 @@
       </van-card>
     </main>
     <nav v-if="commentFilter" style="color:white;font-size:14px;" class="mt-1">
-      <div class="comment-dtc px-2 py-2" v-for="(item, i) in myOrders[0].comment" :key="i" :style="item.docComment ? 'background:#1f7cd3;' : 'background:#0f579b;'">
+      <div class="comment-dtc px-2 py-2" v-for="(item, i) in orders[0].comment" :key="i" :style="item.docComment ? 'background:#1f7cd3;' : 'background:#0f579b;'">
         <div class="mb-1">{{ $twDate(item.commentAt) }}</div>
         <div style="padding-right:50px;">{{ item.docComment || item.userComment }}</div>
         <div style="float:right;margin-top:-30px;">
@@ -64,16 +64,10 @@ export default {
       commentFilter: "",
       showLeavelMsg: false,
       myMsg: "",
+      price: "",
     };
   },
-  computed: {
-    myOrders() {
-      if (!this.commentFilter) {
-        return this.orders;
-      }
-      return this.orders.filter((s) => s.doctorPhone == this.commentFilter);
-    },
-  },
+  computed: {},
   methods: {
     async book(item) {
       const obj = {
@@ -116,8 +110,8 @@ export default {
         this.showLeavelMsg = true;
       } else if (msg) {
         const obj = { docComment: "", commentAt: new Date().toISOString(), rating: 0, userComment: msg };
-        this.myOrders[0].comment.unshift(obj);
-        await actions.updateOrder(this.myOrders[0]);
+        this.orders[0].comment.unshift(obj);
+        await actions.updateOrder(this.orders[0]);
         this.orders = [...this.orders];
         this.commentFilter = "";
         this.showLeavelMsg = false;
@@ -137,6 +131,7 @@ export default {
       return store.imgPrefix + item.details.cover.url;
     },
     async getOrderHistoryList() {
+      this.orders = [];
       let qs = "orderPhoneNum_eq=" + sessionStorage.phone;
       qs += "&_sort=orderDate:desc";
       try {
