@@ -141,7 +141,8 @@ export default {
       try {
         this.loadingApi = true;
         const { count, items } = await actions.getOrders(qs);
-        qs = items.map((s) => "phone_in=" + s.doctorPhone).join("&");
+        const mySet = new Set(items.map((s) => "phone_in=" + s.doctorPhone));
+        qs = [...mySet].join("&");
         const { items: docs } = await actions.getDoctors(qs);
         // attach the doctor detail into each order here
         docs.forEach((s) => (items.find((s2) => s2.doctorPhone == s.phone).details = s));
