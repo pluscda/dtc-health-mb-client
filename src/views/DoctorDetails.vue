@@ -10,13 +10,18 @@
       </div>
     </main>
     <main class="px-2">
-      <p>
+      <p style="font-size:14px;">
         擅長: 各種癌症
         (乳癌、婦癌、肺癌、腦癌、頭頸癌、食道癌、泌尿道腫瘤、大腸直腸癌、肝癌)之治癒性及緩和性放射治療。此外，對於最新型直線加速器，如真光刀(TrueBeam)、好神刀(Halcyon)，及新式之放射治療技術，擁有豐富的臨床治療經驗。
       </p>
     </main>
     <nav class="how2 mt-2">
-      <main></main>
+      <main class="how2-title">
+        <van-icon name="vip-card" color="var(--bs-orange)" size="60px" />
+        <h4 class="pt-3">線上諮詢</h4>
+        <div></div>
+        <div class="pt-4" style="color:var(--bs-orange)">NT2000<span style="font-size:12px;">元</span></div>
+      </main>
     </nav>
   </section>
 </template>
@@ -61,10 +66,16 @@ export default {
   place-items: center;
   > main {
     width: 97vw;
-    height: 200px;
+    height: 250px;
     background: var(--bs-light);
     border-radius: 15px;
     filter: drop-shadow(6px 6px 7px rgba(0, 0, 0, 0.7));
+    padding: 1rem;
+    padding-top: 1.4rem;
   }
+}
+.how2-title {
+  display: grid;
+  grid-template-columns: 70px max-content 1fr max-content;
 }
 </style>
