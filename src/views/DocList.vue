@@ -13,7 +13,7 @@
         </template>
         <template #footer>
           <van-button size="small" class="mr-2">收藏</van-button>
-          <van-button size="small" type="info" class="mr-2" @click="book(item)" v-if="isOrderAble(item)">預約</van-button>
+          <van-button size="small" type="info" class="mr-2" @click.stop="book(item)" v-if="isOrderAble(item)">預約</van-button>
           <van-tag plain class="mr-2" style="transform:translate3d(4px,5px,0)" type="primary" v-else>您已預約: {{ getWaitStatus(item) }}</van-tag>
         </template>
       </van-card>
@@ -22,25 +22,25 @@
 </template>
 
 <script>
-import Vue from "vue";
-import { store, mutations, actions } from "@/store/global.js";
+import Vue from 'vue';
+import { store, mutations, actions } from '@/store/global.js';
 export default {
-  name: "docList",
+  name: 'docList',
   data() {
     return {
-      id: "",
-      name: "",
+      id: '',
+      name: '',
       docs: [],
       skip: 0,
-      cat: "",
-      searchBy: "",
+      cat: '',
+      searchBy: '',
       myPreviousOrders: [],
       loadingApi: false,
     };
   },
   computed: {
     unFinishOrders() {
-      return this.myPreviousOrders.filter((s) => s.status != "finish");
+      return this.myPreviousOrders.filter((s) => s.status != 'finish');
     },
   },
   methods: {
@@ -49,18 +49,18 @@ export default {
     },
     getWaitStatus(item) {
       const status = this.unFinishOrders.find((s) => s.orderPhoneNum == sessionStorage.phone && s.doctorPhone == item.phone).status;
-      return status == "process" ? "狀態為醫師處理中" : "狀態為等待醫師回覆中";
+      return status == 'process' ? '狀態為醫師處理中' : '狀態為等待醫師回覆中';
     },
     async book(item) {
       sessionStorage.orderedDocPhone = item.phone;
       if (!sessionStorage.token) {
-        this.$router.push("/login?callback=doclist");
+        this.$router.push('/login?callback=doclist');
         return;
       }
       const obj = {
         orderPhoneNum: sessionStorage.phone,
         paidAmount: item.price,
-        status: "waiting", // process and finish
+        status: 'waiting', // process and finish
         orderDate: new Date().toISOString(),
         doctorPhone: item.phone,
         isCancer: item.cid < store.MIN_NON_CANCER_NUM ? true : false,
@@ -71,10 +71,10 @@ export default {
           item.cid < store.MIN_NON_CANCER_NUM
             ? [
                 {
-                  docComment: "需要你的癌症報告,請你用郵件寄出",
+                  docComment: '需要你的癌症報告,請你用郵件寄出',
                   commentAt: new Date().toISOString(),
                   rating: 0,
-                  userComment: "",
+                  userComment: '',
                 },
               ]
             : [],
@@ -82,13 +82,13 @@ export default {
       try {
         this.loadingApi = true;
         await actions.addOrder(obj);
-        Vue.$toast.success("你已預約成功");
+        Vue.$toast.success('你已預約成功');
         await this.getOrderHistory();
         this.docs = [...this.docs];
       } catch (e) {
-        Vue.$toast.error("order fail");
+        Vue.$toast.error('order fail');
       } finally {
-        sessionStorage.orderedDocPhone = "";
+        sessionStorage.orderedDocPhone = '';
         this.loadingApi = false;
       }
     },
@@ -97,25 +97,25 @@ export default {
     },
     viewDetail(item) {
       store.selectedDoctor = item;
-      this.$router.push("doctordetails");
+      this.$router.push('doctordetails');
     },
     getDesc(item) {
-      return "專長: " + item.description;
+      return '專長: ' + item.description;
     },
     getTitle(item) {
-      return item.name + " | " + item.hospital + " | " + item.title;
+      return item.name + ' | ' + item.hospital + ' | ' + item.title;
     },
     getImgPath(item, i) {
       return store.imgPrefix + item.cover.url;
     },
     async getDocList() {
       try {
-        const url = this.id ? "doctors?cid_eq=" + this.id : `doctors?_limit=30&_start=${this.skip}`;
+        const url = this.id ? 'doctors?cid_eq=' + this.id : `doctors?_limit=30&_start=${this.skip}`;
         this.docs = await axios.get(url);
       } catch (e) {}
     },
     async getOrderHistory() {
-      let qs = "orderPhoneNum_eq=" + sessionStorage.phone;
+      let qs = 'orderPhoneNum_eq=' + sessionStorage.phone;
       const { count, items } = await actions.getOrders(qs);
       this.myPreviousOrders = items;
     },
@@ -124,7 +124,7 @@ export default {
     const { id, searchBy } = this.$route.query;
     this.id = +id;
     this.name = searchBy;
-    this.searchBy = searchBy ? searchBy : "熱門醫生";
+    this.searchBy = searchBy ? searchBy : '熱門醫生';
     try {
       this.loadingApi = true;
       await this.getOrderHistory();
