@@ -43,6 +43,8 @@
         </footer>
       </main>
     </nav>
+    <h4 class="mt-2">服務流程</h4>
+    <footer class="detail-footer"></footer>
   </section>
 </template>
 
@@ -116,5 +118,9 @@ export default {
     margin-bottom: 0.6rem;
     margin-left: 1rem;
   }
+}
+.detail-footer {
+  display: grid;
+  grid-template-columns: repeat(12, max-conetnet);
 }
 </style>
