@@ -6,6 +6,7 @@ let PASSWORD = "weR168@healther.dtc.tw"
 const init = {
   cancerCats:[],
   isLogin: false,
+  isApiLoading: false,
   PASSWORD,
   cancers:[],
   imgPrefix: process.env.NODE_ENV === 'production'? 'https://dtc-health.herokuapp.com' : `http://${location.hostname}:1337`,

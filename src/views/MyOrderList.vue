@@ -99,6 +99,7 @@ export default {
             : [],
       };
       try {
+        store.isApiLoading = true;
         await actions.addOrder(obj);
         Vue.$toast.success("你已預約成功");
         await this.getOrderHistoryList();
@@ -106,6 +107,7 @@ export default {
         Vue.$toast.error("order fail");
       } finally {
         sessionStorage.orderedDocPhone = "";
+        store.isApiLoading = false;
       }
     },
     async addComment(msg, userClick) {
@@ -135,10 +137,10 @@ export default {
       return store.imgPrefix + item.details.cover.url;
     },
     async getOrderHistoryList() {
-      store.isApiLoading = true;
       let qs = "orderPhoneNum_eq=" + sessionStorage.phone;
       qs += "&_sort=orderDate:desc";
       try {
+        store.isApiLoading = true;
         const { count, items } = await actions.getOrders(qs);
         qs = items.map((s) => "phone_in=" + s.doctorPhone).join("&");
         const { items: docs } = await actions.getDoctors(qs);
