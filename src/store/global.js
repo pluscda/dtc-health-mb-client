@@ -12,6 +12,7 @@ const init = {
   imgPrefix: process.env.NODE_ENV === 'production'? 'https://dtc-health.herokuapp.com' : `http://${location.hostname}:1337`,
   isDoctor: false,
   MIN_NON_CANCER_NUM: 34,
+  selectedItem:'',
 };
 export let store = Vue.observable({
   ...init,

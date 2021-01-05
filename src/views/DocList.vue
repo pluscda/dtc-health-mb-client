@@ -90,6 +90,7 @@ export default {
       return 3;
     },
     viewDetail(item) {
+      store.selectedDoctor = item;
       this.$router.push("doctordetails");
     },
     getDesc(item) {

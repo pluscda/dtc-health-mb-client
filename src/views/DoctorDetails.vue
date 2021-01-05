@@ -2,25 +2,24 @@
   <section class="dtc-detail">
     <van-nav-bar title="線上預約" left-text="返回" left-arrow @click-left="onClickLeft" />
     <main class="dtc-detail__content">
-      <img src="https://unsplash.it/80/80" class="left" />
+      <img :src="docImg" class="left" width="80" height="80" />
       <div class="right mt-2">
-        <h4>饒樹文<span style="font-size:0.9rem;display:inline-block;margin-left:10px;color:var(--bs-dark-gray)">主治醫師</span></h4>
-        <p style="font-size:13px;">三軍總醫院大腸直腸外科主治醫師</p>
+        <h4>
+          {{ doctor.name }}<span style="font-size:0.9rem;display:inline-block;margin-left:10px;color:var(--bs-dark-gray)">{{ doctor.title }}</span>
+        </h4>
+        <p style="font-size:13px;">{{ doctor.position && doctor.position.length && doctor.position[0].name }}</p>
         <p>台灣台北市</p>
       </div>
     </main>
     <main class="px-2">
-      <p style="font-size:14px;">
-        擅長: 各種癌症
-        (乳癌、婦癌、肺癌、腦癌、頭頸癌、食道癌、泌尿道腫瘤、大腸直腸癌、肝癌)之治癒性及緩和性放射治療。此外，對於最新型直線加速器，如真光刀(TrueBeam)、好神刀(Halcyon)，及新式之放射治療技術，擁有豐富的臨床治療經驗。
-      </p>
+      <p style="font-size:14px;">擅長: {{ doctor.description }}</p>
     </main>
     <nav class="how2 mt-2">
       <main class="how2-title">
         <van-icon name="vip-card" color="var(--bs-orange)" size="60px" />
         <h4 class="pt-3">線上諮詢</h4>
         <div></div>
-        <van-button round color="var(--bs-orange)" style="transform:translateY(6px)">訂閱服務2000元</van-button>
+        <van-button round color="var(--bs-orange)" style="transform:translateY(6px)">訂閱服務{{ doctor.price }}元</van-button>
         <nav class="how2-subtitle mt-2">
           <div>
             <van-icon name="medal" size="20px" color="var(--orange)" />
@@ -65,8 +64,19 @@
 </template>
 
 <script>
+import { store, mutations, actions } from "@/store/global.js";
 export default {
   name: "docdetails",
+  data() {
+    return {
+      doctor: store.selectedDoctor,
+    };
+  },
+  computed: {
+    docImg() {
+      return store.imgPrefix + this.doctor.cover.url;
+    },
+  },
   components: {},
   methods: {
     onClickLeft() {
