@@ -5,7 +5,7 @@
       <img src="https://unsplash.it/80/80" class="left" />
       <div class="right mt-2">
         <h4>饒樹文<span style="font-size:0.9rem;display:inline-block;margin-left:10px;color:var(--bs-dark-gray)">主治醫師</span></h4>
-        <p>三軍總醫院大腸直腸外科主治醫師</p>
+        <p style="font-size:13px;">三軍總醫院大腸直腸外科主治醫師</p>
         <p>台灣台北市</p>
       </div>
     </main>
