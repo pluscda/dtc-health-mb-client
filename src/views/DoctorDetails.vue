@@ -15,6 +15,9 @@
         (乳癌、婦癌、肺癌、腦癌、頭頸癌、食道癌、泌尿道腫瘤、大腸直腸癌、肝癌)之治癒性及緩和性放射治療。此外，對於最新型直線加速器，如真光刀(TrueBeam)、好神刀(Halcyon)，及新式之放射治療技術，擁有豐富的臨床治療經驗。
       </p>
     </main>
+    <nav class="how2 mt-2">
+      <main></main>
+    </nav>
   </section>
 </template>
 
@@ -51,6 +54,17 @@ export default {
   .right {
     display: flex;
     flex-direction: column;
+  }
+}
+.how2 {
+  display: grid;
+  place-items: center;
+  > main {
+    width: 97vw;
+    height: 200px;
+    background: var(--bs-light);
+    border-radius: 15px;
+    filter: drop-shadow(6px 6px 7px rgba(0, 0, 0, 0.7));
   }
 }
 </style>
