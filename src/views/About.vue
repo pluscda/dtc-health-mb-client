@@ -93,7 +93,7 @@ export default {
   display: grid;
   place-items: center;
   > main:first-child {
-    width: 97vw;
+    width: 94vw;
     height: auto;
     background-image: linear-gradient(to right, #878ede, #878ede);
     border-radius: 15px;

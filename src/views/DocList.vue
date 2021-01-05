@@ -1,5 +1,8 @@
 <template>
   <section class="doc-list pt-2">
+    <van-overlay :show="loadingApi" style="display:grid; place-items:center;z-index:9999999">
+      <van-loading type="spinner" />
+    </van-overlay>
     <header>快速找名醫</header>
     <van-search background="#1c1b7e" v-model="searchBy" shape="round" class="mx-4 mt-2" placeholder="醫院 | 醫生名 | 病名"></van-search>
 
@@ -32,6 +35,7 @@ export default {
       cat: "",
       searchBy: "",
       myPreviousOrders: [],
+      loadingApi: false,
     };
   },
   computed: {
@@ -76,6 +80,7 @@ export default {
             : [],
       };
       try {
+        this.loadingApi = true;
         await actions.addOrder(obj);
         Vue.$toast.success("你已預約成功");
         await this.getOrderHistory();
@@ -84,6 +89,7 @@ export default {
         Vue.$toast.error("order fail");
       } finally {
         sessionStorage.orderedDocPhone = "";
+        this.loadingApi = false;
       }
     },
     getBooksNum() {
@@ -120,11 +126,11 @@ export default {
     this.name = searchBy;
     this.searchBy = searchBy ? searchBy : "熱門醫生";
     try {
-      store.isApiLoading = true;
+      this.loadingApi = true;
       await this.getOrderHistory();
       await this.getDocList();
     } finally {
-      store.isApiLoading = false;
+      this.loadingApi = false;
     }
   },
   watch: {},

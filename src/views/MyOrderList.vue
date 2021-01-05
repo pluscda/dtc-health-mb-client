@@ -1,5 +1,8 @@
 <template>
   <section class="doc-list">
+    <van-overlay :show="loadingApi" style="display:grid; place-items:center;z-index:9999999">
+      <van-loading type="spinner" />
+    </van-overlay>
     <van-nav-bar title="我的預約紀錄" left-text="返回" left-arrow @click-left="$router.push('login')">
       <template #right>
         <van-tag round v-if="commentFilter" type="primary" class="ml-2" @click="commentFilter = ''">離開留言區</van-tag>
@@ -65,6 +68,7 @@ export default {
       showLeavelMsg: false,
       myMsg: "",
       price: "",
+      loadingApi: false,
     };
   },
   computed: {},
@@ -93,7 +97,7 @@ export default {
             : [],
       };
       try {
-        store.isApiLoading = true;
+        this.loadingApi = true;
         await actions.addOrder(obj);
         Vue.$toast.success("你已預約成功");
         await this.getOrderHistoryList();
@@ -101,7 +105,7 @@ export default {
         Vue.$toast.error("order fail");
       } finally {
         sessionStorage.orderedDocPhone = "";
-        store.isApiLoading = false;
+        this.loadingApi = false;
       }
     },
     async addComment(msg, userClick) {
@@ -135,7 +139,7 @@ export default {
       let qs = "orderPhoneNum_eq=" + sessionStorage.phone;
       qs += "&_sort=orderDate:desc";
       try {
-        store.isApiLoading = true;
+        this.loadingApi = true;
         const { count, items } = await actions.getOrders(qs);
         qs = items.map((s) => "phone_in=" + s.doctorPhone).join("&");
         const { items: docs } = await actions.getDoctors(qs);
@@ -143,7 +147,7 @@ export default {
         docs.forEach((s) => (items.find((s2) => s2.doctorPhone == s.phone).details = s));
         this.orders = items;
       } finally {
-        store.isApiLoading = false;
+        this.loadingApi = false;
       }
     },
   },
