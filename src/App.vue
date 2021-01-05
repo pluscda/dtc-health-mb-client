@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <van-overlay :show="loadingApi" style="display:grid; place-items:center;z-index:9999999">
+    <!-- <van-overlay :show="loadingApi" style="display:grid; place-items:center;z-index:9999999">
       <van-loading type="spinner" />
-    </van-overlay>
+    </van-overlay> -->
     <router-view></router-view>
     <van-tabbar v-model="active" style="z-index:8;">
       <van-tabbar-item icon="home-o" @click="tabClick('/home')">{{ $t("醫療首頁") }}</van-tabbar-item>
