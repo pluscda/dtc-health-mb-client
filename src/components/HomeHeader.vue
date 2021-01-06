@@ -3,8 +3,8 @@
     <main class="dtc-main-heaer">
       <div class="dtc-logo">
         {{ $t("title") }}
-        <span v-if="!myPhone" @click="$router.push('login')" style="font-size:14px;text-align:left;" class="mr-3"><i class="fas fa-sign-in-alt"></i>登入</span>
-        <span v-if="myPhone" style="font-size:13px;text-align:left;" class="mt-2">用戶: {{ myPhone }}...</span>
+        <div class="dtc-private ml-2">關於會館</div>
+        <span v-if="myPhone" style="display:inline-block;font-size:12px;text-align:left;transform:translate3d(10px,0px,0)" class="mt-2">用戶: {{ myPhone }}...</span>
       </div>
 
       <div v-if="$i18n.locale == 'zh-tw'" class="dtc-lang-switch" @click="$root.$i18n.locale = 'zh-cn'">繁</div>
@@ -80,5 +80,15 @@ export default {
   text-align: center;
   line-height: 30px;
   transform: translateX(-25px);
+}
+.dtc-private {
+  width: 60px;
+  clip-path: polygon(10% 1%, 100% 0%, 100% 99%, 10% 100%, 0% 50%);
+  background: linear-gradient(to right, #da5afa, #3570ec);
+  color: white;
+  clip-path: unset;
+  display: inline-block;
+  font-size: 12px;
+  text-align: center;
 }
 </style>
