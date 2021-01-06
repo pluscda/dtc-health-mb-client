@@ -19,7 +19,9 @@
         <van-icon name="vip-card" color="var(--bs-orange)" size="60px" />
         <h4 class="pt-3">線上諮詢</h4>
         <div></div>
-        <van-button round color="var(--bs-orange)" style="transform:translateY(6px)">訂閱服務{{ doctor.price }}元</van-button>
+        <van-button :disabled="doctor.status && doctor.status != 'finish'" round color="var(--bs-orange)" style="transform:translateY(6px)"
+          >訂閱服務{{ doctor.price }}元</van-button
+        >
         <nav class="how2-subtitle mt-2">
           <div>
             <van-icon name="medal" size="20px" color="var(--orange)" />
@@ -79,6 +81,45 @@ export default {
   },
   components: {},
   methods: {
+    async book(item) {
+      sessionStorage.orderedDocPhone = item.phone;
+      if (!sessionStorage.token) {
+        this.$router.push("/login?callback=doclist");
+        return;
+      }
+      const obj = {
+        orderPhoneNum: sessionStorage.phone,
+        paidAmount: item.price,
+        status: "waiting", // process and finish
+        orderDate: new Date().toISOString(),
+        doctorPhone: item.phone,
+        isCancer: item.cid < store.MIN_NON_CANCER_NUM ? true : false,
+        hardCopyReceived: false,
+        copySendBack: false,
+        docHasCopy: false,
+        comment:
+          item.cid < store.MIN_NON_CANCER_NUM
+            ? [
+                {
+                  docComment: "需要你的癌症報告,請你用郵件寄出",
+                  commentAt: new Date().toISOString(),
+                  rating: 0,
+                  userComment: "",
+                },
+              ]
+            : [],
+      };
+      try {
+        this.loadingApi = true;
+        await actions.addOrder(obj);
+        Vue.$toast.success("你已預約成功");
+      } catch (e) {
+        Vue.$toast.error("order fail");
+      } finally {
+        sessionStorage.orderedDocPhone = "";
+        this.loadingApi = false;
+      }
+    },
     onClickLeft() {
       this.$router.go(-1);
     },
