@@ -3,7 +3,7 @@
     <main class="dtc-main-heaer">
       <div class="dtc-logo">
         {{ $t("title") }}
-        <div class="dtc-private ml-2">關於會館</div>
+        <div class="dtc-private ml-2" @click="$router.push('about')">關於會館</div>
         <span v-if="myPhone" style="display:inline-block;font-size:12px;text-align:left;transform:translate3d(10px,0px,0)" class="mt-2">用戶: {{ myPhone }}...</span>
       </div>
 

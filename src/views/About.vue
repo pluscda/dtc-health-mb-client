@@ -1,6 +1,7 @@
 <template>
-  <section class="dtc-about mt-2">
-    <h4 style="color:#3570EC;font-size:24px;text-align:center">名醫會館館長</h4>
+  <section class="dtc-about">
+    <van-nav-bar title="關於會館" left-text="返回" left-arrow @click-left="$router.push('home')" />
+    <h4 style="color:#3570EC;font-size:24px;text-align:center" class="mt-2">名醫會館館長</h4>
 
     <div class="mt-4 head-desc">
       <img src="doctor.svg" width="126" height="126" class="head-img" />
