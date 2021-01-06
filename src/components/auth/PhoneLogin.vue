@@ -82,7 +82,6 @@ export default {
         Vue.$toast.error("請檢查驗證號碼" + e);
       } finally {
         if (sessionStorage.token && this.callback) {
-          alert(this.callback);
           this.$router.push(this.callback);
         }
       }
