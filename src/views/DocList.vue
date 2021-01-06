@@ -96,6 +96,8 @@ export default {
       return 3;
     },
     viewDetail(item) {
+      const ok = this.isOrderAble(item);
+      ok ? (item.status = "waiting") : (item.status = "finish");
       store.selectedDoctor = item;
       this.$router.push("doctordetails");
     },

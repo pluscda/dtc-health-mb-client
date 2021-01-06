@@ -22,7 +22,7 @@
         <van-icon name="vip-card" color="var(--bs-orange)" size="60px" />
         <h4 class="pt-3">線上諮詢</h4>
         <div></div>
-        <van-button @click="book(doctor)" :disabled="doctor.status && doctor.status != 'finish'" round color="var(--bs-orange)" style="transform:translateY(6px)"
+        <van-button @click="book(doctor)" v-if="doctor.status != 'finish'" round color="var(--bs-orange)" style="transform:translateY(6px)"
           >訂閱服務{{ doctor.price }}元</van-button
         >
         <nav class="how2-subtitle mt-2">
@@ -128,7 +128,9 @@ export default {
       this.$router.go(-1);
     },
   },
-  mounted() {},
+  mounted() {
+    //alert(this.doctor.status);
+  },
 };
 </script>
 
