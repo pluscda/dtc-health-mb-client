@@ -8,7 +8,7 @@
     @update:center="centerUpdate"
     @update:zoom="zoomUpdate"
     v-if="showMap"
-    style="min-height:calc(100vh - 51px);z-index:1"
+    style="min-height:calc(100vh - 51px);z-index:1;"
   >
     <l-tile-layer :url="url" :attribution2="attribution" />
     <l-control position="topright">
@@ -21,7 +21,7 @@
       </div>
     </l-control>
 
-    <l-marker v-if="!item.hidden" @click="clickItem(item)" @mouseover="clickItem(item)" v-for="(item, i) in features" :key="i" :lat-lng="item.latLng" :icon="houseMarker">
+    <l-marker @click="clickItem(item)" @mouseover="clickItem(item)" v-for="(item, i) in features" :key="i" :lat-lng="item.latLng" :icon="houseMarker">
       <l-tooltip :options="{ permanent: false, interactive: true }">{{ item.name }}</l-tooltip>
     </l-marker>
     <link
