@@ -4,7 +4,7 @@
     <van-tabbar v-model="active" style="z-index:8;">
       <van-tabbar-item icon="home-o" @click="tabClick('/home')">{{ $t("醫療首頁") }}</van-tabbar-item>
       <van-tabbar-item icon="search" @click="tabClick('/doclist')">{{ $t("找醫師") }}</van-tabbar-item>
-      <van-tabbar-item icon="bookmark-o" @click="tabClick('/gis')">地圖</van-tabbar-item>
+      <van-tabbar-item icon="bookmark-o" @click="tabClick('/gis')">找醫院</van-tabbar-item>
       <van-tabbar-item icon="setting-o" @click="tabClick('/login')">{{ $t("我的") }}</van-tabbar-item>
     </van-tabbar>
   </div>
