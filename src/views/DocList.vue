@@ -117,6 +117,10 @@ export default {
       } catch (e) {}
     },
     async getOrderHistory() {
+      if (!sessionStorage.phone) {
+        this.myPreviousOrders = [];
+        return;
+      }
       let qs = "orderPhoneNum_eq=" + sessionStorage.phone;
       const { count, items } = await actions.getOrders(qs);
       this.myPreviousOrders = items;
