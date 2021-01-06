@@ -135,6 +135,8 @@ export default {
       this.loadingApi = true;
       await this.getOrderHistory();
       await this.getDocList();
+    } catch (e) {
+      alert("error " + e);
     } finally {
       this.loadingApi = false;
     }
