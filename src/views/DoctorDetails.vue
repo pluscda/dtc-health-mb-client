@@ -1,6 +1,9 @@
 <template>
   <section class="dtc-detail">
     <van-nav-bar title="線上預約" left-text="返回" left-arrow @click-left="onClickLeft" />
+    <van-overlay :show="loadingApi" style="z-index:9999;text-align:center">
+      <van-loading type="spinner" />
+    </van-overlay>
     <main class="dtc-detail__content">
       <img :src="docImg" class="left" width="80" height="80" />
       <div class="right mt-2">
@@ -19,7 +22,7 @@
         <van-icon name="vip-card" color="var(--bs-orange)" size="60px" />
         <h4 class="pt-3">線上諮詢</h4>
         <div></div>
-        <van-button :disabled="doctor.status && doctor.status != 'finish'" round color="var(--bs-orange)" style="transform:translateY(6px)"
+        <van-button @click="book(doctor)" :disabled="doctor.status && doctor.status != 'finish'" round color="var(--bs-orange)" style="transform:translateY(6px)"
           >訂閱服務{{ doctor.price }}元</van-button
         >
         <nav class="how2-subtitle mt-2">
@@ -72,6 +75,7 @@ export default {
   data() {
     return {
       doctor: store.selectedDoctor,
+      loadingApi: false,
     };
   },
   computed: {
