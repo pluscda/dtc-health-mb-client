@@ -13,7 +13,6 @@
     <l-tile-layer :url="url" :attribution2="attribution" />
     <l-control position="topright">
       <van-button @click="goHome" size="mini" class="mr-2">HOME</van-button>
-      <b-button @click="$root.$emit('show-sidebar1')" size="sm" hidden>Show Sidebar</b-button>
     </l-control>
     <l-control position="topleft">
       <div class="expand-btn-dtx" @click="$root.$emit('show-sidebar1')">
