@@ -92,9 +92,3 @@ export default {
   text-align: center;
 }
 </style>
-
-<style>
-[href="https://leafletjs.com" ] {
-  display: none;
-}
-</style>

@@ -219,3 +219,9 @@ nav {
   }
 }
 </style>
+
+<style>
+[href="https://leafletjs.com" ] {
+  display: none;
+}
+</style>
