@@ -8,7 +8,7 @@
     @update:center="centerUpdate"
     @update:zoom="zoomUpdate"
     v-if="showMap"
-    style="border-radius:10px;min-height:calc(100vh - 80px);"
+    style="min-height:calc(100vh - 51px);z-index:1"
   >
     <l-tile-layer :url="url" :attribution2="attribution" />
     <l-control position="topright">
