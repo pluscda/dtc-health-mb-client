@@ -8,17 +8,25 @@
     @update:center="centerUpdate"
     @update:zoom="zoomUpdate"
     v-if="showMap"
-    style="min-height:calc(100vh - 51px);z-index:1;"
+    style="min-height:calc(100vh - 51px);z-index:1;position:relative;"
   >
+    <div class="sidebar-dtc" :class="showSideBar ? 'sidebar-dtc-show' : ''">
+      <span @click.stop="showSideBar = true" v-if="!showSideBar" style="display:inline-block;color:var(--gray);transform:translate3d(10px,10px,0)"
+        ><i class="fas fa-bars"></i
+      ></span>
+      <div v-show="showSideBar" @click.stop="showSideBar = false" style="font-size:24px;display:inline-block;color:var(--gray);transform:translate3d(92vw,5px,0)">
+        <i class="fas fa-times-circle"></i>
+      </div>
+    </div>
     <l-tile-layer :url="url" :attribution2="attribution" />
     <l-control position="topright">
       <van-button @click="goHome" size="mini" class="mr-2">HOME</van-button>
     </l-control>
-    <l-control position="topleft">
+    <!-- <l-control position="topleft">
       <div class="expand-btn-dtx" @click="$root.$emit('show-sidebar1')">
         <i class="fas fa-angle-right"></i>
       </div>
-    </l-control>
+    </l-control> -->
 
     <l-marker @click="clickItem(item)" @mouseover="clickItem(item)" v-for="(item, i) in features" :key="i" :lat-lng="item.latLng" :icon="houseMarker">
       <l-tooltip :options="{ permanent: false, interactive: true }">{{ item.name }}</l-tooltip>
@@ -64,6 +72,7 @@ export default {
   },
   data() {
     return {
+      showSidebar: false,
       showMakers: true,
       selectedItem: "",
       houseMarker,
@@ -217,6 +226,22 @@ nav {
     border-top: 2px solid white;
     border-right: 2px solid white;
   }
+}
+
+.sidebar-dtc {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 51px);
+  z-index: 9999;
+  background: var(--snap-blue);
+  clip-path: circle(8.6% at 0 0);
+  transition: 0.6s clip-path ease-in-out;
+}
+
+.sidebar-dtc-show {
+  clip-path: circle(165.6% at 0 0);
 }
 </style>
 
