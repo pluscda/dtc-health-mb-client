@@ -28,8 +28,16 @@
     </van-field>
     <div></div>
 
-    <main v-for="(item, i) in myOrders" :key="i" class="doc-item mt-1" v-if="item.details">
-      <van-card @click="viewDetail(item)" :price="item.details.price" currency="NT" :desc="getDesc(item)" :title="getTitle(item)" :thumb="getImgPath(item, i)">
+    <main v-for="(item, i) in myOrders" :key="i" class="doc-item mt-1" v-show="item.details">
+      <van-card
+        v-if="item.details"
+        @click="viewDetail(item)"
+        :price="item.details.price"
+        currency="NT"
+        :desc="getDesc(item)"
+        :title="getTitle(item)"
+        :thumb="getImgPath(item, i)"
+      >
         <template #tags>
           <van-tag plain type="danger">{{ $formatStatus(item.status) }}</van-tag>
           <van-tag plain type="primary" style="transform:translateX(5px)" @click="viewComment(item)">可查看留言為{{ item.comment.length }}則</van-tag>
@@ -54,20 +62,20 @@
 </template>
 
 <script>
-import Vue from 'vue';
-import { store, mutations, actions } from '@/store/global.js';
+import Vue from "vue";
+import { store, mutations, actions } from "@/store/global.js";
 
 export default {
-  name: 'login',
+  name: "login",
   data() {
     return {
       docs: [],
       skip: 0,
       orders: [],
-      commentFilter: '',
+      commentFilter: "",
       showLeavelMsg: false,
-      myMsg: '',
-      price: '',
+      myMsg: "",
+      price: "",
       loadingApi: false,
     };
   },
@@ -84,7 +92,7 @@ export default {
       const obj = {
         orderPhoneNum: sessionStorage.phone,
         paidAmount: item.details.price,
-        status: 'waiting', // process and finish
+        status: "waiting", // process and finish
         orderDate: new Date().toISOString(),
         doctorPhone: item.details.phone,
         isCancer: item.details.cid < store.MIN_NON_CANCER_NUM ? true : false,
@@ -95,10 +103,10 @@ export default {
           item.details.cid < store.MIN_NON_CANCER_NUM
             ? [
                 {
-                  docComment: '需要你的癌症報告,請你用郵件寄出',
+                  docComment: "需要你的癌症報告,請你用郵件寄出",
                   commentAt: new Date().toISOString(),
                   rating: 0,
-                  userComment: '',
+                  userComment: "",
                 },
               ]
             : [],
@@ -106,25 +114,25 @@ export default {
       try {
         this.loadingApi = true;
         await actions.addOrder(obj);
-        Vue.$toast.success('你已預約成功');
+        Vue.$toast.success("你已預約成功");
         await this.getOrderHistoryList();
       } catch (e) {
-        Vue.$toast.error('order fail');
+        Vue.$toast.error("order fail");
       } finally {
-        sessionStorage.orderedDocPhone = '';
+        sessionStorage.orderedDocPhone = "";
         this.loadingApi = false;
       }
     },
     async addComment(msg, userClick) {
       if (!msg && !userClick) {
-        this.myMsg = '';
+        this.myMsg = "";
         this.showLeavelMsg = true;
       } else if (msg) {
-        const obj = { docComment: '', commentAt: new Date().toISOString(), rating: 0, userComment: msg };
+        const obj = { docComment: "", commentAt: new Date().toISOString(), rating: 0, userComment: msg };
         this.myOrders[0].comment.unshift(obj);
         await actions.updateOrder(this.myOrders[0]);
         this.orders = [...this.orders];
-        this.commentFilter = '';
+        this.commentFilter = "";
         this.showLeavelMsg = false;
       }
     },
@@ -135,29 +143,29 @@ export default {
       this.commentFilter = item.doctorPhone;
     },
     getDesc(item) {
-      return '專長: ' + item.details.description;
+      return "專長: " + item.details.description;
     },
     getTitle(item) {
-      return item.details.name + ' | ' + item.details.hospital + ' | ' + item.details.title + ' @ ' + this.$twDate(item.orderDate) + ' 預約成功';
+      return item.details.name + " | " + item.details.hospital + " | " + item.details.title + " @ " + this.$twDate(item.orderDate) + " 預約成功";
     },
     getImgPath(item, i) {
       return store.imgPrefix + item.details.cover.url;
     },
     async getOrderHistoryList() {
       this.orders = [];
-      let qs = 'orderPhoneNum_eq=' + sessionStorage.phone;
-      qs += '&_sort=orderDate:desc';
+      let qs = "orderPhoneNum_eq=" + sessionStorage.phone;
+      qs += "&_sort=orderDate:desc";
       try {
         this.loadingApi = true;
         const { count, items } = await actions.getOrders(qs);
-        const mySet = new Set(items.map((s) => 'phone_in=' + s.doctorPhone));
-        qs = [...mySet].join('&');
+        const mySet = new Set(items.map((s) => "phone_in=" + s.doctorPhone));
+        qs = [...mySet].join("&");
         const { items: docs } = await actions.getDoctors(qs);
         // attach the doctor detail into each order here
         docs.forEach((s) => (items.find((s2) => s2.doctorPhone == s.phone).details = s));
         this.orders = items;
       } catch (e) {
-        alert('error getOrderHistoryList: ' + e);
+        alert("error getOrderHistoryList: " + e);
       } finally {
         this.loadingApi = false;
       }
