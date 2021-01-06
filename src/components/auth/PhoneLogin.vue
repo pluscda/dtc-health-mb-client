@@ -125,7 +125,7 @@ export default {
     },
   },
   mounted() {
-    const qs = location.search ? location.search.replace("?", "") : "";
+    const qs = location.href.split("?")[1];
     const { callback } = queryString.parse(qs);
     this.callback = callback;
   },
