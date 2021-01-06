@@ -24,6 +24,7 @@
 
 <script>
 import { store, mutations, actions } from "@/store/global.js";
+import queryString from "qs";
 import Vue from "vue";
 export default {
   name: "login",
@@ -124,7 +125,9 @@ export default {
     },
   },
   mounted() {
-    // alert("0928012588".length);
+    const qs = location.search ? location.search.replace("?", "") : "";
+    const { callback } = queryString.parse(qs);
+    this.callback = callback;
   },
 };
 </script>
