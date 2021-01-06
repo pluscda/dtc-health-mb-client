@@ -49,7 +49,7 @@ export default {
     },
     getWaitStatus(item) {
       const status = this.unFinishOrders.find((s) => s.orderPhoneNum == sessionStorage.phone && s.doctorPhone == item.phone).status;
-      return status == "process" ? "狀態為醫師處理中" : "狀態為等待醫師回覆中";
+      return status == "process" ? "醫師處理中" : "等待醫師回覆中";
     },
     async book(item) {
       sessionStorage.orderedDocPhone = item.phone;
