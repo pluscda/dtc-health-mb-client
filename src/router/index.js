@@ -26,6 +26,11 @@ const routes = [
     component: () => import("../views/DoctorDetails.vue"),
   },
   {
+    path: '/gis',
+    name: 'gis',
+    component: () => import("../views/Gis.vue"),
+  },
+  {
     path: '/canceratab',
     name: 'canceratab',
     component: () => import("../components/CancerAtAb.vue"),

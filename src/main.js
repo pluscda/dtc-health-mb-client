@@ -15,6 +15,16 @@ import "vue-toast-notification/dist/theme-default.css";
 import './registerServiceWorker'
 //import 'vue-toast-notification/dist/theme-sugar.css';
 
+/* map */
+import { LMap, LTileLayer, LMarker } from "vue2-leaflet";
+import "leaflet/dist/leaflet.css";
+import "leaflet-extra-markers/dist/js/leaflet.extra-markers.js";
+import "leaflet-extra-markers/dist/css/leaflet.extra-markers.min.css";
+
+Vue.component("l-map", LMap);
+Vue.component("l-tile-layer", LTileLayer);
+Vue.component("l-marker", LMarker);
+
 Vue.use(VueToast, { position: "top" });
 
 Vue.config.productionTip = false

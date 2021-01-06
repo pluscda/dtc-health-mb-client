@@ -43,6 +43,9 @@ export let actions = {
     store.cancerCats = cats;
     return cats;
   },
+  async getGisList(qs){
+    return await axios.get('gis?' + qs);
+  },
   async getDoctors(qs){
     const url = "doctors?" + qs;
     const url2 = "doctors/count?" + qs;
