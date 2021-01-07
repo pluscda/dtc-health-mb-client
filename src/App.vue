@@ -20,6 +20,11 @@ import { store, mutations, actions } from "@/store/global.js";
 import Vue from "vue";
 import GISJSON from "@/assets/gis.json";
 const mySet = new Set(GISJSON.map((s) => s.address.slice(0, 6)));
+
+// GISJSON.map((s) => s.address.slice(0, 6)).reduce((acc, start) => {
+//   acc[start] ? (acc[start] = acc[start] + 1) : (acc[start] = 1);
+// }, {});
+
 const countries = [...mySet].map((s) => ({
   name: s,
   icon: "link",

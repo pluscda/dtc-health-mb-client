@@ -104,7 +104,7 @@ export default {
     },
     clickItem(item) {
       this.selectedItem = item;
-      alert(JSON.stringify(item));
+      //alert(JSON.stringify(item));
     },
     addZoomControl() {
       if (this.mapObj.zoomControl) {
@@ -115,7 +115,7 @@ export default {
     },
     async init(num) {
       this.features = [];
-      let features = GISJSON;
+      let features = GISJSON.filter((s) => store.hotMapIds.find((s2) => s2 == +s.myID));
       features = this.shuuffleArray(features);
       store.totalHots = features.length;
       features.forEach((s) => {
