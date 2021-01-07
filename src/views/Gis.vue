@@ -106,10 +106,11 @@ export default {
     },
     async init(num) {
       this.features = [];
-      let arr = await actions.getGisList("_limit=502");
-      arr = arr.filter((s) => s.lat);
-      console.log(JSON.stringify(arr));
+      // let arr = await actions.getGisList("_limit=502");
+      // arr = arr.filter((s) => s.lat);
+
       let features = GISJSON;
+      store.totalHots = features.length;
       features = features.filter((s) => !isNaN(s.lat) && s.name);
       features.forEach((s) => {
         s.latLng = latLng(s.lat, s.lon);

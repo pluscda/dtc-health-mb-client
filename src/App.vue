@@ -2,7 +2,7 @@
   <div id="app">
     <router-view></router-view>
     <van-tabbar v-model="active" style="z-index:8;">
-      <nav class="gis-btn" v-if="active == 2">
+      <nav class="gis-btn" v-if="active == 2" :data-msg="totalHots">
         <img src="pen.svg" />
       </nav>
       <van-tabbar-item icon="wap-home-o" @click="tabClick('/home')">{{ $t("醫療首頁") }}</van-tabbar-item>
@@ -22,11 +22,15 @@ export default {
   data() {
     return {
       active: 0,
+      locs: [],
     };
   },
   computed: {
     isLogin() {
       return sessionStorage.token || store.isLogin;
+    },
+    totalHots() {
+      return `共${store.totalHots}家`;
     },
   },
   methods: {
@@ -123,5 +127,17 @@ body {
   background: linear-gradient(to right, #ae15d4, #3570ec);
   filter: drop-shadow(1px 1px 2px rgba(#3570ec, 0.7));
   opacity: 0.7;
+  &::after {
+    position: absolute;
+    content: attr(data-msg);
+    color: black;
+    font-size: 12px;
+    bottom: -37px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    display: block;
+    margin-top: 10px;
+  }
 }
 </style>
