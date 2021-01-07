@@ -19,15 +19,19 @@
 import { store, mutations, actions } from "@/store/global.js";
 import Vue from "vue";
 import GISJSON from "@/assets/gis.json";
-const mySet = new Set(GISJSON.map((s) => s.address.slice(0, 6)));
-
-// GISJSON.map((s) => s.address.slice(0, 6)).reduce((acc, start) => {
-//   acc[start] ? (acc[start] = acc[start] + 1) : (acc[start] = 1);
-// }, {});
+let features = GISJSON.filter((s) => store.hotMapIds.find((s2) => s2 == +s.myID));
+const mySet = new Set(features.map((s) => s.address.slice(0, 3)));
+const acc = {};
+features.reduce((_, obj) => {
+  let str = obj.address.slice(0, 3);
+  acc[str] ? (acc[str] += 1) : (acc[str] = 1);
+  console.log(obj.address.slice(0, 3));
+});
 
 const countries = [...mySet].map((s) => ({
   name: s,
-  icon: "link",
+  icon: "https://img.yzcdn.cn/vant/custom-icon-light.png",
+  description: acc[s],
 }));
 
 export default {
@@ -35,7 +39,7 @@ export default {
   data() {
     return {
       searchHots: false,
-      gisOptions: countries,
+      gisOptions: [countries.slice(0, 5), countries.slice(5, 5 + 5), countries.slice(15, 15 + 5)],
       active: 0,
       locs: [],
       name: "",
