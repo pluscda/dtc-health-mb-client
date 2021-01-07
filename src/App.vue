@@ -2,7 +2,9 @@
   <div id="app">
     <router-view></router-view>
     <van-tabbar v-model="active" style="z-index:8;">
-      <nav class="gis-btn">+</nav>
+      <nav class="gis-btn" v-if="active == 2">
+        <img src="pen.svg" />
+      </nav>
       <van-tabbar-item icon="wap-home-o" @click="tabClick('/home')">{{ $t("醫療首頁") }}</van-tabbar-item>
       <van-tabbar-item icon="search" @click="tabClick('/doclist')">{{ $t("找醫師") }}</van-tabbar-item>
       <van-tabbar-item icon="bookmark-o" @click="tabClick('/gis')">找醫院</van-tabbar-item>
