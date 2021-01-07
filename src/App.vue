@@ -2,7 +2,7 @@
   <div id="app">
     <router-view></router-view>
     <van-popup v-model="showGisPopup" position="bottom">
-      <van-picker :title="pickName" show-toolbar :columns="columns" @confirm="onConfirm" @cancel="onCancel" @change="onChange" />
+      <van-picker :title="pickName" show-toolbar :columns="columns" @confirm="onConfirm" @cancel="showGisPopup = false" />
     </van-popup>
 
     <van-share-sheet v-model="showShareSheet" title="用地圖找醫院" :options="gisOptions" @select="onSelectGis" :cancel-text="cancel" />
@@ -59,6 +59,9 @@ export default {
     },
   },
   methods: {
+    onConfirm(value, index) {
+      //
+    },
     openGisOps() {
       this.showShareSheet = true;
     },
