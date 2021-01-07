@@ -12,7 +12,7 @@
 <script>
 import { store, mutations, actions } from "@/store/global.js";
 const strs = ["食道癌", "肺癌", "乳癌"];
-const items = ["thumbnail_shutterstock_1511820146_889e63f558.jpg", "thumbnail_59fad74a620f2_6a1a6ee578.jpg", "thumbnail_22741_a3c56a949c.jpg"].map((s, i) => ({
+const items = ["食道癌.png", "肺癌.png", "乳癌.png"].map((s, i) => ({
   src: s,
   text: strs[i],
 }));
