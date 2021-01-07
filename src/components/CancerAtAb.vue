@@ -3,7 +3,7 @@
     <van-nav-bar title="腹部" left-text="返回" left-arrow @click-left="onClickLeft" @click-right="onClickRight" />
     <nav class="grid-2-img">
       <div v-for="(item, i) in items" :key="i" :data-msg="item.text" @click="$router.push(`doclist?searchBy=${item.text}`)">
-        <img :src="item.src + '.jpg'" with="245" height="150" :alt="item.text" />
+        <img :src="item.src + '.png'" with="245" height="150" :alt="item.text" />
       </div>
     </nav>
   </section>
@@ -12,7 +12,7 @@
 <script>
 import { store, mutations, actions } from "@/store/global.js";
 const strs = ["肝癌", "膽管癌", "膽囊癌", "結腸癌", "胃癌", "胰臟癌"];
-const items = ["150 (17)", "150 (3)", "150 (4)", "150 (5)", "150 (6)", "150"].map((s, i) => ({
+const items = ["肝癌", "膽管癌", "膽囊癌", "結腸癌", "胃癌", "胰臟癌"].map((s, i) => ({
   src: s,
   text: strs[i],
 }));
