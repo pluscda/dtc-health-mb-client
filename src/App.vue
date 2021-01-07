@@ -2,7 +2,7 @@
   <div id="app">
     <router-view></router-view>
 
-    <van-share-sheet v-model="searchHots" title="用地圖找醫院" :options="options" @select="onSelectGis" :cancel-text="cancel" />
+    <van-share-sheet v-model="searchHots" title="用地圖找醫院" :options="gisOptions" @select="onSelectGis" :cancel-text="cancel" />
     <van-tabbar v-model="active" style="z-index:8;">
       <nav class="gis-btn" v-if333="active == 2" :data-msg="totalHots" @click="searchHots = true">
         <img src="pen.svg" />
@@ -24,12 +24,13 @@ const countries = [...mySet].map((s) => ({
   name: s,
   icon: "link",
 }));
+const all = [{ name: "全台", icon: "link" }];
 export default {
   name: "app",
   data() {
     return {
       searchHots: false,
-      options: countries,
+      gisOptions: [all, countries],
       active: 0,
       locs: [],
       cancel: "確定",
@@ -46,7 +47,7 @@ export default {
   methods: {
     onSelectGis(option) {
       if (option.name == "台北市") {
-        this.options = [...window.taipeis].map((s) => ({
+        this.gisOptions = [...window.taipeis].map((s) => ({
           name: s,
           icon: "link",
         }));
