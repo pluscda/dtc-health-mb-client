@@ -5,7 +5,7 @@
       <van-picker :title="pickName" show-toolbar :columns="columns" @confirm="onConfirm" @cancel="showGisPopup = false" />
     </van-popup>
 
-    <van-share-sheet v-model="showShareSheet" title="用地圖找醫院" :options="gisOptions" @select="onSelectGis" :cancel-text="cancel" />
+    <van-share-sheet v-model="showShareSheet" title="用地圖找名醫會館相關醫院" :options="gisOptions" @select="onSelectGis" :cancel-text="cancel" />
     <van-tabbar v-model="active" style="z-index:8;">
       <nav class="gis-btn" v-if="active == 2" :data-msg="totalHots" @click="openGisOps">
         <img src="pen.svg" />
