@@ -14,7 +14,7 @@
     <l-control position="topright">
       <van-button @click="goHome" size="mini" class="mr-2">HOME</van-button>
     </l-control>
-    <l-marker @click="clickItem(item)" v-for="(item, i) in features.slice(0, 2)" :key="i" :lat-lng="item.latLng" :icon="houseMarker">
+    <l-marker @click="clickItem(item)" v-for="(item, i) in features.slice(0, 1)" :key="i" :lat-lng="item.latLng" :icon="houseMarker">
       <l-tooltip :options="{ permanent: true, interactive: true }">{{ item.name }}</l-tooltip>
     </l-marker>
     <link
