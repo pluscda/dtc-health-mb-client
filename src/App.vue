@@ -1,8 +1,11 @@
 <template>
   <div id="app">
     <router-view></router-view>
+    <van-popup v-model="showGisPopup" position="bottom">
+      <van-picker :title="pickName" show-toolbar :columns="columns" @confirm="onConfirm" @cancel="onCancel" @change="onChange" />
+    </van-popup>
 
-    <van-share-sheet v-model="searchHots" title="用地圖找醫院" :options="gisOptions" @select="onSelectGis" :cancel-text="cancel" />
+    <van-share-sheet v-model="showShareSheet" title="用地圖找醫院" :options="gisOptions" @select="onSelectGis" :cancel-text="cancel" />
     <van-tabbar v-model="active" style="z-index:8;">
       <nav class="gis-btn" v-if333="active == 2" :data-msg="totalHots" @click="openGisOps">
         <img src="pen.svg" />
@@ -38,24 +41,32 @@ export default {
   name: "app",
   data() {
     return {
-      searchHots: false,
+      showShareSheet: false,
       gisOptions: [countries.slice(0, 5), countries.slice(5, 5 + 5), countries.slice(15, 1000)],
       active: 0,
       locs: [],
       name: "",
+      columns: [],
+      showGisPopup: false,
     };
   },
   computed: {
     isLogin() {
       return sessionStorage.token || store.isLogin;
     },
+    pickName() {
+      return `找${this.name}醫院`;
+    },
   },
   methods: {
     openGisOps() {
-      this.searchHots = true;
+      this.showShareSheet = true;
     },
     onSelectGis(option) {
       this.name = option.name;
+      this.showShareSheet = false;
+      this.columns = features.filter((s) => s.address.includes(option.name)).map((s) => s.name);
+      this.showGisPopup = true;
     },
     tabClick(name) {
       window.scrollTo({
