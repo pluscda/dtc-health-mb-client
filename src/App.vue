@@ -60,7 +60,8 @@ export default {
   },
   methods: {
     onConfirm(value, index) {
-      //
+      this.showGisPopup = false;
+      this.$root.$emit("gis-name", value);
     },
     openGisOps() {
       this.showShareSheet = true;

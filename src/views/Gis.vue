@@ -149,11 +149,9 @@ export default {
   },
   mounted() {
     this.init();
-    const el = document.getElementById("big-dtx-map");
     this.$nextTick(() => this.goHome());
-    this.$root.$on("show-sidebar1", () => {
-      this.show = true;
-      //this.title = item.properties.name;
+    this.$root.$on("gis-name", (v) => {
+      this.features = GISJSON.filter((s) => s.name == v);
     });
   },
 };
