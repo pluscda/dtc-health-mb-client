@@ -4,7 +4,7 @@
 
     <van-share-sheet v-model="searchHots" title="用地圖找醫院" :options="gisOptions" @select="onSelectGis" :cancel-text="cancel" />
     <van-tabbar v-model="active" style="z-index:8;">
-      <nav class="gis-btn" v-if333="active == 2" :data-msg="totalHots" @click="restGisOps">
+      <nav class="gis-btn" v-if333="active == 2" :data-msg="totalHots" @click="openGisOps">
         <img src="pen.svg" />
       </nav>
       <van-tabbar-item icon="wap-home-o" @click="tabClick('/home')">{{ $t("醫療首頁") }}</van-tabbar-item>
@@ -19,44 +19,34 @@
 import { store, mutations, actions } from "@/store/global.js";
 import Vue from "vue";
 import GISJSON from "@/assets/gis.json";
-const mySet = new Set(GISJSON.map((s) => s.address.slice(0, 3)));
+const mySet = new Set(GISJSON.map((s) => s.address.slice(0, 6)));
 const countries = [...mySet].map((s) => ({
   name: s,
   icon: "link",
 }));
-const all = [{ name: "全台", icon: "link" }];
+
 export default {
   name: "app",
   data() {
     return {
       searchHots: false,
-      gisOptions: [all, countries],
+      gisOptions: countries,
       active: 0,
       locs: [],
-      cancel: "確定",
+      name: "",
     };
   },
   computed: {
     isLogin() {
       return sessionStorage.token || store.isLogin;
     },
-    totalHots() {
-      return `共${store.totalHots}家`;
-    },
   },
   methods: {
-    restGisOps() {
-      this.gisOptions = [all, countries];
+    openGisOps() {
       this.searchHots = true;
     },
     onSelectGis(option) {
-      if (option.name == "台北市") {
-        this.gisOptions = [...window.taipeis].map((s) => ({
-          name: s,
-          icon: "link",
-        }));
-      }
-      this.showShare = false;
+      this.name = option.name;
     },
     tabClick(name) {
       window.scrollTo({

@@ -14,8 +14,8 @@
     <l-control position="topright">
       <van-button @click="goHome" size="mini" class="mr-2">HOME</van-button>
     </l-control>
-    <l-marker @click="clickItem(item)" @mouseover="clickItem(item)" v-for="(item, i) in features" :key="i" :lat-lng="item.latLng" :icon="houseMarker">
-      <l-tooltip :options="{ permanent: false, interactive: true }">{{ item.name }}</l-tooltip>
+    <l-marker @click="clickItem(item)" v-for="(item, i) in features.slice(0, 2)" :key="i" :lat-lng="item.latLng" :icon="houseMarker">
+      <l-tooltip :options="{ permanent: true, interactive: true }">{{ item.name }}</l-tooltip>
     </l-marker>
     <link
       rel="stylesheet"
@@ -93,9 +93,18 @@ export default {
     },
   },
   methods: {
+    shuuffleArray(array) {
+      // Create a copy of the original array to be randomized
+      let shuffle = [...array];
+      // Defining function returning random value from i to N
+      const getRandomValue = (i, N) => Math.floor(Math.random() * (N - i) + i);
+      // Shuffle a pair of two elements at random position j
+      shuffle.forEach((elem, i, arr, j = getRandomValue(i, arr.length)) => ([arr[i], arr[j]] = [arr[j], arr[i]]));
+      return shuffle;
+    },
     clickItem(item) {
       this.selectedItem = item;
-      this.$root.$emit("show-sidebar1", item);
+      alert(JSON.stringify(item));
     },
     addZoomControl() {
       if (this.mapObj.zoomControl) {
@@ -107,37 +116,16 @@ export default {
     async init(num) {
       this.features = [];
       let features = GISJSON;
+      features = this.shuuffleArray(features);
       store.totalHots = features.length;
-      features = features.filter((s) => !isNaN(s.lat) && s.name);
       features.forEach((s) => {
         s.latLng = latLng(s.lat, s.lon);
       });
       this.features = [...features];
       this.showMap = true;
-      //alert(L.control.sidebar);
       this.$nextTick(() => {
         this.mapObj = this.$refs.myMapRef.mapObject;
         this.addZoomControl();
-      });
-      this.$root.$on("slidebar1-home", () => {
-        this.title = "培育學校";
-      });
-      this.$root.$on("sidebar1-title-update", (title) => {
-        if (title != "全部") {
-          this.features.forEach((s) => (s.hidden = true));
-          const ret = this.features.find((s) => title == s.properties.name);
-          if (ret) {
-            let Query = new TGOS.TGAttriQuery();
-            Query.identify(TGOS.TGMapServiceId.SCHOOL, TGOS.TGMapId.SCHOOL, { county: "", town: "", keyword: title }, TGOS.TGCoordSys.EPSG3826, function(result, status) {
-              ret.latLng = latLng(result.fieldAttr[0][17], result.fieldAttr[0][16]);
-            });
-            ret.hidden = false;
-          }
-        } else {
-          this.features.forEach((s) => (s.hidden = false));
-        }
-        this.features = [...this.features];
-        // console.log(this.features);
       });
     },
     goHome() {
