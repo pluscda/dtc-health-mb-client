@@ -39,7 +39,7 @@ export default {
   data() {
     return {
       searchHots: false,
-      gisOptions: [countries.slice(0, 5), countries.slice(5, 5 + 5), countries.slice(15, 15 + 5)],
+      gisOptions: [countries.slice(0, 5), countries.slice(5, 5 + 5), countries.slice(15, 1000)],
       active: 0,
       locs: [],
       name: "",
