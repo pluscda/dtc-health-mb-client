@@ -4,7 +4,7 @@
 
     <van-share-sheet v-model="searchHots" title="用地圖找醫院" :options="gisOptions" @select="onSelectGis" :cancel-text="cancel" />
     <van-tabbar v-model="active" style="z-index:8;">
-      <nav class="gis-btn" v-if333="active == 2" :data-msg="totalHots" @click="searchHots = true">
+      <nav class="gis-btn" v-if333="active == 2" :data-msg="totalHots" @click="restGisOps">
         <img src="pen.svg" />
       </nav>
       <van-tabbar-item icon="wap-home-o" @click="tabClick('/home')">{{ $t("醫療首頁") }}</van-tabbar-item>
@@ -45,6 +45,10 @@ export default {
     },
   },
   methods: {
+    restGisOps() {
+      this.gisOptions = [all, countries];
+      this.searchHots = true;
+    },
     onSelectGis(option) {
       if (option.name == "台北市") {
         this.gisOptions = [...window.taipeis].map((s) => ({
