@@ -1,6 +1,6 @@
 <template>
   <section class="dtc-head-cancer">
-    <van-nav-bar title="胸部" left-text="返回" left-arrow @click-left="onClickLeft" @click-right="onClickRight" />
+    <van-nav-bar title="胸部" left-text="返回" left-arrow @click-left="onClickLeft" />
     <nav class="grid-2-img">
       <div v-for="(item, i) in items" :key="i" :data-msg="item.text" @click="$router.push(`doclist?searchBy=${item.text}`)">
         <img :src="item.src" with="245" height="150" alt="abc" />
