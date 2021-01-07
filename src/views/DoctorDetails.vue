@@ -10,7 +10,7 @@
         <h4>
           {{ doctor.name }}<span style="font-size:0.9rem;display:inline-block;margin-left:10px;color:var(--bs-dark-gray)">{{ doctor.title }}</span>
         </h4>
-        <p style="font-size:13px;">{{ doctor.position && doctor.position.length && doctor.position[0].name }}</p>
+        <p style="font-size:13px;">{{ doctor.hospital || (doctor.position && doctor.position.length && doctor.position[0].name) }}</p>
         <p>台灣台北市</p>
       </div>
     </main>
