@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <div v-if="gisInfo" class="gis-info">{{ this.gisInfo }}</div>
+
     <router-view></router-view>
     <van-popup v-model="showGisPopup" position="bottom">
       <van-picker :title="pickName" show-toolbar :columns="columns" @confirm="onConfirm" @cancel="showGisPopup = false" />
@@ -48,6 +50,7 @@ export default {
       name: "",
       columns: [],
       showGisPopup: false,
+      gisInfo: "",
     };
   },
   computed: {
@@ -61,6 +64,8 @@ export default {
   methods: {
     onConfirm(value, index) {
       this.showGisPopup = false;
+      const { address, phone } = GISJSON.find((s) => s.name == value);
+      this.gisInfo = phone ? `${address} / ${phone}` : address;
       this.$root.$emit("gis-name", value);
     },
     openGisOps() {
@@ -83,6 +88,7 @@ export default {
   mounted() {},
   watch: {
     $route(to, from) {
+      this.gisInfo = "";
       if (to.path.includes("home")) {
         this.active = 0;
       } else if (to.path.includes("doclist")) {
@@ -177,5 +183,17 @@ body {
     display: block;
     margin-top: 10px;
   }
+}
+.gis-info {
+  position: fixed;
+  bottom: 90px;
+  left: 0;
+  width: 100vw;
+  padding: 3px;
+  background: linear-gradient(to right, #ae15d4, #3570ec);
+  color: white;
+  text-align: center;
+  font-size: 12px;
+  z-index: 99999;
 }
 </style>
