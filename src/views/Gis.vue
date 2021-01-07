@@ -15,7 +15,7 @@
       <van-button @click="goHome" size="mini" class="mr-2">HOME</van-button>
     </l-control>
     <l-marker @click="clickItem(item)" v-for="(item, i) in features.slice(0, 1)" :key="i" :lat-lng="item.latLng" :icon="houseMarker">
-      <l-tooltip :options="{ permanent: true, interactive: true }">{{ item.name }}</l-tooltip>
+      <l-tooltip :options="{ permanent: true, interactive: false, direction: 'bottom' }">{{ item.name }}</l-tooltip>
     </l-marker>
     <link
       rel="stylesheet"
@@ -104,7 +104,7 @@ export default {
     },
     clickItem(item) {
       this.selectedItem = item;
-      //alert(JSON.stringify(item));
+      this.$router.push("doclist");
     },
     addZoomControl() {
       if (this.mapObj.zoomControl) {
@@ -117,7 +117,6 @@ export default {
       this.features = [];
       let features = GISJSON.filter((s) => store.hotMapIds.find((s2) => s2 == +s.myID));
       features = this.shuuffleArray(features);
-      store.totalHots = features.length;
       features.forEach((s) => {
         s.latLng = latLng(s.lat, s.lon);
       });
@@ -152,7 +151,9 @@ export default {
     this.$nextTick(() => this.goHome());
     this.$root.$on("gis-name", (v) => {
       this.features = GISJSON.filter((s) => s.name == v);
-      this.$refs.myMapRef.mapObject.setView([this.features[0].lat, this.features[0].lon], 12.4);
+      requestAnimationFrame(() => {
+        this.$refs.myMapRef.mapObject.setView([this.features[0].lat, this.features[0].lon], 12.4);
+      });
     });
   },
 };
