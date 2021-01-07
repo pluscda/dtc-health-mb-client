@@ -10,24 +10,10 @@
     v-if="showMap"
     style="min-height:calc(100vh - 51px);z-index:1;position:relative;"
   >
-    <div class="sidebar-dtc" :class="showSideBar ? 'sidebar-dtc-show' : ''">
-      <span @click.stop="showSideBar = true" v-if="!showSideBar" style="display:inline-block;color:var(--gray);transform:translate3d(10px,10px,0)"
-        ><i class="fas fa-bars"></i
-      ></span>
-      <div v-show="showSideBar" @click.stop="showSideBar = false" style="font-size:24px;display:inline-block;color:var(--gray);transform:translate3d(92vw,5px,0)">
-        <i class="fas fa-times-circle"></i>
-      </div>
-    </div>
     <l-tile-layer :url="url" :attribution2="attribution" />
     <l-control position="topright">
       <van-button @click="goHome" size="mini" class="mr-2">HOME</van-button>
     </l-control>
-    <!-- <l-control position="topleft">
-      <div class="expand-btn-dtx" @click="$root.$emit('show-sidebar1')">
-        <i class="fas fa-angle-right"></i>
-      </div>
-    </l-control> -->
-
     <l-marker @click="clickItem(item)" @mouseover="clickItem(item)" v-for="(item, i) in features" :key="i" :lat-lng="item.latLng" :icon="houseMarker">
       <l-tooltip :options="{ permanent: false, interactive: true }">{{ item.name }}</l-tooltip>
     </l-marker>
@@ -83,14 +69,14 @@ export default {
       popOptions,
       COUNTYNAME: "",
       clrIdx: 0,
-      zoom: 8,
-      center: latLng(23.6, 119.26),
+      zoom: 7.4,
+      center: latLng(23.5, 120.74739),
       url: "http://wmts.nlsc.gov.tw/wmts/EMAP6_OPENDATA/default/EPSG:3857/{z}/{y}/{x}",
 
-      withPopup: latLng(25, 121.74739),
-      withTooltip: latLng(22, 121.94739),
-      currentZoom: 8,
-      currentCenter: latLng(23.6, 119.26),
+      withPopup: latLng(23.6, 120.74739),
+      withTooltip: latLng(23.6, 120.74739),
+      currentZoom: 7.4,
+      currentCenter: latLng(23.6, 120.74739),
       showParagraph: false,
       mapOptions: {
         // zoomSnap: 0.2,
