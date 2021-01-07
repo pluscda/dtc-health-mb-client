@@ -4,24 +4,23 @@ import "firebase/auth";
 // remove hard coded password here; hide the password in server side 
 let PASSWORD = "weR168@healther.dtc.tw"
 let hotMapIds = [3,4,8,12,18,19,26,28,30,31,33];
-let numStr = "34,38,41,49,56,67,89,95";
-numStr += "98,99,104,111,115,118,123";
-numStr += "124,157,158,186,197,198";
-numStr += "211,226,238,245,247,275";
-numStr += "283,293,313,333,335,336";
-numStr += "337,344,345,346,349";
-numStr += "351,356,359,360,365";
-numStr += "370,371,376,379";
-numStr += "380,382,385,390,392";
-numStr += "400,429,434,436,440";
-numStr += "441,443,444,449";
-numStr += "451,460,462";
-numStr += "467,478,480,481,482";
-numStr += "483,484,486,487,493,494";
+let numStr = "34,38,41,49,56,67,89,95,";
+numStr += "98,99,104,111,115,118,123,";
+numStr += "124,157,158,186,197,198,";
+numStr += "211,226,238,245,247,275,";
+numStr += "283,293,313,333,335,336,";
+numStr += "337,344,345,346,349,";
+numStr += "351,356,359,360,365,";
+numStr += "370,371,376,379,";
+numStr += "380,382,385,390,392,";
+numStr += "400,429,434,436,440,";
+numStr += "441,443,444,449,";
+numStr += "451,460,462,";
+numStr += "467,478,480,481,482,";
+numStr += "483,484,486,487,493,494,";
 numStr += "496,498,500,501";
 
 hotMapIds = [...hotMapIds, ...numStr.split(",")];
-alert(hotMapIds.length)
 const init = {
   hotMapIds,
   cancerCats:[],
