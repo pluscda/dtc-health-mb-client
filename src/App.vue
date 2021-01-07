@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <router-view></router-view>
+
+    <van-share-sheet v-model="searchHots" title="用地圖找醫院" :options="options" @select="onSelectGis" :cancel-text="cancel" />
     <van-tabbar v-model="active" style="z-index:8;">
-      <nav class="gis-btn" v-if="active == 2" :data-msg="totalHots">
+      <nav class="gis-btn" v-if333="active == 2" :data-msg="totalHots" @click="searchHots = true">
         <img src="pen.svg" />
       </nav>
       <van-tabbar-item icon="wap-home-o" @click="tabClick('/home')">{{ $t("醫療首頁") }}</van-tabbar-item>
@@ -16,13 +18,21 @@
 <script>
 import { store, mutations, actions } from "@/store/global.js";
 import Vue from "vue";
-
+import GISJSON from "@/assets/gis.json";
+const mySet = new Set(GISJSON.map((s) => s.address.slice(0, 3)));
+const countries = [...mySet].map((s) => ({
+  name: s,
+  icon: "link",
+}));
 export default {
   name: "app",
   data() {
     return {
+      searchHots: false,
+      options: countries,
       active: 0,
       locs: [],
+      cancel: "確定",
     };
   },
   computed: {
@@ -34,6 +44,15 @@ export default {
     },
   },
   methods: {
+    onSelectGis(option) {
+      if (option.name == "台北市") {
+        this.options = [...window.taipeis].map((s) => ({
+          name: s,
+          icon: "link",
+        }));
+      }
+      this.showShare = false;
+    },
     tabClick(name) {
       window.scrollTo({
         top: 0,
