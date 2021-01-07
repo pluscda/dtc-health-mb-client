@@ -2,6 +2,7 @@
   <div id="app">
     <router-view></router-view>
     <van-tabbar v-model="active" style="z-index:8;">
+      <nav class="gis-btn">+</nav>
       <van-tabbar-item icon="wap-home-o" @click="tabClick('/home')">{{ $t("醫療首頁") }}</van-tabbar-item>
       <van-tabbar-item icon="search" @click="tabClick('/doclist')">{{ $t("找醫師") }}</van-tabbar-item>
       <van-tabbar-item icon="bookmark-o" @click="tabClick('/gis')">找醫院</van-tabbar-item>
@@ -101,5 +102,24 @@ body {
 .page-view {
   min-height: 50px;
   height: 50px;
+}
+.gis-btn {
+  position: absolute;
+  display: block;
+  top: 0;
+  margin-top: -8px;
+  left: 50%;
+  transform: translate3d(-32px, calc(-50%), 0);
+  width: 67px;
+  height: 67px;
+  z-index: 9;
+  border-radius: 100%;
+  text-align: center;
+  line-height: 60px;
+  color: white;
+  font-size: 50px;
+  background: linear-gradient(to right, #ae15d4, #3570ec);
+  filter: drop-shadow(1px 1px 2px rgba(#3570ec, 0.7));
+  opacity: 0.7;
 }
 </style>
