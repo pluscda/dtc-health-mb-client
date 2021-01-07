@@ -152,6 +152,7 @@ export default {
     this.$nextTick(() => this.goHome());
     this.$root.$on("gis-name", (v) => {
       this.features = GISJSON.filter((s) => s.name == v);
+      this.$refs.myMapRef.mapObject.setView([this.features[0].lat, this.features[0].lon], 12.4);
     });
   },
 };
