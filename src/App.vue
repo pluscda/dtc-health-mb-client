@@ -7,7 +7,7 @@
 
     <van-share-sheet v-model="showShareSheet" title="用地圖找醫院" :options="gisOptions" @select="onSelectGis" :cancel-text="cancel" />
     <van-tabbar v-model="active" style="z-index:8;">
-      <nav class="gis-btn" v-if333="active == 2" :data-msg="totalHots" @click="openGisOps">
+      <nav class="gis-btn" v-if="active == 2" :data-msg="totalHots" @click="openGisOps">
         <img src="pen.svg" />
       </nav>
       <van-tabbar-item icon="wap-home-o" @click="tabClick('/home')">{{ $t("醫療首頁") }}</van-tabbar-item>
