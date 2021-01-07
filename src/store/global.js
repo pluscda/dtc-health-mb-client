@@ -115,7 +115,7 @@ export let actions = {
           .auth()
           .signInWithPhoneNumber(phoneNum, window.recaptchaVerifier);
       }catch(e){
-        return e;
+        return alert("registerByMobilePhone error : " + e);
       }    
   },
  
