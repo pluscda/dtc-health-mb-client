@@ -17,13 +17,13 @@
           <img :src="cancerCatsImg[i]" width="208" hieght="156" :alt="item.text" />
         </div>
         <div style="grid-column:1/-1" data-msg="其他部位" @click="$router.push('/canceratother')">
-          <img src="small_dreamstime_s_75581102_8295cb0072.jpg" />
+          <img src="其他部位.png" />
         </div>
       </nav>
     </main>
     <main class="fast-ask-doc">
       <div class="left">
-        <img class="img1" src="thumbnail_image001_6397d39324.jpg" />
+        <img class="img1" src="線上健康照顧諮詢.png" />
       </div>
       <div class="right mt-2">
         <h3 style="margin-left:10px;"></h3>
@@ -143,12 +143,7 @@ import queryString from "query-string";
 import HomeHeader from "@/components/HomeHeader";
 let types = "大腸癌,肺癌,女性乳癌,肝癌,口腔癌,攝護腺癌,甲狀腺癌,胃癌,皮膚癌,食道癌".split(",");
 
-const cancerCatsImg = [
-  "thumbnail__f0e0837881.jpg",
-  "thumbnail_1544194965_4229027033_wn_9cfd7b444e.jpg",
-  "thumbnail_20150801031535563_4e9f6ee0d9.jpg",
-  "thumbnail_615f71b7_5bf2_4cf5_ad0f_44c307b60448_a6a4058942.jpg",
-];
+const cancerCatsImg = ["頭頸部.png", "胸部.png", "腹部.png", "骨盆腔.png"];
 
 const cancerPaths = ["/cancerathead", "/canceratlung", "/canceratab", "/canceratlower"];
 const cancerCats = ["頭頸部", "胸部", "腹部", "骨盆腔"].map((s, i) => ({ value: i + 1, text: s, path: cancerPaths[i] }));
