@@ -96,6 +96,10 @@ export default {
       return 3;
     },
     viewDetail(item) {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
       const ok = this.isOrderAble(item);
       ok ? (item.status = "waiting") : (item.status = "finish");
       store.selectedDoctor = item;
