@@ -12,7 +12,7 @@
   >
     <l-tile-layer :url="url" :attribution2="attribution" />
     <l-control position="topright">
-      <van-button @click="goHome" size="mini" class="mr-2">HOME</van-button>
+      <div class="dtc-home" @click="goHome">HOME</div>
     </l-control>
     <l-marker @click="clickItem(item)" v-for="(item, i) in features.slice(0, 1)" :key="i" :lat-lng="item.latLng" :icon="houseMarker">
       <l-tooltip :options="{ permanent: true, interactive: false, direction: 'bottom' }">{{ item.name }}</l-tooltip>
@@ -217,6 +217,13 @@ nav {
 
 .sidebar-dtc-show {
   clip-path: circle(165.6% at 0 0);
+}
+
+.dtc-home {
+  width: 46px;
+  padding: 3px 6px;
+  background: linear-gradient(to right, #da5afa, #3570ec);
+  color: white;
 }
 </style>
 
