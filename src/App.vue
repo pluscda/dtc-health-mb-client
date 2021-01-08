@@ -12,18 +12,18 @@
       <nav class="gis-btn" v-if="active == 2" :data-msg="totalHots" @click="openGisOps">
         <img src="pen.svg" />
       </nav>
-      <van-tabbar-item icon="wap-home-o" @click="tabClick('/home')">{{ $t('醫療首頁') }}</van-tabbar-item>
-      <van-tabbar-item icon="search" @click="tabClick('/doclist')">{{ $t('找醫師') }}</van-tabbar-item>
+      <van-tabbar-item icon="wap-home-o" @click="tabClick('/home')">{{ $t("醫療首頁") }}</van-tabbar-item>
+      <van-tabbar-item icon="search" @click="tabClick('/doclist')">{{ $t("找醫師") }}</van-tabbar-item>
       <van-tabbar-item icon="bookmark-o" @click="tabClick('/gis')">找醫院</van-tabbar-item>
-      <van-tabbar-item icon="setting-o" @click="tabClick('/login')">{{ $t('我的') }}</van-tabbar-item>
+      <van-tabbar-item icon="setting-o" @click="tabClick('/login')">{{ $t("我的") }}</van-tabbar-item>
     </van-tabbar>
   </div>
 </template>
 
 <script>
-import { store, mutations, actions } from '@/store/global.js';
-import Vue from 'vue';
-import GISJSON from '@/assets/gis.json';
+import { store, mutations, actions } from "@/store/global.js";
+import Vue from "vue";
+import GISJSON from "@/assets/gis.json";
 let features = GISJSON.filter((s) => store.hotMapIds.find((s2) => s2 == +s.myID));
 const mySet = new Set(features.map((s) => s.address.slice(0, 3)));
 const acc = {};
@@ -33,24 +33,27 @@ features.reduce((_, obj) => {
   console.log(obj.address.slice(0, 3));
 });
 
-const countries = [...mySet].map((s) => ({
-  name: s,
-  icon: 'https://img.yzcdn.cn/vant/custom-icon-light.png',
-  description: acc[s],
-}));
+const countries = [...mySet]
+  .map((s) => ({
+    name: s,
+    icon: "https://img.yzcdn.cn/vant/custom-icon-light.png",
+    count: acc[s],
+    description: acc[s],
+  }))
+  .sort((a, b) => b.count - a.count);
 
 export default {
-  name: 'app',
+  name: "app",
   data() {
     return {
       showShareSheet: false,
       gisOptions: [countries.slice(0, 5), countries.slice(5, 5 + 5), countries.slice(15, 1000)],
       active: 0,
       locs: [],
-      name: '',
+      name: "",
       columns: [],
       showGisPopup: false,
-      gisInfo: '',
+      gisInfo: "",
     };
   },
   computed: {
@@ -66,11 +69,11 @@ export default {
       this.showGisPopup = false;
       const { address, phone } = GISJSON.find((s) => s.name == value);
       this.gisInfo = phone ? `${address} / ${phone}` : address;
-      this.$root.$emit('gis-name', value);
+      this.$root.$emit("gis-name", value);
     },
     openGisOps() {
       this.showShareSheet = true;
-      this.gisInfo = '';
+      this.gisInfo = "";
     },
     onSelectGis(option) {
       this.name = option.name;
@@ -81,7 +84,7 @@ export default {
     tabClick(name) {
       window.scrollTo({
         top: 0,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
       requestAnimationFrame(() => this.$router.push(name));
     },
@@ -89,14 +92,14 @@ export default {
   mounted() {},
   watch: {
     $route(to, from) {
-      this.gisInfo = '';
-      if (to.path.includes('home')) {
+      this.gisInfo = "";
+      if (to.path.includes("home")) {
         this.active = 0;
-      } else if (to.path.includes('doclist')) {
+      } else if (to.path.includes("doclist")) {
         this.active = 1;
-      } else if (to.path.includes('gis')) {
+      } else if (to.path.includes("gis")) {
         this.active = 2;
-      } else if (to.path.includes('login')) {
+      } else if (to.path.includes("login")) {
         this.active = 3;
       }
     },
