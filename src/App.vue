@@ -190,7 +190,7 @@ body {
 }
 .gis-info {
   position: fixed;
-  bottom: 90px;
+  top: 0px;
   left: 0;
   width: 100vw;
   padding: 3px;

@@ -11,7 +11,7 @@
     style="min-height:calc(100vh - 51px);z-index:1;position:relative;"
   >
     <l-tile-layer :url="url" :attribution2="attribution" />
-    <l-control position="topright">
+    <l-control position="bottomright">
       <div class="dtc-home" @click="goHome">HOME</div>
     </l-control>
     <l-marker @click="clickItem(item)" v-for="(item, i) in features.slice(0, 1)" :key="i" :lat-lng="item.latLng" :icon="houseMarker">
@@ -110,7 +110,7 @@ export default {
       if (this.mapObj.zoomControl) {
         this.mapObj.zoomControl.remove();
       }
-      this.zoomControl = L.control.zoom({ position: "topright" });
+      this.zoomControl = L.control.zoom({ position: "bottomleft" });
       this.mapObj.addControl(this.zoomControl);
     },
     async init(num) {
