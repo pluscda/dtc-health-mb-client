@@ -89,7 +89,11 @@ export default {
       requestAnimationFrame(() => this.$router.push(name));
     },
   },
-  mounted() {},
+  mounted() {
+    this.$root.$on("show-gis-label", (obj) => {
+      this.gisInfo = obj.phone ? `${obj.address} / ${obj.phone}` : obj.address;
+    });
+  },
   watch: {
     $route(to, from) {
       this.gisInfo = "";

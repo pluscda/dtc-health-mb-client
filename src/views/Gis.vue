@@ -121,6 +121,10 @@ export default {
         s.latLng = latLng(s.lat, s.lon);
       });
       this.features = [...features];
+      this.$root.$emit("show-gis-label", this.features[0]);
+      requestAnimationFrame(() => {
+        this.$refs.myMapRef.mapObject.setView([this.features[0].lat, this.features[0].lon], 12.4);
+      });
       this.showMap = true;
       this.$nextTick(() => {
         this.mapObj = this.$refs.myMapRef.mapObject;
