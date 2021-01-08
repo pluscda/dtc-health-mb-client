@@ -235,4 +235,9 @@ nav {
 [href="https://leafletjs.com" ] {
   display: none;
 }
+.leaflet-top,
+.leaflet-bottom {
+  position: fixed !important;
+  bottom: 3.9rem;
+}
 </style>
