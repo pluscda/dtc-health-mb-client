@@ -36,7 +36,7 @@ features.reduce((_, obj) => {
 const countries = [...mySet]
   .map((s) => ({
     name: s,
-    icon: "https://img.yzcdn.cn/vant/custom-icon-light.png",
+    icon: "custom-icon-light.png",
     count: acc[s],
     description: acc[s],
   }))
