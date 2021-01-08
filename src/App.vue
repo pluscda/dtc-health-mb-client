@@ -30,7 +30,7 @@ const acc = {};
 features.reduce((_, obj) => {
   let str = obj.address.slice(0, 3);
   acc[str] ? (acc[str] += 1) : (acc[str] = 1);
-  console.log(obj.address.slice(0, 3));
+  //console.log(obj.address.slice(0, 3));
 });
 
 const countries = [...mySet]
