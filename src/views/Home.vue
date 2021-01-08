@@ -44,7 +44,7 @@
     </main>
     <main class="faster2">
       <div @click="$router.push(`doclist?searchBy=心血管疾病線上諮詢`)">
-        <span> <img src="heart.svg" width="20" height="20" style="transform:translateY(-3px);display:inline-block;"/></span>
+        <span> <img src="heart.svg" width="25" height="25" style="transform:translateY(-3px);display:inline-block;"/></span>
         <span class="fast-span" data-msg="線上諮詢">心血管疾病</span>
       </div>
       <div class="ml-2" @click="$router.push(`doclist?searchBy=中風線上諮詢`)">
