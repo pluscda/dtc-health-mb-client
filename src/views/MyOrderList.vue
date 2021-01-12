@@ -55,8 +55,8 @@
     <nav v-if="commentFilter" style="color:white;font-size:14px;" class="mt-1">
       <div
         class="comment-dtc px-2 py-2"
-        v-for="(note, i) in myOrders[0].message"
-        :key="i"
+        v-for="(note, idxkey) in myOrders[0].message"
+        :key="idxkey"
         :style="note.docComment ? 'background:#1f7cd3;' : 'background:#f3d6d2;color:black;'"
       >
         <div class="mb-1  msg-line-grid">
