@@ -98,9 +98,9 @@ export default {
     },
   },
   methods: {
-    async updateReadStatus(item) {
+    async updateReadStatus(note) {
       this.loadingApi = true;
-      item.read = true;
+      note.read = true;
       await actions.updateOrder(this.myOrders[0]);
       this.loadingApi = false;
       this.myOrders[0].message = [...this.myOrders[0].message];
