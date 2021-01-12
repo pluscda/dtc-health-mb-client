@@ -13,20 +13,19 @@
       v-if="showLeavelMsg"
       autofocus="true"
       v-model="myMsg"
-      rows="5"
+      rows="10"
       autosize
       label="留言"
       type="textarea"
-      maxlength="150"
-      placeholder="请输入留言"
+      maxlength="600"
+      placeholder="請輸入留言..."
       show-word-limit
     >
-      <template #button>
-        <van-tag type="primary" class="ml-2" @click="addComment(myMsg, true)">新增</van-tag>
-        <van-tag type="danger" class="ml-2" @click="showLeavelMsg = false">取消</van-tag>
-      </template>
     </van-field>
-    <div></div>
+    <div class="my-tags-grid" style="transform:translate3d(10px, 3px,0);margin-bottom:4px;" v-if="showLeavelMsg">
+      <van-tag type="primary" size="large" class="ml-2" @click="addComment(myMsg, true)">新增留言</van-tag>
+      <van-tag type="danger" size="large" class="ml-2" @click="showLeavelMsg = false">取消留言</van-tag>
+    </div>
 
     <main v-for="(item, i) in myOrders" :key="i" class="doc-item mt-1" v-show="item.details">
       <van-card
@@ -39,20 +38,18 @@
         :thumb="getImgPath(item, i)"
       >
         <template #tags>
-          <van-tag plain type="danger">{{ $formatStatus(item.orderStatus) }}</van-tag>
-          <van-tag plain type="primary" style="transform:translateX(5px)" @click="viewComment(item)">可查看留言為{{ item.message.length }}則</van-tag>
-          <van-tag type="primary" class="ml-2" style="transform:translateX(10px)" @click="addComment()" v-if="commentFilter">新增留言</van-tag>
+          <div class="my-tags-grid">
+            <div style="color:var(--bs-blue)">{{ $formatStatus(item.orderStatus) }}:</div>
+            <div style="color:var(--bs-blue);">留言{{ item.message.length }}則</div>
+          </div>
         </template>
         <template #footer>
-          <van-tag size="mini" class="mr-2 bcc" plain style="color:black !important;background:#f3d6d2 !important;display:inline-block;margin-right:5px;"
-            >我的留言</van-tag
-          >
-          <van-tag size="mini" class="mr-2 doc-msg" plain>醫生留言</van-tag>
+          <div class="my-tags-grid3" @click="addComment()">
+            <div></div>
+            <div class="my-msg">我的留言</div>
+            <div class="my-doc-msg">醫生留言</div>
+          </div>
         </template>
-        <!-- <template #footer>
-          <div class="client-clr" data-msg="我的留言"></div>
-          <div class="dtc-clr" data-msg="我的留言"></div>
-        </template> -->
       </van-card>
     </main>
     <nav v-if="commentFilter" style="color:white;font-size:14px;" class="mt-1">
@@ -233,10 +230,15 @@ export default {
 }
 
 .my-msg,
-.doc-msg {
+.my-doc-msg {
   background: #1f7cd3 !important;
   color: white;
   font-size: 12px !important;
+  padding: 0 5px;
+}
+.my-msg {
+  background: #f3d6d2 !important;
+  color: var(--dark);
 }
 
 .mark-as-read {
@@ -256,8 +258,15 @@ export default {
   grid-template-columns: repeat(10, max-content);
   grid-gap: 6px;
 }
-
-/deep/ .bcc.van-tag--default.van-tag--plain {
-  color: var(--dark);
+.my-tags-grid,
+.my-tags-grid3 {
+  display: grid;
+  grid-template-columns: repeat(10, max-content);
+  grid-gap: 6px;
+}
+.my-tags-grid3 {
+  display: grid;
+  grid-template-columns: 1fr repeat(2, max-content);
+  grid-gap: 6px;
 }
 </style>
