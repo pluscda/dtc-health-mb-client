@@ -223,14 +223,14 @@ export default {
   width: 34px;
   height: 14px;
   float: right;
-  transform: translateY(-20px);
+  transform: translateY(-28px);
   position: relative;
   &::after {
     position: absolute;
     bottom: -20px;
     left: -8px;
     font-size: 12px;
-    color: black;
+    color: var(--gray);
     content: attr(data-msg);
     width: 50px;
   }
