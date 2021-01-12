@@ -72,6 +72,9 @@
         <div class="mb-1 msg-line-grid">
           <span>{{ $twDate(note.commentAt) }}</span>
           <span>{{ getMsgStatus(note) }}</span>
+          <van-icon name="pending-payment" size="20px" v-if="getMsgStatus(note).includes('醫生未讀取')" />
+          <van-icon name="certificate" color="green" size="20px" v-if="getMsgStatus(note).includes('醫生已讀取')" />
+
           <span class="mark-as-read" v-if="!note.read && note.docComment" @click.stop="updateReadStatus(note)">註記已讀</span>
         </div>
         <div style="padding-right:50px;">{{ note.docComment || note.userComment }}</div>
