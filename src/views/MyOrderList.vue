@@ -44,18 +44,20 @@
           <van-tag type="primary" class="ml-2" style="transform:translateX(10px)" @click="addComment()" v-if="commentFilter">新增留言</van-tag>
         </template>
         <template #footer>
-          <van-tag type="success" v-if="item.status == 'finish'">再次預約</van-tag>
+          <div class="client-clr" data-msg="我的留言"></div>
+          <div class="dtc-clr" data-msg="醫生留言"></div>
         </template>
       </van-card>
     </main>
     <nav v-if="commentFilter" style="color:white;font-size:14px;" class="mt-1">
-      <div class="comment-dtc px-2 py-2" v-for="(item, i) in myOrders[0].message" :key="i" :style="item.docComment ? 'background:#1f7cd3;' : 'background:#0f579b;'">
+      <div
+        class="comment-dtc px-2 py-2"
+        v-for="(item, i) in myOrders[0].message"
+        :key="i"
+        :style="item.docComment ? 'background:#1f7cd3;' : 'background:#f3d6d2;color:black;'"
+      >
         <div class="mb-1">{{ $twDate(item.commentAt) }}</div>
         <div style="padding-right:50px;">{{ item.docComment || item.userComment }}</div>
-        <div style="float:right;margin-top:-30px;">
-          <img v-if="item.docComment" src="https://www.cgh.org.tw/rwd101/Store/bImages/b07907.jpg" width="30" height="30" style="border-radius:50%;" />
-          <img v-if="!item.docComment" src="person.svg" width="30" height="30" style="border-radius:50%;color:red;" />
-        </div>
       </div>
     </nav>
   </section>
@@ -214,5 +216,27 @@ export default {
   margin-bottom: 2px;
   padding-right: 4px;
   font-size: 12px;
+}
+.client-clr,
+.dtc-clr {
+  background: #1f7cd3;
+  width: 34px;
+  height: 14px;
+  float: right;
+  transform: translateY(-20px);
+  position: relative;
+  &::after {
+    position: absolute;
+    bottom: -20px;
+    left: -8px;
+    font-size: 12px;
+    color: black;
+    content: attr(data-msg);
+    width: 50px;
+  }
+}
+.client-clr {
+  background: #f3d6d2;
+  margin-left: 30px;
 }
 </style>
