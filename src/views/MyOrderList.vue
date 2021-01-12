@@ -2,7 +2,7 @@
   <section class="doc-list">
     <van-nav-bar title="我的預約紀錄" left-text="返回" left-arrow @click-left="$router.push('login')">
       <template #right>
-        <van-tag round v-if="commentFilter" type="primary" class="ml-2" @click="commentFilter = ''">離開留言區</van-tag>
+        <van-tag round v-if="commentFilter && orders.length > 1" type="primary" class="ml-2" @click="commentFilter = ''">離開留言區</van-tag>
       </template>
     </van-nav-bar>
     <van-overlay :show="loadingApi" style="text-align:center;">
@@ -43,7 +43,7 @@
           <van-tag plain type="primary" style="transform:translateX(5px)" @click="viewComment(item)">可查看留言為{{ item.message.length }}則</van-tag>
           <van-tag type="primary" class="ml-2" style="transform:translateX(10px)" @click="addComment()" v-if="commentFilter">新增留言</van-tag>
         </template>
-        <template #footer>
+        <template #footer @click="viewComment(item)">
           <div class="client-clr" data-msg="我的留言"></div>
           <div class="dtc-clr" data-msg="醫生留言"></div>
         </template>

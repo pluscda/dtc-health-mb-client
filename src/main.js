@@ -44,9 +44,7 @@ Vue.prototype.$formatPrice = function(value) {
 
 Vue.prototype.$twDate = function(str){
   if(!str || str.startsWith("0")) return "暫無資料";
-  const twYear = +str.split("T")[0].split("-")[0] - 1911;
-  const d = new Date(str.split("T")[0]);
-  return twYear + "年" + moment(str).format("MM月DD日 HH:mm");
+  return moment(str).format("YYYY-MM-DD HH:mm:ss");
 }
 
 Vue.prototype.$formatStatus = function(str){
@@ -58,7 +56,6 @@ Vue.prototype.$formatStatus = function(str){
      }else{
        return "醫師已結案"
      }
-
 }
 
 window.taipeis = [
