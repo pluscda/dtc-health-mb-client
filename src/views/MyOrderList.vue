@@ -23,18 +23,18 @@
     >
     </van-field>
     <div class="my-tags-grid" style="transform:translate3d(10px, 3px,0);margin-bottom:4px;" v-if="showLeavelMsg">
-      <van-tag
+      <van-button
         type="primary"
-        size="large"
+        size="small"
         class="ml-2"
         @click.stop="
           loadingApi = true;
           addComment(myMsg, true);
         "
         :disabled="loadingApi || !myMsg"
-        >新增留言</van-tag
+        >新增留言</van-button
       >
-      <van-tag type="warning" size="large" class="ml-2" @click.stop="showLeavelMsg = false">離開新增留言區</van-tag>
+      <van-tag type="warning" size="large" class="ml-2" @click.stop="showLeavelMsg = false">關閉新增留言區</van-tag>
     </div>
 
     <main v-for="(item, i) in myOrders" :key="i" class="doc-item mt-1" v-show="item.details">
