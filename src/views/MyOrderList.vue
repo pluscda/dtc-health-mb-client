@@ -59,7 +59,7 @@
         :key="idxkey"
         :style="note.docComment ? 'background:#1f7cd3;' : 'background:#f3d6d2;color:black;'"
       >
-        <div class="mb-1  msg-line-grid">
+        <div class="mb-1 msg-line-grid">
           <span>{{ $twDate(note.commentAt) }}</span>
           <span>{{ getMsgStatus(note) }}</span>
           <span class="mark-as-read" v-if="!note.read && note.docComment" @click="updateReadStatus(note)">註記已讀</span>
