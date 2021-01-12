@@ -23,8 +23,18 @@
     >
     </van-field>
     <div class="my-tags-grid" style="transform:translate3d(10px, 3px,0);margin-bottom:4px;" v-if="showLeavelMsg">
-      <van-tag type="primary" size="large" class="ml-2" @click.stop="addComment(myMsg, true)">新增留言</van-tag>
-      <van-tag type="danger" size="large" class="ml-2" @click.stop="showLeavelMsg = false">取消留言</van-tag>
+      <van-tag
+        type="primary"
+        size="large"
+        class="ml-2"
+        @click.stop="
+          loadingApi = true;
+          addComment(myMsg, true);
+        "
+        :disabled="loadingApi"
+        >新增留言</van-tag
+      >
+      <van-tag type="danger" size="large" class="ml-2" @click.stop="showLeavelMsg = false">離開新增留言區</van-tag>
     </div>
 
     <main v-for="(item, i) in myOrders" :key="i" class="doc-item mt-1" v-show="item.details">
@@ -44,7 +54,7 @@
           </div>
         </template>
         <template #footer>
-          <div class="my-tags-grid3" @click="addComment()">
+          <div class="my-tags-grid3" @click="showLeavelMsg = true">
             <div></div>
             <div class="my-msg">我的留言</div>
             <div class="my-doc-msg">醫生留言</div>
@@ -147,21 +157,18 @@ export default {
       }
     },
     async addComment(msg, userClick) {
-      if (!msg && !userClick) {
-        this.myMsg = "";
-        this.showLeavelMsg = true;
-      } else if (msg) {
-        const obj = { docComment: "", commentAt: new Date().toISOString(), rating: 0, userComment: msg, read: false };
-        if (!this.myOrders[0].message) {
-          this.myOrders[0].message = [];
-        }
-        this.myOrders[0].message.unshift(obj);
-        await actions.updateOrder(this.myOrders[0]);
-        this.orders = [...this.orders];
-        //this.commentFilter = "";
-        //this.showLeavelMsg = false;
-        Vue.$toast.success("新增留言成功");
+      this.loadingApi = true;
+      const obj = { docComment: "", commentAt: new Date().toISOString(), rating: 0, userComment: msg, read: false };
+      if (!this.myOrders[0].message) {
+        this.myOrders[0].message = [];
       }
+      this.myOrders[0].message.unshift(obj);
+      await actions.updateOrder(this.myOrders[0]);
+      this.orders = [...this.orders];
+      //this.commentFilter = "";
+      //this.showLeavelMsg = false;
+      Vue.$toast.success("新增留言成功");
+      this.loadingApi = false;
     },
     viewComment(item) {
       this.commentFilter = item.doctorPhone;
