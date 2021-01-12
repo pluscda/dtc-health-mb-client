@@ -31,6 +31,7 @@ export default {
       id: "",
       name: "",
       docs: [],
+      cates: [],
       skip: 0,
       cat: "",
       searchBy: "",
@@ -60,10 +61,12 @@ export default {
       const obj = {
         orderPhoneNum: sessionStorage.phone,
         paidAmount: item.price,
-        orderStatus: "waiting", // process and finish
+        orderStatus: "waiting",
         orderDate: new Date().toISOString(),
         doctorPhone: item.phone,
-        inqueryCate: 2, //TODO
+        inqueryCate: this.cates.find((s) => s.name == this.searchBy).cid,
+        cusUnreadMsg: 1,
+        totalMsg: 1,
         message:
           item.cid < store.MIN_NON_CANCER_NUM
             ? [
@@ -134,6 +137,7 @@ export default {
       this.loadingApi = true;
       await this.getOrderHistory();
       await this.getDocList();
+      this.cates = await actions.getCancerTypes();
     } catch (e) {
       alert("error " + e);
     } finally {
