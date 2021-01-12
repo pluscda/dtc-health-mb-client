@@ -39,8 +39,8 @@
         :thumb="getImgPath(item, i)"
       >
         <template #tags>
-          <van-tag plain type="danger">{{ $formatStatus(item.status) }}</van-tag>
-          <van-tag plain type="primary" style="transform:translateX(5px)" @click="viewComment(item)">可查看留言為{{ item.comment.length }}則</van-tag>
+          <van-tag plain type="danger">{{ $formatStatus(item.orderStatus) }}</van-tag>
+          <van-tag plain type="primary" style="transform:translateX(5px)" @click="viewComment(item)">可查看留言為{{ item.message.length }}則</van-tag>
           <van-tag type="primary" class="ml-2" style="transform:translateX(10px)" @click="addComment()" v-if="commentFilter">新增留言</van-tag>
         </template>
         <template #footer>
@@ -50,7 +50,7 @@
     </main>
     <nav v-if="commentFilter" style="color:white;font-size:14px;" class="mt-1">
       <div class="comment-dtc px-2 py-2" v-for="(item, i) in myOrders[0].comment" :key="i" :style="item.docComment ? 'background:#1f7cd3;' : 'background:#0f579b;'">
-        <div class="mb-1">{{ $twDate(item.commentAt) }}</div>
+        <div class="mb-1">{{ $twDate(item.messageAt) }}</div>
         <div style="padding-right:50px;">{{ item.docComment || item.userComment }}</div>
         <div style="float:right;margin-top:-30px;">
           <img v-if="item.docComment" src="https://www.cgh.org.tw/rwd101/Store/bImages/b07907.jpg" width="30" height="30" style="border-radius:50%;" />
@@ -129,7 +129,7 @@ export default {
         this.showLeavelMsg = true;
       } else if (msg) {
         const obj = { docComment: "", commentAt: new Date().toISOString(), rating: 0, userComment: msg };
-        this.myOrders[0].comment.unshift(obj);
+        this.myOrders[0].message.unshift(obj);
         await actions.updateOrder(this.myOrders[0]);
         this.orders = [...this.orders];
         this.commentFilter = "";

@@ -78,14 +78,14 @@ export let actions = {
   },
  
   async getOrders(qs){
-    const url = "orders?" + qs;
-    const url2 = "orders/count?" + qs;
+    const url = "dtc-orders?" + qs;
+    const url2 = "dtc-orders/count?" + qs;
     const count = await actions.getCount(url2);
     const items = await axios.get(url);
     return {count, items};
   },
   async addOrder(item){
-      const obj =  await axios.post('orders', item);
+      const obj =  await axios.post('dtc-orders', item);
       return obj;
   },
   async getCancerTypes(){

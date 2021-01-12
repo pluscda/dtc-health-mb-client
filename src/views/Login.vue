@@ -39,7 +39,6 @@ export default {
       titles,
       labels,
       phone: sessionStorage.phone,
-      idDoc: location.href.includes("isdoc=true"),
       callback: "",
     };
   },
