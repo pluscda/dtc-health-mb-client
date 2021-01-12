@@ -60,21 +60,16 @@ export default {
       const obj = {
         orderPhoneNum: sessionStorage.phone,
         paidAmount: item.price,
-        status: "waiting", // process and finish
+        orderStatus: "waiting", // process and finish
         orderDate: new Date().toISOString(),
         doctorPhone: item.phone,
-        isCancer: item.cid < store.MIN_NON_CANCER_NUM ? true : false,
-        hardCopyReceived: false,
-        copySendBack: false,
-        docHasCopy: false,
-        comment:
+        inqueryCate: 2, //TODO
+        message:
           item.cid < store.MIN_NON_CANCER_NUM
             ? [
                 {
-                  docComment: "需要你的癌症報告,請你用郵件寄出",
+                  docComment: "需要你的報告,請你用郵件寄出",
                   commentAt: new Date().toISOString(),
-                  rating: 0,
-                  userComment: "",
                 },
               ]
             : [],
