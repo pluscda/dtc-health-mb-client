@@ -49,8 +49,8 @@
       </van-card>
     </main>
     <nav v-if="commentFilter" style="color:white;font-size:14px;" class="mt-1">
-      <div class="comment-dtc px-2 py-2" v-for="(item, i) in myOrders[0].comment" :key="i" :style="item.docComment ? 'background:#1f7cd3;' : 'background:#0f579b;'">
-        <div class="mb-1">{{ $twDate(item.messageAt) }}</div>
+      <div class="comment-dtc px-2 py-2" v-for="(item, i) in myOrders[0].message" :key="i" :style="item.docComment ? 'background:#1f7cd3;' : 'background:#0f579b;'">
+        <div class="mb-1">{{ $twDate(item.commentAt) }}</div>
         <div style="padding-right:50px;">{{ item.docComment || item.userComment }}</div>
         <div style="float:right;margin-top:-30px;">
           <img v-if="item.docComment" src="https://www.cgh.org.tw/rwd101/Store/bImages/b07907.jpg" width="30" height="30" style="border-radius:50%;" />
