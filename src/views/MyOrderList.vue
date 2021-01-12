@@ -34,7 +34,7 @@
         :disabled="loadingApi"
         >新增留言</van-tag
       >
-      <van-tag type="danger" size="large" class="ml-2" @click.stop="showLeavelMsg = false">離開新增留言區</van-tag>
+      <van-tag type="warning" size="large" class="ml-2" @click.stop="showLeavelMsg = false">離開新增留言區</van-tag>
     </div>
 
     <main v-for="(item, i) in myOrders" :key="i" class="doc-item mt-1" v-show="item.details">
