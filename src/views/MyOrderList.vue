@@ -48,7 +48,7 @@
         :thumb="getImgPath(item, i)"
       >
         <template #tags>
-          <div class="my-tags-grid">
+          <div class="my-tags-grid" @click="showLeavelMsg = true">
             <div style="color:var(--bs-blue)">{{ $formatStatus(item.orderStatus) }}:</div>
             <div style="color:var(--bs-blue);">留言{{ item.message.length }}則</div>
           </div>
