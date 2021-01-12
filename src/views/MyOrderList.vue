@@ -23,8 +23,8 @@
     >
     </van-field>
     <div class="my-tags-grid" style="transform:translate3d(10px, 3px,0);margin-bottom:4px;" v-if="showLeavelMsg">
-      <van-tag type="primary" size="large" class="ml-2" @click="addComment(myMsg, true)">新增留言</van-tag>
-      <van-tag type="danger" size="large" class="ml-2" @click="showLeavelMsg = false">取消留言</van-tag>
+      <van-tag type="primary" size="large" class="ml-2" @click.stop="addComment(myMsg, true)">新增留言</van-tag>
+      <van-tag type="danger" size="large" class="ml-2" @click.stop="showLeavelMsg = false">取消留言</van-tag>
     </div>
 
     <main v-for="(item, i) in myOrders" :key="i" class="doc-item mt-1" v-show="item.details">
@@ -62,7 +62,7 @@
         <div class="mb-1 msg-line-grid">
           <span>{{ $twDate(note.commentAt) }}</span>
           <span>{{ getMsgStatus(note) }}</span>
-          <span class="mark-as-read" v-if="!note.read && note.docComment" @click="updateReadStatus(note)">註記已讀</span>
+          <span class="mark-as-read" v-if="!note.read && note.docComment" @click.stop="updateReadStatus(note)">註記已讀</span>
         </div>
         <div style="padding-right:50px;">{{ note.docComment || note.userComment }}</div>
       </div>
@@ -138,7 +138,6 @@ export default {
       try {
         this.loadingApi = true;
         await actions.addOrder(obj);
-        Vue.$toast.success("你已預約成功");
         await this.getOrderHistoryList();
       } catch (e) {
         Vue.$toast.error("order fail");
@@ -159,8 +158,9 @@ export default {
         this.myOrders[0].message.unshift(obj);
         await actions.updateOrder(this.myOrders[0]);
         this.orders = [...this.orders];
-        this.commentFilter = "";
-        this.showLeavelMsg = false;
+        //this.commentFilter = "";
+        //this.showLeavelMsg = false;
+        Vue.$toast.success("新增留言成功");
       }
     },
     viewComment(item) {
