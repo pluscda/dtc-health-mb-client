@@ -129,7 +129,6 @@ export default {
         this.showLeavelMsg = true;
       } else if (msg) {
         const obj = { docComment: "", commentAt: new Date().toISOString(), rating: 0, userComment: msg, read: false };
-        //this.myOrders[0].copySendBack = this.myOrders[0].hardCopyReceived = this.myOrders[0].docHasCopy = new Date().toISOString();
         if (!this.myOrders[0].message) {
           this.myOrders[0].message = [];
         }
