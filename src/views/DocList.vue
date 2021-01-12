@@ -80,7 +80,7 @@ export default {
       try {
         this.loadingApi = true;
         await actions.addOrder(obj);
-        Vue.$toast.success('你已預約成功');
+        Vue.$toast.success('您已預約成功');
         await this.getOrderHistory();
         this.docs = [...this.docs];
       } catch (e) {
