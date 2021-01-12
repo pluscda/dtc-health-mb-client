@@ -125,7 +125,7 @@ export default {
           item.details.cid < store.MIN_NON_CANCER_NUM
             ? [
                 {
-                  docComment: "需要你的癌症報告,請你用郵件寄出",
+                  docComment: "需要你的報告,請你用郵件寄出",
                   commentAt: new Date().toISOString(),
                   rating: 0,
                   userComment: "",
