@@ -55,16 +55,16 @@
     <nav v-if="commentFilter" style="color:white;font-size:14px;" class="mt-1">
       <div
         class="comment-dtc px-2 py-2"
-        v-for="(item, i) in myOrders[0].message"
+        v-for="(note, i) in myOrders[0].message"
         :key="i"
-        :style="item.docComment ? 'background:#1f7cd3;' : 'background:#f3d6d2;color:black;'"
+        :style="note.docComment ? 'background:#1f7cd3;' : 'background:#f3d6d2;color:black;'"
       >
         <div class="mb-1  msg-line-grid">
-          <span>{{ $twDate(item.commentAt) }}</span>
-          <span>{{ getMsgStatus(item) }}</span>
-          <span class="mark-as-read" v-if="!item.read && item.docComment" @click="updateReadStatus(item)">註記已讀</span>
+          <span>{{ $twDate(note.commentAt) }}</span>
+          <span>{{ getMsgStatus(note) }}</span>
+          <span class="mark-as-read" v-if="!note.read && note.docComment" @click="updateReadStatus(note)">註記已讀</span>
         </div>
-        <div style="padding-right:50px;">{{ item.docComment || item.userComment }}</div>
+        <div style="padding-right:50px;">{{ note.docComment || note.userComment }}</div>
       </div>
     </nav>
   </section>
