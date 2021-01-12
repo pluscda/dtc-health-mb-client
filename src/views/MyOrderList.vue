@@ -43,10 +43,16 @@
           <van-tag plain type="primary" style="transform:translateX(5px)" @click="viewComment(item)">可查看留言為{{ item.message.length }}則</van-tag>
           <van-tag type="primary" class="ml-2" style="transform:translateX(10px)" @click="addComment()" v-if="commentFilter">新增留言</van-tag>
         </template>
-        <template #footer @click="viewComment(item)">
-          <div class="client-clr" data-msg="我的留言"></div>
-          <div class="dtc-clr" data-msg="醫生留言"></div>
+        <template #footer>
+          <van-tag size="mini" class="mr-2 bcc" plain style="color:black !important;background:#f3d6d2 !important;display:inline-block;margin-right:5px;"
+            >我的留言</van-tag
+          >
+          <van-tag size="mini" class="mr-2 doc-msg" plain>醫生留言</van-tag>
         </template>
+        <!-- <template #footer>
+          <div class="client-clr" data-msg="我的留言"></div>
+          <div class="dtc-clr" data-msg="我的留言"></div>
+        </template> -->
       </van-card>
     </main>
     <nav v-if="commentFilter" style="color:white;font-size:14px;" class="mt-1">
@@ -56,7 +62,11 @@
         :key="i"
         :style="item.docComment ? 'background:#1f7cd3;' : 'background:#f3d6d2;color:black;'"
       >
-        <div class="mb-1">{{ $twDate(item.commentAt) }}</div>
+        <div class="mb-1  msg-line-grid">
+          <span>{{ $twDate(item.commentAt) }}</span>
+          <span>{{ item.isRead ? "狀態: 已讀取" : "狀態: 未讀取" }}</span>
+          <span class="mark-as-read" v-if="!item.read && item.docComment" @click="updateReadStatus(item)">註記已讀</span>
+        </div>
         <div style="padding-right:50px;">{{ item.docComment || item.userComment }}</div>
       </div>
     </nav>
@@ -64,6 +74,7 @@
 </template>
 
 <script>
+//註記已讀
 import Vue from "vue";
 import { store, mutations, actions } from "@/store/global.js";
 
@@ -90,6 +101,9 @@ export default {
     },
   },
   methods: {
+    async updateReadStatus(item) {
+      item.read = true;
+    },
     async book(item) {
       const obj = {
         orderPhoneNum: sessionStorage.phone,
@@ -217,26 +231,33 @@ export default {
   padding-right: 4px;
   font-size: 12px;
 }
-.client-clr,
-.dtc-clr {
-  background: #1f7cd3;
-  width: 34px;
-  height: 14px;
-  float: right;
-  transform: translateY(-28px);
-  position: relative;
-  &::after {
-    position: absolute;
-    bottom: -20px;
-    left: -8px;
-    font-size: 12px;
-    color: var(--gray);
-    content: attr(data-msg);
-    width: 50px;
-  }
+
+.my-msg,
+.doc-msg {
+  background: #1f7cd3 !important;
+  color: white;
+  font-size: 12px !important;
 }
-.client-clr {
-  background: #f3d6d2;
-  margin-left: 30px;
+
+.mark-as-read {
+  display: inline-block;
+  clip-path: polygon(10% 1%, 100% 0%, 100% 99%, 10% 100%, 0% 50%);
+  background: linear-gradient(to right, #da5afa, #c735ec);
+  height: 25px;
+  width: 70px;
+  text-align: center;
+  color: white;
+  font-size: 12px;
+  line-height: 25px;
+  transform: translateY(-5px);
+}
+.msg-line-grid {
+  display: grid;
+  grid-template-columns: repeat(10, max-content);
+  grid-gap: 6px;
+}
+
+/deep/ .bcc.van-tag--default.van-tag--plain {
+  color: var(--dark);
 }
 </style>
