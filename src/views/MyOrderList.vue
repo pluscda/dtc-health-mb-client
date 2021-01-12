@@ -128,7 +128,8 @@ export default {
         this.myMsg = "";
         this.showLeavelMsg = true;
       } else if (msg) {
-        const obj = { docComment: "", commentAt: new Date().toISOString(), rating: 0, userComment: msg };
+        const obj = { docComment: "", commentAt: new Date().toISOString(), rating: 0, userComment: msg, read: false };
+        //this.myOrders[0].copySendBack = this.myOrders[0].hardCopyReceived = this.myOrders[0].docHasCopy = new Date().toISOString();
         if (!this.myOrders[0].message) {
           this.myOrders[0].message = [];
         }
@@ -161,6 +162,7 @@ export default {
       try {
         this.loadingApi = true;
         const { count, items } = await actions.getOrders(qs);
+        if (!count) return;
         const mySet = new Set(items.map((s) => "phone_in=" + s.doctorPhone));
         qs = [...mySet].join("&");
         const { items: docs } = await actions.getDoctors(qs);
