@@ -61,7 +61,7 @@
       >
         <div class="mb-1  msg-line-grid">
           <span>{{ $twDate(item.commentAt) }}</span>
-          <span>{{ item.isRead ? "狀態: 已讀取" : "狀態: 未讀取" }}</span>
+          <span>{{ getMsgStatus(item) }}</span>
           <span class="mark-as-read" v-if="!item.read && item.docComment" @click="updateReadStatus(item)">註記已讀</span>
         </div>
         <div style="padding-right:50px;">{{ item.docComment || item.userComment }}</div>
@@ -100,6 +100,15 @@ export default {
   methods: {
     async updateReadStatus(item) {
       item.read = true;
+      await actions.updateOrder(this.myOrders[0]);
+      this.myOrders[0].message = [...this.myOrders[0].message];
+    },
+    getMsgStatus(item) {
+      let str = item.userComment && item.read ? "狀態: 醫生已讀取" : "";
+      if (!str) str = item.userComment && !item.read ? "狀態: 醫生未讀取" : "";
+      if (!str) str = item.docComment && !item.read ? "狀態: 您未讀取" : "";
+      if (!str) str = item.docComment && item.read ? "狀態: 您已讀取" : "";
+      return str;
     },
     async book(item) {
       const obj = {
