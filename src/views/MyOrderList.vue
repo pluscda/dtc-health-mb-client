@@ -129,6 +129,9 @@ export default {
         this.showLeavelMsg = true;
       } else if (msg) {
         const obj = { docComment: "", commentAt: new Date().toISOString(), rating: 0, userComment: msg };
+        if (!this.myOrders[0].message) {
+          this.myOrders[0].message = [];
+        }
         this.myOrders[0].message.unshift(obj);
         await actions.updateOrder(this.myOrders[0]);
         this.orders = [...this.orders];

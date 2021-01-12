@@ -53,7 +53,7 @@ export let actions = {
      return await axios.get(url);
   },
   async updateOrder(item){
-     return axios.put('orders/' + item.id, item);
+     return axios.put('dtc-orders/' + item.id, item);
   },
   async getCancerCats(){
     if(store.cancerCats.length > 0){
