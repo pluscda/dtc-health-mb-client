@@ -50,9 +50,9 @@ Vue.prototype.$twDate = function(str,sep){
 Vue.prototype.$formatStatus = function(str){
      if(!str) return "";
      if(str == 'waiting'){
-        return "等待醫師處理中"
+        return "等待醫師診斷中"
      }else if(str == 'process'){
-        return "醫生處理中"
+        return "醫生診斷中"
      }else{
        return "醫師已結案"
      }

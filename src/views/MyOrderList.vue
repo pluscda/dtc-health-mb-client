@@ -1,30 +1,32 @@
 <template>
   <section class="doc-list">
-    <van-nav-bar v-if="!commentFilter" title="我的預約紀錄" left-text="返回" left-arrow @click-left="$router.push('login')"> </van-nav-bar>
-
+    <van-nav-bar v-if="!commentFilter && !judgeFilter" title="我的預約紀錄" left-text="返回" left-arrow @click-left="$router.push('login')"> </van-nav-bar>
     <van-nav-bar v-if="commentFilter" title="留言紀錄" left-text="返回" left-arrow @click-left="commentFilter = false"> </van-nav-bar>
+    <van-nav-bar v-if="judgeFilter" title="診斷紀錄" left-text="返回" left-arrow @click-left="judgeFilter = false"> </van-nav-bar>
+
     <van-overlay :show="loadingApi" style="text-align:center;">
       <van-loading type="spinner" />
     </van-overlay>
 
     <main v-for="(item, i) in myOrders" :key="i" class="doc-item mt-1" v-show="item.details">
-      <van-card
-        v-if="item.details"
-        @click="viewDetail(item)"
-        :price="item.details.price"
-        currency="NT"
-        :desc="getDesc(item)"
-        :title="getTitle(item)"
-        :thumb="getImgPath(item, i)"
-      >
+      <van-card v-if="item.details" :price="item.details.price" currency="NT" :desc="getDesc(item)" :title="getTitle(item)" :thumb="getImgPath(item, i)">
         <template #tags>
-          <div class="my-tags-grid" @click.stop="showJudge(item)">
+          <div class="my-tags-grid">
             <div style="color:var(--bs-blue)">{{ $formatStatus(item.orderStatus) }}</div>
-            <div class="click-4-more" v-if="item.judge">按我看更多</div>
+            <div class="click-4-more" v-if="item.judge && !commentFilter && !judgeFilter" @click.stop="showJudge(item)">按我看診斷紀錄</div>
+            <nav class="clip-judge" :class="judgeFilter ? 'show-detail-judge' : ''">
+              <div class="judge-content">{{ item.judge }}</div>
+            </nav>
           </div>
         </template>
         <template #footer>
-          <div class="my-tags-grid3" @click="showLeavelMsg = true">
+          <div
+            class="my-tags-grid3"
+            @click="
+              showLeavelMsg = true;
+              viewDetail(item);
+            "
+          >
             <div></div>
             <van-badge :content="getMyCount(item.message)" color="rgb(25, 137, 250)">
               <div class="my-msg">我的留言</div>
@@ -82,6 +84,8 @@ export default {
   name: "login",
   data() {
     return {
+      judgeFilter: "",
+      showClipPath: false,
       docs: [],
       skip: 0,
       orders: [],
@@ -94,10 +98,13 @@ export default {
   },
   computed: {
     myOrders() {
-      if (!this.commentFilter) {
+      if (!this.commentFilter && !this.judgeFilter) {
         return [...this.orders];
+      } else if (this.commentFilter) {
+        return this.orders.filter((s) => s.doctorPhone == this.commentFilter);
+      } else if (this.judgeFilter) {
+        return this.orders.filter((s) => s.doctorPhone == this.judgeFilter);
       }
-      return this.orders.filter((s) => s.doctorPhone == this.commentFilter);
     },
     orderMsgs() {
       return [...this.myOrders[0].message].reverse();
@@ -106,7 +113,8 @@ export default {
   methods: {
     showJudge(item) {
       if (!item.judge) return;
-      alert(item.judge);
+      this.showClipPath = true;
+      this.judgeFilter = item.doctorPhone;
     },
     getMyCount(message) {
       return message.filter((s) => s.userComment).length;
@@ -179,9 +187,11 @@ export default {
       this.loadingApi = false;
     },
     viewComment(item) {
+      this.judgeFilter = false;
       this.commentFilter = item.doctorPhone;
     },
     viewDetail(item) {
+      this.judgeFilter = false;
       this.commentFilter = item.doctorPhone;
     },
     getDesc(item) {
@@ -233,8 +243,33 @@ export default {
 </i18n>
 
 <style lang="scss" scoped>
+.clip-judge {
+  position: fixed;
+  z-index: 2;
+  top: 132px;
+  left: 0px;
+  right: 0;
+  bottom: 51px;
+  width: 100vw;
+  height: auto;
+  background: rgba(#000, 0.7);
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 0.5s ease-in-out;
+}
+.show-detail-judge {
+  clip-path: inset(0 0 0 0) !important;
+}
+.judge-content {
+  color: black;
+  background: var(--snap-blue);
+  max-height: calc(100vh - 51px - 133px);
+  overflow: hidden;
+  overflow-y: auto;
+  font-size: 1rem;
+}
 .doc-list {
   //background: var(--strapi-blue);
+  position: relative;
   width: 100vw;
   margin-bottom: 90px;
   color: white;
@@ -280,7 +315,8 @@ export default {
   transform: translateY(-5px);
 }
 .click-4-more {
-  width: 77px;
+  width: 99px;
+  border: none;
 }
 .msg-line-grid {
   display: grid;
@@ -300,5 +336,9 @@ export default {
 }
 .my-tags-grid {
   padding: 4px;
+}
+.judge-content {
+  padding: 10px;
+  height: 80vh;
 }
 </style>
