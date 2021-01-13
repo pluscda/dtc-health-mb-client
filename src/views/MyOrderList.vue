@@ -1,6 +1,8 @@
 <template>
   <section class="doc-list">
-    <van-nav-bar title="我的預約紀錄" left-text="返回" left-arrow @click-left="$router.push('login')">
+    <van-nav-bar v-if="!commentFilter" title="我的預約紀錄" left-text="返回" left-arrow @click-left="$router.push('login')"> </van-nav-bar>
+
+    <van-nav-bar v-if="commentFilter" title="查看留言紀錄" left-text="返回" left-arrow @click-left="commentFilter = false">
       <!-- <template #right>
         <van-tag round v-if="commentFilter && orders.length > 1" type="primary" class="ml-2" @click="commentFilter = ''">離開留言區</van-tag>
       </template> -->
@@ -28,8 +30,12 @@
         <template #footer>
           <div class="my-tags-grid3" @click="showLeavelMsg = true">
             <div></div>
-            <div class="my-msg">我的留言</div>
-            <div class="my-doc-msg">醫生留言</div>
+            <van-badge :content="getMyCount(item.message)" color="rgb(187 69 53)">
+              <div class="my-msg">我的留言</div>
+            </van-badge>
+            <van-badge :content="getDoctCount(item.message)" color="#9968bd">
+              <div class="my-doc-msg">醫生留言</div>
+            </van-badge>
           </div>
         </template>
       </van-card>
@@ -37,7 +43,7 @@
     <nav v-if="commentFilter" style="color:white;font-size:14px;" class="mt-1">
       <div
         class="comment-dtc px-2 py-2"
-        v-for="(note, idxkey) in myOrders[0].message"
+        v-for="(note, idxkey) in orderMsgs"
         :key="idxkey"
         :style="note.docComment ? 'background:#1f7cd3;' : 'background:#f3d6d2;color:black;'"
       >
@@ -53,7 +59,7 @@
       </div>
     </nav>
     <footer v-if="commentFilter">
-      <van-field autofocus="true" v-model="myMsg" rows="2" type="textarea" maxlength2="600" placeholder="請輸入留言..." show-word-limit> </van-field>
+      <van-field autofocus="true" v-model="myMsg" rows="2" type="textarea" placeholder="請輸入留言..."> </van-field>
       <div class="my-tags-grid">
         <van-button
           type="primary"
@@ -94,12 +100,21 @@ export default {
   computed: {
     myOrders() {
       if (!this.commentFilter) {
-        return this.orders;
+        return [...this.orders];
       }
       return this.orders.filter((s) => s.doctorPhone == this.commentFilter);
     },
+    orderMsgs() {
+      return [...this.myOrders[0].message].reverse();
+    },
   },
   methods: {
+    getMyCount(message) {
+      return message.filter((s) => s.userComment).length;
+    },
+    getDoctCount(message) {
+      return message.filter((s) => s.docComment).length;
+    },
     async updateReadStatus(note) {
       this.loadingApi = true;
       note.read = true;
@@ -279,7 +294,7 @@ export default {
 .my-tags-grid3 {
   display: grid;
   grid-template-columns: 1fr repeat(2, max-content);
-  grid-gap: 6px;
+  grid-gap: 16px;
 }
 .my-tags-grid {
   padding: 4px;
