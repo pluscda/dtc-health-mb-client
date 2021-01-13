@@ -1,41 +1,13 @@
 <template>
   <section class="doc-list">
     <van-nav-bar title="我的預約紀錄" left-text="返回" left-arrow @click-left="$router.push('login')">
-      <template #right>
+      <!-- <template #right>
         <van-tag round v-if="commentFilter && orders.length > 1" type="primary" class="ml-2" @click="commentFilter = ''">離開留言區</van-tag>
-      </template>
+      </template> -->
     </van-nav-bar>
     <van-overlay :show="loadingApi" style="text-align:center;">
       <van-loading type="spinner" />
     </van-overlay>
-
-    <van-field
-      v-if="showLeavelMsg"
-      autofocus="true"
-      v-model="myMsg"
-      rows="10"
-      autosize
-      label="留言"
-      type="textarea"
-      maxlength="600"
-      placeholder="請輸入留言..."
-      show-word-limit
-    >
-    </van-field>
-    <div class="my-tags-grid" style="transform:translate3d(10px, 3px,0);margin-bottom:4px;" v-if="showLeavelMsg">
-      <van-button
-        type="primary"
-        size="small"
-        class="ml-2"
-        @click.stop="
-          loadingApi = true;
-          addComment(myMsg, true);
-        "
-        :disabled="loadingApi || !myMsg"
-        >新增留言</van-button
-      >
-      <van-tag type="warning" size="large" class="ml-2" @click.stop="showLeavelMsg = false">關閉新增留言區</van-tag>
-    </div>
 
     <main v-for="(item, i) in myOrders" :key="i" class="doc-item mt-1" v-show="item.details">
       <van-card
@@ -80,25 +52,42 @@
         <div style="padding-right:50px;">{{ note.docComment || note.userComment }}</div>
       </div>
     </nav>
+    <footer v-if="commentFilter">
+      <van-field autofocus="true" v-model="myMsg" rows="2" type="textarea" maxlength2="600" placeholder="請輸入留言..." show-word-limit> </van-field>
+      <div class="my-tags-grid">
+        <van-button
+          type="primary"
+          size="small"
+          class="ml-2"
+          @click.stop="
+            loadingApi = true;
+            addComment(myMsg);
+          "
+          :disabled="loadingApi || !myMsg"
+          >新增留言</van-button
+        >
+        <van-tag type="warning" size="large" class="ml-2" @click.stop="commentFilter = false">離開留言區</van-tag>
+      </div>
+    </footer>
   </section>
 </template>
 
 <script>
 //註記已讀
-import Vue from 'vue';
-import { store, mutations, actions } from '@/store/global.js';
+import Vue from "vue";
+import { store, mutations, actions } from "@/store/global.js";
 
 export default {
-  name: 'login',
+  name: "login",
   data() {
     return {
       docs: [],
       skip: 0,
       orders: [],
-      commentFilter: '',
+      commentFilter: "",
       showLeavelMsg: false,
-      myMsg: '',
-      price: '',
+      myMsg: "",
+      price: "",
       loadingApi: false,
     };
   },
@@ -116,22 +105,22 @@ export default {
       note.read = true;
       await actions.updateOrder(this.myOrders[0]);
       await this.getOrderHistoryList();
-      this.myMsg = '';
+      this.myMsg = "";
       this.loadingApi = false;
       //this.myOrders[0].message = [...this.myOrders[0].message];
     },
     getMsgStatus(item) {
-      let str = item.userComment && item.read ? '狀態: 醫生已讀取' : '';
-      if (!str) str = item.userComment && !item.read ? '狀態: 醫生未讀取' : '';
-      if (!str) str = item.docComment && !item.read ? '狀態: 您未讀取' : '';
-      if (!str) str = item.docComment && item.read ? '狀態: 您已讀取' : '';
+      let str = item.userComment && item.read ? "狀態: 醫生已讀取" : "";
+      if (!str) str = item.userComment && !item.read ? "狀態: 醫生未讀取" : "";
+      if (!str) str = item.docComment && !item.read ? "狀態: 您未讀取" : "";
+      if (!str) str = item.docComment && item.read ? "狀態: 您已讀取" : "";
       return str;
     },
     async book(item) {
       const obj = {
         orderPhoneNum: sessionStorage.phone,
         paidAmount: item.details.price,
-        status: 'waiting', // process and finish
+        status: "waiting", // process and finish
         orderDate: new Date().toISOString(),
         doctorPhone: item.details.phone,
         isCancer: item.details.cid < store.MIN_NON_CANCER_NUM ? true : false,
@@ -142,10 +131,10 @@ export default {
           item.details.cid < store.MIN_NON_CANCER_NUM
             ? [
                 {
-                  docComment: '需要您的報告,請您用郵件寄出',
+                  docComment: "需要您的報告,請您用郵件寄出",
                   commentAt: new Date().toISOString(),
                   rating: 0,
-                  userComment: '',
+                  userComment: "",
                 },
               ]
             : [],
@@ -155,15 +144,15 @@ export default {
         await actions.addOrder(obj);
         await this.getOrderHistoryList();
       } catch (e) {
-        Vue.$toast.error('order fail');
+        Vue.$toast.error("order fail");
       } finally {
-        sessionStorage.orderedDocPhone = '';
+        sessionStorage.orderedDocPhone = "";
         this.loadingApi = false;
       }
     },
-    async addComment(msg, userClick) {
+    async addComment(msg) {
       this.loadingApi = true;
-      const obj = { docComment: '', commentAt: new Date().toISOString(), rating: 0, userComment: msg, read: false };
+      const obj = { docComment: "", commentAt: new Date().toISOString(), rating: 0, userComment: msg, read: false };
       if (!this.myOrders[0].message) {
         this.myOrders[0].message = [];
       }
@@ -172,7 +161,7 @@ export default {
       this.orders = [...this.orders];
       //this.commentFilter = "";
       //this.showLeavelMsg = false;
-      Vue.$toast.success('新增留言成功');
+      Vue.$toast.success("新增留言成功");
       this.loadingApi = false;
     },
     viewComment(item) {
@@ -182,30 +171,30 @@ export default {
       this.commentFilter = item.doctorPhone;
     },
     getDesc(item) {
-      return '專長: ' + item.details.description;
+      return "專長: " + item.details.description;
     },
     getTitle(item) {
-      return item.details.name + ' | ' + item.details.hospital + ' | ' + item.details.title + ' @ ' + this.$twDate(item.orderDate) + ' 預約成功';
+      return item.details.name + " | " + item.details.hospital + " | " + item.details.title + " @ " + this.$twDate(item.orderDate) + " 預約成功";
     },
     getImgPath(item, i) {
       return store.imgPrefix + item.details.cover.url;
     },
     async getOrderHistoryList() {
       this.orders = [];
-      let qs = 'orderPhoneNum_eq=' + sessionStorage.phone;
-      qs += '&_sort=orderDate:desc';
+      let qs = "orderPhoneNum_eq=" + sessionStorage.phone;
+      qs += "&_sort=orderDate:desc";
       try {
         this.loadingApi = true;
         const { count, items } = await actions.getOrders(qs);
         if (!count) return;
-        const mySet = new Set(items.map((s) => 'phone_in=' + s.doctorPhone));
-        qs = [...mySet].join('&');
+        const mySet = new Set(items.map((s) => "phone_in=" + s.doctorPhone));
+        qs = [...mySet].join("&");
         const { items: docs } = await actions.getDoctors(qs);
         // attach the doctor detail into each order here
         docs.forEach((s) => (items.find((s2) => s2.doctorPhone == s.phone).details = s));
         this.orders = items;
       } catch (e) {
-        alert('error getOrderHistoryList: ' + e);
+        alert("error getOrderHistoryList: " + e);
       } finally {
         this.loadingApi = false;
       }
@@ -291,5 +280,8 @@ export default {
   display: grid;
   grid-template-columns: 1fr repeat(2, max-content);
   grid-gap: 6px;
+}
+.my-tags-grid {
+  padding: 4px;
 }
 </style>
