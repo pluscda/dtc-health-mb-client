@@ -33,7 +33,7 @@
               viewDetail(item);
             "
           >
-            <div></div>
+            <div @click.stop=""></div>
             <van-badge :content="getMyCount(item.message)" color="rgb(25, 137, 250)">
               <div class="my-msg">我的留言</div>
             </van-badge>
