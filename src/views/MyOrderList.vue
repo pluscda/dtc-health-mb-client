@@ -265,7 +265,7 @@ export default {
   max-height: calc(100vh - 51px - 133px);
   overflow: hidden;
   overflow-y: auto;
-  font-size: 1rem;
+  font-size: 13px;
 }
 .doc-list {
   //background: var(--strapi-blue);
