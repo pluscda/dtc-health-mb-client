@@ -50,7 +50,7 @@
 
           <span class="mark-as-read" v-if="!note.read && note.docComment" @click.stop="updateReadStatus(note)">註記已讀</span>
         </div>
-        <div style="padding-right:50px;">{{ note.docComment ? "醫生說" : "我留言" }}: {{ note.docComment || note.userComment }}</div>
+        <div>{{ note.docComment ? "醫生說" : "我留言" }}: {{ note.docComment || note.userComment }}</div>
       </div>
     </nav>
     <footer v-if="commentFilter">
@@ -231,7 +231,6 @@ export default {
 .doc-list {
   //background: var(--strapi-blue);
   width: 100vw;
-  height: 100vh;
   margin-bottom: 90px;
   color: white;
   //overflow-y: auto;
