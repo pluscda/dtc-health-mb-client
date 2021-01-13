@@ -18,8 +18,9 @@
         :thumb="getImgPath(item, i)"
       >
         <template #tags>
-          <div class="my-tags-grid" @click="showLeavelMsg = true">
+          <div class="my-tags-grid" @click.stop="showJudge(item)">
             <div style="color:var(--bs-blue)">{{ $formatStatus(item.orderStatus) }}</div>
+            <div class="click-4-more" v-if="item.judge">按我看更多</div>
           </div>
         </template>
         <template #footer>
@@ -103,6 +104,10 @@ export default {
     },
   },
   methods: {
+    showJudge(item) {
+      if (!item.judge) return;
+      alert(item.judge);
+    },
     getMyCount(message) {
       return message.filter((s) => s.userComment).length;
     },
@@ -261,7 +266,8 @@ export default {
   color: var(--dark);
 }
 
-.mark-as-read {
+.mark-as-read,
+.click-4-more {
   display: inline-block;
   clip-path: polygon(10% 1%, 100% 0%, 100% 99%, 10% 100%, 0% 50%);
   background: linear-gradient(to right, #da5afa, #c735ec);
@@ -272,6 +278,9 @@ export default {
   font-size: 12px;
   line-height: 25px;
   transform: translateY(-5px);
+}
+.click-4-more {
+  width: 77px;
 }
 .msg-line-grid {
   display: grid;
