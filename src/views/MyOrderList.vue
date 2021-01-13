@@ -2,11 +2,7 @@
   <section class="doc-list">
     <van-nav-bar v-if="!commentFilter" title="我的預約紀錄" left-text="返回" left-arrow @click-left="$router.push('login')"> </van-nav-bar>
 
-    <van-nav-bar v-if="commentFilter" title="留言紀錄" left-text="返回" left-arrow @click-left="commentFilter = false">
-      <!-- <template #right>
-        <van-tag round v-if="commentFilter && orders.length > 1" type="primary" class="ml-2" @click="commentFilter = ''">離開留言區</van-tag>
-      </template> -->
-    </van-nav-bar>
+    <van-nav-bar v-if="commentFilter" title="留言紀錄" left-text="返回" left-arrow @click-left="commentFilter = false"> </van-nav-bar>
     <van-overlay :show="loadingApi" style="text-align:center;">
       <van-loading type="spinner" />
     </van-overlay>
@@ -47,10 +43,10 @@
         :style="note.docComment ? 'background:#1f7cd3;' : 'background:#f3d6d2;color:black;'"
       >
         <div class="mb-1 msg-line-grid">
-          <span>{{ $twDate(note.commentAt) }}</span>
+          <van-icon name="pending-payment" size="20px" v-if="getMsgStatus(note).includes('未讀取')" />
+          <van-icon name="certificate" color="black" size="20px" v-if="getMsgStatus(note).includes('已讀取')" />
           <span>{{ getMsgStatus(note) }}</span>
-          <van-icon name="pending-payment" size="20px" v-if="getMsgStatus(note).includes('醫生未讀取')" />
-          <van-icon name="certificate" color="green" size="20px" v-if="getMsgStatus(note).includes('醫生已讀取')" />
+          <span>{{ $twDate(note.commentAt, "@") }}</span>
 
           <span class="mark-as-read" v-if="!note.read && note.docComment" @click.stop="updateReadStatus(note)">註記已讀</span>
         </div>
@@ -71,7 +67,6 @@
           :disabled="loadingApi || !myMsg"
           >新增留言</van-button
         >
-        <van-tag type="warning" size="large" class="ml-2" @click.stop="commentFilter = false">離開留言區</van-tag>
       </div>
     </footer>
   </section>
@@ -124,10 +119,10 @@ export default {
       //this.myOrders[0].message = [...this.myOrders[0].message];
     },
     getMsgStatus(item) {
-      let str = item.userComment && item.read ? "狀態: 醫生已讀取" : "";
-      if (!str) str = item.userComment && !item.read ? "狀態: 醫生未讀取" : "";
-      if (!str) str = item.docComment && !item.read ? "狀態: 您未讀取" : "";
-      if (!str) str = item.docComment && item.read ? "狀態: 您已讀取" : "";
+      let str = item.userComment && item.read ? "醫生已讀取" : "";
+      if (!str) str = item.userComment && !item.read ? "醫生未讀取" : "";
+      if (!str) str = item.docComment && !item.read ? "您未讀取" : "";
+      if (!str) str = item.docComment && item.read ? "您已讀取" : "";
       return str;
     },
     async book(item) {

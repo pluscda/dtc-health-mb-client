@@ -42,9 +42,9 @@ Vue.prototype.$formatPrice = function(value) {
   return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
-Vue.prototype.$twDate = function(str){
+Vue.prototype.$twDate = function(str,sep){
   if(!str || str.startsWith("0")) return "暫無資料";
-  return moment(str).format("YYYY-MM-DD HH:mm:ss");
+  return sep ? moment(str).format("YYYY-MM-DD @ HH:mm:ss") : moment(str).format("YYYY-MM-DD HH:mm:ss");
 }
 
 Vue.prototype.$formatStatus = function(str){
