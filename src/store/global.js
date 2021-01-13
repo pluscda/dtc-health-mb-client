@@ -3,6 +3,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 // remove hard coded password here; hide the password in server side 
 let PASSWORD = "weR168@healther.dtc.tw"
+//blow ids are DTC big boss provided 
 let hotMapIds = [3,4,8,12,18,19,26,28,30,31,33];
 let numStr = "34,38,41,49,56,67,89,95,";
 numStr += "98,99,104,111,115,118,123,";
