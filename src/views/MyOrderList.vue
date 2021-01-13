@@ -35,7 +35,7 @@
         </template>
       </van-card>
     </main>
-    <nav style="color:white;font-size:14px;" class="mt-1">
+    <nav v-if="commentFilter" style="color:white;font-size:14px;" class="mt-1">
       <div
         class="comment-dtc px-2 py-2"
         v-for="(note, idxkey) in orderMsgs"
@@ -53,7 +53,7 @@
         <div style="padding-right:50px;">{{ note.docComment ? "醫生說" : "我留言" }}: {{ note.docComment || note.userComment }}</div>
       </div>
     </nav>
-    <footer>
+    <footer v-if="commentFilter">
       <van-field autofocus="true" v-model="myMsg" rows="2" type="textarea" placeholder="請輸入留言..."> </van-field>
       <div class="my-tags-grid">
         <van-button
