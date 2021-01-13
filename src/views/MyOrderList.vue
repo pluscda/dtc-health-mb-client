@@ -2,7 +2,7 @@
   <section class="doc-list">
     <van-nav-bar v-if="!commentFilter" title="我的預約紀錄" left-text="返回" left-arrow @click-left="$router.push('login')"> </van-nav-bar>
 
-    <van-nav-bar v-if="commentFilter" title="查看留言紀錄" left-text="返回" left-arrow @click-left="commentFilter = false">
+    <van-nav-bar v-if="commentFilter" title="留言紀錄" left-text="返回" left-arrow @click-left="commentFilter = false">
       <!-- <template #right>
         <van-tag round v-if="commentFilter && orders.length > 1" type="primary" class="ml-2" @click="commentFilter = ''">離開留言區</van-tag>
       </template> -->
