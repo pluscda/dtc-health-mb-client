@@ -23,17 +23,16 @@
       >
         <template #tags>
           <div class="my-tags-grid" @click="showLeavelMsg = true">
-            <div style="color:var(--bs-blue)">{{ $formatStatus(item.orderStatus) }}:</div>
-            <div style="color:var(--bs-blue);">留言{{ item.message.length }}則</div>
+            <div style="color:var(--bs-blue)">{{ $formatStatus(item.orderStatus) }}</div>
           </div>
         </template>
         <template #footer>
           <div class="my-tags-grid3" @click="showLeavelMsg = true">
             <div></div>
-            <van-badge :content="getMyCount(item.message)" color="rgb(187 69 53)">
+            <van-badge :content="getMyCount(item.message)" color="rgb(25, 137, 250)">
               <div class="my-msg">我的留言</div>
             </van-badge>
-            <van-badge :content="getDoctCount(item.message)" color="#9968bd">
+            <van-badge :content="getDoctCount(item.message)" color="rgb(25, 137, 250)">
               <div class="my-doc-msg">醫生留言</div>
             </van-badge>
           </div>
