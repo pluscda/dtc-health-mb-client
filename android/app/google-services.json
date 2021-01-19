@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "567717669747",
+    "firebase_url": "https://ddeeee-4f963.firebaseio.com",
+    "project_id": "ddeeee-4f963",
+    "storage_bucket": "ddeeee-4f963.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:567717669747:android:2e52ca0297156bfb47f306",
+        "android_client_info": {
+          "package_name": "tw.com.datacom.health"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "567717669747-db42f0hi14ut1uqr0ccdvditammbdvql.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIp5EUnyVon_pZEMvojhbvs3QFP5bzSFg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "567717669747-db42f0hi14ut1uqr0ccdvditammbdvql.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

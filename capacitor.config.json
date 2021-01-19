@@ -1,0 +1,13 @@
+{
+  "appId": "tw.com.datacom.healther",
+  "appName": "dtc-healther",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}
