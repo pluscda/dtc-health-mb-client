@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/card.svg"
   },
   {
-    "revision": "7ca565945a5dcefa14ec",
-    "url": "/css/app.3585c7d5.css"
+    "revision": "060a781ee4caba93929f",
+    "url": "/css/app.b1d06277.css"
   },
   {
     "revision": "5b88ca8f20286fb0c8f7",
@@ -18,10 +18,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "68f7a848e6cc4eb1dc00",
     "url": "/css/chunk-184044ff.8901ce2a.css"
-  },
-  {
-    "revision": "f11f47a0e3bce0c2462f",
-    "url": "/css/chunk-1c9e667e.493bab98.css"
   },
   {
     "revision": "3bab93722f978d6d5fc5",
@@ -54,6 +50,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "376c85da4d34c4bbe8af",
     "url": "/css/chunk-8245e530.d3736a66.css"
+  },
+  {
+    "revision": "013ddbba7fdbbd5f3dbb",
+    "url": "/css/chunk-9a6cdf36.eb16d420.css"
   },
   {
     "revision": "ea82e63bc2cf55317295",
@@ -92,12 +92,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/markers_default@2x.0e04541b.png"
   },
   {
-    "revision": "88e0396c02a9c977e248dca72ad20ee6",
+    "revision": "41fa336f2d035e053f7a8df1cd55d427",
     "url": "/index.html"
   },
   {
-    "revision": "7ca565945a5dcefa14ec",
-    "url": "/js/app.2d78ef28.js"
+    "revision": "060a781ee4caba93929f",
+    "url": "/js/app.f8650254.js"
   },
   {
     "revision": "5b88ca8f20286fb0c8f7",
@@ -106,10 +106,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "68f7a848e6cc4eb1dc00",
     "url": "/js/chunk-184044ff.10bb4fa8.js"
-  },
-  {
-    "revision": "f11f47a0e3bce0c2462f",
-    "url": "/js/chunk-1c9e667e.dbec29de.js"
   },
   {
     "revision": "3bab93722f978d6d5fc5",
@@ -142,6 +138,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "376c85da4d34c4bbe8af",
     "url": "/js/chunk-8245e530.6c98f2bc.js"
+  },
+  {
+    "revision": "013ddbba7fdbbd5f3dbb",
+    "url": "/js/chunk-9a6cdf36.1628f823.js"
   },
   {
     "revision": "ea82e63bc2cf55317295",
