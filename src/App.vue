@@ -95,6 +95,12 @@ export default {
       this.gisInfo = obj.phone ? `${obj.address} / ${obj.phone}` : obj.address;
     });
   },
+  async beforeCreate() {
+    const { token, phone } = await actions.getCapaData();
+    sessionStorage.token = token;
+    sessionStorage.phone = phone;
+    token ? (store.isLogin = true) : (store.isLogin = false);
+  },
   watch: {
     $route(to, from) {
       this.gisInfo = "";
