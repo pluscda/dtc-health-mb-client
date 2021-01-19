@@ -26,7 +26,7 @@ export default {
       return sessionStorage.token || store.isLogin;
     },
     myPhone() {
-      const phone = sessionStorage.token && sessionStorage.phone ? sessionStorage.phone.slice(0, 8) : "";
+      const phone = sessionStorage.phone;
       return phone;
     },
   },
