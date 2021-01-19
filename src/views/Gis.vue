@@ -7,7 +7,6 @@
     :options="mapOptions"
     @update:center="centerUpdate"
     @update:zoom="zoomUpdate"
-    v-if="showMap"
     style="min-height:calc(100vh - 51px);z-index:1;position:relative;"
   >
     <l-tile-layer :url="url" :attribution2="attribution" />
