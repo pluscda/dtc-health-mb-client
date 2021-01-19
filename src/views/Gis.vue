@@ -16,13 +16,6 @@
     <l-marker @click="clickItem(item)" v-for="(item, i) in features.slice(0, 1)" :key="i" :lat-lng="item.latLng" :icon="houseMarker">
       <l-tooltip :options="{ permanent: true, interactive: false, direction: 'bottom' }">{{ item.name }}</l-tooltip>
     </l-marker>
-    <link
-      rel="stylesheet"
-      async
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
-      crossorigin="anonymous"
-    />
   </l-map>
 </template>
 
