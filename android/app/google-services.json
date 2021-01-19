@@ -34,6 +34,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:567717669747:android:6d4352ba4871a3d647f306",
+        "android_client_info": {
+          "package_name": "tw.com.datacom.healther"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "567717669747-db42f0hi14ut1uqr0ccdvditammbdvql.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIp5EUnyVon_pZEMvojhbvs3QFP5bzSFg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "567717669747-db42f0hi14ut1uqr0ccdvditammbdvql.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"
