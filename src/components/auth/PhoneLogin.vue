@@ -75,7 +75,7 @@ export default {
           this.jwt = jwt2;
         }
         sessionStorage.token = this.jwt;
-        localStorage.token = this.jwt;
+        await actions.setCapaData({ token: this.jwt, phone: this.phone });
         this.showMask = false;
         mutations.login(this.phone);
       } catch (e) {
