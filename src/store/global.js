@@ -1,6 +1,8 @@
 import Vue from "vue";
 import firebase from "firebase/app";
 import "firebase/auth";
+import { Plugins } from '@capacitor/core';
+const { Storage } = Plugins;
 // remove hard coded password here; hide the password in server side 
 let PASSWORD = "weR168@healther.dtc.tw"
 //blow ids are DTC big boss provided 
@@ -50,6 +52,16 @@ function recaptch(id){
     }
 }
 export let actions = {
+  async setCapaData(obj){
+    await Storage.set({
+      key: 'user',
+      value: JSON.stringify(obj)
+    });
+  },
+  async getCapaData(){
+     const ret = await Storage.get({ key: 'user' });
+     return JSON.parse(ret.value);
+  },
   async getCount(url){
      return await axios.get(url);
   },
@@ -127,11 +139,11 @@ export let mutations = {
     sessionStorage.phone = phone;
   },
   async logout() {
+    sessionStorage.clear();
+    store.isLogin = false; // need this line to tigger other pages; DO NOT REMOVE
+    await Storage.clear();
     await firebase.auth().signOut();
     window.recaptchaVerifier = null;
-    store.isLogin = false; // need this line to tigger other pages; DO NOT REMOVE
-    sessionStorage.clear();
-    localStorage.clear();
     store = Vue.observable({
       ...init,
     });
