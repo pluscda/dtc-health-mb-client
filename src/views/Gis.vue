@@ -9,7 +9,7 @@
     @update:zoom="zoomUpdate"
     style="min-height:calc(100vh - 51px);z-index:1;position:relative;"
   >
-    <l-tile-layer :url="url" :attribution2="attribution" />
+    <l-tile-layer :url="url" />
     <l-control position="bottomright">
       <div class="dtc-home" @click="goHome">HOME</div>
     </l-control>
