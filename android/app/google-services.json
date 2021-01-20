@@ -8,10 +8,10 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:567717669747:android:2e52ca0297156bfb47f306",
         "android_client_info": {
-          "package_name": "tw.com.datacom.health"
-        }
+          "package_name": "tw.com.datacom.healther"
+        },
+        "mobilesdk_app_id": "1:567717669747:android:2e52ca0297156bfb47f306"
       },
       "oauth_client": [
         {

@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/card.svg"
   },
   {
-    "revision": "060a781ee4caba93929f",
+    "revision": "559d7ea3dad8a4feacc1",
     "url": "/css/app.b1d06277.css"
   },
   {
@@ -18,6 +18,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "68f7a848e6cc4eb1dc00",
     "url": "/css/chunk-184044ff.8901ce2a.css"
+  },
+  {
+    "revision": "c4562cf971a069ed4812",
+    "url": "/css/chunk-358c8ae3.d1f7d5d0.css"
   },
   {
     "revision": "3bab93722f978d6d5fc5",
@@ -50,10 +54,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "376c85da4d34c4bbe8af",
     "url": "/css/chunk-8245e530.d3736a66.css"
-  },
-  {
-    "revision": "013ddbba7fdbbd5f3dbb",
-    "url": "/css/chunk-9a6cdf36.eb16d420.css"
   },
   {
     "revision": "ea82e63bc2cf55317295",
@@ -92,12 +92,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/markers_default@2x.0e04541b.png"
   },
   {
-    "revision": "41fa336f2d035e053f7a8df1cd55d427",
+    "revision": "776d53c6daf27141a924e347d629af50",
     "url": "/index.html"
   },
   {
-    "revision": "060a781ee4caba93929f",
-    "url": "/js/app.f8650254.js"
+    "revision": "559d7ea3dad8a4feacc1",
+    "url": "/js/app.e7929e39.js"
   },
   {
     "revision": "5b88ca8f20286fb0c8f7",
@@ -106,6 +106,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "68f7a848e6cc4eb1dc00",
     "url": "/js/chunk-184044ff.10bb4fa8.js"
+  },
+  {
+    "revision": "c4562cf971a069ed4812",
+    "url": "/js/chunk-358c8ae3.6822be5b.js"
   },
   {
     "revision": "3bab93722f978d6d5fc5",
@@ -138,10 +142,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "376c85da4d34c4bbe8af",
     "url": "/js/chunk-8245e530.6c98f2bc.js"
-  },
-  {
-    "revision": "013ddbba7fdbbd5f3dbb",
-    "url": "/js/chunk-9a6cdf36.1628f823.js"
   },
   {
     "revision": "ea82e63bc2cf55317295",

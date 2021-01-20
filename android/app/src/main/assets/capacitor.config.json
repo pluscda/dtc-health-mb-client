@@ -7,7 +7,11 @@
   "plugins": {
     "SplashScreen": {
       "launchShowDuration": 0
-    }
+    },
+    "server": {
+      "url": "http://172.16.16.17:8082/",
+      "cleartext": true
+     }
   },
   "cordova": {}
 }
