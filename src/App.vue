@@ -26,6 +26,9 @@ import { store, mutations, actions } from "@/store/global.js";
 import Vue from "vue";
 import PN from "@/components/Pn.vue";
 import GISJSON from "@/assets/gis.json";
+import { Plugins } from "@capacitor/core";
+const { Network, SplashScreen } = Plugins;
+
 let features = GISJSON.filter((s) => store.hotMapIds.find((s2) => s2 == +s.myID));
 const mySet = new Set(features.map((s) => s.address.slice(0, 3)));
 const acc = {};
@@ -101,10 +104,17 @@ export default {
     });
   },
   async beforeCreate() {
-    const { token, phone } = await actions.getCapaData();
-    sessionStorage.token = token;
-    sessionStorage.phone = phone;
-    token ? (store.isLogin = true) : (store.isLogin = false);
+    try {
+      const { token, phone } = await actions.getCapaData();
+      sessionStorage.token = token;
+      sessionStorage.phone = phone;
+      token ? (store.isLogin = true) : (store.isLogin = false);
+    } catch (e) {
+      //
+    }
+    Network.addListener("networkStatusChange", (status) => {
+      this.network = status.connected;
+    });
   },
   watch: {
     $route(to, from) {

@@ -35,16 +35,13 @@ export default {
         }
       });
       PushNotifications.addListener("registration", async (token) => {
-        const { platform, osVersion, appVersion } = await Device.getInfo();
-        alert(platform);
+        const { platform, osVersion, appVersion, webViewVersion, webViewVersion } = await Device.getInfo();
         let obj = { token: token.value, phone: sessionStorage.phone };
-        obj = Object.assign({}, { platform, osVersion, appVersion }, obj);
-
+        obj = Object.assign({}, { platform, osVersion, appVersion, webViewVersion }, obj);
         // const position = await Geolocation.getCurrentPosition();
         // const lat = position.coords.latitude;
         // const lon = position.coords.longitude;
-        // alert(lon);
-        await actions.registerPn(obj);
+        sessionStorage.phone ? await actions.registerPn(obj) : await actions.analysis(obj);
       });
       PushNotifications.addListener("pushNotificationReceived", async (notification) => {
         console.log("Push received: " + JSON.stringify(notification));

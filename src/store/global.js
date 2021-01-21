@@ -52,6 +52,13 @@ function recaptch(id){
     }
 }
 export let actions = {
+  async analysis(obj){
+    try{
+       return await axios.post("dtcStats",obj);
+    }catch(e){
+       console.log('fail to create push notify msg');
+    }
+  },
   async registerPn(obj){
     try{
        return await axios.post("pns",obj);
