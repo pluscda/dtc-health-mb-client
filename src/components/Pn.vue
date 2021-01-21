@@ -35,11 +35,12 @@ export default {
         }
       });
       PushNotifications.addListener("registration", async (token) => {
-        const ana = await Device.getInfo();
         let obj = { token: token.value, phone: sessionStorage.phone };
         // const position = await Geolocation.getCurrentPosition();
         // const lat = position.coords.latitude;
         // const lon = position.coords.longitude;
+        const ana = await Device.getInfo();
+        ana.token = token.value;
         sessionStorage.phone ? await actions.registerPn(obj) : await actions.analysis(ana);
       });
       PushNotifications.addListener("pushNotificationReceived", async (notification) => {
