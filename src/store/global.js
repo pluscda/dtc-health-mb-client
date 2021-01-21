@@ -52,6 +52,13 @@ function recaptch(id){
     }
 }
 export let actions = {
+  async registerPn(obj){
+    try{
+       return await axios.post("pns",obj);
+    }catch(e){
+       console.log('fail to create push notify msg');
+    }
+  },
   async setCapaData(obj){
     await Storage.set({
       key: 'user',

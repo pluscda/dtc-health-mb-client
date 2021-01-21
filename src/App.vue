@@ -17,12 +17,14 @@
       <van-tabbar-item icon="bookmark-o" @click="tabClick('/gis')">找醫院</van-tabbar-item>
       <van-tabbar-item icon="setting-o" @click="tabClick('/login')">{{ $t("我的") }}</van-tabbar-item>
     </van-tabbar>
+    <PN v-if="isLogin"></PN>
   </div>
 </template>
 
 <script>
 import { store, mutations, actions } from "@/store/global.js";
 import Vue from "vue";
+import PN from "@/components/Pn.vue";
 import GISJSON from "@/assets/gis.json";
 let features = GISJSON.filter((s) => store.hotMapIds.find((s2) => s2 == +s.myID));
 const mySet = new Set(features.map((s) => s.address.slice(0, 3)));
@@ -55,6 +57,9 @@ export default {
       showGisPopup: false,
       gisInfo: "",
     };
+  },
+  components: {
+    PN,
   },
   computed: {
     isLogin() {

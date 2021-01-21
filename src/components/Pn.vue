@@ -3,10 +3,10 @@
 </template>
 
 <script>
-import { store, mutations } from "@/store/global.js";
+import { store, mutations, actions } from "@/store/global.js";
 import { Plugins, PushNotification, PushNotificationToken, PushNotificationActionPerformed, Capacitor } from "@capacitor/core";
 
-const { PushNotifications } = Plugins;
+const { PushNotifications, Device, Geolocation } = Plugins;
 export default {
   name: "pushNotify",
 
@@ -31,12 +31,20 @@ export default {
           // Register with Apple / Google to receive push via APNS/FCM
           PushNotifications.register();
         } else {
-          alet("No permission for push granted");
+          alert("No permission for push granted");
         }
       });
-      PushNotifications.addListener("registration", (token) => {
-        // token == {value:xxxx}
-        console.log("My token: " + JSON.stringify(token));
+      PushNotifications.addListener("registration", async (token) => {
+        const { platform, osVersion, appVersion } = await Device.getInfo();
+        alert(platform);
+        let obj = { token: token.value, phone: sessionStorage.phone };
+        obj = Object.assign({}, { platform, osVersion, appVersion }, obj);
+
+        // const position = await Geolocation.getCurrentPosition();
+        // const lat = position.coords.latitude;
+        // const lon = position.coords.longitude;
+        // alert(lon);
+        await actions.registerPn(obj);
       });
       PushNotifications.addListener("pushNotificationReceived", async (notification) => {
         console.log("Push received: " + JSON.stringify(notification));
@@ -44,8 +52,8 @@ export default {
       PushNotifications.addListener("pushNotificationActionPerformed", async (notification) => {
         const data = notification.notification.data;
         console.log("Action performed: " + JSON.stringify(notification.notification));
-        store.pnMsg = notification.notification;
-        this.$router.push("pn-msg");
+        store.pnMsg = notification;
+        this.$router.push("pnmsg");
         // if (data.detailsId) {
         //   this.$router.push("pn-msg");
         //   //this.router.navigateByUrl(`/home/${data.detailsId}`);
@@ -60,11 +68,3 @@ export default {
   async beforeCreate() {},
 };
 </script>
-
-<style lang="scss" scoped>
-.dashboard {
-}
-
-aside {
-}
-</style>
