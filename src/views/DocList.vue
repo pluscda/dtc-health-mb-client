@@ -22,26 +22,26 @@
 </template>
 
 <script>
-import Vue from 'vue';
-import { store, mutations, actions } from '@/store/global.js';
+import Vue from "vue";
+import { store, mutations, actions } from "@/store/global.js";
 export default {
-  name: 'docList',
+  name: "docList",
   data() {
     return {
-      id: '',
-      name: '',
+      id: "",
+      name: "",
       docs: [],
       cates: [],
       skip: 0,
-      cat: '',
-      searchBy: '',
+      cat: "",
+      searchBy: "",
       myPreviousOrders: [],
       loadingApi: false,
     };
   },
   computed: {
     unFinishOrders() {
-      return this.myPreviousOrders.filter((s) => s.status != 'finish');
+      return this.myPreviousOrders.filter((s) => s.status != "finish");
     },
   },
   methods: {
@@ -50,28 +50,28 @@ export default {
     },
     getWaitStatus(item) {
       const status = this.unFinishOrders.find((s) => s.orderPhoneNum == sessionStorage.phone && s.doctorPhone == item.phone).status;
-      return status == 'process' ? '醫師處理中' : '等待醫師回覆中';
+      return status == "process" ? "醫師處理中" : "等待醫師回覆中";
     },
     async book(item) {
       sessionStorage.orderedDocPhone = item.phone;
       if (!sessionStorage.token) {
-        this.$router.push('/login?callback=doclist');
+        this.$router.push("/login?callback=doclist");
         return;
       }
       const obj = {
         orderPhoneNum: sessionStorage.phone,
         paidAmount: item.price,
-        orderStatus: 'waiting',
+        orderStatus: "waiting",
         orderDate: new Date().toISOString(),
         doctorPhone: item.phone,
-        inqueryCate: this.searchBy != '熱門醫生' ? this.cates.find((s) => s.name.includes(this.searchBy)).cid : item.cid,
+        inqueryCate: this.searchBy != "熱門醫生" ? this.cates.find((s) => s.name.includes(this.searchBy)).cid : item.cid,
         cusUnreadMsg: 1,
         totalMsg: 1,
         message:
           item.cid < store.MIN_NON_CANCER_NUM
             ? [
                 {
-                  docComment: '需要您的報告,請您用郵件寄出',
+                  docComment: "需要您的報告,請您用郵件寄出",
                   commentAt: new Date().toISOString(),
                 },
               ]
@@ -79,14 +79,16 @@ export default {
       };
       try {
         this.loadingApi = true;
-        await actions.addOrder(obj);
-        Vue.$toast.success('您已預約成功');
+        const ret = await actions.addOrder(obj);
+        Vue.$toast.success("您已預約成功");
         await this.getOrderHistory();
         this.docs = [...this.docs];
+        const obj = { senderPhone: sessionStorage.phone, receivePhone: item.phone, orderId: ret.id, type: "newOrder" };
+        actions.sendPushMsg(obj);
       } catch (e) {
-        Vue.$toast.error('order fail');
+        Vue.$toast.error("order fail");
       } finally {
-        sessionStorage.orderedDocPhone = '';
+        sessionStorage.orderedDocPhone = "";
         this.loadingApi = false;
       }
     },
@@ -96,25 +98,25 @@ export default {
     viewDetail(item) {
       window.scrollTo({
         top: 0,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
       const ok = this.isOrderAble(item);
-      ok ? (item.status = 'waiting') : (item.status = 'finish');
+      ok ? (item.status = "waiting") : (item.status = "finish");
       store.selectedDoctor = item;
-      this.$router.push('doctordetails');
+      this.$router.push("doctordetails");
     },
     getDesc(item) {
-      return '擅長: ' + item.description;
+      return "擅長: " + item.description;
     },
     getTitle(item) {
-      return item.name + ' | ' + item.hospital + ' | ' + item.title;
+      return item.name + " | " + item.hospital + " | " + item.title;
     },
     getImgPath(item, i) {
       return store.imgPrefix + item.cover.url;
     },
     async getDocList() {
       try {
-        const url = this.id ? 'doctors?cid_eq=' + this.id : `doctors?_limit=30&_start=${this.skip}`;
+        const url = this.id ? "doctors?cid_eq=" + this.id : `doctors?_limit=30&_start=${this.skip}`;
         this.docs = await axios.get(url);
       } catch (e) {}
     },
@@ -123,7 +125,7 @@ export default {
         this.myPreviousOrders = [];
         return;
       }
-      let qs = 'orderPhoneNum_eq=' + sessionStorage.phone;
+      let qs = "orderPhoneNum_eq=" + sessionStorage.phone;
       const { count, items } = await actions.getOrders(qs);
       this.myPreviousOrders = items;
     },
@@ -132,14 +134,14 @@ export default {
     const { id, searchBy } = this.$route.query;
     this.id = +id;
     this.name = searchBy;
-    this.searchBy = searchBy ? searchBy : '熱門醫生';
+    this.searchBy = searchBy ? searchBy : "熱門醫生";
     try {
       this.loadingApi = true;
       await this.getOrderHistory();
       await this.getDocList();
       this.cates = await actions.getCancerTypes();
     } catch (e) {
-      alert('error ' + e);
+      alert("error " + e);
     } finally {
       this.loadingApi = false;
     }
