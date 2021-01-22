@@ -4,14 +4,16 @@
 
 <script>
 import { store, mutations, actions } from "@/store/global.js";
-import { Plugins, PushNotification, PushNotificationToken, PushNotificationActionPerformed, Capacitor } from "@capacitor/core";
+import { Plugins, Capacitor } from "@capacitor/core";
 
 const { PushNotifications, Device, Geolocation } = Plugins;
 export default {
   name: "pushNotify",
 
   data() {
-    return {};
+    return {
+      pnObj: "",
+    };
   },
   components: {},
   computed: {
@@ -36,12 +38,13 @@ export default {
       });
       PushNotifications.addListener("registration", async (token) => {
         let obj = { token: token.value, phone: sessionStorage.phone };
+        this.pnObj = { token: token.value, phone: sessionStorage.phone };
         // const position = await Geolocation.getCurrentPosition();
         // const lat = position.coords.latitude;
         // const lon = position.coords.longitude;
-        const ana = await Device.getInfo();
-        ana.token = token.value;
-        sessionStorage.phone ? await actions.registerPn(obj) : await actions.analysis(ana);
+        const devInfo = await Device.getInfo();
+        devInfo.token = token.value;
+        sessionStorage.phone ? await actions.registerPn(obj) : await actions.analysis(devInfo);
       });
       PushNotifications.addListener("pushNotificationReceived", async (notification) => {
         console.log("Push received: " + JSON.stringify(notification));
@@ -62,6 +65,10 @@ export default {
   async mounted() {
     this.initPush();
   },
-  async beforeCreate() {},
+  async beforeCreate() {
+    this.$root.$on("register-push-msg", async () => {
+      if (this.pnObj) await actions.registerPn(this.pnObj);
+    });
+  },
 };
 </script>

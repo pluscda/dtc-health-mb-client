@@ -17,8 +17,7 @@
       <van-tabbar-item icon="bookmark-o" @click="tabClick('/gis')">找醫院</van-tabbar-item>
       <van-tabbar-item icon="setting-o" @click="tabClick('/login')">{{ $t("我的") }}</van-tabbar-item>
     </van-tabbar>
-    <PN v-if="isLogin"></PN>
-    <PN v-else></PN>
+    <PN></PN>
   </div>
 </template>
 

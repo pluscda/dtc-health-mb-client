@@ -78,6 +78,7 @@ export default {
         await actions.setCapaData({ token: this.jwt, phone: this.phone });
         this.showMask = false;
         mutations.login(this.phone);
+        this.$root.$emit("register-push-msg");
       } catch (e) {
         this.showMask = false;
         Vue.$toast.error("請檢查驗證號碼" + e);
