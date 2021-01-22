@@ -19,7 +19,7 @@
       "splashImmersive": true
     }
   },
-  "server": {
+  "server2": {
       "url": "http://172.16.16.17:8082/",
       "cleartext": true
   },
