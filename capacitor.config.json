@@ -1,6 +1,6 @@
 {
   "appId": "tw.com.datacom.healther",
-  "appName": "dtc-healther",
+  "appName": "名醫會館",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "dist",
@@ -14,7 +14,7 @@
       "androidSpinnerStyle": "large",
       "iosSpinnerStyle": "small",
       "spinnerColor": "#999999",
-      "showSpinner": false,
+      "showSpinner": true,
       "splashFullScreen": true,
       "splashImmersive": true
     }

@@ -8,10 +8,10 @@
         <span class="mr-3"><i class="fas fa-sign-in-alt"></i></span>{{ $t("健康通行證") }}
       </h2>
       <div class="phone-div">
-        <input v-model="phone" placeholder="請輸入手機號碼" minlength="10" maxlength="10" />
+        <input v-model="phone" type="tel" placeholder="請輸入手機號碼" minlength="10" maxlength="10" />
       </div>
       <div class="phone-div mt-3 short-code">
-        <div class="code-btn" @click="register" v-show="phone.length == 10">獲取短信驗證碼</div>
+        <div type="tel" class="code-btn" @click="register" v-show="phone.length == 10">獲取短信驗證碼</div>
         <input placeholder="請輸入短信驗證碼" minlength="6" maxlength="6" v-model="code" v-show="needCode" />
       </div>
 
