@@ -57,7 +57,6 @@ export let actions = {
        return await axios.post("dtc-sendpn",obj);
     }catch(e){
        console.log('fail to create dtc stats msg');
-       alert("errer")
     }
   },
   async analysis(obj){
