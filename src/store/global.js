@@ -187,9 +187,5 @@ const firebaseConfig = {
 const watchLogin = () => {
   firebase.initializeApp(firebaseConfig);
   firebase.auth().useDeviceLanguage();
-  firebase.auth().onAuthStateChanged((user) => {
-    // firebase user id
-    user ? store.fireUid = user.uid : mutations.logout();
-  });
 }
 watchLogin();
