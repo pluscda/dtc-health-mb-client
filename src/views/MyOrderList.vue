@@ -186,16 +186,13 @@ export default {
       }
       this.myOrders[0].message.unshift(obj);
       await actions.updateOrder(this.myOrders[0]);
-      const item = this.myOrders[0];
-      const notiObj = { senderPhone: sessionStorage.phone, receivePhone: item.orderPhoneNum, orderId: item.id, type: "msgAdd" };
-      actions.sendPushMsg(notiObj);
-      this.orders = [...this.orders];
-      //this.commentFilter = "";
-      //this.showLeavelMsg = false;
+      const item = { ...this.myOrders[0] };
       Vue.$toast.success("新增留言成功");
       setTimeout(this.getData(), 100);
-
+      this.orders = [...this.orders];
       this.loadingApi = false;
+      const notiObj = { senderPhone: sessionStorage.phone, receivePhone: item.orderPhoneNum, orderId: item.id, type: "msgAdd" };
+      actions.sendPushMsg(notiObj);
     },
     viewComment(item) {
       this.judgeFilter = false;
