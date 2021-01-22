@@ -64,7 +64,7 @@ export let actions = {
        return await axios.post("dtc-stats",obj);
     }catch(e){
        console.log('fail to create dtc stats msg');
-       alert("errer")
+       //alert("errer")
     }
   },
   async registerPn(obj){
