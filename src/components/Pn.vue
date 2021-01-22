@@ -66,8 +66,11 @@ export default {
     this.initPush();
   },
   async beforeCreate() {
-    this.$root.$on("register-push-msg", async () => {
-      if (this.pnObj) await actions.registerPn(this.pnObj);
+    this.$root.$on("register-push-msg", async (phone) => {
+      if (this.pnObj) {
+        this.pnObj.phone = phone;
+        await actions.registerPn(this.pnObj);
+      }
     });
   },
 };
