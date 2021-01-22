@@ -15,22 +15,27 @@
 </template>
 
 <script>
-import { store, mutations } from "@/store/global.js";
+import { store, actions } from "@/store/global.js";
 export default {
   name: "homeSearchTitle",
   data() {
-    return {};
+    return {
+      phone: "",
+    };
   },
   computed: {
     isLogin() {
       return sessionStorage.token || store.isLogin;
     },
     myPhone() {
-      const phone = sessionStorage.phone;
+      const phone = this.phone || sessionStorage.phone;
       return phone;
     },
   },
-  mounted() {},
+  async mounted() {
+    const { phone } = await actions.getCapaData();
+    this.phone = phone;
+  },
 };
 </script>
 <i18n>
