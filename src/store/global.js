@@ -3,7 +3,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import { Plugins } from '@capacitor/core';
 const { Storage } = Plugins;
-// remove hard coded password here; hide the password in server side 
+// this password is not used in server side, but requred at AJAX; in DB , it will not use this password
 let PASSWORD = "weR168@healther.dtc.tw"
 //blow ids are DTC big boss provided 
 let hotMapIds = [3,4,8,12,18,19,26,28,30,31,33];
