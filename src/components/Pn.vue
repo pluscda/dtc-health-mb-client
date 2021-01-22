@@ -50,7 +50,7 @@ export default {
         const data = notification.notification.data;
         console.log("Action performed: " + JSON.stringify(notification.notification));
         store.pnMsg = notification;
-        this.$router.push("pnmsg");
+        //this.$router.push("pnmsg");
         // if (data.detailsId) {
         //   this.$router.push("pn-msg");
         //   //this.router.navigateByUrl(`/home/${data.detailsId}`);
