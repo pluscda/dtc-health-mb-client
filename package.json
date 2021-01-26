@@ -5,7 +5,11 @@
   "scripts": {
     "serve": "vue-cli-service serve --port 8082",
     "build": "vue-cli-service build",
-    "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'"
+    "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
+    "capbuild": "NODE_ENV=production npm run config && npm run build && npx cap sync",
+    "config": "node ./generate_capacitor_config.js",
+    "capfig": "node ./generate_capacitor_config.js",
+    "capdev": "npm run config && npx cap sync"
   },
   "dependencies": {
     "@capacitor/android": "^2.4.6",
