@@ -63,7 +63,7 @@ export default {
       clrIdx: 0,
       zoom: 7.4,
       center: latLng(23.5, 120.74739),
-      url: "http://wmts.nlsc.gov.tw/wmts/EMAP6_OPENDATA/default/EPSG:3857/{z}/{y}/{x}",
+      url: "https://wmts.nlsc.gov.tw/wmts/EMAP6_OPENDATA/default/EPSG:3857/{z}/{y}/{x}",
       //https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
       withPopup: latLng(23.6, 120.74739),
       withTooltip: latLng(23.6, 120.74739),
