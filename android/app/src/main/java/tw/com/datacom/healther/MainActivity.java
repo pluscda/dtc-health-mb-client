@@ -1,4 +1,4 @@
-package tw.com.datacom.healther;
+package tw.com.datacom.healthstore;
 
 import android.os.Bundle;
 

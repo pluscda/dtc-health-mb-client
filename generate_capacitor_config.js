@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path');
 const capacitorConfig = {
-  "appId": "tw.com.datacom.healther",
+  "appId": "tw.com.datacom.healthstore",
   "appName": "名醫會館",
   "bundledWebRuntime": false,
   "npmClient": "npm",
@@ -31,7 +31,7 @@ const capacitorConfig = {
 const isHMR = process.env.NODE_ENV !== 'production' ? true : false;
 
 if (!isHMR) {
-  capacitorConfig.server.url = "https://dtc-health-mb-client.pluscda.vercel.app";
+  capacitorConfig.server.url = "https://dtc-health-mb-client.vercel.app";
   delete capacitorConfig.server.cleartext;
 }
 

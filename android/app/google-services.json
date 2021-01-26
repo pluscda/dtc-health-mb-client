@@ -8,10 +8,39 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:567717669747:android:ff3fff98efd6799247f306",
+        "android_client_info": {
+          "package_name": "tw.com.datacom.doctor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "567717669747-db42f0hi14ut1uqr0ccdvditammbdvql.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIp5EUnyVon_pZEMvojhbvs3QFP5bzSFg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "567717669747-db42f0hi14ut1uqr0ccdvditammbdvql.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:567717669747:android:2e52ca0297156bfb47f306",
         "android_client_info": {
           "package_name": "tw.com.datacom.health"
-        },
-        "mobilesdk_app_id": "1:567717669747:android:2e52ca0297156bfb47f306"
+        }
       },
       "oauth_client": [
         {
@@ -39,7 +68,36 @@
       "client_info": {
         "mobilesdk_app_id": "1:567717669747:android:6d4352ba4871a3d647f306",
         "android_client_info": {
-          "package_name": "tw.com.datacom.healther"
+          "package_name": "tw.com.datacom.healthstore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "567717669747-db42f0hi14ut1uqr0ccdvditammbdvql.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIp5EUnyVon_pZEMvojhbvs3QFP5bzSFg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "567717669747-db42f0hi14ut1uqr0ccdvditammbdvql.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:567717669747:android:49e2a4e6bfc44eee47f306",
+        "android_client_info": {
+          "package_name": "tw.com.datacom.healthstore"
         }
       },
       "oauth_client": [

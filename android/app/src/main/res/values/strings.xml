@@ -2,6 +2,6 @@
 <resources>
     <string name="app_name">名醫會館</string>
     <string name="title_activity_main">名醫會館</string>
-    <string name="package_name">tw.com.datacom.healther</string>
-    <string name="custom_url_scheme">tw.com.datacom.healther</string>
+    <string name="package_name">tw.com.datacom.healthstore</string>
+    <string name="custom_url_scheme">tw.com.datacom.healthstore</string>
 </resources>
