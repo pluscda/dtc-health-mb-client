@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/card.svg"
   },
   {
-    "revision": "5cf8141735f185056464",
+    "revision": "0142e22a0c2ce3c7a1fb",
     "url": "/css/app.dd2f6809.css"
   },
   {
@@ -18,6 +18,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "5b88ca8f20286fb0c8f7",
     "url": "/css/chunk-03437a56.97fd041e.css"
+  },
+  {
+    "revision": "e5076c2dbecd607f8bcc",
+    "url": "/css/chunk-1474494b.9eb07937.css"
   },
   {
     "revision": "68f7a848e6cc4eb1dc00",
@@ -60,10 +64,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/css/chunk-a6b6310e.a54e36de.css"
   },
   {
-    "revision": "34d766ea162cbce1e53a",
-    "url": "/css/chunk-ab1f733e.64fb3dd5.css"
-  },
-  {
     "revision": "adb2e5dd104161eefbc1",
     "url": "/css/chunk-e3e0bca2.55c51eed.css"
   },
@@ -92,12 +92,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/markers_default@2x.0e04541b.png"
   },
   {
-    "revision": "89bd124bf420bce9176008250281f44c",
+    "revision": "c46cda5e90847fb7aeaf2976b7fc1c09",
     "url": "/index.html"
   },
   {
-    "revision": "5cf8141735f185056464",
-    "url": "/js/app.86d99a71.js"
+    "revision": "0142e22a0c2ce3c7a1fb",
+    "url": "/js/app.f9fb9255.js"
   },
   {
     "revision": "c83dbf61271d22ec7e36",
@@ -106,6 +106,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "5b88ca8f20286fb0c8f7",
     "url": "/js/chunk-03437a56.6de41c77.js"
+  },
+  {
+    "revision": "e5076c2dbecd607f8bcc",
+    "url": "/js/chunk-1474494b.08d7fb9f.js"
   },
   {
     "revision": "68f7a848e6cc4eb1dc00",
@@ -146,10 +150,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "ea82e63bc2cf55317295",
     "url": "/js/chunk-a6b6310e.c28e1824.js"
-  },
-  {
-    "revision": "34d766ea162cbce1e53a",
-    "url": "/js/chunk-ab1f733e.80cabb9a.js"
   },
   {
     "revision": "adb2e5dd104161eefbc1",
