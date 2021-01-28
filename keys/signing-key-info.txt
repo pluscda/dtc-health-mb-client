@@ -1,0 +1,10 @@
+Keep your this file and signing.keystore in a safe place. You'll need these files if you want to upload future versions of your PWA to the Google Play Store.
+
+Key store file: signing.keystore
+Key store password: cKO19QipRQ8H
+Key alias: my-key-alias
+Key password: lRREKsuA_RxX
+Signer's full name: 名醫會館 Admin
+Signer's organization: 名醫會館
+Signer's organizational unit: Engineering
+Signer's country code: US

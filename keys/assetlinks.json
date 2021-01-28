@@ -1,5 +1,5 @@
 [{
       "relation": ["delegate_permission/common.handle_all_urls"],
       "target" : { "namespace": "android_app", "package_name": "app.vercel.dtc_health_mb_client.twa",
-                   "sha256_cert_fingerprints": ["52:CB:56:9F:84:73:42:34:76:0B:D6:9B:02:4E:19:09:E4:F0:FC:19:2E:B4:31:AC:47:9A:ED:78:7D:9E:1F:0E"] }
+                   "sha256_cert_fingerprints": ["F8:4A:20:F4:65:06:46:13:89:CC:21:35:75:34:31:39:D1:9A:EE:5A:C2:7E:6A:41:19:A1:4E:65:C0:C8:2D:06"] }
     }]
