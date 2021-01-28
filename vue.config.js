@@ -56,9 +56,9 @@ module.exports = {
             }
           ]
         },
-        workboxPluginMode: "InjectManifest",
-        workboxOptions:{
-            swSrc: "./src/firebase-messaging-sw.js"
-        }
+        // workboxPluginMode: "InjectManifest",
+        // workboxOptions:{
+        //     swSrc: "./src/firebase-messaging-sw.js"
+        // }
   }
 }
