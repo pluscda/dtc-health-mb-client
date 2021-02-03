@@ -1,5 +1,5 @@
 [{
       "relation": ["delegate_permission/common.handle_all_urls"],
-      "target" : { "namespace": "android_app", "package_name": "app.vercel.dtc_health_mb_client.twa",
-                   "sha256_cert_fingerprints": ["F8:4A:20:F4:65:06:46:13:89:CC:21:35:75:34:31:39:D1:9A:EE:5A:C2:7E:6A:41:19:A1:4E:65:C0:C8:2D:06"] }
+      "target" : { "namespace": "android_app", "package_name": "com.firebaseapp.vgh_kids.twa",
+                   "sha256_cert_fingerprints": ["B7:EB:61:09:1D:53:04:DA:4E:CC:A8:11:64:31:B7:74:A3:25:70:D3:3F:59:8A:C3:37:0D:29:21:CB:56:34:D8"] }
     }]
