@@ -37,7 +37,7 @@ export default {
         }
       });
       PushNotifications.addListener("registration", async (token) => {
-        console.log("token: " + token.value);
+        console.log("my PN token: " + token.value);
         let obj = { token: token.value, phone: sessionStorage.phone };
         this.pnObj = { token: token.value, phone: sessionStorage.phone };
         // const position = await Geolocation.getCurrentPosition();
