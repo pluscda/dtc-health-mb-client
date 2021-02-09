@@ -160,6 +160,16 @@ body {
   padding: 0px;
   box-sizing: border-box;
 }
+html,
+body {
+  scroll-behavior: smooth;
+  overflow-x: hidden !important;
+  padding-top: constant(safe-area-inset-top, 20px); /* iOS 11.0-iOS 11.1 */
+  padding-top: env(safe-area-inset-top, 20px); /*iOS 11.2 */
+  padding-bottom: constant(safe-area-inset-bottom, 20px); /* iOS 11.0-iOS 11.1 */
+  padding-bottom: env(safe-area-inset-bottom, 20px); /*iOS 11.2 */
+  padding: env(safe-area-inset-top, 20px) env(safe-area-inset-right, 20px) env(safe-area-inset-bottom, 20px) env(safe-area-inset-left, 20px) !important;
+}
 #app {
   margin: 0px;
   padding: 0px;

@@ -31,7 +31,7 @@ const capacitorConfig = {
 const isHMR = process.env.NODE_ENV !== 'production' ? true : false;
 
 if (!isHMR) {
-  capacitorConfig.server.url = "https://dtc-health-mb-client.vercel.app";
+  capacitorConfig.server.url = "https://vgh-kids.firebaseapp.com/";
   delete capacitorConfig.server.cleartext;
 }
 
