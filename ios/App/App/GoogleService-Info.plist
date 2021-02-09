@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>567717669747-dlkqdd6lhrp95kf179v0bcclrffp67b2.apps.googleusercontent.com</string>
+	<string>567717669747-lkupokb1qoqfl3tvslre4ue21ld5uf8a.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.567717669747-dlkqdd6lhrp95kf179v0bcclrffp67b2</string>
+	<string>com.googleusercontent.apps.567717669747-lkupokb1qoqfl3tvslre4ue21ld5uf8a</string>
 	<key>API_KEY</key>
 	<string>AIzaSyB98nABfRLuJqaie3OrqS1NVIhSBrBpV6k</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>tw.com.datacom.doctors</string>
+	<string>tw.com.datacom.healthstore</string>
 	<key>PROJECT_ID</key>
 	<string>ddeeee-4f963</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:567717669747:ios:87daf2d2bb6f2ace47f306</string>
+	<string>1:567717669747:ios:a9f4baff0a923a4747f306</string>
 	<key>DATABASE_URL</key>
 	<string>https://ddeeee-4f963.firebaseio.com</string>
 </dict>

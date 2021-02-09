@@ -19,6 +19,9 @@ const capacitorConfig = {
       "showSpinner": true,
       "splashFullScreen": true,
       "splashImmersive": true
+    },
+    "PushNotifications": {
+      "presentationOptions": ["badge", "sound", "alert"]
     }
   },
   "server": {
