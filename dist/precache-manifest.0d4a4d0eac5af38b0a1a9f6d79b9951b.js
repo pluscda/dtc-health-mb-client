@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/card.svg"
   },
   {
-    "revision": "85274f9df98cd87f0c2f",
+    "revision": "0ff443e4ca72c12446a2",
     "url": "/css/app.dd2f6809.css"
   },
   {
@@ -48,10 +48,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/css/chunk-5a5bb3ca.053ede73.css"
   },
   {
-    "revision": "d038c096fd9139ce1e62",
-    "url": "/css/chunk-746dacbc.debc0108.css"
-  },
-  {
     "revision": "6efa69a9f13563c09c4d",
     "url": "/css/chunk-7574db83.bfeb61a4.css"
   },
@@ -62,6 +58,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "9268229c35a3adb32046",
     "url": "/css/chunk-7d7a7b76.eee78abd.css"
+  },
+  {
+    "revision": "432c9b4df410487f83be",
+    "url": "/css/chunk-7dd68a66.d646e9c9.css"
   },
   {
     "revision": "ea82e63bc2cf55317295",
@@ -96,12 +96,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/markers_default@2x.0e04541b.png"
   },
   {
-    "revision": "a003e418400fa9861087a49051756481",
+    "revision": "e08dc0f26184043a530a5d2bd2a9c8ff",
     "url": "/index.html"
   },
   {
-    "revision": "85274f9df98cd87f0c2f",
-    "url": "/js/app.8d7aeb36.js"
+    "revision": "0ff443e4ca72c12446a2",
+    "url": "/js/app.36483732.js"
   },
   {
     "revision": "c83dbf61271d22ec7e36",
@@ -136,10 +136,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/js/chunk-5a5bb3ca.69e5045f.js"
   },
   {
-    "revision": "d038c096fd9139ce1e62",
-    "url": "/js/chunk-746dacbc.e2d8853b.js"
-  },
-  {
     "revision": "6efa69a9f13563c09c4d",
     "url": "/js/chunk-7574db83.f476c764.js"
   },
@@ -150,6 +146,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "9268229c35a3adb32046",
     "url": "/js/chunk-7d7a7b76.30f46fa1.js"
+  },
+  {
+    "revision": "432c9b4df410487f83be",
+    "url": "/js/chunk-7dd68a66.3890558a.js"
   },
   {
     "revision": "ea82e63bc2cf55317295",

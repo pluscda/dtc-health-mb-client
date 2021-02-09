@@ -31,9 +31,9 @@ export default {
   data() {
     return {
       showKeyboard: true,
-      phone: "0928012588",
+      phone: "",
       needCode: "",
-      code: "654321",
+      code: "",
       confirmationSMSCodeResult: "",
       user: "",
       jwt: "",
