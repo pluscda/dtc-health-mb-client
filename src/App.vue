@@ -165,8 +165,10 @@ body {
   background: var(--snap-blue) !important;
   scroll-behavior: smooth;
   overflow-x: hidden !important;
-  padding: constant(safe-area-inset-top, 0px) constant(safe-area-inset-right, 0px) constant(safe-area-inset-bottom, 0px) constant(safe-area-inset-left, 0px) !important;
-  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px) !important;
+  @media only screen and (-webkit-min-device-pixel-ratio: 1) {
+    padding: constant(safe-area-inset-top, 0px) constant(safe-area-inset-right, 0px) constant(safe-area-inset-bottom, 0px) constant(safe-area-inset-left, 0px) !important;
+    padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px) !important;
+  }
 }
 #app {
   margin: 0px;
@@ -233,7 +235,9 @@ body {
   text-align: center;
   font-size: 12px;
   z-index: 99999;
-  padding-top: constant(safe-area-inset-top, 0px);
-  padding-top: env(safe-area-inset-top, 0px);
+  @media only screen and (-webkit-min-device-pixel-ratio: 1) {
+    padding-top: calc(constant(safe-area-inset-top, 0px) + 10px);
+    padding-top: calc(env(safe-area-inset-top, 0px) + 20px);
+  }
 }
 </style>
