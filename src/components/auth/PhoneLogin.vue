@@ -204,4 +204,8 @@ export default {
   line-height: 40px;
   margin-top: 3rem;
 }
+
+input {
+  padding-left: 10px;
+}
 </style>
