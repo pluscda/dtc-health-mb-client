@@ -484,7 +484,7 @@ progress {
 /*# sourceMappingURL=bootstrap-reboot.css.map */
 
 :root {
-  --strapi-blue: #1c1b7e;
+  --strapi-blue: #e8f8ff;/*#1c1b7e;*/
   --snap-line: #545b66;
   --snap-blue: #e8f8ff;
 }

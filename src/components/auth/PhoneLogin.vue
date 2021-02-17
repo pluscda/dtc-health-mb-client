@@ -158,7 +158,7 @@ export default {
 .dtc-phone {
   width: 100%;
   position: relative;
-  color: white;
+  color: var(--dark);
   text-align: center;
   min-height: 100vh;
   main {
@@ -173,7 +173,7 @@ export default {
       border: none;
       display: inline-block;
       width: 80vw;
-      background: transparent;
+      //background: transparent;
       border-bottom: 1px solid white;
       height: 40px;
       font-size: 13px;
