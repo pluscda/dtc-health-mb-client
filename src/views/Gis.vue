@@ -101,9 +101,9 @@ export default {
       this.$router.push("doclist");
     },
     addZoomControl() {
-      // if (this.mapObj.zoomControl) {
-      //   this.mapObj.zoomControl.remove();
-      // }
+      if (this.mapObj.zoomControl) {
+        this.mapObj.zoomControl.remove();
+      }
       // this.zoomControl = L.control.zoom({ position: "bottomleft" });
       // this.mapObj.addControl(this.zoomControl);
     },
