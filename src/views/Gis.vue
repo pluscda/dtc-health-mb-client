@@ -11,9 +11,9 @@
       style="min-height:calc(100vh - 51px);z-index:1;position:relative;"
     >
       <l-tile-layer :url="url" />
-      <l-control position="bottomright">
+      <!-- <l-control position="bottomright">
         <div class="dtc-home" @click="goHome">HOME</div>
-      </l-control>
+      </l-control> -->
       <l-marker @click="clickItem(item)" v-for="(item, i) in features.slice(0, 1)" :key="i" :lat-lng="item.latLng" :icon="houseMarker">
         <l-tooltip :options="{ permanent: true, interactive: false, direction: 'bottom' }">{{ item.name }}</l-tooltip>
       </l-marker>
@@ -101,11 +101,11 @@ export default {
       this.$router.push("doclist");
     },
     addZoomControl() {
-      if (this.mapObj.zoomControl) {
-        this.mapObj.zoomControl.remove();
-      }
-      this.zoomControl = L.control.zoom({ position: "bottomleft" });
-      this.mapObj.addControl(this.zoomControl);
+      // if (this.mapObj.zoomControl) {
+      //   this.mapObj.zoomControl.remove();
+      // }
+      // this.zoomControl = L.control.zoom({ position: "bottomleft" });
+      // this.mapObj.addControl(this.zoomControl);
     },
     async init(num) {
       this.features = [];
@@ -158,14 +158,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@media only screen and (-webkit-min-device-pixel-ratio: 1) {
-  .my-gis-map {
-    transform: translateY(-20px);
-  }
-  //transform: translateX();
-  // + 10px);
-  //padding-top: calc(env(safe-area-inset-top, 0px) + 20px);
-}
 .dtx-map {
   width: 100vw;
   min-height: 100vh;
