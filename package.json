@@ -16,6 +16,7 @@
     "@capacitor/cli": "^2.4.6",
     "@capacitor/core": "^2.4.6",
     "@capacitor/ios": "^2.4.6",
+    "@line/liff": "^2.8.0",
     "core-js": "^3.6.5",
     "dayjs": "^1.9.8",
     "firebase": "^8.2.1",

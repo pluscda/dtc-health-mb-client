@@ -35,7 +35,9 @@ const init = {
   isDoctor: false,
   MIN_NON_CANCER_NUM: 34,
   selectedDoctor:'',
-  totalHots:''
+  totalHots:'',
+  isNativeOS: false,
+  isLineApp: false,
 };
 export let store = Vue.observable({
   ...init,

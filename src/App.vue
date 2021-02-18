@@ -28,6 +28,7 @@ import PN from "@/components/Pn.vue";
 import GISJSON from "@/assets/gis.json";
 import { Plugins } from "@capacitor/core";
 const { Network, SplashScreen } = Plugins;
+import liff from "@line/liff";
 
 let features = GISJSON.filter((s) => store.hotMapIds.find((s2) => s2 == +s.myID));
 const mySet = new Set(features.map((s) => s.address.slice(0, 3)));
@@ -73,6 +74,11 @@ export default {
     },
   },
   methods: {
+    async getLineInfo() {
+      await liff.init({ liffId: "1655675753-dkWxQPkR" });
+      store.isNativeOS = liff.getOS() != "web" ? true : false;
+      //alert(store.isNative);
+    },
     onConfirm(value, index) {
       this.showGisPopup = false;
       const { address, phone } = GISJSON.find((s) => s.name == value);
@@ -102,6 +108,7 @@ export default {
     this.$root.$on("show-gis-label", (obj) => {
       this.gisInfo = obj.phone ? `${obj.address} / ${obj.phone}` : obj.address;
     });
+    this.getLineInfo();
   },
   async beforeCreate() {
     try {

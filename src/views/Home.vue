@@ -170,7 +170,7 @@ export default {
   },
   methods: {
     async viewList(item) {
-      location.href = "line://liff.line.me/1655675753-dkWxQPkR";
+      location.href = "https://liff.line.me/1655675753-dkWxQPkR";
       //localtion.href ("line://liff.line.me/1655675753-dkWxQPkR");
       // const obj = { id: item.cid, name: item.name };
       // const str = queryString.stringify(obj);
