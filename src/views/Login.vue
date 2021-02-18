@@ -1,7 +1,8 @@
 <template>
   <section class="dtc-login" :style="isLogin ? '' : 'justify-content: center;'">
     <nav v-if="!isLogin">
-      <PhoneLogin :callback="callback"></PhoneLogin>
+      <!-- <PhoneLogin :callback="callback"></PhoneLogin> -->
+      <iframe src="https://line.me/R/"></iframe>
     </nav>
     <nav class="login" v-else v-show="!isDoc">
       <h2>
@@ -119,5 +120,10 @@ export default {
     margin-bottom: 1rem;
     margin-top: 1rem;
   }
+}
+iframe {
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
 }
 </style>
