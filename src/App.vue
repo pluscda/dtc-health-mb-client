@@ -74,12 +74,41 @@ export default {
     },
   },
   methods: {
+    async connectWithStrapi() {
+      try {
+        const { jwt: jwt1 } = await this.loginStrapi();
+        sessionStorage.token = jwt1;
+        if (!sessionStorage.token) {
+          const { jwt: jwt2 } = await this.registerStrapi().catch((e) => {
+            alert("something wrong at app jwt connectWithStrapi");
+            return;
+          });
+          sessionStorage.token = jwt2;
+        }
+        mutations.login(store.lineProfile.userId);
+      } catch (e) {
+        Vue.$toast.error("請檢查驗證號碼" + e);
+      }
+    },
+    async registerStrapi() {
+      const { jwt } = await actions.registerStrapi({ username: store.lineProfile.userId, password: store.PASSWORD });
+      return { jwt };
+    },
+    async loginStrapi() {
+      try {
+        const { jwt } = await actions.loginStrapi({ identifier: store.lineProfile.userId, password: store.PASSWORD });
+        return { jwt };
+      } catch (e) {
+        return { jwt: "" };
+      }
+    },
     async getLineInfo() {
       // ckc@datacom.com.tw / 22458558   ; line dev login user/pass
       await liff.init({ liffId: "1655679414-AdYmjyMx" });
       store.isNativeOS = liff.getOS() != "web" ? true : false;
       store.isLineApp = liff.isInClient();
       store.lineProfile = await liff.getProfile();
+      this.connectWithStrapi();
       /*
           {
             "userId":"U4af4980629...",
@@ -119,13 +148,17 @@ export default {
     this.$root.$on("show-gis-label", (obj) => {
       this.gisInfo = obj.phone ? `${obj.address} / ${obj.phone}` : obj.address;
     });
-    this.getLineInfo();
+    try {
+      this.getLineInfo();
+    } catch (e) {
+      console.log("not in line app");
+    }
   },
   async beforeCreate() {
     try {
       const { token, phone } = await actions.getCapaData();
       sessionStorage.token = token;
-      sessionStorage.phone = phone;
+      sessionStorage.lineId = phone;
       token ? (store.isLogin = true) : (store.isLogin = false);
     } catch (e) {
       //

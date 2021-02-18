@@ -28,7 +28,7 @@ export default {
       return sessionStorage.token || store.isLogin;
     },
     myPhone() {
-      const phone = this.phone || sessionStorage.phone;
+      const phone = this.phone || sessionStorage.lineId;
       return phone;
     },
   },

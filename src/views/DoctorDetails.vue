@@ -69,9 +69,9 @@
 </template>
 
 <script>
-import { store, mutations, actions } from '@/store/global.js';
+import { store, mutations, actions } from "@/store/global.js";
 export default {
-  name: 'docdetails',
+  name: "docdetails",
   data() {
     return {
       doctor: store.selectedDoctor,
@@ -88,13 +88,13 @@ export default {
     async book(item) {
       sessionStorage.orderedDocPhone = item.phone;
       if (!sessionStorage.token) {
-        this.$router.push('/login?callback=doclist');
+        this.$router.push("/login?callback=doclist");
         return;
       }
       const obj = {
-        orderPhoneNum: sessionStorage.phone,
+        orderPhoneNum: sessionStorage.lineId,
         paidAmount: item.price,
-        status: 'waiting', // process and finish
+        status: "waiting", // process and finish
         orderDate: new Date().toISOString(),
         doctorPhone: item.phone,
         isCancer: item.cid < store.MIN_NON_CANCER_NUM ? true : false,
@@ -105,10 +105,10 @@ export default {
           item.cid < store.MIN_NON_CANCER_NUM
             ? [
                 {
-                  docComment: '需要你的癌症報告,請你用郵件寄出',
+                  docComment: "需要你的癌症報告,請你用郵件寄出",
                   commentAt: new Date().toISOString(),
                   rating: 0,
-                  userComment: '',
+                  userComment: "",
                 },
               ]
             : [],
@@ -116,11 +116,11 @@ export default {
       try {
         this.loadingApi = true;
         await actions.addOrder(obj);
-        Vue.$toast.success('你已預約成功');
+        Vue.$toast.success("你已預約成功");
       } catch (e) {
-        Vue.$toast.error('order fail');
+        Vue.$toast.error("order fail");
       } finally {
-        sessionStorage.orderedDocPhone = '';
+        sessionStorage.orderedDocPhone = "";
         this.loadingApi = false;
       }
     },

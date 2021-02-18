@@ -39,7 +39,7 @@ export default {
     return {
       titles,
       labels,
-      phone: sessionStorage.phone,
+      phone: sessionStorage.lineId,
       callback: "",
     };
   },
@@ -48,7 +48,7 @@ export default {
       return sessionStorage.token || store.isLogin;
     },
     myPhone() {
-      const phone = sessionStorage.phone ? sessionStorage.phone.slice(0, 6) : "";
+      const phone = sessionStorage.lineId ? sessionStorage.lineId.slice(0, 6) : "";
       return phone;
     },
   },

@@ -46,10 +46,10 @@ export default {
   },
   methods: {
     isOrderAble(item) {
-      return !this.unFinishOrders.find((s) => s.orderPhoneNum == sessionStorage.phone && s.doctorPhone == item.phone);
+      return !this.unFinishOrders.find((s) => s.orderPhoneNum == sessionStorage.lineId && s.doctorPhone == item.phone);
     },
     getWaitStatus(item) {
-      const status = this.unFinishOrders.find((s) => s.orderPhoneNum == sessionStorage.phone && s.doctorPhone == item.phone).status;
+      const status = this.unFinishOrders.find((s) => s.orderPhoneNum == sessionStorage.lineId && s.doctorPhone == item.phone).status;
       return status == "process" ? "醫師處理中" : "等待醫師回覆中";
     },
     async book(item) {
@@ -59,7 +59,7 @@ export default {
         return;
       }
       const obj = {
-        orderPhoneNum: sessionStorage.phone,
+        orderPhoneNum: sessionStorage.lineId,
         paidAmount: item.price,
         orderStatus: "waiting",
         orderDate: new Date().toISOString(),
@@ -83,7 +83,7 @@ export default {
         Vue.$toast.success("您已預約成功");
         await this.getOrderHistory();
         this.docs = [...this.docs];
-        const obj = { senderPhone: sessionStorage.phone, receivePhone: item.phone, orderId: ret.id, type: "newOrder" };
+        const obj = { senderPhone: sessionStorage.lineId, receivePhone: item.phone, orderId: ret.id, type: "newOrder" };
         actions.sendPushMsg(obj);
       } catch (e) {
         Vue.$toast.error("order fail");
@@ -121,11 +121,11 @@ export default {
       } catch (e) {}
     },
     async getOrderHistory() {
-      if (!sessionStorage.phone) {
+      if (!sessionStorage.lineId) {
         this.myPreviousOrders = [];
         return;
       }
-      let qs = "orderPhoneNum_eq=" + sessionStorage.phone;
+      let qs = "orderPhoneNum_eq=" + sessionStorage.lineId;
       const { count, items } = await actions.getOrders(qs);
       this.myPreviousOrders = items;
     },

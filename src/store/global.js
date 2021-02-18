@@ -1,6 +1,4 @@
 import Vue from "vue";
-import firebase from "firebase/app";
-import "firebase/auth";
 import { Plugins } from '@capacitor/core';
 const { Storage } = Plugins;
 // this password is not used in server side, but requred at AJAX; in DB , it will not use this password
@@ -47,16 +45,7 @@ export let store = Vue.observable({
   ...init,
 });
 
-function recaptch(id){
-    try{ 
-      if(!window.recaptchaVerifier)
-        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(id, {
-          'size': 'invisible',
-        });
-    }catch(e){
-      alert("recaptch error: " + e);
-    }
-}
+
 export let actions = {
   async sendPushMsg(obj){
     try{
@@ -114,7 +103,7 @@ export let actions = {
     return {count, items};
   },
   async getDocInfo(phone){
-    return axios.get('doctores?phone_eq=' + sessionStorage.phone);
+    return axios.get('doctores?phone_eq=' + sessionStorage.lineId);
   },
  
   async getOrders(qs){
@@ -148,48 +137,19 @@ export let actions = {
       return e;
     }
   },
-  async registerByMobilePhone(phoneNum, id) {
-     recaptch(id);
-      try{
-        return await firebase
-          .auth()
-          .signInWithPhoneNumber(phoneNum, window.recaptchaVerifier);
-      }catch(e){
-        return alert("registerByMobilePhone error : " + e);
-      }    
-  },
  
 };
 export let mutations = {
-  login(phone) {
+  login(id) {
     store.isLogin = true;
-    sessionStorage.phone = phone;
+    sessionStorage.lineId = id;
   },
   async logout() {
     sessionStorage.clear();
     store.isLogin = false; // need this line to tigger other pages; DO NOT REMOVE
-    await Storage.clear();
-    await firebase.auth().signOut();
-    window.recaptchaVerifier = null;
     store = Vue.observable({
       ...init,
     });
   },
 };
 
-const firebaseConfig = {
-    apiKey: "AIzaSyDPO6XXcDTQxtakG1PE8xqCw1QZGHI6Alg",
-    authDomain: "ddeeee-4f963.firebaseapp.com",
-    databaseURL: "https://ddeeee-4f963.firebaseio.com",
-    projectId: "ddeeee-4f963",
-    storageBucket: "ddeeee-4f963.appspot.com",
-    messagingSenderId: "567717669747",
-    appId: "1:567717669747:web:b0ab336820fadd5147f306",
-    measurementId: "G-J5P1YXHGMR",
-};
-
-const watchLogin = () => {
-  firebase.initializeApp(firebaseConfig);
-  firebase.auth().useDeviceLanguage();
-}
-watchLogin();
