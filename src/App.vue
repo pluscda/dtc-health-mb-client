@@ -75,9 +75,20 @@ export default {
   },
   methods: {
     async getLineInfo() {
-      await liff.init({ liffId: "1655675753-dkWxQPkR" });
+      // ckc@datacom.com.tw / 22458558   ; line dev login user/pass
+      await liff.init({ liffId: "1655679414-AdYmjyMx" });
       store.isNativeOS = liff.getOS() != "web" ? true : false;
-      //alert(store.isNative);
+      store.isLineApp = liff.isInClient();
+      store.lineProfile = await liff.getProfile();
+      /*
+          {
+            "userId":"U4af4980629...",
+            "displayName":"Brown",
+            "pictureUrl":"https://profile.line-scdn.net/abcdefghijklmn",
+            "statusMessage":"Hello, LINE!"
+          }
+
+      */
     },
     onConfirm(value, index) {
       this.showGisPopup = false;
