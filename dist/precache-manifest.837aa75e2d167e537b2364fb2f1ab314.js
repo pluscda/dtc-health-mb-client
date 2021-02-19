@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/card.svg"
   },
   {
-    "revision": "d3fd59ae97bd3ec239e9",
-    "url": "/css/app.8dde5240.css"
+    "revision": "6a1e53604d189294d204",
+    "url": "/css/app.acc3cc4d.css"
   },
   {
     "revision": "f98e4e1882b8133e15bd",
@@ -60,10 +60,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/css/chunk-7d7a7b76.eee78abd.css"
   },
   {
-    "revision": "c5831957d56f46b028b7",
-    "url": "/css/chunk-84e055e2.d8ac6936.css"
-  },
-  {
     "revision": "5682a95a483d9ad05e86",
     "url": "/css/chunk-a6b6310e.a54e36de.css"
   },
@@ -72,7 +68,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/css/chunk-e3e0bca2.55c51eed.css"
   },
   {
-    "revision": "e8ede6d8c20a7e8b6a89",
+    "revision": "60830f76bee1126ac0e3",
+    "url": "/css/chunk-e664dfa8.c375d1d7.css"
+  },
+  {
+    "revision": "a14394f5c18112402d13",
     "url": "/css/chunk-vendors.5aec3833.css"
   },
   {
@@ -100,12 +100,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/markers_default@2x.0e04541b.png"
   },
   {
-    "revision": "10bddf5f8c44983267aa9a4b82377a1a",
+    "revision": "dbb3b30292c89c8ed37ad3dee6d6228b",
     "url": "/index.html"
   },
   {
-    "revision": "d3fd59ae97bd3ec239e9",
-    "url": "/js/app.0474fdac.js"
+    "revision": "6a1e53604d189294d204",
+    "url": "/js/app.0a97acc7.js"
   },
   {
     "revision": "f98e4e1882b8133e15bd",
@@ -152,10 +152,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/js/chunk-7d7a7b76.0eca6ac4.js"
   },
   {
-    "revision": "c5831957d56f46b028b7",
-    "url": "/js/chunk-84e055e2.1a75e262.js"
-  },
-  {
     "revision": "5682a95a483d9ad05e86",
     "url": "/js/chunk-a6b6310e.81a846a9.js"
   },
@@ -164,8 +160,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/js/chunk-e3e0bca2.abaa2a2a.js"
   },
   {
-    "revision": "e8ede6d8c20a7e8b6a89",
-    "url": "/js/chunk-vendors.b1d47faa.js"
+    "revision": "60830f76bee1126ac0e3",
+    "url": "/js/chunk-e664dfa8.1db645c7.js"
+  },
+  {
+    "revision": "a14394f5c18112402d13",
+    "url": "/js/chunk-vendors.3b323076.js"
   },
   {
     "revision": "18dbfd317822506c388f8ffa0290a684",
