@@ -1,6 +1,5 @@
 <template>
   <section class="doc-list pt-2">
-    <div style="color:black;">{{ jsonOutput }}</div>
     <van-overlay :show="loadingApi" style="z-index:9999;text-align:center">
       <van-loading type="spinner" />
     </van-overlay>
@@ -78,7 +77,6 @@ export default {
       //this.jsonOutput = JSON.stringify(obj, null, 2);
       try {
         this.loadingApi = true;
-        alert(orderItem);
         const ret = await actions.addOrder(orderItem);
         Vue.$toast.success("您已預約成功");
         await this.getOrderHistory();
