@@ -2,11 +2,11 @@
   <section class="dtc-login">
     <img class="dtc-avator" :src="avatorImg" />
     <h4>{{ userName }}</h4>
-    <section class="dtc-report">
+    <section class="dtc-report" @click="viewOrderHistory">
       <h5>預約紀錄</h5>
-      <h6>0</h6>
+      <h6>{{ orderCount }}</h6>
     </section>
-    <section class="dtc-report">
+    <section class="dtc-report" @click="viewMyCollection">
       <h5>我的收藏</h5>
       <h6>0</h6>
     </section>
@@ -22,7 +22,10 @@ const labels = ["共有6筆記錄", "你有一則已答覆", "廠商有兩則反
 export default {
   name: "loginHome",
   data() {
-    return {};
+    return {
+      orderCount: 0,
+      collectionCount: 0,
+    };
   },
   computed: {
     avatorImg() {
@@ -35,8 +38,40 @@ export default {
     },
   },
   components: {},
-  methods: {},
-  mounted() {},
+  methods: {
+    async viewOrderHistory() {
+      if (!this.orderCount) return;
+      this.$router.push("myorderlist");
+    },
+    async viewMyCollection() {
+      if (!this.collectionCount) return;
+      this.$router.push("mycollectionlist");
+    },
+    async getOrderHistoryList() {
+      this.orders = [];
+      let qs = "orderPhoneNum_eq=" + window.lineId;
+      qs += "&_sort=orderDate:desc";
+      try {
+        this.loadingApi = true;
+        const { count, items } = await actions.getOrders(qs);
+        this.orderCount = count;
+        if (!count) return;
+        const mySet = new Set(items.map((s) => "phone_in=" + s.doctorPhone));
+        qs = [...mySet].join("&");
+        const { items: docs } = await actions.getDoctors(qs);
+        // attach the doctor detail into each order here
+        docs.forEach((s) => (items.find((s2) => s2.doctorPhone == s.phone).details = s));
+        this.orders = items;
+      } catch (e) {
+        alert("error getOrderHistoryList: " + e);
+      } finally {
+        this.loadingApi = false;
+      }
+    },
+  },
+  mounted() {
+    this.getOrderHistoryList();
+  },
   watch: {},
 };
 </script>
