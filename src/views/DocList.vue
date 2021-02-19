@@ -1,6 +1,6 @@
 <template>
   <section class="doc-list pt-2">
-    <div>{{ jsonOutput }}</div>
+    <div style="color:black;">{{ jsonOutput }}</div>
     <van-overlay :show="loadingApi" style="z-index:9999;text-align:center">
       <van-loading type="spinner" />
     </van-overlay>
@@ -66,7 +66,7 @@ export default {
         orderStatus: "waiting",
         orderDate: new Date().toISOString(),
         doctorPhone: item.phone,
-        inqueryCate: this.searchBy != "熱門醫生" ? this.cates.find((s) => s.name.includes(this.searchBy)).cid : item.cid,
+        inqueryCate: 1, //this.searchBy != "熱門醫生" ? this.cates.find((s) => s.name.includes(this.searchBy)).cid : item.cid,
         cusUnreadMsg: 1,
         totalMsg: 1,
         message:
@@ -79,9 +79,9 @@ export default {
               ]
             : [],
       };
+      //this.jsonOutput = JSON.stringify(obj, null, 2);
       try {
         this.loadingApi = true;
-        this.jsonOutput = JSON.stringify(obj);
         const ret = await actions.addOrder(obj);
         Vue.$toast.success("您已預約成功");
         await this.getOrderHistory();

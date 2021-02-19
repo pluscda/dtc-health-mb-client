@@ -102,7 +102,7 @@ export default {
       await liff.init({ liffId: "1655679414-AdYmjyMx" });
       store.isNativeOS = liff.getOS() != "web" ? true : false;
       store.isLineApp = liff.isInClient();
-      store.lineProfile = await liff.getProfile();
+      if (store.isLineApp) store.lineProfile = await liff.getProfile();
       this.connectWithStrapi();
     },
     onConfirm(value, index) {
