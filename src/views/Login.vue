@@ -15,10 +15,6 @@
 
 <script>
 import { store, mutations, actions } from "@/store/global.js";
-
-const titles = ["預約紀錄(6)", "提問(5)", "意見反饋(1)", "我的收藏(2)", "系統設置"];
-
-const labels = ["共有6筆記錄", "你有一則已答覆", "廠商有兩則反饋", "你有兩個收藏", "客製化個人設定"];
 export default {
   name: "loginHome",
   data() {
@@ -43,8 +39,9 @@ export default {
   methods: {
     async getMyFav() {
       let qs = "userId=" + window.lineId;
-      const { count, items } = await actions.getMyFav(qs);
+      const { items } = await actions.getMyFav(qs);
       this.favList = items;
+      store.favList = items;
     },
     async viewOrderHistory() {
       if (!this.orderCount) return;
