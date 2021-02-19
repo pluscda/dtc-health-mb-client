@@ -6,14 +6,18 @@
     <van-nav-bar title="我的收藏" left-text="返回" left-arrow @click-left="$router.push('login')"> </van-nav-bar>
 
     <main v-for="(item, i) in docs" :key="i" class="doc-item mt-1">
-      <van-card @click="viewDetail(item)" :price="item.price" currency="NT" :desc="getDesc(item)" :title="getTitle(item)" :thumb="getImgPath(item, i)"> </van-card>
+      <van-card @click="viewDetail(item)" :price="item.price" currency="NT" :desc="getDesc(item)" :title="getTitle(item)" :thumb="getImgPath(item, i)">
+        <template #footer>
+          <van-button size="small" type="info" class="mr-2" @click.stop="removeCollection(item)">取消收藏</van-button>
+        </template>
+      </van-card>
     </main>
   </section>
 </template>
 
 <script>
 import Vue from "vue";
-import { store, mutations, actions } from "@/store/global.js";
+import { store, actions } from "@/store/global.js";
 export default {
   name: "docList",
   data() {
@@ -38,17 +42,17 @@ export default {
   },
   methods: {
     async removeCollection(item) {
-      const obj = { userId: window.lineId, doctorPhone: item.phone };
-      const ret = this.favList?.find((s) => s.doctorPhone == item.phone);
-      if (ret) {
-        Vue.$toast.success("您已收藏成功");
-        return;
-      }
+      const favId = this.favList.find((s) => s.doctorPhone == item.phone).id;
+      this.favList = this.favList.filter((s) => s.doctorPhone !== item.phone);
       try {
-        await actions.addMyFav(obj);
-        Vue.$toast.success("您已收藏成功");
+        await actions.removeMyFav(favId);
+        Vue.$toast.success("取消收藏成功");
+        this.docs = this.docs.filter((s) => s.phone != item.phone);
+        if (!this.favList.length) {
+          this.$router.push("login");
+        }
       } catch (e) {
-        Vue.$toast.error("收藏 Fail");
+        Vue.$toast.error("取消收藏 Fail");
       }
     },
     viewDetail(item) {
