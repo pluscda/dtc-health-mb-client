@@ -103,7 +103,7 @@ export let actions = {
     return {count, items};
   },
   async getDocInfo(phone){
-    return axios.get('doctores?phone_eq=' + sessionStorage.lineId);
+    return axios.get('doctores?phone_eq=' + window.lineId);
   },
  
   async getOrders(qs){
@@ -142,10 +142,10 @@ export let actions = {
 export let mutations = {
   login(id) {
     store.isLogin = true;
-    sessionStorage.lineId = id;
+    window.lineId = id;
   },
   async logout() {
-    sessionStorage.clear();
+    window.clear();
     store.isLogin = false; // need this line to tigger other pages; DO NOT REMOVE
     store = Vue.observable({
       ...init,

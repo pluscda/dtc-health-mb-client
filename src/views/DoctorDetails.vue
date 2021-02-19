@@ -86,13 +86,13 @@ export default {
   components: {},
   methods: {
     async book(item) {
-      sessionStorage.orderedDocPhone = item.phone;
-      if (!sessionStorage.token) {
+      window.orderedDocPhone = item.phone;
+      if (!window.token) {
         this.$router.push("/login?callback=doclist");
         return;
       }
       const obj = {
-        orderPhoneNum: sessionStorage.lineId,
+        orderPhoneNum: window.lineId,
         paidAmount: item.price,
         status: "waiting", // process and finish
         orderDate: new Date().toISOString(),
@@ -120,7 +120,7 @@ export default {
       } catch (e) {
         Vue.$toast.error("order fail");
       } finally {
-        sessionStorage.orderedDocPhone = "";
+        window.orderedDocPhone = "";
         this.loadingApi = false;
       }
     },

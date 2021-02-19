@@ -44,7 +44,7 @@ export default {
   props: ["callback"],
   computed: {
     isLogin() {
-      return sessionStorage.token || store.isLogin;
+      return window.token || store.isLogin;
     },
     enableLogin() {
       return this.code && this.code.length == 6 && !isNaN(this.code) && this.needCode;
@@ -74,7 +74,7 @@ export default {
           });
           this.jwt = jwt2;
         }
-        sessionStorage.token = this.jwt;
+        window.token = this.jwt;
         await actions.setCapaData({ token: this.jwt, phone: this.phone });
         this.showMask = false;
         mutations.login(this.phone);
@@ -83,7 +83,7 @@ export default {
         this.showMask = false;
         Vue.$toast.error("請檢查驗證號碼" + e);
       } finally {
-        if (sessionStorage.token && this.callback) {
+        if (window.token && this.callback) {
           this.$router.push(this.callback);
         }
       }

@@ -66,7 +66,7 @@ export default {
   },
   computed: {
     isLogin() {
-      return sessionStorage.token || store.isLogin;
+      return window.token || store.isLogin;
     },
     pickName() {
       return `找${this.name}醫院`;
@@ -76,17 +76,17 @@ export default {
     async connectWithStrapi() {
       try {
         const { jwt: jwt1 } = await this.loginStrapi();
-        sessionStorage.token = jwt1;
-        if (!sessionStorage.token) {
+        window.token = jwt1;
+        if (!window.token) {
           const { jwt: jwt2 } = await this.registerStrapi().catch((e) => {
             alert("something wrong at app jwt connectWithStrapi");
             return;
           });
-          sessionStorage.token = jwt2;
+          window.token = jwt2;
         }
         mutations.login(store.lineProfile.userId);
       } catch (e) {
-        Vue.$toast.error("請檢查驗證號碼" + e);
+        alert("請檢查驗證號碼" + e);
       }
     },
     async registerStrapi() {
@@ -150,14 +150,14 @@ export default {
     try {
       this.getLineInfo();
     } catch (e) {
-      console.log("not in line app");
+      alert(e + "");
     }
   },
   async beforeCreate() {
     try {
       const { token, phone } = await actions.getCapaData();
-      sessionStorage.token = token;
-      sessionStorage.lineId = phone;
+      window.token = token;
+      window.lineId = phone;
       token ? (store.isLogin = true) : (store.isLogin = false);
     } catch (e) {
       //

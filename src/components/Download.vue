@@ -20,7 +20,7 @@ export default {
       try {
         const obj = { username: this.username, password: this.password };
         const { jwt, user } = await actions.registerUser(obj);
-        sessionStorage.token = jwt;
+        window.token = jwt;
       } catch (e) {
         alert(e);
       }

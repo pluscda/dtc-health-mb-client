@@ -38,14 +38,14 @@ export default {
       });
       PushNotifications.addListener("registration", async (token) => {
         console.log("my PN token: " + token.value);
-        let obj = { token: token.value, phone: sessionStorage.lineId };
-        this.pnObj = { token: token.value, phone: sessionStorage.lineId };
+        let obj = { token: token.value, phone: window.lineId };
+        this.pnObj = { token: token.value, phone: window.lineId };
         // const position = await Geolocation.getCurrentPosition();
         // const lat = position.coords.latitude;
         // const lon = position.coords.longitude;
         const devInfo = await Device.getInfo();
         devInfo.token = token.value;
-        sessionStorage.lineId ? await actions.registerPn(obj) : await actions.analysis(devInfo);
+        window.lineId ? await actions.registerPn(obj) : await actions.analysis(devInfo);
       });
       PushNotifications.addListener("pushNotificationReceived", async (notification) => {
         console.log("Push received: " + JSON.stringify(notification));

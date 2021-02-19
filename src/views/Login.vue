@@ -39,16 +39,16 @@ export default {
     return {
       titles,
       labels,
-      phone: sessionStorage.lineId,
+      phone: window.lineId,
       callback: "",
     };
   },
   computed: {
     isLogin() {
-      return sessionStorage.token || store.isLogin;
+      return window.token || store.isLogin;
     },
     myPhone() {
-      const phone = sessionStorage.lineId ? sessionStorage.lineId.slice(0, 6) : "";
+      const phone = window.lineId ? window.lineId.slice(0, 6) : "";
       return phone;
     },
   },

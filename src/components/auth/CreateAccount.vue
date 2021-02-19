@@ -1,20 +1,17 @@
 <template>
-  <section class="dtc-create">
-
-    
-  </section>
+  <section class="dtc-create"></section>
 </template>
 
 <script>
-import { store, mutations, actions } from '@/store/global.js';
+import { store, mutations, actions } from "@/store/global.js";
 
 export default {
-  name: 'login',
+  name: "login",
   data() {
     return {
-      username: '',
-      password: '',
-      password2: '',
+      username: "",
+      password: "",
+      password2: "",
       showLoginPwd: true,
     };
   },
@@ -23,7 +20,7 @@ export default {
       try {
         const obj = { username: this.username, password: this.password };
         const { jwt, user } = await actions.registerUser(obj);
-        sessionStorage.token = jwt;
+        window.token = jwt;
       } catch (e) {
         alert(e);
       }

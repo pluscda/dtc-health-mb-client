@@ -46,20 +46,20 @@ export default {
   },
   methods: {
     isOrderAble(item) {
-      return !this.unFinishOrders.find((s) => s.orderPhoneNum == sessionStorage.lineId && s.doctorPhone == item.phone);
+      return !this.unFinishOrders.find((s) => s.orderPhoneNum == window.lineId && s.doctorPhone == item.phone);
     },
     getWaitStatus(item) {
-      const status = this.unFinishOrders.find((s) => s.orderPhoneNum == sessionStorage.lineId && s.doctorPhone == item.phone).status;
+      const status = this.unFinishOrders.find((s) => s.orderPhoneNum == window.lineId && s.doctorPhone == item.phone).status;
       return status == "process" ? "醫師處理中" : "等待醫師回覆中";
     },
     async book(item) {
-      sessionStorage.orderedDocPhone = item.phone;
-      if (!sessionStorage.token) {
+      window.orderedDocPhone = item.phone;
+      if (!window.token) {
         this.$router.push("/login?callback=doclist");
         return;
       }
       const obj = {
-        orderPhoneNum: sessionStorage.lineId,
+        orderPhoneNum: window.lineId,
         paidAmount: item.price,
         orderStatus: "waiting",
         orderDate: new Date().toISOString(),
@@ -83,12 +83,12 @@ export default {
         Vue.$toast.success("您已預約成功");
         await this.getOrderHistory();
         this.docs = [...this.docs];
-        const obj = { senderPhone: sessionStorage.lineId, receivePhone: item.phone, orderId: ret.id, type: "newOrder" };
+        const obj = { senderPhone: window.lineId, receivePhone: item.phone, orderId: ret.id, type: "newOrder" };
         actions.sendPushMsg(obj);
       } catch (e) {
         Vue.$toast.error("order fail");
       } finally {
-        sessionStorage.orderedDocPhone = "";
+        window.orderedDocPhone = "";
         this.loadingApi = false;
       }
     },
@@ -121,11 +121,11 @@ export default {
       } catch (e) {}
     },
     async getOrderHistory() {
-      if (!sessionStorage.lineId) {
+      if (!window.lineId) {
         this.myPreviousOrders = [];
         return;
       }
-      let qs = "orderPhoneNum_eq=" + sessionStorage.lineId;
+      let qs = "orderPhoneNum_eq=" + window.lineId;
       const { count, items } = await actions.getOrders(qs);
       this.myPreviousOrders = items;
     },

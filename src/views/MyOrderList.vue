@@ -146,7 +146,7 @@ export default {
     },
     async book(item) {
       const obj = {
-        orderPhoneNum: sessionStorage.lineId,
+        orderPhoneNum: window.lineId,
         paidAmount: item.details.price,
         status: "waiting", // process and finish
         orderDate: new Date().toISOString(),
@@ -174,7 +174,7 @@ export default {
       } catch (e) {
         Vue.$toast.error("order fail");
       } finally {
-        sessionStorage.orderedDocPhone = "";
+        window.orderedDocPhone = "";
         this.loadingApi = false;
       }
     },
@@ -191,7 +191,7 @@ export default {
       setTimeout(() => this.getData(), 100);
       this.orders = [...this.orders];
       this.loadingApi = false;
-      const notiObj = { senderPhone: sessionStorage.lineId, receivePhone: item.doctorPhone, orderId: item.id, type: "msgAdd" };
+      const notiObj = { senderPhone: window.lineId, receivePhone: item.doctorPhone, orderId: item.id, type: "msgAdd" };
       actions.sendPushMsg(notiObj);
     },
     viewComment(item) {
@@ -213,7 +213,7 @@ export default {
     },
     async getOrderHistoryList() {
       this.orders = [];
-      let qs = "orderPhoneNum_eq=" + sessionStorage.lineId;
+      let qs = "orderPhoneNum_eq=" + window.lineId;
       qs += "&_sort=orderDate:desc";
       try {
         this.loadingApi = true;

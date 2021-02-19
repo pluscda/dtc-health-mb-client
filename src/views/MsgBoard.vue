@@ -57,7 +57,7 @@ export default {
       addingMsg: false,
       msg: "",
       items: [],
-      AccountNo: sessionStorage.No,
+      AccountNo: window.No,
     };
   },
 

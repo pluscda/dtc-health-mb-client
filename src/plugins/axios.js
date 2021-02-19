@@ -17,8 +17,8 @@ const _axios = axios.create(config);
 
 _axios.interceptors.request.use(
   function (config) {
-    if(sessionStorage.token)
-       config.headers.Authorization = "Bearer " + sessionStorage.token
+    if(window.token)
+       config.headers.Authorization = "Bearer " + window.token
     return config;
   },
   function (error) {
