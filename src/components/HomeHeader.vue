@@ -1,16 +1,16 @@
 <template>
-  <div class="dtc-header">
+  <div class="dtc-header" @click="$router.push('about')">
     <main class="dtc-main-heaer">
-      <div class="dtc-logo" @click="$router.push('about')">
+      <div class="dtc-logo">
         {{ $t("title") }}
         <div class="dtc-private ml-2">關於會館</div>
         <span hidden v-if="myName" style="display:inline-block;font-size:12px;text-align:left;transform:translate3d(10px,0px,0)" class="mt-2">用戶: {{ myName }}...</span>
       </div>
 
-      <div v-if="$i18n.locale == 'zh-tw'" class="dtc-lang-switch" @click="$root.$i18n.locale = 'zh-cn'">繁</div>
-      <div v-else class="dtc-lang-switch" @click="$root.$i18n.locale = 'zh-tw'">簡</div>
+      <!-- <div v-if="$i18n.locale == 'zh-tw'" class="dtc-lang-switch" @click="$root.$i18n.locale = 'zh-cn'">繁</div>
+      <div v-else class="dtc-lang-switch" @click="$root.$i18n.locale = 'zh-tw'">簡</div> -->
     </main>
-    <van-search background="var(--snap-blue)" v-model="searchBy" shape="round" class="mt-1" placeholder="醫院 | 醫生名 | 病名"></van-search>
+    <!-- <van-search background="var(--snap-blue)" v-model="searchBy" shape="round" class="mt-1" placeholder="醫院 | 醫生名 | 病名"></van-search> -->
   </div>
 </template>
 
