@@ -3,7 +3,7 @@
     <van-overlay :show="loadingApi" style="z-index:9999;text-align:center">
       <van-loading type="spinner" />
     </van-overlay>
-    <header>我的收藏</header>
+    <van-nav-bar title="我的收藏" left-text="返回" left-arrow @click-left="$router.push('login')"> </van-nav-bar>
 
     <main v-for="(item, i) in docs" :key="i" class="doc-item mt-1">
       <van-card @click="viewDetail(item)" :price="item.price" currency="NT" :desc="getDesc(item)" :title="getTitle(item)" :thumb="getImgPath(item, i)"> </van-card>
