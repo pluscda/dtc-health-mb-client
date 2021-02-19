@@ -74,7 +74,6 @@ export default {
               ]
             : [],
       };
-      //this.jsonOutput = JSON.stringify(obj, null, 2);
       try {
         this.loadingApi = true;
         const ret = await actions.addOrder(orderItem);
