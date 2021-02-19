@@ -1,5 +1,6 @@
 <template>
   <section class="doc-list pt-2">
+    <div>{{ jsonOutput }}</div>
     <van-overlay :show="loadingApi" style="z-index:9999;text-align:center">
       <van-loading type="spinner" />
     </van-overlay>
@@ -37,6 +38,7 @@ export default {
       searchBy: "",
       myPreviousOrders: [],
       loadingApi: false,
+      jsonOutput: "",
     };
   },
   computed: {
@@ -79,6 +81,7 @@ export default {
       };
       try {
         this.loadingApi = true;
+        this.jsonOutput = JSON.stringify(obj);
         const ret = await actions.addOrder(obj);
         Vue.$toast.success("您已預約成功");
         await this.getOrderHistory();
