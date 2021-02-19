@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div v-if="gisInfo" class="gis-info">{{ this.gisInfo }}</div>
-
+    <img hidden :src="avatorImg" />
     <router-view></router-view>
     <van-popup v-model="showGisPopup" position="bottom">
       <van-picker :title="pickName" show-toolbar :columns="columns" @confirm="onConfirm" @cancel="showGisPopup = false" />
@@ -60,11 +60,12 @@ export default {
   },
   components: {},
   computed: {
-    isLogin() {
-      return window.token || store.isLogin;
-    },
     pickName() {
       return `找${this.name}醫院`;
+    },
+    avatorImg() {
+      const str = store.lineProfile?.pictureUrl;
+      return str ? str : "http://unsplash.it/126/126";
     },
   },
   methods: {
