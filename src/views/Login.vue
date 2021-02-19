@@ -48,7 +48,7 @@ export default {
       this.$router.push("myorderlist");
     },
     async viewMyCollection() {
-      if (!this.collectionCount) return;
+      if (!this.favList.length) return;
       this.$router.push("mycollectionlist");
     },
     async getOrderHistoryList() {
