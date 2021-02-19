@@ -69,14 +69,10 @@ export let actions = {
     }
   },
   async setCapaData(obj){
-    await Storage.set({
-      key: 'user',
-      value: JSON.stringify(obj)
-    });
+   
   },
   async getCapaData(){
-     const ret = await Storage.get({ key: 'user' });
-     return JSON.parse(ret.value);
+    
   },
   async getCount(url){
      return await axios.get(url);
@@ -105,7 +101,19 @@ export let actions = {
   async getDocInfo(phone){
     return axios.get('doctores?phone_eq=' + window.lineId);
   },
- 
+  async addMyFav(obj){
+     return await axios.post("my-favs",obj);
+  },
+  async removeMyFav(id){
+     return await axios.delete("my-favs/" + id);
+  },
+  async getMyFav(qs){
+    const url = "my-favs?" + qs;
+    const url2 = "my-favs/count?" + qs;
+    const count = await actions.getCount(url2);
+    const items = await axios.get(url);
+    return {count, items};
+  },
   async getOrders(qs){
     const url = "dtc-orders?" + qs;
     const url2 = "dtc-orders/count?" + qs;

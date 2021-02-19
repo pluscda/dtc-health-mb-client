@@ -12,7 +12,7 @@
           <van-tag plain type="danger">可預約數量剩餘({{ getBooksNum() }})</van-tag>
         </template>
         <template #footer>
-          <van-button size="small" class="mr-2">收藏</van-button>
+          <van-button size="small" class="mr-2" @click.stop="addCollection(item)">收藏</van-button>
           <van-button size="small" type="info" class="mr-2" @click.stop="book(item)" v-if="isOrderAble(item)">預約</van-button>
           <van-tag plain class="mr-2" style="transform:translate3d(4px,5px,0)" type="primary" v-else>您已預約: {{ getWaitStatus(item) }}</van-tag>
         </template>
@@ -38,6 +38,7 @@ export default {
       myPreviousOrders: [],
       loadingApi: false,
       jsonOutput: "",
+      favList: [],
     };
   },
   computed: {
@@ -46,12 +47,31 @@ export default {
     },
   },
   methods: {
+    async getMyFav() {
+      let qs = "userId=" + window.lineId;
+      const { items } = await actions.getMyFav(qs);
+      this.favList = items;
+    },
     isOrderAble(item) {
       return !this.unFinishOrders.find((s) => s.orderPhoneNum == window.lineId && s.doctorPhone == item.phone);
     },
     getWaitStatus(item) {
       const status = this.unFinishOrders.find((s) => s.orderPhoneNum == window.lineId && s.doctorPhone == item.phone).status;
       return status == "process" ? "醫師處理中" : "等待醫師回覆中";
+    },
+    async addCollection(item) {
+      const obj = { userId: window.lineId, doctorPhone: item.phone };
+      const ret = this.favList?.find((s) => s.doctorPhone == item.phone);
+      if (ret) {
+        Vue.$toast.success("您已收藏成功");
+        return;
+      }
+      try {
+        await actions.addMyFav(obj);
+        Vue.$toast.success("您已收藏成功");
+      } catch (e) {
+        Vue.$toast.error("收藏 Fail");
+      }
     },
     async book(item) {
       window.orderedDocPhone = item.phone;
@@ -142,6 +162,7 @@ export default {
     } finally {
       this.loadingApi = false;
     }
+    this.getMyFav();
   },
   watch: {},
 };

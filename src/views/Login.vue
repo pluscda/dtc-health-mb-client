@@ -8,7 +8,7 @@
     </section>
     <section class="dtc-report" @click="viewMyCollection">
       <h5>我的收藏</h5>
-      <h6>0</h6>
+      <h6>{{ favList.length }}</h6>
     </section>
   </section>
 </template>
@@ -25,6 +25,8 @@ export default {
     return {
       orderCount: 0,
       collectionCount: 0,
+      favList: [],
+      loadingApi: false,
     };
   },
   computed: {
@@ -39,6 +41,11 @@ export default {
   },
   components: {},
   methods: {
+    async getMyFav() {
+      let qs = "userId=" + window.lineId;
+      const { count, items } = await actions.getMyFav(qs);
+      this.favList = items;
+    },
     async viewOrderHistory() {
       if (!this.orderCount) return;
       this.$router.push("myorderlist");
@@ -71,6 +78,7 @@ export default {
   },
   mounted() {
     this.getOrderHistoryList();
+    this.getMyFav();
   },
   watch: {},
 };
