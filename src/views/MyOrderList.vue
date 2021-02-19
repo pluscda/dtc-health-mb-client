@@ -144,40 +144,6 @@ export default {
       if (!str) str = item.docComment && item.read ? "您已讀取" : "";
       return str;
     },
-    async book(item) {
-      const obj = {
-        orderPhoneNum: window.lineId,
-        paidAmount: item.details.price,
-        status: "waiting", // process and finish
-        orderDate: new Date().toISOString(),
-        doctorPhone: item.details.phone,
-        isCancer: item.details.cid < store.MIN_NON_CANCER_NUM ? true : false,
-        hardCopyReceived: false,
-        copySendBack: false,
-        docHasCopy: false,
-        comment:
-          item.details.cid < store.MIN_NON_CANCER_NUM
-            ? [
-                {
-                  docComment: "需要您的報告,請您用郵件寄出",
-                  commentAt: new Date().toISOString(),
-                  rating: 0,
-                  userComment: "",
-                },
-              ]
-            : [],
-      };
-      try {
-        this.loadingApi = true;
-        await actions.addOrder(obj);
-        await this.getOrderHistoryList();
-      } catch (e) {
-        Vue.$toast.error("order fail");
-      } finally {
-        window.orderedDocPhone = "";
-        this.loadingApi = false;
-      }
-    },
     async addComment(msg) {
       this.loadingApi = true;
       const obj = { docComment: "", commentAt: new Date().toISOString(), rating: 0, userComment: msg, read: false };

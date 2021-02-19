@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/card.svg"
   },
   {
-    "revision": "7a3a9bcaaafa948f7b2e",
+    "revision": "ada1c2a763e116d226b1",
     "url": "/css/app.acc3cc4d.css"
   },
   {
@@ -56,10 +56,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/css/chunk-7574db83.bfeb61a4.css"
   },
   {
-    "revision": "df22f67ea597599042da",
-    "url": "/css/chunk-772c5956.4f1c2f44.css"
-  },
-  {
     "revision": "cdb01f08132f122d417c",
     "url": "/css/chunk-79b2ca1f.bcd065e8.css"
   },
@@ -74,6 +70,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "fc3420d514a59e4706b6",
     "url": "/css/chunk-e3e0bca2.55c51eed.css"
+  },
+  {
+    "revision": "63140e76a8ad12e11ad9",
+    "url": "/css/chunk-f3bd8a38.038a3974.css"
   },
   {
     "revision": "a14394f5c18112402d13",
@@ -104,12 +104,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/markers_default@2x.0e04541b.png"
   },
   {
-    "revision": "a0944d6bf2bea41dc19df76d2ac07b02",
+    "revision": "acaeb7eb4f8f1b9988eaa31c0c7520cc",
     "url": "/index.html"
   },
   {
-    "revision": "7a3a9bcaaafa948f7b2e",
-    "url": "/js/app.adf8d40b.js"
+    "revision": "ada1c2a763e116d226b1",
+    "url": "/js/app.ed840efe.js"
   },
   {
     "revision": "f98e4e1882b8133e15bd",
@@ -152,10 +152,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/js/chunk-7574db83.58323db8.js"
   },
   {
-    "revision": "df22f67ea597599042da",
-    "url": "/js/chunk-772c5956.81de7e94.js"
-  },
-  {
     "revision": "cdb01f08132f122d417c",
     "url": "/js/chunk-79b2ca1f.13663141.js"
   },
@@ -170,6 +166,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "fc3420d514a59e4706b6",
     "url": "/js/chunk-e3e0bca2.abaa2a2a.js"
+  },
+  {
+    "revision": "63140e76a8ad12e11ad9",
+    "url": "/js/chunk-f3bd8a38.1ba67a90.js"
   },
   {
     "revision": "a14394f5c18112402d13",
