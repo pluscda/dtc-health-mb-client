@@ -93,10 +93,10 @@ h4 {
     font-family: Poppins;
     font-style: normal;
     font-weight: 500;
-
     line-height: 16px;
     /* identical to box height, or 100% */
     color: #9cb1d8;
+    font-size: 20px;
   }
   h6 {
     font-family: Poppins;
@@ -105,7 +105,7 @@ h4 {
 
     line-height: 16px;
     /* identical to box height, or 89% */
-
+    font-size: 24px;
     color: #3b516e;
   }
 }
