@@ -23,10 +23,7 @@
 <script>
 import { store, mutations, actions } from "@/store/global.js";
 import Vue from "vue";
-import PN from "@/components/Pn.vue";
 import GISJSON from "@/assets/gis.json";
-import { Plugins } from "@capacitor/core";
-const { Network, SplashScreen } = Plugins;
 import liff from "@line/liff";
 
 let features = GISJSON.filter((s) => store.hotMapIds.find((s2) => s2 == +s.myID));
@@ -61,9 +58,7 @@ export default {
       gisInfo: "",
     };
   },
-  components: {
-    PN,
-  },
+  components: {},
   computed: {
     isLogin() {
       return window.token || store.isLogin;
@@ -153,19 +148,7 @@ export default {
       alert(e + "");
     }
   },
-  async beforeCreate() {
-    try {
-      const { token, phone } = await actions.getCapaData();
-      window.token = token;
-      window.lineId = phone;
-      token ? (store.isLogin = true) : (store.isLogin = false);
-    } catch (e) {
-      //
-    }
-    Network.addListener("networkStatusChange", (status) => {
-      this.network = status.connected;
-    });
-  },
+  async beforeCreate() {},
   watch: {
     $route(to, from) {
       this.gisInfo = "";
