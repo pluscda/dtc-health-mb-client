@@ -9,9 +9,9 @@
 
     <van-share-sheet v-model="showShareSheet" title="用地圖找名醫會館相關醫院" :options="gisOptions" @select="onSelectGis" :cancel-text="cancel" />
     <van-tabbar v-model="active" style="z-index:8;">
-      <!-- <nav class="gis-btn" @click="openGisOps" v-if="!$route.path.includes('myorderlist')">
+      <nav class="gis-btn" @click="openGisOps" v-if="$route.path.includes('gis')">
         <img src="pen.svg" />
-      </nav> -->
+      </nav>
       <van-tabbar-item icon="wap-home-o" @click="tabClick('/home')">{{ $t("醫療首頁") }}</van-tabbar-item>
       <van-tabbar-item icon="search" @click="tabClick('/doclist')">{{ $t("找醫師") }}</van-tabbar-item>
       <van-tabbar-item icon="bookmark-o" @click="tabClick('/gis')">找醫院</van-tabbar-item>
