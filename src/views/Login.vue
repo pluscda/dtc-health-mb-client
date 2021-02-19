@@ -26,11 +26,11 @@ export default {
   },
   computed: {
     avatorImg() {
-      const str = store.lineProfile.pictureUrl;
+      const str = store.lineProfile?.pictureUrl;
       return str ? str : "http://unsplash.it/126/126";
     },
     userName() {
-      const str = store.lineProfile.displayName;
+      const str = store.lineProfile?.displayName;
       return str ? str : "DTC Testing User";
     },
   },
