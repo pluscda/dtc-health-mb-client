@@ -4,7 +4,7 @@
       <div class="dtc-logo" @click="$router.push('about')">
         {{ $t("title") }}
         <div class="dtc-private ml-2">關於會館</div>
-        <span v-if="myName" style="display:inline-block;font-size:12px;text-align:left;transform:translate3d(10px,0px,0)" class="mt-2">用戶: {{ myName }}...</span>
+        <span hidden v-if="myName" style="display:inline-block;font-size:12px;text-align:left;transform:translate3d(10px,0px,0)" class="mt-2">用戶: {{ myName }}...</span>
       </div>
 
       <div v-if="$i18n.locale == 'zh-tw'" class="dtc-lang-switch" @click="$root.$i18n.locale = 'zh-cn'">繁</div>
