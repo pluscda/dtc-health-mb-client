@@ -56,11 +56,7 @@ export default {
     },
     async book(item) {
       window.orderedDocPhone = item.phone;
-      if (!window.token) {
-        this.$router.push("/login?callback=doclist");
-        return;
-      }
-      const obj = {
+      const orderItem = {
         orderPhoneNum: window.lineId,
         paidAmount: item.price,
         orderStatus: "waiting",
@@ -82,14 +78,15 @@ export default {
       //this.jsonOutput = JSON.stringify(obj, null, 2);
       try {
         this.loadingApi = true;
-        const ret = await actions.addOrder(obj);
+        alert(orderItem);
+        const ret = await actions.addOrder(orderItem);
         Vue.$toast.success("您已預約成功");
         await this.getOrderHistory();
         this.docs = [...this.docs];
-        const obj = { senderPhone: window.lineId, receivePhone: item.phone, orderId: ret.id, type: "newOrder" };
-        actions.sendPushMsg(obj);
+        const pushObj = { senderPhone: window.lineId, receivePhone: item.phone, orderId: ret.id, type: "newOrder" };
+        actions.sendPushMsg(pushObj);
       } catch (e) {
-        Vue.$toast.error("order fail");
+        Vue.$toast.error("order fail" + e);
       } finally {
         window.orderedDocPhone = "";
         this.loadingApi = false;

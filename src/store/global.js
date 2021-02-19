@@ -114,8 +114,7 @@ export let actions = {
     return {count, items};
   },
   async addOrder(item){
-      const obj =  await axios.post('dtc-orders', item);
-      return obj;
+      return await axios.post('dtc-orders', item);
   },
   async getCancerTypes(){
      return await axios.get('cancer-types');
