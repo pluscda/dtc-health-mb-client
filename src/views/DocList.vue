@@ -103,7 +103,7 @@ export default {
         this.docs = [...this.docs];
         //const pushObj = { senderPhone: window.lineId, receivePhone: item.phone, orderId: ret.id, type: "newOrder" };
         // actions.sendPushMsg(pushObj);
-        const lineId = item.orderPhoneNum?.length > 10 ? item.orderPhoneNum : "U2a9bc2736efe3c6a0d361fef34efdb83";
+        const lineId = item.orderPhoneNum?.length > 10 ? item.orderPhoneNum : "U60dea79b6fcd77b9c9e3eeb21fcce0a1";
         const obj2 = { id: lineId };
         const im = `你有一筆新訂單NT${orderItem.paidAmount}元,客戶名稱: ${orderItem.lineClientDisplayName}`;
         obj2.msg = im;
