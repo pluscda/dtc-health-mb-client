@@ -2,7 +2,7 @@
   <section class="dtc-login">
     <img class="dtc-avator" :src="avatorImg" />
     <h4>{{ userName }}</h4>
-    <h4 hidden>{{ userId }}</h4>
+    <h4>{{ userId }}</h4>
     <section class="dtc-report" @click="viewOrderHistory">
       <h5>預約紀錄</h5>
       <h6>{{ orderCount }}</h6>
