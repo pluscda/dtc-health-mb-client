@@ -101,10 +101,13 @@ export default {
         Vue.$toast.success("您已預約成功");
         await this.getOrderHistory();
         this.docs = [...this.docs];
-        const pushObj = { senderPhone: window.lineId, receivePhone: item.phone, orderId: ret.id, type: "newOrder" };
+        //const pushObj = { senderPhone: window.lineId, receivePhone: item.phone, orderId: ret.id, type: "newOrder" };
         // actions.sendPushMsg(pushObj);
-        const im = `你有一筆新訂單NT${orderItem.paidAmount}元,客戶名稱: ${orderItem.lineClientDisplayName}`;
-        actions.lineMsg({ id: item.phone, msg: im });
+        const lineId = item.orderPhoneNum?.length > 10 ? item.orderPhoneNum : "U2a9bc2736efe3c6a0d361fef34efdb83";
+        const obj2 = { id: lineId };
+        const im = `你有一筆新訂單NT${orderItem.paidAmount}元,客戶Line名稱: ${orderItem.lineClientDisplayName}`;
+        obj2.msg = im;
+        actions.lineMsg(obj2);
       } catch (e) {
         Vue.$toast.error("order fail" + e);
       } finally {
