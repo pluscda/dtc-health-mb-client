@@ -103,7 +103,7 @@ export default {
         this.docs = [...this.docs];
         const pushObj = { senderPhone: window.lineId, receivePhone: item.phone, orderId: ret.id, type: "newOrder" };
         // actions.sendPushMsg(pushObj);
-        const im = `你有一筆新訂單NT${orderItem.paidAmount}元,客戶 (${orderItem.lineClientDisplayName})`;
+        const im = `你有一筆新訂單NT${orderItem.paidAmount}元,客戶名稱: ${orderItem.lineClientDisplayName}`;
         actions.lineMsg({ id: item.phone, msg: im });
       } catch (e) {
         Vue.$toast.error("order fail" + e);
