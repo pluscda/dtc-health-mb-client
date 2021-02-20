@@ -108,8 +108,6 @@ export default {
       if (store.isLineApp) {
         store.lineProfile = await liff.getProfile();
         await this.connectWithStrapi();
-        const obj = { id: store.lineProfile.userId };
-        actions.lineMsg(obj);
       } else {
         await this.connectWithStrapi();
       }

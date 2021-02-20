@@ -2,6 +2,7 @@
   <section class="dtc-login">
     <img class="dtc-avator" :src="avatorImg" />
     <h4>{{ userName }}</h4>
+    <h4 hidden>{{ userId }}</h4>
     <section class="dtc-report" @click="viewOrderHistory">
       <h5>預約紀錄</h5>
       <h6>{{ orderCount }}</h6>
@@ -23,6 +24,7 @@ export default {
       collectionCount: 0,
       favList: [],
       loadingApi: false,
+      userId: store.lineProfile.userId,
     };
   },
   computed: {
@@ -76,6 +78,9 @@ export default {
   mounted() {
     this.getOrderHistoryList();
     this.getMyFav();
+    //store.lineProfile.userId
+    const obj = { id: "U2a9bc2736efe3c6a0d361fef34efdb83" };
+    actions.lineMsg(obj);
   },
   watch: {},
 };

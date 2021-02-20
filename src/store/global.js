@@ -38,9 +38,6 @@ const init = {
   isLineApp: false,
   lineProfile: {userId: '0928012588'},
   favList:[],
-  pmUrl: 'https://api.line.me/v2/bot/message/push',
-  //https://developers.line.biz/en/reference/messaging-api/#send-push-message
-  cat: 'Tn/Zi1mOrCt9Fq2dE8DlIms6DfVzDlf6cUwMnxBc//7r7he9EIUmP90944ELwB62t5XqMRAF2YdKheDgdElgji7/ejzFcUDMx0ciwUz5xhmtF6rpEdymVD00UawPvI5dLL2NUnw1yxwSu++InaV37wdB04t89/1O/w1cDnyilFU='
 };
 export let store = Vue.observable({
   ...init,
@@ -49,7 +46,7 @@ export let store = Vue.observable({
 
 export let actions = {
   async lineMsg(obj){
-    await await axios.post("dtc-linemsg",obj);
+    await await axios.post("dtc-line",obj);
   },
   async sendPushMsg(obj){
     try{
