@@ -75,7 +75,7 @@ export default {
     async book(item) {
       window.orderedDocPhone = item.phone;
       const orderItem = {
-        lineClientDisplayName: store.lineProfile.displayName ? store.lineProfile.displayName : "abc",
+        lineClientDisplayName: store.lineProfile.displayName ? store.lineProfile.displayName : "DTC Tester",
         realName: item.name,
         orderPhoneNum: window.lineId,
         paidAmount: item.price,
@@ -102,7 +102,9 @@ export default {
         await this.getOrderHistory();
         this.docs = [...this.docs];
         const pushObj = { senderPhone: window.lineId, receivePhone: item.phone, orderId: ret.id, type: "newOrder" };
-        actions.sendPushMsg(pushObj);
+        // actions.sendPushMsg(pushObj);
+        const im = `你有一筆新訂單: NT ${orderItem.paidAmount}客戶(${orderItem.lineClientDisplayName})`;
+        actions.lineMsg({ id: item.phone, msg: im });
       } catch (e) {
         Vue.$toast.error("order fail" + e);
       } finally {
