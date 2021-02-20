@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/card.svg"
   },
   {
-    "revision": "8e12c268413d4926665e",
+    "revision": "60bf4afc04a36178d4ff",
     "url": "/css/app.acc3cc4d.css"
   },
   {
@@ -26,10 +26,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "49f4bf037d4aa89ec95c",
     "url": "/css/chunk-184044ff.8901ce2a.css"
-  },
-  {
-    "revision": "e13247394a8cd4d9b5e4",
-    "url": "/css/chunk-37d041d6.8eab1bbb.css"
   },
   {
     "revision": "13867f9d8043e466b46c",
@@ -76,6 +72,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/css/chunk-d5aaf2e4.c21f45a6.css"
   },
   {
+    "revision": "4efb710db23590028e0a",
+    "url": "/css/chunk-e448b494.6c9e955c.css"
+  },
+  {
     "revision": "a14394f5c18112402d13",
     "url": "/css/chunk-vendors.5aec3833.css"
   },
@@ -104,12 +104,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/markers_default@2x.0e04541b.png"
   },
   {
-    "revision": "614586b1a08e496ccff69c0205c6d978",
+    "revision": "cb83ee65004cfbde341b5c735070cccb",
     "url": "/index.html"
   },
   {
-    "revision": "8e12c268413d4926665e",
-    "url": "/js/app.ff9ee8f7.js"
+    "revision": "60bf4afc04a36178d4ff",
+    "url": "/js/app.97542d26.js"
   },
   {
     "revision": "0812951b8bbf576bead8",
@@ -122,10 +122,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "49f4bf037d4aa89ec95c",
     "url": "/js/chunk-184044ff.b6fb785e.js"
-  },
-  {
-    "revision": "e13247394a8cd4d9b5e4",
-    "url": "/js/chunk-37d041d6.13c548f8.js"
   },
   {
     "revision": "13867f9d8043e466b46c",
@@ -170,6 +166,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "1ef40dbc615f8ac4a452",
     "url": "/js/chunk-d5aaf2e4.bc303887.js"
+  },
+  {
+    "revision": "4efb710db23590028e0a",
+    "url": "/js/chunk-e448b494.be47c75a.js"
   },
   {
     "revision": "a14394f5c18112402d13",

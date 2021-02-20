@@ -75,7 +75,7 @@ export default {
     async book(item) {
       window.orderedDocPhone = item.phone;
       const orderItem = {
-        lineClientDisplayName: store.lineProfile.displayName,
+        lineClientDisplayName: store.lineProfile.displayName ? store.lineProfile.displayName : "abc",
         realName: item.name,
         orderPhoneNum: window.lineId,
         paidAmount: item.price,
