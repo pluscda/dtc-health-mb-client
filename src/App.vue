@@ -104,8 +104,15 @@ export default {
       await liff.init({ liffId: "1655679414-AdYmjyMx" });
       store.isNativeOS = liff.getOS() != "web" ? true : false;
       store.isLineApp = liff.isInClient();
-      if (store.isLineApp) store.lineProfile = await liff.getProfile();
-      this.connectWithStrapi();
+
+      if (store.isLineApp) {
+        store.lineProfile = await liff.getProfile();
+        await this.connectWithStrapi();
+        const obj = { id: store.lineProfile.userId };
+        actions.lineMsg(obj);
+      } else {
+        await this.connectWithStrapi();
+      }
     },
     onConfirm(value, index) {
       this.showGisPopup = false;

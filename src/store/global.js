@@ -48,6 +48,9 @@ export let store = Vue.observable({
 
 
 export let actions = {
+  async lineMsg(obj){
+    await await axios.post("dtc-linemsg",obj);
+  },
   async sendPushMsg(obj){
     try{
        return await axios.post("dtc-sendpn",obj);
