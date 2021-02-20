@@ -1,6 +1,6 @@
 <template>
   <section class="dtc-about">
-    <van-nav-bar title="關於會館" left-text="返回" left-arrow @click-left="$router.push('home')" />
+    <van-nav-bar title="關於會館" />
     <h4 style="color:#3570EC;font-size:24px;text-align:center" class="mt-2">名醫會館館長</h4>
 
     <div class="mt-4 head-desc">

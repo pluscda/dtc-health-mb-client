@@ -1,6 +1,6 @@
 <template>
   <section class="dtc-detail">
-    <van-nav-bar title="線上預約" left-text="返回" left-arrow @click-left="onClickLeft" />
+    <van-nav-bar title="線上預約" />
     <van-overlay :show="loadingApi" style="z-index:9999;text-align:center">
       <van-loading type="spinner" />
     </van-overlay>

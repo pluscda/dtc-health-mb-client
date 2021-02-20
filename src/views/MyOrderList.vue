@@ -1,6 +1,6 @@
 <template>
   <section class="doc-list">
-    <van-nav-bar v-if="!commentFilter && !judgeFilter" title="我的預約紀錄" left-text="返回" left-arrow @click-left="$router.push('login')"> </van-nav-bar>
+    <van-nav-bar v-if="!commentFilter && !judgeFilter" title="我的預約紀錄"> </van-nav-bar>
     <van-nav-bar v-if="commentFilter" title="留言紀錄" left-text="返回" left-arrow @click-left="commentFilter = false"> </van-nav-bar>
     <van-nav-bar v-if="judgeFilter" title="診斷紀錄" left-text="返回" left-arrow @click-left="judgeFilter = false"> </van-nav-bar>
 
@@ -8,7 +8,7 @@
       <van-loading type="spinner" />
     </van-overlay>
 
-    <main v-for="(item, i) in myOrders" :key="i" class="doc-item mt-1" v-show="item.details">
+    <main v-for="(item, i) in myOrders" :key="i" class="doc-item mt-1" v-show="item.details" @click="viewDetail(item)">
       <van-card v-if="item.details" :price="item.details.price" currency="NT" :desc="getDesc(item)" :title="getTitle(item)" :thumb="getImgPath(item, i)">
         <template #tags>
           <div class="my-tags-grid">
@@ -26,14 +26,8 @@
           </div>
         </template>
         <template #footer>
-          <div
-            class="my-tags-grid3"
-            @click="
-              showLeavelMsg = true;
-              viewDetail(item);
-            "
-          >
-            <div @click.stop=""></div>
+          <div class="my-tags-grid3">
+            <div></div>
             <van-badge :content="getMyCount(item.message)" color="rgb(25, 137, 250)">
               <div class="my-msg">我的留言</div>
             </van-badge>

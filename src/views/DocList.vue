@@ -3,8 +3,7 @@
     <van-overlay :show="loadingApi" style="z-index:9999;text-align:center">
       <van-loading type="spinner" />
     </van-overlay>
-    <header>快速找名醫</header>
-    <van-search background="white" v-model="searchBy" shape="round" class="mx-4 mt-2" placeholder="醫院 | 醫生名 | 病名"></van-search>
+    <header>{{ searchBy.includes("熱門") ? "熱門" : searchBy }}名醫</header>
 
     <main v-for="(item, i) in docs" :key="i" class="doc-item mt-1">
       <van-card @click="viewDetail(item)" :price="item.price" currency="NT" :desc="getDesc(item)" :title="getTitle(item)" :thumb="getImgPath(item, i)">

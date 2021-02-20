@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <van-overlay style="z-index:999999999" :show="showOverlay" />
     <div v-if="gisInfo" class="gis-info">{{ this.gisInfo }}</div>
     <img hidden :src="avatorImg" />
     <router-view></router-view>
@@ -56,6 +57,7 @@ export default {
       columns: [],
       showGisPopup: false,
       gisInfo: "",
+      showOverlay: true,
     };
   },
   components: {},
@@ -130,14 +132,16 @@ export default {
       requestAnimationFrame(() => this.$router.push(name));
     },
   },
-  mounted() {
+  async mounted() {
     this.$root.$on("show-gis-label", (obj) => {
       this.gisInfo = obj.phone ? `${obj.address} / ${obj.phone}` : obj.address;
     });
     try {
-      this.getLineInfo();
+      await this.getLineInfo();
+      this.showOverlay = false;
     } catch (e) {
       alert(e + "");
+      this.showOverlay = false;
     }
   },
   async beforeCreate() {},
