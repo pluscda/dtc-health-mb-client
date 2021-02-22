@@ -38,6 +38,9 @@ const init = {
   isLineApp: false,
   lineProfile: {userId: '0928012588'},
   favList:[],
+  tapAppId: 19477,
+  tapAppKey: 'app_AQhCB5ZcYM8tFQmQOlzvHjfEg4ncahGjVzPCEwvsXIWp5FQC15hXV6HJHbu2',
+  tapPartnerId: "partner_o1z1cKCItSyhwv6jjGKr1FiWcNNHO2J43mPXiiVc9KWATdDbsxr0xxol"
 };
 export let store = Vue.observable({
   ...init,
@@ -45,6 +48,24 @@ export let store = Vue.observable({
 
 
 export let actions = {
+  initTapPay(id){
+    //ref:https://github.com/TapPay/tappay-web-example/tree/master/Direct_Pay_iframe
+     TPDirect.setupSDK(store.tapAppId, store.tapAppKey, "sandbox");
+      const defaultCardViewStyle = {
+        color: "rgb(0,0,0)",
+        fontSize: "15px",
+        lineHeight: "24px",
+        fontWeight: "300",
+        errorColor: "red",
+        placeholderColor: "",
+      };
+      // 預設不戴第三個參數的話, 是會必須填入 CCV
+      TPDirect.card.setup(id, defaultCardViewStyle);
+      // 帶入第三個參數, config.isUsedCcv 為以下兩種參數代表不同意思
+      // false 為 CCV 非必填
+      // true 為 CCV 必填
+      TPDirect.card.setup(id, defaultCardViewStyle, { isUsedCcv: true });
+  },
   async lineMsg(obj){
      await axios.post("dtc-line2",obj);
   },

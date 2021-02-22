@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div id="cardview-container"></div>
     <van-overlay style="z-index:999999999" :show="showOverlay" />
     <div v-if="gisInfo" class="gis-info">{{ this.gisInfo }}</div>
     <img hidden :src="avatorImg" />
