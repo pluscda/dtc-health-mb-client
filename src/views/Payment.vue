@@ -181,6 +181,6 @@ export default {
   -webkit-transition: color 0.1s ease, border-color 0.1s ease;
   transition: color 0.1s ease, border-color 0.1s ease;
   width: 100%;
-  height: 50px;
+  height: 100px;
 }
 </style>

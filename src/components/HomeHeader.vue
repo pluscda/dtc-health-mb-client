@@ -29,9 +29,7 @@ export default {
       return name;
     },
   },
-  async mounted() {
-    //actions.initTapPay("#tappay-container");
-  },
+  async mounted() {},
 };
 </script>
 <i18n>
