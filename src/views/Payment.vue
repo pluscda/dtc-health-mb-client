@@ -15,7 +15,7 @@
       <h5 style="color:black;margin-top:10px;transform:translateX(10px)">信用卡</h5>
       <div id="tappay-container"></div>
       <div style="margin: 16px;">
-        <van-button round block type="info" native-type="submit">提交</van-button>
+        <van-button round block type="info" native-type="submit" @click="submitCard">提交</van-button>
       </div>
     </van-form>
   </section>
@@ -39,6 +39,8 @@ export default {
       loadingApi: false,
       jsonOutput: "",
       favList: [],
+      username: "",
+      email: "",
     };
   },
   computed: {
@@ -47,6 +49,27 @@ export default {
     },
   },
   methods: {
+    async submitCard() {
+      const item = this.docs[0];
+      const payObj = {};
+      TPDirect.card.getPrime(async (result) => {
+        payObj.partner_key = store.tappayId;
+        payObj.prime = `${result.card.prime}`;
+        payObj.amount = +item.price;
+        payObj.merchant_id = "pluscda_CTBC";
+        payObj.details = item.name;
+        const cardInfo = {
+          phone_number: "+886928012588",
+          name: this.username,
+          email: this.email,
+          zip_code: "100",
+          address: "台北市天龍區芝麻街1號1樓",
+          national_id: "A123456789",
+        };
+        payObj.cardholder = cardInfo;
+        await actions.submitCard(payObj);
+      });
+    },
     async book(item) {
       window.orderedDocPhone = item.phone;
       const orderItem = {
