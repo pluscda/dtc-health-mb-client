@@ -40,6 +40,7 @@ const init = {
   favList:[],
   tapAppId: 19477,
   tapAppKey: 'app_AQhCB5ZcYM8tFQmQOlzvHjfEg4ncahGjVzPCEwvsXIWp5FQC15hXV6HJHbu2',
+  bookItem:'',
 };
 export let store = Vue.observable({
   ...init,

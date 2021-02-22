@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <div id="tappay-container"></div>
     <van-overlay style="z-index:999999999" :show="showOverlay" />
     <div v-if="gisInfo" class="gis-info">{{ this.gisInfo }}</div>
     <img hidden :src="avatorImg" />
@@ -139,7 +138,7 @@ export default {
     },
   },
   async mounted() {
-    actions.initTapPay("#tappay-container");
+    //actions.initTapPay("#tappay-container");
     this.$root.$on("show-gis-label", (obj) => {
       this.gisInfo = obj.phone ? `${obj.address} / ${obj.phone}` : obj.address;
     });
@@ -293,5 +292,6 @@ body {
   -webkit-transition: color 0.1s ease, border-color 0.1s ease;
   transition: color 0.1s ease, border-color 0.1s ease;
   width: 100%;
+  height: 100vh;
 }
 </style>
