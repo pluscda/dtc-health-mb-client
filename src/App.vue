@@ -145,6 +145,7 @@ export default {
     try {
       await this.getLineInfo();
       this.showOverlay = false;
+      actions.initTapPay("#cardview-container");
     } catch (e) {
       alert(e + "");
       this.showOverlay = false;
@@ -267,5 +268,10 @@ body {
   text-align: center;
   font-size: 12px;
   z-index: 99999;
+}
+
+#cardview-container {
+  width: 100vw;
+  height: 50vh;
 }
 </style>
