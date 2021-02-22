@@ -40,7 +40,6 @@ const init = {
   favList:[],
   tapAppId: 19477,
   tapAppKey: 'app_AQhCB5ZcYM8tFQmQOlzvHjfEg4ncahGjVzPCEwvsXIWp5FQC15hXV6HJHbu2',
-  tapPartnerId: "partner_o1z1cKCItSyhwv6jjGKr1FiWcNNHO2J43mPXiiVc9KWATdDbsxr0xxol"
 };
 export let store = Vue.observable({
   ...init,
@@ -53,8 +52,8 @@ export let actions = {
      TPDirect.setupSDK(store.tapAppId, store.tapAppKey, "sandbox");
       const defaultCardViewStyle = {
         color: "rgb(0,0,0)",
-        fontSize: "15px",
-        lineHeight: "24px",
+        fontSize: "20px",
+        lineHeight: "44px",
         fontWeight: "300",
         errorColor: "red",
         placeholderColor: "",

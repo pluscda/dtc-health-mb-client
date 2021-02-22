@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { store } from "@/store/global.js";
+import { store, actions } from "@/store/global.js";
 export default {
   name: "homeSearchTitle",
   data() {
@@ -29,7 +29,9 @@ export default {
       return name;
     },
   },
-  async mounted() {},
+  async mounted() {
+    //actions.initTapPay("#tappay-container");
+  },
 };
 </script>
 <i18n>
