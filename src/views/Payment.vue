@@ -8,9 +8,11 @@
     <main v-for="(item, i) in docs" :key="i" class="doc-item mt-1">
       <van-card @click="viewDetail(item)" :price="item.price" currency="NT" :desc="getDesc(item)" :title="getTitle(item)" :thumb="getImgPath(item, i)"> </van-card>
     </main>
+    <h5 style="color:black;margin-top:10px;transform:translateX(10px)">請填寫基本資料</h5>
     <van-form @submit="onSubmit">
       <van-field v-model="username" name="用户名" label="用户名" placeholder="用户名" :rules="[{ required: true, message: '請填寫用户名' }]" />
       <van-field v-model="email" type="email" name="密码" label="電子信箱" placeholder="電子信箱" :rules="[{ required: true, message: '請填寫電子信箱' }]" />
+      <h5 style="color:black;margin-top:10px;transform:translateX(10px)">信用卡</h5>
       <div id="tappay-container"></div>
       <div style="margin: 16px;">
         <van-button round block type="info" native-type="submit">提交</van-button>
@@ -163,5 +165,22 @@ export default {
 .doc-item {
   border-bottom: 1px solid #ebedf0;
 }
-//1px solid #ebedf0
+#tappay-container {
+  font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  margin: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  line-height: 1.21428571em;
+  padding: 0.578571em 1em;
+  font-size: 1em;
+  background: #fff;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  color: rgba(0, 0, 0, 0.87);
+  border-radius: 0.28571429rem;
+  box-shadow: 0 0 0 0 transparent inset;
+  -webkit-transition: color 0.1s ease, border-color 0.1s ease;
+  transition: color 0.1s ease, border-color 0.1s ease;
+  width: 100%;
+  height: 50px;
+}
 </style>

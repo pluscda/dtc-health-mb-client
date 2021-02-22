@@ -138,7 +138,6 @@ export default {
     },
   },
   async mounted() {
-    //actions.initTapPay("#tappay-container");
     this.$root.$on("show-gis-label", (obj) => {
       this.gisInfo = obj.phone ? `${obj.address} / ${obj.phone}` : obj.address;
     });
@@ -272,26 +271,5 @@ body {
 #cardview-container {
   width: 100vw;
   height: 50vh;
-}
-</style>
-
-<style>
-#tappay-container {
-  font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  line-height: 1.21428571em;
-  padding: 0.578571em 1em;
-  font-size: 1em;
-  background: #fff;
-  border: 1px solid rgba(34, 36, 38, 0.15);
-  color: rgba(0, 0, 0, 0.87);
-  border-radius: 0.28571429rem;
-  box-shadow: 0 0 0 0 transparent inset;
-  -webkit-transition: color 0.1s ease, border-color 0.1s ease;
-  transition: color 0.1s ease, border-color 0.1s ease;
-  width: 100%;
-  height: 100vh;
 }
 </style>
