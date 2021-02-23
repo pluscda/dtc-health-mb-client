@@ -86,43 +86,8 @@ export default {
   components: {},
   methods: {
     async book(item) {
-      window.orderedDocPhone = item.phone;
-      if (!window.token) {
-        this.$router.push("/login?callback=doclist");
-        return;
-      }
-      const obj = {
-        orderPhoneNum: window.lineId,
-        paidAmount: item.price,
-        status: "waiting", // process and finish
-        orderDate: new Date().toISOString(),
-        doctorPhone: item.phone,
-        isCancer: item.cid < store.MIN_NON_CANCER_NUM ? true : false,
-        hardCopyReceived: false,
-        copySendBack: false,
-        docHasCopy: false,
-        comment:
-          item.cid < store.MIN_NON_CANCER_NUM
-            ? [
-                {
-                  docComment: "需要你的癌症報告,請你用郵件寄出",
-                  commentAt: new Date().toISOString(),
-                  rating: 0,
-                  userComment: "",
-                },
-              ]
-            : [],
-      };
-      try {
-        this.loadingApi = true;
-        await actions.addOrder(obj);
-        Vue.$toast.success("你已預約成功");
-      } catch (e) {
-        Vue.$toast.error("order fail");
-      } finally {
-        window.orderedDocPhone = "";
-        this.loadingApi = false;
-      }
+      store.bookItem = item;
+      this.$router.push("/payment");
     },
     onClickLeft() {
       this.$router.go(-1);

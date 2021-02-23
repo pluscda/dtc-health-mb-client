@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/card.svg"
   },
   {
-    "revision": "6898aa55a952f781441d",
+    "revision": "f61f4ec62e4f0ec79113",
     "url": "/css/app.4a204e52.css"
   },
   {
@@ -22,6 +22,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "49f4bf037d4aa89ec95c",
     "url": "/css/chunk-184044ff.8901ce2a.css"
+  },
+  {
+    "revision": "8ed220060d725d025853",
+    "url": "/css/chunk-1a5871ac.2d3fb11d.css"
   },
   {
     "revision": "2e715051ae2f37f57524",
@@ -76,10 +80,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/css/chunk-b2ed0078.b4050482.css"
   },
   {
-    "revision": "1ef40dbc615f8ac4a452",
-    "url": "/css/chunk-d5aaf2e4.c21f45a6.css"
-  },
-  {
     "revision": "6e6e5aa333227e816435",
     "url": "/css/chunk-vendors.5aec3833.css"
   },
@@ -108,12 +108,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/markers_default@2x.0e04541b.png"
   },
   {
-    "revision": "692976d93eff59d6ca588e34896d304c",
+    "revision": "f80ae869237a5612bcf2b720209d99a9",
     "url": "/index.html"
   },
   {
-    "revision": "6898aa55a952f781441d",
-    "url": "/js/app.2f95e3a1.js"
+    "revision": "f61f4ec62e4f0ec79113",
+    "url": "/js/app.c05433ba.js"
   },
   {
     "revision": "74f625dbabb4e755144d",
@@ -122,6 +122,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "49f4bf037d4aa89ec95c",
     "url": "/js/chunk-184044ff.b6fb785e.js"
+  },
+  {
+    "revision": "8ed220060d725d025853",
+    "url": "/js/chunk-1a5871ac.43be9988.js"
   },
   {
     "revision": "2e715051ae2f37f57524",
@@ -174,10 +178,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "75ae7b7f3589e02cb1fc",
     "url": "/js/chunk-b2ed0078.1ed9b62f.js"
-  },
-  {
-    "revision": "1ef40dbc615f8ac4a452",
-    "url": "/js/chunk-d5aaf2e4.bc303887.js"
   },
   {
     "revision": "6e6e5aa333227e816435",

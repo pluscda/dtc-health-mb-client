@@ -73,50 +73,8 @@ export default {
       }
     },
     async book(item) {
-      this.$router.push("/payment");
       store.bookItem = item;
-      return;
-      window.orderedDocPhone = item.phone;
-      const orderItem = {
-        lineClientDisplayName: store.lineProfile.displayName ? store.lineProfile.displayName : "DTC Tester",
-        realName: item.name,
-        orderPhoneNum: window.lineId,
-        paidAmount: item.price,
-        orderStatus: "waiting",
-        orderDate: new Date().toISOString(),
-        doctorPhone: item.phone,
-        inqueryCate: 1, //this.searchBy != "熱門醫生" ? this.cates.find((s) => s.name.includes(this.searchBy)).cid : item.cid,
-        cusUnreadMsg: 1,
-        totalMsg: 1,
-        message:
-          item.cid < store.MIN_NON_CANCER_NUM
-            ? [
-                {
-                  docComment: "需要您的報告,請您用郵件寄出",
-                  commentAt: new Date().toISOString(),
-                },
-              ]
-            : [],
-      };
-      try {
-        this.loadingApi = true;
-        const ret = await actions.addOrder(orderItem);
-        Vue.$toast.success("您已預約成功");
-        await this.getOrderHistory();
-        this.docs = [...this.docs];
-        //const pushObj = { senderPhone: window.lineId, receivePhone: item.phone, orderId: ret.id, type: "newOrder" };
-        // actions.sendPushMsg(pushObj);
-        const lineId = item.orderPhoneNum?.length > 10 ? item.orderPhoneNum : "U60dea79b6fcd77b9c9e3eeb21fcce0a1";
-        const obj2 = { id: lineId };
-        const im = `你有一筆新訂單NT${orderItem.paidAmount}元,客戶名稱: ${orderItem.lineClientDisplayName}`;
-        obj2.msg = im;
-        await actions.lineMsg(obj2);
-      } catch (e) {
-        Vue.$toast.error("order fail" + e);
-      } finally {
-        window.orderedDocPhone = "";
-        this.loadingApi = false;
-      }
+      this.$router.push("/payment");
     },
     getBooksNum() {
       return 3;
