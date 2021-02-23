@@ -9,9 +9,9 @@
       <van-card @click="viewDetail(item)" :price="item.price" currency="NT" :desc="getDesc(item)" :title="getTitle(item)" :thumb="getImgPath(item, i)"> </van-card>
     </main>
     <h5 style="color:black;margin-top:10px;transform:translateX(10px)">請填寫基本資料</h5>
-    <van-form @submit="submitCard">
+    <van-form @submit="submitCard" @failed="onFailedInput">
       <van-field v-model="username" name="用户名" label="用户名" placeholder="用户名" :rules="[{ required: true, message: '請填寫用户名' }]" />
-      <van-field v-model="email" type="email" name="密码" label="電子信箱" placeholder="電子信箱" :rules="[{ required: true, message: '請填寫電子信箱' }]" />
+      <van-field v-model="phone" type="number" name="手機" label="手機號碼" placeholder="範例: 0911612559" :rules="[{ validator, message: '請填寫正確手機號碼' }]" />
       <h5 style="color:black;margin-top:10px;transform:translateX(10px)">信用卡</h5>
       <div id="tappay-container"></div>
       <div style="margin: 16px;">
@@ -40,8 +40,9 @@ export default {
       jsonOutput: "",
       favList: [],
       username: "",
-      email: "",
+      phone: "",
       canGetPrime: false,
+      failInput: false,
     };
   },
   computed: {
@@ -49,10 +50,16 @@ export default {
       return this.myPreviousOrders.filter((s) => s.status != "finish");
     },
     enableSubmitBtn() {
-      return this.canGetPrime && this.email && this.username;
+      return this.canGetPrime && this.phone && this.username && !this.failInput;
     },
   },
   methods: {
+    onFailedInput(error) {
+      error ? (this.failInput = true) : (this.failInput = false);
+    },
+    validator(val) {
+      return /0\d{9}/.test(val);
+    },
     async submitCard() {
       this.loadingApi = true;
       const item = this.docs[0];
