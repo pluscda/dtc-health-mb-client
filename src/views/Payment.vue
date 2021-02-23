@@ -92,6 +92,7 @@ export default {
       localStorage.username = this.username;
       localStorage.phone = this.phone;
       const orderItem = {
+        clientLinePhone: this.phone,
         lineClientDisplayName: this.username,
         realName: item.name,
         orderPhoneNum: window.lineId,
