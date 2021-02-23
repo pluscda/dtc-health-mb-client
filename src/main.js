@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import './plugins/axios'
-import './plugins/tappay'
 import "./assets/reset.css"
 import "./assets/utility.css"
 import moment from "dayjs"

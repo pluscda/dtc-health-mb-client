@@ -72,11 +72,12 @@ export default {
           national_id: "A123456789",
         };
         payObj.cardholder = cardInfo;
-        const { status } = await actions.confirmPayOnline(payObj);
-        if (status === 0) {
+        try {
+          await actions.confirmPayOnline(payObj);
           this.book(item);
-        } else {
+        } catch (e) {
           this.loadingApi = false;
+          alert("" + e);
         }
       });
     },
@@ -114,7 +115,7 @@ export default {
         const im = `你有一筆新訂單NT${orderItem.paidAmount}元,客戶名稱: ${orderItem.lineClientDisplayName}`;
         obj2.msg = im;
         await actions.lineMsg(obj2);
-        this.$router.push("/login");
+        this.$router.push("/myorderlist");
       } catch (e) {
         Vue.$toast.error("order fail" + e);
       } finally {

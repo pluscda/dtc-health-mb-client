@@ -52,13 +52,7 @@ export let store = Vue.observable({
 
 export let actions = {
   async confirmPayOnline(obj){
-     const config = {
-        headers: {
-           "Content-Type": "application/json",
-           'x-api-key': 'partner_o1z1cKCItSyhwv6jjGKr1FiWcNNHO2J43mPXiiVc9KWATdDbsxr0xxol'
-        }
-     }
-     return await axiosPay.post("https://sandbox.tappaysdk.com/tpc/payment/pay-by-prime",obj,config);
+    await axios.post("dtc-tappay",obj);
   },
   initTapPay(id){
     //ref:https://github.com/TapPay/tappay-web-example/tree/master/Direct_Pay_iframe
