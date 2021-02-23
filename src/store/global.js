@@ -1,6 +1,7 @@
 import Vue from "vue";
 import { Plugins } from '@capacitor/core';
 const { Storage } = Plugins;
+let initPay = false;
 // this password is not used in server side, but requred at AJAX; in DB , it will not use this password
 let PASSWORD = "weR168@healther.dtc.tw"
 //blow ids are DTC big boss provided 
@@ -50,6 +51,8 @@ export let store = Vue.observable({
 
 export let actions = {
   initTapPay(id){
+    if(initPay) return;
+    initPay = true;
     //ref:https://github.com/TapPay/tappay-web-example/tree/master/Direct_Pay_iframe
      TPDirect.setupSDK(store.tapAppId, store.tapAppKey, "sandbox");
       const defaultCardViewStyle = {
@@ -60,11 +63,6 @@ export let actions = {
         errorColor: "red",
         placeholderColor: "",
       };
-      // 預設不戴第三個參數的話, 是會必須填入 CCV
-      TPDirect.card.setup(id, defaultCardViewStyle);
-      // 帶入第三個參數, config.isUsedCcv 為以下兩種參數代表不同意思
-      // false 為 CCV 非必填
-      // true 為 CCV 必填
       TPDirect.card.setup(id, defaultCardViewStyle, { isUsedCcv: true });
   },
   async lineMsg(obj){
