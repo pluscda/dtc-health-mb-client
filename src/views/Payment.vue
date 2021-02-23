@@ -10,7 +10,7 @@
     </main>
     <h5 style="color:black;margin-top:10px;transform:translateX(10px)">請填寫基本資料</h5>
     <van-form @submit="submitCard" @failed="onFailedInput">
-      <van-field v-model="username" name="用户名" label="用户名" placeholder="用户名" :rules="[{ required: true, message: '請填寫用户名' }]" />
+      <van-field v-model="username" name="用户名" label="用户名" placeholder="請填寫您的真實姓名" :rules="[{ required: true, message: '請填寫您的真實姓名' }]" />
       <van-field v-model="phone" type="number" name="手機" label="手機號碼" placeholder="範例: 0911612559" :rules="[{ validator, message: '請填寫正確手機號碼' }]" />
       <h5 style="color:black;margin-top:10px;transform:translateX(10px)">信用卡</h5>
       <div id="tappay-container"></div>
