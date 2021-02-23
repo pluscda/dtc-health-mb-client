@@ -148,8 +148,6 @@ export default {
       setTimeout(() => this.getData(), 100);
       this.orders = [...this.orders];
       this.loadingApi = false;
-      // const notiObj = { senderPhone: window.lineId, receivePhone: item.doctorPhone, orderId: item.id, type: "msgAdd" };
-      // actions.sendPushMsg(notiObj);
       const lineMsg = `您的線上客戶: ${store.lineProfile.displayName}新增留言:${msg}`;
       actions.lineMsg({ id: item.doctorPhone, msg });
     },
