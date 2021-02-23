@@ -71,7 +71,10 @@ export default {
           national_id: "A123456789",
         };
         payObj.cardholder = cardInfo;
-        await actions.confirmPayOnline(payObj);
+        const { status } = await actions.confirmPayOnline(payObj);
+        if (status === 0) {
+          this.book(item);
+        }
       });
     },
     async book(item) {

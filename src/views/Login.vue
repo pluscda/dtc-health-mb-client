@@ -2,7 +2,7 @@
   <section class="dtc-login">
     <img class="dtc-avator" :src="avatorImg" />
     <h4>{{ userName }}</h4>
-    <h4>{{ userId }}</h4>
+    <h4>{{ email }}</h4>
     <section class="dtc-report" @click="viewOrderHistory">
       <h5>預約紀錄</h5>
       <h6>{{ orderCount }}</h6>
@@ -35,6 +35,10 @@ export default {
     userName() {
       const str = store.lineProfile?.displayName;
       return str ? str : "DTC Testing User";
+    },
+    email() {
+      const str = store.lineProfile?.email;
+      return str;
     },
   },
   components: {},
