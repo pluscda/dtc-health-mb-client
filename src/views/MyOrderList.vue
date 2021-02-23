@@ -46,12 +46,9 @@
         :style="note.docComment ? 'background:#1f7cd3;' : 'background:#f3d6d2;color:black;'"
       >
         <div class="mb-1 msg-line-grid">
-          <van-icon name="pending-payment" size="20px" v-if="getMsgStatus(note).includes('未讀取')" />
-          <van-icon name="certificate" color="black" size="20px" v-if="getMsgStatus(note).includes('已讀取')" />
-          <span>{{ getMsgStatus(note) }}</span>
           <span>{{ $twDate(note.commentAt, "@") }}</span>
 
-          <span class="mark-as-read" v-if="!note.read && note.docComment" @click.stop="updateReadStatus(note)">註記已讀</span>
+          <span hidden class="mark-as-read" v-if="!note.read && note.docComment" @click.stop="updateReadStatus(note)">註記已讀</span>
         </div>
         <div>{{ note.docComment ? "醫生說" : "我留言" }}: {{ note.docComment || note.userComment }}</div>
       </div>

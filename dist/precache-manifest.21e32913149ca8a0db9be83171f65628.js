@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/card.svg"
   },
   {
-    "revision": "d58dc54e4f86760a7461",
+    "revision": "6898aa55a952f781441d",
     "url": "/css/app.4a204e52.css"
   },
   {
@@ -52,6 +52,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/css/chunk-62772614.3dab0618.css"
   },
   {
+    "revision": "09d41ba07512646b8a1e",
+    "url": "/css/chunk-6c84da4e.f2370553.css"
+  },
+  {
     "revision": "450deff7df044a5d710a",
     "url": "/css/chunk-7574db83.bfeb61a4.css"
   },
@@ -66,10 +70,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "4fc54a2e21381994590e",
     "url": "/css/chunk-8ac8a74c.07002162.css"
-  },
-  {
-    "revision": "f9ec53d5110d286e786a",
-    "url": "/css/chunk-a21fc0c4.025389e0.css"
   },
   {
     "revision": "75ae7b7f3589e02cb1fc",
@@ -108,12 +108,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/markers_default@2x.0e04541b.png"
   },
   {
-    "revision": "da7f528b41500342877ff081bb41e7f1",
+    "revision": "692976d93eff59d6ca588e34896d304c",
     "url": "/index.html"
   },
   {
-    "revision": "d58dc54e4f86760a7461",
-    "url": "/js/app.3ccad4cd.js"
+    "revision": "6898aa55a952f781441d",
+    "url": "/js/app.2f95e3a1.js"
   },
   {
     "revision": "74f625dbabb4e755144d",
@@ -152,6 +152,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/js/chunk-62772614.246c3afd.js"
   },
   {
+    "revision": "09d41ba07512646b8a1e",
+    "url": "/js/chunk-6c84da4e.6c6b6dfb.js"
+  },
+  {
     "revision": "450deff7df044a5d710a",
     "url": "/js/chunk-7574db83.58323db8.js"
   },
@@ -166,10 +170,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "4fc54a2e21381994590e",
     "url": "/js/chunk-8ac8a74c.909218f7.js"
-  },
-  {
-    "revision": "f9ec53d5110d286e786a",
-    "url": "/js/chunk-a21fc0c4.9941477e.js"
   },
   {
     "revision": "75ae7b7f3589e02cb1fc",
