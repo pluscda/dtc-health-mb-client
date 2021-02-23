@@ -54,6 +54,7 @@ export default {
   },
   methods: {
     async submitCard() {
+      this.loadingApi = true;
       const item = this.docs[0];
       const payObj = {};
       TPDirect.card.getPrime(async (result) => {
@@ -74,6 +75,8 @@ export default {
         const { status } = await actions.confirmPayOnline(payObj);
         if (status === 0) {
           this.book(item);
+        } else {
+          this.loadingApi = false;
         }
       });
     },
@@ -106,13 +109,12 @@ export default {
         Vue.$toast.success("您已預約成功");
         await this.getOrderHistory();
         this.docs = [...this.docs];
-        //const pushObj = { senderPhone: window.lineId, receivePhone: item.phone, orderId: ret.id, type: "newOrder" };
-        // actions.sendPushMsg(pushObj);
         const lineId = item.orderPhoneNum?.length > 10 ? item.orderPhoneNum : "U60dea79b6fcd77b9c9e3eeb21fcce0a1";
         const obj2 = { id: lineId };
         const im = `你有一筆新訂單NT${orderItem.paidAmount}元,客戶名稱: ${orderItem.lineClientDisplayName}`;
         obj2.msg = im;
         await actions.lineMsg(obj2);
+        this.$router.push("/login");
       } catch (e) {
         Vue.$toast.error("order fail" + e);
       } finally {

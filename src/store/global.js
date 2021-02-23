@@ -1,6 +1,7 @@
 import Vue from "vue";
 import { Plugins } from '@capacitor/core';
-const { Storage } = Plugins;
+const axiosPay = require('axios');
+
 let initPay = false;
 // this password is not used in server side, but requred at AJAX; in DB , it will not use this password
 let PASSWORD = "weR168@healther.dtc.tw"
@@ -51,7 +52,13 @@ export let store = Vue.observable({
 
 export let actions = {
   async confirmPayOnline(obj){
-    return await tappay.post("/pay-by-prime",obj);
+     const config = {
+        headers: {
+           "Content-Type": "application/json",
+           'x-api-key': 'partner_o1z1cKCItSyhwv6jjGKr1FiWcNNHO2J43mPXiiVc9KWATdDbsxr0xxol'
+        }
+     }
+     return await axiosPay.post("https://sandbox.tappaysdk.com/tpc/payment/pay-by-prime",obj,config);
   },
   initTapPay(id){
     //ref:https://github.com/TapPay/tappay-web-example/tree/master/Direct_Pay_iframe
