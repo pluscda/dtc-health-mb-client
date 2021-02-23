@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/card.svg"
   },
   {
-    "revision": "e1c79aa09f8737ff3384",
+    "revision": "31a4fd09a39e5584080a",
     "url": "/css/app.4a204e52.css"
   },
   {
@@ -36,6 +36,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/css/chunk-2097070e.e1906973.css"
   },
   {
+    "revision": "ea6153fc08515cdef507",
+    "url": "/css/chunk-35c8c4f3.6c0a2bfb.css"
+  },
+  {
     "revision": "13867f9d8043e466b46c",
     "url": "/css/chunk-3e121f72.ca9b96fd.css"
   },
@@ -46,10 +50,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "0e35f48fc863aaa4c12a",
     "url": "/css/chunk-560e2a8a.ab073d19.css"
-  },
-  {
-    "revision": "b56fa35b506078f6d59d",
-    "url": "/css/chunk-56d9f1d4.2b437786.css"
   },
   {
     "revision": "30fdc8c91e54a27b568d",
@@ -108,12 +108,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/markers_default@2x.0e04541b.png"
   },
   {
-    "revision": "82a4bb16b04b819b171229ca4ed0b1c3",
+    "revision": "268d152d9673a30d3ea67300d824903a",
     "url": "/index.html"
   },
   {
-    "revision": "e1c79aa09f8737ff3384",
-    "url": "/js/app.385beb10.js"
+    "revision": "31a4fd09a39e5584080a",
+    "url": "/js/app.1a192ca0.js"
   },
   {
     "revision": "8be380136641e68c4034",
@@ -136,6 +136,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/js/chunk-2097070e.2c2191ce.js"
   },
   {
+    "revision": "ea6153fc08515cdef507",
+    "url": "/js/chunk-35c8c4f3.7bee4d5e.js"
+  },
+  {
     "revision": "13867f9d8043e466b46c",
     "url": "/js/chunk-3e121f72.90dae0d8.js"
   },
@@ -146,10 +150,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "0e35f48fc863aaa4c12a",
     "url": "/js/chunk-560e2a8a.6ea4d3b2.js"
-  },
-  {
-    "revision": "b56fa35b506078f6d59d",
-    "url": "/js/chunk-56d9f1d4.7d84bfeb.js"
   },
   {
     "revision": "30fdc8c91e54a27b568d",

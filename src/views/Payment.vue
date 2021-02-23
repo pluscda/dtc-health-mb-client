@@ -29,7 +29,6 @@ export default {
   data() {
     return {
       id: "",
-      name: "",
       docs: [],
       cates: [],
       skip: 0,
@@ -71,12 +70,12 @@ export default {
         payObj.merchant_id = "pluscda_CTBC";
         payObj.details = item.name;
         const cardInfo = {
-          phone_number: "+886928012588",
-          name: this.username ? this.username : "DTC Tester",
-          email: this.email ? this.email : "DTC@dd.com",
-          zip_code: "100",
-          address: "台北市天龍區芝麻街1號1樓",
-          national_id: "A123456789",
+          phone_number: "+886" + this.phone.slice(1),
+          name: this.username,
+          email: "",
+          zip_code: "",
+          address: "",
+          national_id: "",
         };
         payObj.cardholder = cardInfo;
         try {
@@ -90,8 +89,10 @@ export default {
     },
     async book(item) {
       window.orderedDocPhone = item.phone;
+      localStorage.username = this.username;
+      localStorage.phone = this.phone;
       const orderItem = {
-        lineClientDisplayName: store.lineProfile.displayName ? store.lineProfile.displayName : "DTC Tester",
+        lineClientDisplayName: this.username,
         realName: item.name,
         orderPhoneNum: window.lineId,
         paidAmount: item.price,
@@ -119,12 +120,12 @@ export default {
         this.docs = [...this.docs];
         const lineId = item.orderPhoneNum?.length > 10 ? item.orderPhoneNum : "U60dea79b6fcd77b9c9e3eeb21fcce0a1";
         const obj2 = { id: lineId };
-        const im = `你有一筆新訂單NT${orderItem.paidAmount}元,客戶名稱: ${orderItem.lineClientDisplayName}`;
+        const im = `你有一筆新訂單NT${orderItem.paidAmount}元\n客戶名稱: ${orderItem.lineClientDisplayName}\n客戶手機:${this.phone}`;
         obj2.msg = im;
         await actions.lineMsg(obj2);
         if (item.cid < store.MIN_NON_CANCER_NUM) {
           const obj3 = { id: window.lineId };
-          obj3.msg = "需要您的報告,請您用郵件寄出\n新北市中和區中正路866號15F 合華科技股份有限公司";
+          obj3.msg = "需要您的報告,請您用郵件掛號寄出:\n新北市中和區中正路866號15F 合華科技股份有限公司";
           await actions.lineSelf(obj3);
         }
         this.$router.push("/myorderlist");
@@ -171,6 +172,9 @@ export default {
     },
   },
   async mounted() {
+    // if (localStorage.username) alert(localStorage.username);
+    this.username = localStorage.username;
+    this.phone = localStorage.phone;
     try {
       this.loadingApi = true;
       await this.getDocList();
