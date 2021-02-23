@@ -54,8 +54,6 @@ export let actions = {
     return await tappay.post("/pay-by-prime",obj);
   },
   initTapPay(id){
-    if(initPay) return;
-    initPay = true;
     //ref:https://github.com/TapPay/tappay-web-example/tree/master/Direct_Pay_iframe
      TPDirect.setupSDK(store.tapAppId, store.tapAppKey, "sandbox");
       const defaultCardViewStyle = {

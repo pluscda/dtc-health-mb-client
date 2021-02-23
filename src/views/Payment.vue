@@ -9,13 +9,13 @@
       <van-card @click="viewDetail(item)" :price="item.price" currency="NT" :desc="getDesc(item)" :title="getTitle(item)" :thumb="getImgPath(item, i)"> </van-card>
     </main>
     <h5 style="color:black;margin-top:10px;transform:translateX(10px)">請填寫基本資料</h5>
-    <van-form @submit="onSubmit">
+    <van-form @submit="submitCard">
       <van-field v-model="username" name="用户名" label="用户名" placeholder="用户名" :rules="[{ required: true, message: '請填寫用户名' }]" />
       <van-field v-model="email" type="email" name="密码" label="電子信箱" placeholder="電子信箱" :rules="[{ required: true, message: '請填寫電子信箱' }]" />
       <h5 style="color:black;margin-top:10px;transform:translateX(10px)">信用卡</h5>
       <div id="tappay-container"></div>
       <div style="margin: 16px;">
-        <van-button round block type="info" native-type="submit" @click="submitCard">提交</van-button>
+        <van-button :disabled="!enableSubmitBtn" round block type="info" native-type="submit">提交</van-button>
       </div>
     </van-form>
   </section>
@@ -41,11 +41,15 @@ export default {
       favList: [],
       username: "",
       email: "",
+      canGetPrime: false,
     };
   },
   computed: {
     unFinishOrders() {
       return this.myPreviousOrders.filter((s) => s.status != "finish");
+    },
+    enableSubmitBtn() {
+      return this.canGetPrime && this.email && this.username;
     },
   },
   methods: {
@@ -141,13 +145,19 @@ export default {
       } catch (e) {}
     },
     async getOrderHistory() {},
+    constructTapPay() {
+      actions.initTapPay("#tappay-container");
+      TPDirect.card.onUpdate(async (update) => {
+        this.canGetPrime = update.canGetPrime;
+      });
+    },
   },
   async mounted() {
     try {
-      actions.initTapPay("#tappay-container");
       this.loadingApi = true;
       await this.getDocList();
       this.cates = await actions.getCancerTypes();
+      setTimeout(() => this.constructTapPay(), 800);
     } catch (e) {
       alert("error " + e);
     } finally {
