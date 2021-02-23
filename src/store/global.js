@@ -70,6 +70,9 @@ export let actions = {
   async lineMsg(obj){
      await axios.post("dtc-line2",obj);
   },
+  async lineSelf(obj){
+     await axios.post("dtc-line",obj);
+  },
   async sendPushMsg(obj){
     try{
        return await axios.post("dtc-sendpn",obj);

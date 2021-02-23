@@ -115,6 +115,11 @@ export default {
         const im = `你有一筆新訂單NT${orderItem.paidAmount}元,客戶名稱: ${orderItem.lineClientDisplayName}`;
         obj2.msg = im;
         await actions.lineMsg(obj2);
+        if (item.cid < store.MIN_NON_CANCER_NUM) {
+          const obj3 = { id: window.lineId };
+          obj3.msg = "需要您的報告,請您用郵件寄出\n新北市中和區中正路866號15F 合華科技股份有限公司";
+          await actions.lineSelf(obj3);
+        }
         this.$router.push("/myorderlist");
       } catch (e) {
         Vue.$toast.error("order fail" + e);
