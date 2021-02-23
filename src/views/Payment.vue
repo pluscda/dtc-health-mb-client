@@ -60,14 +60,14 @@ export default {
         payObj.details = item.name;
         const cardInfo = {
           phone_number: "+886928012588",
-          name: this.username,
-          email: this.email,
+          name: this.username ? this.username : "DTC Tester",
+          email: this.email ? this.email : "DTC@dd.com",
           zip_code: "100",
           address: "台北市天龍區芝麻街1號1樓",
           national_id: "A123456789",
         };
         payObj.cardholder = cardInfo;
-        await actions.submitCard(payObj);
+        await actions.confirmPayOnline(payObj);
       });
     },
     async book(item) {

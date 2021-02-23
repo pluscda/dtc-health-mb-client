@@ -50,6 +50,9 @@ export let store = Vue.observable({
 
 
 export let actions = {
+  async confirmPayOnline(obj){
+    return await tappay.post("/pay-by-prime",obj);
+  },
   initTapPay(id){
     if(initPay) return;
     initPay = true;

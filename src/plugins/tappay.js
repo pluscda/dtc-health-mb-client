@@ -5,7 +5,7 @@ import axios from "axios";
 let config = {
   ///dtchealth.datacom.com.tw
   //baseURL: process.env.NODE_ENV === 'production'? 'https://dtc-health.herokuapp.com/' : `https://dtchealth.datacom.com.tw/`,
-  baseURL:  "https://sandbox.tappaysdk.com/tpc/payment/pay-by-prime",
+  baseURL:  "https://sandbox.tappaysdk.com/tpc/payment",
   headers: {
     "Content-Type": "application/json",
     'x-api-key': 'partner_o1z1cKCItSyhwv6jjGKr1FiWcNNHO2J43mPXiiVc9KWATdDbsxr0xxol'
@@ -18,7 +18,6 @@ const _axios = axios.create(config);
 
 _axios.interceptors.request.use(
   function (config) {
-   
     return config;
   },
   function (error) {
