@@ -54,7 +54,7 @@
       </div>
     </nav>
     <footer v-if="commentFilter">
-      <van-field autofocus="true" v-model="myMsg" rows="2" type="textarea" placeholder="請輸入留言..."> </van-field>
+      <van-field v-model="myMsg" rows="3" autosize autofocus type="textarea" placeholder="請輸入留言..."> </van-field>
       <div class="my-tags-grid">
         <van-button
           type="primary"
