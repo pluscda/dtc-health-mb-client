@@ -76,6 +76,16 @@ const routes = [
     component: () => import("../views/MyCollectionList.vue"),
   },
   {
+    path: '/mymsgboard',
+    name: 'mymsgboard',
+    component: () => import("../views/MyMsgBoard.vue"),
+  },
+  {
+    path: '/myfinaljudge',
+    name: 'myfinaljudge',
+    component: () => import("../views/MyFinalJudge.vue"),
+  },
+  {
     path: '/payment',
     name: 'payment',
     component: () => import("../views/Payment.vue"),

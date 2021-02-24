@@ -1,14 +1,10 @@
 <template>
   <section class="doc-list">
-    <van-nav-bar v-if="!commentFilter && !judgeFilter" title="我的預約紀錄"> </van-nav-bar>
-    <van-nav-bar v-if="commentFilter" title="留言紀錄" left-text="返回" left-arrow @click-left="commentFilter = false"> </van-nav-bar>
-    <van-nav-bar v-if="judgeFilter" title="診斷紀錄" left-text="返回" left-arrow @click-left="judgeFilter = false"> </van-nav-bar>
-
+    <van-nav-bar title="我的預約紀錄"> </van-nav-bar>
     <van-overlay :show="loadingApi" style="text-align:center;">
       <van-loading type="spinner" />
     </van-overlay>
-
-    <main v-for="(item, i) in myOrders" :key="i" class="doc-item mt-1" v-show="item.details" @click="viewDetail(item)">
+    <main v-for="(item, i) in orders" :key="i" class="doc-item mt-1" v-show="item.details">
       <van-card v-if="item.details" :price="item.details.price" currency="NT" :desc="getDesc(item)" :title="getTitle(item)" :thumb="getImgPath(item, i)">
         <template #tags>
           <div class="my-tags-grid">
@@ -26,7 +22,7 @@
           </div>
         </template>
         <template #footer>
-          <div class="my-tags-grid3">
+          <div class="my-tags-grid3" @click="viewComment(item)">
             <div></div>
             <van-badge :content="getMyCount(item.message)" color="rgb(25, 137, 250)">
               <div class="my-msg">我的留言</div>
@@ -38,37 +34,6 @@
         </template>
       </van-card>
     </main>
-    <nav v-if="commentFilter" style="color:white;font-size:14px;" class="mt-1">
-      <div
-        class="comment-dtc px-2 py-2"
-        v-for="(note, idxkey) in orderMsgs"
-        :key="idxkey"
-        :style="note.docComment ? 'background:#1f7cd3;' : 'background:#f3d6d2;color:black;'"
-      >
-        <div class="mb-1 msg-line-grid">
-          <span>{{ $twDate(note.commentAt, "@") }}</span>
-
-          <span hidden class="mark-as-read" v-if="!note.read && note.docComment" @click.stop="updateReadStatus(note)">註記已讀</span>
-        </div>
-        <div>{{ note.docComment ? "醫生說" : "我留言" }}: {{ note.docComment || note.userComment }}</div>
-      </div>
-    </nav>
-    <footer v-if="commentFilter">
-      <van-field v-model="myMsg" rows="3" autosize autofocus type="textarea" placeholder="請輸入留言..."> </van-field>
-      <div class="my-tags-grid">
-        <van-button
-          type="primary"
-          size="small"
-          class="ml-2"
-          @click.stop="
-            loadingApi = true;
-            addComment(myMsg);
-          "
-          :disabled="loadingApi || !myMsg"
-          >新增留言</van-button
-        >
-      </div>
-    </footer>
   </section>
 </template>
 
@@ -78,7 +43,7 @@ import Vue from "vue";
 import { store, mutations, actions } from "@/store/global.js";
 
 export default {
-  name: "login",
+  name: "myorderlist",
   data() {
     return {
       judgeFilter: "",
@@ -93,25 +58,10 @@ export default {
       loadingApi: false,
     };
   },
-  computed: {
-    myOrders() {
-      if (!this.commentFilter && !this.judgeFilter) {
-        return [...this.orders];
-      } else if (this.commentFilter) {
-        return this.orders.filter((s) => s.doctorPhone == this.commentFilter);
-      } else if (this.judgeFilter) {
-        return this.orders.filter((s) => s.doctorPhone == this.judgeFilter);
-      }
-    },
-    orderMsgs() {
-      return [...this.myOrders[0].message].reverse();
-    },
-  },
+  computed: {},
   methods: {
     showJudge(item) {
-      if (!item.judge) return;
-      this.showClipPath = true;
-      this.judgeFilter = item.doctorPhone;
+      this.$router.push("/myfinaljudge?id=" + item.id);
     },
     getMyCount(message) {
       return message.filter((s) => s.userComment).length;
@@ -152,12 +102,10 @@ export default {
       actions.lineMsg({ id: item.doctorPhone, msg });
     },
     viewComment(item) {
-      this.judgeFilter = false;
-      this.commentFilter = item.doctorPhone;
+      this.$router.push("/mymsgboard?id=" + item.id);
     },
     viewDetail(item) {
-      this.judgeFilter = false;
-      this.commentFilter = item.doctorPhone;
+      this.$router.push("/myfinaljudge?id=" + item.id);
     },
     getDesc(item) {
       return "專長: " + item.details.description;
