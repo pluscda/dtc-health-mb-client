@@ -4,7 +4,7 @@
     <van-overlay :show="loadingApi" style="text-align:center;">
       <van-loading type="spinner" />
     </van-overlay>
-    <main v-for="(item, i) in orders" :key="i" class="doc-item mt-1" v-show="item.details">
+    <main v-for="(item, i) in orders" :key="i" class="doc-item mt-1" @click="viewComment(item)">
       <van-card v-if="item.details" :price="item.details.price" currency="NT" :desc="getDesc(item)" :title="getTitle(item)" :thumb="getImgPath(item, i)">
         <template #tags>
           <div class="my-tags-grid">
@@ -22,7 +22,7 @@
           </div>
         </template>
         <template #footer>
-          <div class="my-tags-grid3" @click="viewComment(item)">
+          <div class="my-tags-grid3">
             <div></div>
             <van-badge :content="getMyCount(item.message)" color="rgb(25, 137, 250)">
               <div class="my-msg">我的留言</div>

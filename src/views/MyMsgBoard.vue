@@ -1,6 +1,35 @@
 <template>
   <section class="doc-list">
     <van-nav-bar title="留言紀錄"> </van-nav-bar>
+    <main v-for="(item, i) in orders" :key="i" class="doc-item mt-1">
+      <van-card v-if="item.details" :price="item.details.price" currency="NT" :desc="getDesc(item)" :title="getTitle(item)" :thumb="getImgPath(item, i)">
+        <template #tags>
+          <div class="my-tags-grid">
+            <div style="color:var(--bs-blue)">{{ $formatStatus(item.orderStatus) }}</div>
+            <nav class="clip-judge" :class="judgeFilter ? 'show-detail-judge' : ''">
+              <div class="judge-content px-2">
+                <van-cell-group class="mb-2" v-if="item.report">
+                  <van-field label="病患姓名" readonly :value="item.report.name" />
+                  <van-field label="身份證號" readonly :value="item.report.personId" />
+                </van-cell-group>
+                {{ item.judge }}
+              </div>
+            </nav>
+          </div>
+        </template>
+        <template #footer>
+          <div class="my-tags-grid3">
+            <div></div>
+            <van-badge :content="getMyCount(item.message)" color="rgb(25, 137, 250)">
+              <div class="my-msg">我的留言</div>
+            </van-badge>
+            <van-badge :content="getDoctCount(item.message)" color="rgb(25, 137, 250)">
+              <div class="my-doc-msg">醫生留言</div>
+            </van-badge>
+          </div>
+        </template>
+      </van-card>
+    </main>
     <nav style="color:white;font-size:14px;" class="mt-1">
       <div
         class="comment-dtc px-2 py-2"
@@ -43,7 +72,6 @@ export default {
     async getOrderHistoryList() {
       this.orders = [];
       const str = location.href.split("?")[1];
-      alert(str);
       const { id } = queryString.parse(str);
       let qs = "id=" + id;
       try {
