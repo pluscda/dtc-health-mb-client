@@ -115,6 +115,7 @@ export default {
     },
     async getOrderHistoryList() {
       this.orders = [];
+      window.lineId = store.lineProfile.userId;
       let qs = "orderPhoneNum_eq=" + window.lineId;
       qs += "&_sort=orderDate:desc";
       try {
