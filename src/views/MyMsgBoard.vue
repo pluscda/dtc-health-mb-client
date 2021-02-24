@@ -20,14 +20,14 @@
           </div>
         </template>
       </van-card>
-      <nav style="color:white;font-size:14px;" class="mt-1" v-if="item.report">
+      <nav style="color:white;font-size:14px;" class="mt-1" v-if="item.judge">
         <h5 class="pl-1" style="color:black;">醫師診斷報告</h5>
         <div class="px-2">
-          <van-cell-group class="mb-2">
+          <van-cell-group class="mb-2" v-if="item.report">
             <van-field label="病患姓名" readonly :value="item.report.name" />
             <van-field label="身份證號" readonly :value="item.report.personId" />
           </van-cell-group>
-          {{ item.judge }}
+          <div style="color:black;font-size:16px;">{{ item.judge }}</div>
         </div>
       </nav>
     </main>
