@@ -96,7 +96,7 @@ export default {
       Vue.$toast.success("新增留言成功");
       this.orders = [...this.orders];
       let url = store.lineUrl + "orderid=6034a4b6f9938413631d6298";
-      const lineMsg = `您的客戶: ${store.lineProfile.displayName}\n\n新增留言:${msg}\n\n${url}`;
+      const lineMsg = `您的客戶: ${store.lineProfile.displayName}\n新增留言:\n\n${msg}\n\n${url}`;
       const lineId = this.orders[0].doctorPhone.length > 10 ? this.orders[0].doctorPhone : "U60dea79b6fcd77b9c9e3eeb21fcce0a1";
       actions.lineMsg({ id: lineId, msg: lineMsg });
       this.myMsg = "";

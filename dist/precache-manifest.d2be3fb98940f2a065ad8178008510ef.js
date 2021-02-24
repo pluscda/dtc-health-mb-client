@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/card.svg"
   },
   {
-    "revision": "f7682f5402e048a441e0",
+    "revision": "bc19be31ab7ad24fd535",
     "url": "/css/app.4a204e52.css"
   },
   {
@@ -60,10 +60,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/css/chunk-62772614.3dab0618.css"
   },
   {
-    "revision": "fac72d666614557afe73",
-    "url": "/css/chunk-6fd27fe4.05825932.css"
-  },
-  {
     "revision": "450deff7df044a5d710a",
     "url": "/css/chunk-7574db83.bfeb61a4.css"
   },
@@ -82,6 +78,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "2a8ffec5c12197fc83fa",
     "url": "/css/chunk-c396e6e6.4bac3a76.css"
+  },
+  {
+    "revision": "08d91585db5194dd1e75",
+    "url": "/css/chunk-db3f7f16.6812d92a.css"
   },
   {
     "revision": "6e6e5aa333227e816435",
@@ -112,12 +112,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/markers_default@2x.0e04541b.png"
   },
   {
-    "revision": "68a9cfd28f7e3606bd7b83cd0393d958",
+    "revision": "f98464ba126bed94aead0650f3ef37f4",
     "url": "/index.html"
   },
   {
-    "revision": "f7682f5402e048a441e0",
-    "url": "/js/app.570a1681.js"
+    "revision": "bc19be31ab7ad24fd535",
+    "url": "/js/app.206f95db.js"
   },
   {
     "revision": "8be380136641e68c4034",
@@ -168,10 +168,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/js/chunk-62772614.246c3afd.js"
   },
   {
-    "revision": "fac72d666614557afe73",
-    "url": "/js/chunk-6fd27fe4.acdd12c3.js"
-  },
-  {
     "revision": "450deff7df044a5d710a",
     "url": "/js/chunk-7574db83.58323db8.js"
   },
@@ -190,6 +186,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "2a8ffec5c12197fc83fa",
     "url": "/js/chunk-c396e6e6.25e904bb.js"
+  },
+  {
+    "revision": "08d91585db5194dd1e75",
+    "url": "/js/chunk-db3f7f16.5d682b19.js"
   },
   {
     "revision": "6e6e5aa333227e816435",
