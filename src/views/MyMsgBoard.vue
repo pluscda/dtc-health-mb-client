@@ -1,20 +1,11 @@
 <template>
   <section class="doc-list">
-    <van-nav-bar title="留言紀錄"> </van-nav-bar>
+    <van-nav-bar title="線上看診紀錄"> </van-nav-bar>
     <main v-for="(item, i) in orders" :key="i" class="doc-item mt-1">
       <van-card v-if="item.details" :price="item.details.price" currency="NT" :desc="getDesc(item)" :title="getTitle(item)" :thumb="getImgPath(item, i)">
         <template #tags>
           <div class="my-tags-grid">
             <div style="color:var(--bs-blue)">{{ $formatStatus(item.orderStatus) }}</div>
-            <nav class="clip-judge" :class="judgeFilter ? 'show-detail-judge' : ''">
-              <div class="judge-content px-2">
-                <van-cell-group class="mb-2" v-if="item.report">
-                  <van-field label="病患姓名" readonly :value="item.report.name" />
-                  <van-field label="身份證號" readonly :value="item.report.personId" />
-                </van-cell-group>
-                {{ item.judge }}
-              </div>
-            </nav>
           </div>
         </template>
         <template #footer>
@@ -29,8 +20,19 @@
           </div>
         </template>
       </van-card>
+      <nav style="color:white;font-size:14px;" class="mt-1" v-if="item.report">
+        <h5 class="pl-1" style="color:black;">醫師診斷報告</h5>
+        <div class="px-2">
+          <van-cell-group class="mb-2">
+            <van-field label="病患姓名" readonly :value="item.report.name" />
+            <van-field label="身份證號" readonly :value="item.report.personId" />
+          </van-cell-group>
+          {{ item.judge }}
+        </div>
+      </nav>
     </main>
     <nav style="color:white;font-size:14px;" class="mt-1">
+      <h5 class="pl-1" style="color:black;">留言區</h5>
       <div
         class="comment-dtc px-2 py-2"
         v-for="(note, idxkey) in orderMsgs"
@@ -69,6 +71,35 @@ export default {
   },
   computed: {},
   methods: {
+    getMyCount(message) {
+      return message.filter((s) => s.userComment).length;
+    },
+    getDoctCount(message) {
+      return message.filter((s) => s.docComment).length;
+    },
+    getDesc(item) {
+      return "專長: " + item.details.description;
+    },
+    getTitle(item) {
+      return item.details.name + " | " + item.details.hospital + " | " + item.details.title + " @ " + this.$twDate(item.orderDate) + " 預約成功";
+    },
+    getImgPath(item, i) {
+      return store.imgPrefix + item.details.cover.url;
+    },
+    async addComment(msg) {
+      const obj = { docComment: "", commentAt: new Date().toISOString(), rating: 0, userComment: msg, read: false };
+      if (!this.orders[0].message) {
+        this.orders[0].message = [];
+      }
+      this.orders[0].message.unshift(obj);
+      await actions.updateOrder(this.orders[0]);
+      Vue.$toast.success("新增留言成功");
+      this.orders = [...this.orders];
+      let url = store.lineUrl + "orderid=6034a4b6f9938413631d6298";
+      const lineMsg = `您的客戶: ${store.lineProfile.displayName}\n\n新增留言:${msg}\n\n${url}`;
+      const lineId = item.doctorPhone.length > 10 ? item.doctorPhone : "U60dea79b6fcd77b9c9e3eeb21fcce0a1";
+      actions.lineMsg({ id: lineId, msg: lineMsg });
+    },
     async getOrderHistoryList() {
       this.orders = [];
       const str = location.href.split("?")[1];
@@ -78,6 +109,11 @@ export default {
         this.loadingApi = true;
         const { count, items } = await actions.getOrders(qs);
         if (!count) return;
+        const mySet = new Set(items.map((s) => "phone_in=" + s.doctorPhone));
+        qs = [...mySet].join("&");
+        const { items: docs } = await actions.getDoctors(qs);
+        // attach the doctor detail into each order here
+        docs.forEach((s) => (items.find((s2) => s2.doctorPhone == s.phone).details = s));
         this.orders = items;
         this.orderMsgs = [...this.orders[0].message].reverse();
       } catch (e) {
