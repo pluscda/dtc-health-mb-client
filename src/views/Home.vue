@@ -169,21 +169,22 @@ export default {
     HomeHeader,
   },
   methods: {
-    async viewList(item) {
-      location.href = "https://liff.line.me/1655675753-dkWxQPkR";
-      //localtion.href ("line://liff.line.me/1655675753-dkWxQPkR");
-      // const obj = { id: item.cid, name: item.name };
-      // const str = queryString.stringify(obj);
-      // this.$router.push("doclist?" + str);
-    },
     async getDDL() {
       try {
         this.cancers = await actions.getCancerTypes();
         store.cancers = [...this.cancers];
       } catch (e) {}
     },
+    checkOrderId() {
+      const id = location.href.split("?orderid=")[1];
+      if (!id) {
+        return;
+      }
+      this.$router.push("mymsgboard?id=" + id);
+    },
   },
   mounted() {
+    this.checkOrderId();
     this.getDDL();
   },
 };

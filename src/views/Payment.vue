@@ -113,7 +113,8 @@ export default {
         this.docs = [...this.docs];
         const lineId = item.orderPhoneNum?.length > 10 ? item.orderPhoneNum : "U60dea79b6fcd77b9c9e3eeb21fcce0a1";
         const obj2 = { id: lineId };
-        const im = `你有一筆新訂單NT${orderItem.paidAmount}元\n客戶名稱: ${orderItem.lineClientDisplayName}\n客戶手機:${this.phone}`;
+        let url = store.lineUrl + "orderid=" + ret.id;
+        const im = `你有一筆新訂單NT${orderItem.paidAmount}元\n客戶名稱: ${orderItem.lineClientDisplayName}\n客戶手機:${this.phone}\n\n${url}`;
         obj2.msg = im;
         await actions.lineMsg(obj2);
         if (item.cid < store.MIN_NON_CANCER_NUM) {

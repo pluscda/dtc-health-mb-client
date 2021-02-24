@@ -102,6 +102,7 @@ export default {
       const lineId = this.orders[0].doctorPhone.length > 10 ? this.orders[0].doctorPhone : "U60dea79b6fcd77b9c9e3eeb21fcce0a1";
       actions.lineMsg({ id: lineId, msg: lineMsg });
       this.myMsg = "";
+      this.orderMsgs = [...this.orders[0].message].reverse();
     },
     async getOrderHistoryList() {
       this.orders = [];
