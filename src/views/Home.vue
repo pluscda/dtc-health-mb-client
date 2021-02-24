@@ -175,16 +175,8 @@ export default {
         store.cancers = [...this.cancers];
       } catch (e) {}
     },
-    checkOrderId() {
-      const id = location.href.split("?orderid=")[1];
-      if (!id) {
-        return;
-      }
-      this.$router.push("mymsgboard?id=" + id);
-    },
   },
   mounted() {
-    this.checkOrderId();
     this.getDDL();
   },
 };

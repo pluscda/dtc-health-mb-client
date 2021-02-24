@@ -44,7 +44,8 @@ const init = {
   tapAppKey: 'app_AQhCB5ZcYM8tFQmQOlzvHjfEg4ncahGjVzPCEwvsXIWp5FQC15hXV6HJHbu2',
   bookItem:'',
   tappayId: 'partner_o1z1cKCItSyhwv6jjGKr1FiWcNNHO2J43mPXiiVc9KWATdDbsxr0xxol',
-  lineUrl: 'https://liff.line.me/1655686518-8xOGVJBq?'
+  lineUrl: 'https://liff.line.me/1655686518-8xOGVJBq?',
+  lineQs: "liff.state=%3Forderid%3D"
 };
 export let store = Vue.observable({
   ...init,

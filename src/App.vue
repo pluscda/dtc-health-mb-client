@@ -104,14 +104,17 @@ export default {
       store.isNativeOS = liff.getOS() != "web" ? true : false;
       store.isLineApp = liff.isInClient();
       if (store.isLineApp) {
-        if (!localStorage.lineProfile) {
+        if (!localStorage.dtcjwt) {
           await liff.init({ liffId: "1655679414-AdYmjyMx" });
           store.lineProfile = await liff.getProfile();
+          await this.connectWithStrapi();
+          store.lineProfile.jwt = window.token;
+          localStorage.dtcjwt = window.token;
           localStorage.lineProfile = JSON.stringify(store.lineProfile);
         } else {
           store.lineProfile = JSON.parse(localStorage.lineProfile);
+          window.token = store.lineProfile.jwt;
         }
-        await this.connectWithStrapi();
       } else {
         await this.connectWithStrapi();
       }
@@ -140,6 +143,14 @@ export default {
       });
       requestAnimationFrame(() => this.$router.push(name));
     },
+    checkOrderId() {
+      let id = location.href.split("#")[0];
+      id = id.split(store.lineQs)[1];
+      if (!id) {
+        return;
+      }
+      setTimeout(() => this.$router.push("/mymsgboard?id=" + id), 300);
+    },
   },
   async mounted() {
     this.$root.$on("show-gis-label", (obj) => {
@@ -147,6 +158,7 @@ export default {
     });
     try {
       await this.getLineInfo();
+      this.checkOrderId();
       this.showOverlay = false;
     } catch (e) {
       alert(e + "");
