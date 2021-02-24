@@ -1,6 +1,6 @@
 <template>
   <section class="doc-list">
-    <van-nav-bar title="我的預約紀錄"> </van-nav-bar>
+    <van-nav-bar title="留言紀錄"> </van-nav-bar>
     <nav style="color:white;font-size:14px;" class="mt-1">
       <div
         class="comment-dtc px-2 py-2"
@@ -35,6 +35,7 @@ export default {
       orderMsgs: [],
       myMsg: "",
       loadingApi: true,
+      orders: [],
     };
   },
   computed: {},
@@ -42,6 +43,7 @@ export default {
     async getOrderHistoryList() {
       this.orders = [];
       const str = location.href.split("?")[1];
+      alert(str);
       const { id } = queryString.parse(str);
       let qs = "id=" + id;
       try {
@@ -49,6 +51,7 @@ export default {
         const { count, items } = await actions.getOrders(qs);
         if (!count) return;
         this.orders = items;
+        this.orderMsgs = [...this.orders[0].message].reverse();
       } catch (e) {
         alert("error getOrderHistoryList: " + e);
       } finally {
@@ -56,7 +59,9 @@ export default {
       }
     },
   },
-  mounted() {},
+  mounted() {
+    this.getOrderHistoryList();
+  },
   watch: {},
 };
 </script>
