@@ -101,12 +101,16 @@ export default {
     },
     async getLineInfo() {
       // ckc@datacom.com.tw / 22458558   ; line dev login user/pass
-      await liff.init({ liffId: "1655679414-AdYmjyMx" });
       store.isNativeOS = liff.getOS() != "web" ? true : false;
       store.isLineApp = liff.isInClient();
-
       if (store.isLineApp) {
-        store.lineProfile = await liff.getProfile();
+        if (!localStorage.lineProfile) {
+          await liff.init({ liffId: "1655679414-AdYmjyMx" });
+          store.lineProfile = await liff.getProfile();
+          localStorage.lineProfile = JSON.stringify(store.lineProfile);
+        } else {
+          store.lineProfile = JSON.parse(localStorage.lineProfile);
+        }
         await this.connectWithStrapi();
       } else {
         await this.connectWithStrapi();
