@@ -27,7 +27,7 @@
             <van-field label="病患姓名" readonly :value="item.report.name" />
             <van-field label="身份證號" readonly :value="item.report.personId" />
           </van-cell-group>
-          <div style="color:black;font-size:16px;">{{ item.judge }}</div>
+          <div style="color:black;font-size:14px;" class="pl-2">{{ item.judge }}</div>
         </div>
       </nav>
     </main>
