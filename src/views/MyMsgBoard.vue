@@ -1,20 +1,61 @@
 <template>
   <section class="doc-list">
     <van-nav-bar title="我的預約紀錄"> </van-nav-bar>
+    <nav style="color:white;font-size:14px;" class="mt-1">
+      <div
+        class="comment-dtc px-2 py-2"
+        v-for="(note, idxkey) in orderMsgs"
+        :key="idxkey"
+        :style="note.docComment ? 'background:#1f7cd3;' : 'background:#f3d6d2;color:black;'"
+      >
+        <div class="mb-1 msg-line-grid">
+          <span>{{ $twDate(note.commentAt, "@") }}</span>
+        </div>
+        <div>{{ note.docComment ? "醫生說" : "我留言" }}: {{ note.docComment || note.userComment }}</div>
+      </div>
+    </nav>
+    <footer>
+      <van-field autofocus="true" v-model="myMsg" rows="2" type="textarea" placeholder="請輸入留言..."> </van-field>
+      <div class="my-tags-grid">
+        <van-button type="primary" size="small" class="ml-2" @click.stop="addComment(myMsg)" :disabled="loadingApi || !myMsg">新增留言</van-button>
+      </div>
+    </footer>
   </section>
 </template>
 
 <script>
 import Vue from "vue";
 import { store, mutations, actions } from "@/store/global.js";
+import queryString from "qs";
 
 export default {
   name: "mymsgboard",
   data() {
-    return {};
+    return {
+      orderMsgs: [],
+      myMsg: "",
+      loadingApi: true,
+    };
   },
   computed: {},
-  methods: {},
+  methods: {
+    async getOrderHistoryList() {
+      this.orders = [];
+      const str = location.href.split("?")[1];
+      const { id } = queryString.parse(str);
+      let qs = "id=" + id;
+      try {
+        this.loadingApi = true;
+        const { count, items } = await actions.getOrders(qs);
+        if (!count) return;
+        this.orders = items;
+      } catch (e) {
+        alert("error getOrderHistoryList: " + e);
+      } finally {
+        this.loadingApi = false;
+      }
+    },
+  },
   mounted() {},
   watch: {},
 };
