@@ -115,6 +115,7 @@ export default {
           store.lineProfile = JSON.parse(localStorage.lineProfile);
           window.token = store.lineProfile.jwt;
         }
+        window.lineId = store.lineProfile.userId;
       } else {
         await this.connectWithStrapi();
       }
