@@ -95,7 +95,7 @@ export default {
       await actions.updateOrder(this.orders[0]);
       Vue.$toast.success("新增留言成功");
       this.orders = [...this.orders];
-      let url = store.lineUrl + "orderid=6034a4b6f9938413631d6298";
+      let url = store.lineUrl + "orderid=" + this.orders[0].id;
       let name = this.orders[0].lineClientDisplayName ? this.orders[0].lineClientDisplayName : store.lineProfile.displayName;
       name ? "" : (name = "DTC Tester");
       const lineMsg = `您的客戶: ${name}\n新增留言:\n${msg}\n\n${url}`;
