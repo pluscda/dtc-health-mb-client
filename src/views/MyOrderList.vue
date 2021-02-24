@@ -9,7 +9,6 @@
         <template #tags>
           <div class="my-tags-grid">
             <div style="color:var(--bs-blue)">{{ $formatStatus(item.orderStatus) }}</div>
-            <div class="click-4-more" v-if="item.judge && !commentFilter && !judgeFilter" @click.stop="showJudge(item)">按我看診斷紀錄</div>
             <nav class="clip-judge" :class="judgeFilter ? 'show-detail-judge' : ''">
               <div class="judge-content px-2">
                 <van-cell-group class="mb-2" v-if="item.report">
