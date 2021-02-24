@@ -4,7 +4,7 @@
     <van-overlay :show="loadingApi" style="text-align:center;">
       <van-loading type="spinner" />
     </van-overlay>
-    <main v-for="(item, i) in orders" :key="i" class="doc-item mt-1" @click="viewComment(item)">
+    <main v-for="(item, i) in orders" :key="i" class="doc-item mt-1" @click="viewMyMsgBoard(item)">
       <van-card v-if="item.details" :price="item.details.price" currency="NT" :desc="getDesc(item)" :title="getTitle(item)" :thumb="getImgPath(item, i)">
         <template #tags>
           <div class="my-tags-grid">
@@ -101,11 +101,8 @@ export default {
       const lineMsg = `您的線上客戶: ${store.lineProfile.displayName}新增留言:${msg}`;
       actions.lineMsg({ id: item.doctorPhone, msg });
     },
-    viewComment(item) {
+    viewMyMsgBoard(item) {
       this.$router.push("/mymsgboard?id=" + item.id);
-    },
-    viewDetail(item) {
-      this.$router.push("/myfinaljudge?id=" + item.id);
     },
     getDesc(item) {
       return "專長: " + item.details.description;
