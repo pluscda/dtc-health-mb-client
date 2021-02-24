@@ -100,18 +100,10 @@ export default {
         orderStatus: "waiting",
         orderDate: new Date().toISOString(),
         doctorPhone: item.phone,
-        inqueryCate: 1, //this.searchBy != "熱門醫生" ? this.cates.find((s) => s.name.includes(this.searchBy)).cid : item.cid,
-        cusUnreadMsg: 1,
-        totalMsg: 1,
-        message:
-          item.cid < store.MIN_NON_CANCER_NUM
-            ? [
-                {
-                  docComment: "需要您的報告,請您用郵件寄出",
-                  commentAt: new Date().toISOString(),
-                },
-              ]
-            : [],
+        inqueryCate: 0, //this.searchBy != "熱門醫生" ? this.cates.find((s) => s.name.includes(this.searchBy)).cid : item.cid,
+        cusUnreadMsg: 0,
+        totalMsg: 0,
+        message: [],
       };
       try {
         this.loadingApi = true;
