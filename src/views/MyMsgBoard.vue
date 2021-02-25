@@ -113,7 +113,7 @@ export default {
         this.loadingApi = true;
         const { count, items } = await actions.getOrders(qs);
         if (!count) return;
-        const mySet = new Set(items.map((s) => "phone=" + s.doctorPhone));
+        const mySet = new Set(items.map((s) => "phone=" + s.doctorPhone).filter((s) => s.doctorPhone == id));
         qs = [...mySet].join("&");
         const { items: docs } = await actions.getDoctors(qs);
         // attach the doctor detail into each order here

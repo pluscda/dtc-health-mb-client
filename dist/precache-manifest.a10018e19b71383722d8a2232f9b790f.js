@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/card.svg"
   },
   {
-    "revision": "d2b216532c5d17db24db",
+    "revision": "a0a07623d6edf4a570a7",
     "url": "/css/app.6fa576cc.css"
   },
   {
@@ -30,10 +30,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "2e715051ae2f37f57524",
     "url": "/css/chunk-1afc34c4.e23b3361.css"
-  },
-  {
-    "revision": "36d618eb91a4b2eb6682",
-    "url": "/css/chunk-1d368daa.7d20507d.css"
   },
   {
     "revision": "bdf292e646db4151ffdc",
@@ -62,6 +58,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "0337e8c9317312d2559f",
     "url": "/css/chunk-62772614.3dab0618.css"
+  },
+  {
+    "revision": "adb7ca0728fff225c34d",
+    "url": "/css/chunk-64f647d4.52a1104e.css"
   },
   {
     "revision": "450deff7df044a5d710a",
@@ -112,12 +112,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/markers_default@2x.0e04541b.png"
   },
   {
-    "revision": "b5233981f9dc111670162ec982ba9883",
+    "revision": "8d396bb8bde789dc99319db8a5d49258",
     "url": "/index.html"
   },
   {
-    "revision": "d2b216532c5d17db24db",
-    "url": "/js/app.20aa3415.js"
+    "revision": "a0a07623d6edf4a570a7",
+    "url": "/js/app.fc45cd56.js"
   },
   {
     "revision": "8be380136641e68c4034",
@@ -134,10 +134,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "2e715051ae2f37f57524",
     "url": "/js/chunk-1afc34c4.5853eebf.js"
-  },
-  {
-    "revision": "36d618eb91a4b2eb6682",
-    "url": "/js/chunk-1d368daa.433eb923.js"
   },
   {
     "revision": "bdf292e646db4151ffdc",
@@ -170,6 +166,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "0337e8c9317312d2559f",
     "url": "/js/chunk-62772614.246c3afd.js"
+  },
+  {
+    "revision": "adb7ca0728fff225c34d",
+    "url": "/js/chunk-64f647d4.1c1e6bdd.js"
   },
   {
     "revision": "450deff7df044a5d710a",
