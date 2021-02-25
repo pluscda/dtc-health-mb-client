@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0f1166"],{"9eae":function(t,n,e){"use strict";e.r(n);var a=function(){var t=this,n=t.$createElement,e=t._self._c||n;return e("section",{staticClass:"doc-list"},[e("van-nav-bar",{attrs:{title:"我的診斷紀錄"}})],1)},c=[],s=(e("3aec"),{name:"mymsgboard",data:function(){return{}},props:["item"],computed:{},methods:{},mounted:function(){},watch:{}}),o=s,u=e("2877"),r=Object(u["a"])(o,a,c,!1,null,null,null);n["default"]=r.exports}}]);
-//# sourceMappingURL=chunk-2d0f1166.a1a40136.js.map

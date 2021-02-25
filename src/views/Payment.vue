@@ -100,7 +100,7 @@ export default {
         orderStatus: "waiting",
         orderDate: new Date().toISOString(),
         doctorPhone: item.phone,
-        inqueryCate: 0, //this.searchBy != "熱門醫生" ? this.cates.find((s) => s.name.includes(this.searchBy)).cid : item.cid,
+        inqueryCate: item.cid,
         cusUnreadMsg: 0,
         totalMsg: 0,
         message: [],
