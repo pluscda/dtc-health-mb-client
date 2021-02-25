@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/card.svg"
   },
   {
-    "revision": "34066e30a8719fa271b0",
+    "revision": "0faf7f7ae8b55fc3fea9",
     "url": "/css/app.6fa576cc.css"
   },
   {
@@ -112,12 +112,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/markers_default@2x.0e04541b.png"
   },
   {
-    "revision": "475c93a68c1553c837ce15c6dd8ca934",
+    "revision": "0da11dd8556686ba32d84f6fad9c19c9",
     "url": "/index.html"
   },
   {
-    "revision": "34066e30a8719fa271b0",
-    "url": "/js/app.e0da8c09.js"
+    "revision": "0faf7f7ae8b55fc3fea9",
+    "url": "/js/app.c7f70b92.js"
   },
   {
     "revision": "b8bd418fe6dae2bf5e18",
