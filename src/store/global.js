@@ -45,7 +45,8 @@ const init = {
   bookItem:'',
   tappayId: 'partner_o1z1cKCItSyhwv6jjGKr1FiWcNNHO2J43mPXiiVc9KWATdDbsxr0xxol',
   lineUrl: 'https://liff.line.me/1655686518-8xOGVJBq?',
-  lineQs: "liff.state=%3Forderid%3D"
+  lineQs: "liff.state=%3Forderid%3D",
+  editItem:"",
 };
 export let store = Vue.observable({
   ...init,

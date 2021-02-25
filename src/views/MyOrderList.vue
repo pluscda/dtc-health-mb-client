@@ -1,33 +1,11 @@
 <template>
   <section class="doc-list">
     <van-nav-bar title="我的預約紀錄"> </van-nav-bar>
-    <van-overlay :show="loadingApi" style="text-align:center;">
+    <!-- <van-overlay :show="loadingApi" style="text-align:center;">
       <van-loading type="spinner" />
-    </van-overlay>
-    <main v-for="(item, i) in orders" :key="i" class="doc-item mt-1">
-      <van-card
-        v-if="item.details"
-        @click.stop="viewMyMsgBoard(item)"
-        :price="item.details.price"
-        currency="NT"
-        :desc="getDesc(item)"
-        :title="getTitle(item)"
-        :thumb="getImgPath(item, i)"
-      >
-        <template #tags>
-          <div class="my-tags-grid">
-            <div style="color:var(--bs-blue)">{{ $formatStatus(item.orderStatus) }}</div>
-            <nav class="clip-judge" :class="judgeFilter ? 'show-detail-judge' : ''">
-              <div class="judge-content px-2">
-                <van-cell-group class="mb-2" v-if="item.report">
-                  <van-field label="病患姓名" readonly :value="item.report.name" />
-                  <van-field label="身份證號" readonly :value="item.report.personId" />
-                </van-cell-group>
-                {{ item.judge }}
-              </div>
-            </nav>
-          </div>
-        </template>
+    </van-overlay> -->
+    <main v-for="(item, i) in orders" :key="item.id" class="doc-item mt-1">
+      <van-card @click="viewMyMsgBoard(item)" :price="item.details.price" currency="NT" :desc="item.id" :title="getTitle(item)" :thumb="getImgPath(item, i)">
         <template #footer>
           <div class="my-tags-grid3">
             <div></div>
@@ -109,7 +87,8 @@ export default {
       actions.lineMsg({ id: item.doctorPhone, msg });
     },
     viewMyMsgBoard(item) {
-      this.$router.push("/mymsgboard?id=" + item.id);
+      store.selectedDoctor = item;
+      this.$router.push("/mymsgboard");
     },
     getDesc(item) {
       return "專長: " + item.details.description;

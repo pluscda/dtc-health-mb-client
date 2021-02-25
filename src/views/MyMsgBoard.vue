@@ -60,7 +60,7 @@ import { store, mutations, actions } from "@/store/global.js";
 import queryString from "qs";
 
 export default {
-  name: "mymsgboard",
+  name: "mymsgboard2",
   data() {
     return {
       orderMsgs: [],
@@ -109,15 +109,14 @@ export default {
       const str = location.href.split("?")[1];
       const { id } = queryString.parse(str);
       let qs = "id=" + id;
+      alert(id);
       try {
         this.loadingApi = true;
         const { count, items } = await actions.getOrders(qs);
         if (!count) return;
-        const mySet = new Set(items.map((s) => "phone=" + s.doctorPhone).filter((s) => s.doctorPhone == id));
-        qs = [...mySet].join("&");
+        qs = "phone=" + items[0].doctorPhone;
         const { items: docs } = await actions.getDoctors(qs);
-        // attach the doctor detail into each order here
-        docs.forEach((s) => (items.find((s2) => s2.doctorPhone == s.phone).details = s));
+        items[0].details = docs[0];
         this.orders = items;
         this.orderMsgs = [...this.orders[0].message].reverse();
       } catch (e) {
@@ -128,7 +127,7 @@ export default {
     },
   },
   mounted() {
-    this.getOrderHistoryList();
+    store.selectedDoctor ? (this.orders = [store.selectedDoctor]) : this.getOrderHistoryList();
   },
   watch: {},
 };
