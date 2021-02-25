@@ -4,8 +4,16 @@
     <van-overlay :show="loadingApi" style="text-align:center;">
       <van-loading type="spinner" />
     </van-overlay>
-    <main v-for="(item, i) in orders" :key="i" class="doc-item mt-1" @click="viewMyMsgBoard(item)">
-      <van-card v-if="item.details" :price="item.details.price" currency="NT" :desc="getDesc(item)" :title="getTitle(item)" :thumb="getImgPath(item, i)">
+    <main v-for="(item, i) in orders" :key="i" class="doc-item mt-1">
+      <van-card
+        v-if="item.details"
+        @click.stop="viewMyMsgBoard(item)"
+        :price="item.details.price"
+        currency="NT"
+        :desc="getDesc(item)"
+        :title="getTitle(item)"
+        :thumb="getImgPath(item, i)"
+      >
         <template #tags>
           <div class="my-tags-grid">
             <div style="color:var(--bs-blue)">{{ $formatStatus(item.orderStatus) }}</div>
