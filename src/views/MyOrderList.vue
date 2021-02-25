@@ -5,7 +5,7 @@
       <van-loading type="spinner" />
     </van-overlay> -->
     <main v-for="(item, i) in orders" :key="item.id" class="doc-item mt-1">
-      <van-card @click="viewMyMsgBoard(item)" :price="item.details.price" currency="NT" :desc="item.id" :title="getTitle(item)" :thumb="getImgPath(item, i)">
+      <van-card @click="viewMyMsgBoard(item)" :price="item.details.price" currency="NT" :desc="getDesc(item)" :title="getTitle(item)" :thumb="getImgPath(item, i)">
         <template #footer>
           <div class="my-tags-grid3">
             <div></div>
