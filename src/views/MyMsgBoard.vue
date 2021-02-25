@@ -46,7 +46,7 @@
       </div>
     </nav>
     <footer>
-      <van-field autofocus="true" autosize v-model="myMsg" rows="2" type="textarea" placeholder="請輸入留言..."> </van-field>
+      <van-field autosize v-model="myMsg" rows="2" type="textarea" placeholder="請輸入留言..."> </van-field>
       <div class="my-tags-grid">
         <van-button type="primary" size="small" class="ml-2" @click.stop="addComment(myMsg)" :disabled="!myMsg">新增留言</van-button>
       </div>
