@@ -109,7 +109,6 @@ export default {
       const str = location.href.split("?")[1];
       const { id } = queryString.parse(str);
       let qs = "id=" + id;
-      alert(id);
       try {
         this.loadingApi = true;
         const { count, items } = await actions.getOrders(qs);
@@ -127,7 +126,8 @@ export default {
     },
   },
   mounted() {
-    store.selectedDoctor ? (this.orders = [store.selectedDoctor]) : this.getOrderHistoryList();
+    store.selectedDoctor ? (this.orders = [{ ...store.selectedDoctor }]) : this.getOrderHistoryList();
+    store.selectedDoctor = "";
   },
   watch: {},
 };

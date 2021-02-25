@@ -1,9 +1,9 @@
 <template>
   <section class="doc-list">
     <van-nav-bar title="我的預約紀錄"> </van-nav-bar>
-    <!-- <van-overlay :show="loadingApi" style="text-align:center;">
+    <van-overlay :show="loadingApi" style="text-align:center;">
       <van-loading type="spinner" />
-    </van-overlay> -->
+    </van-overlay>
     <main v-for="(item, i) in orders" :key="item.id" class="doc-item mt-1">
       <van-card @click="viewMyMsgBoard(item)" :price="item.details.price" currency="NT" :desc="getDesc(item)" :title="getTitle(item)" :thumb="getImgPath(item, i)">
         <template #footer>
