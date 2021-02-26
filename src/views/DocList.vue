@@ -101,6 +101,7 @@ export default {
     async getDocList() {
       try {
         const url = this.id ? "doctors?cid_eq=" + this.id : `doctors?_limit=30&_start=${this.skip}`;
+        url += "&status=published";
         this.docs = await axios.get(url);
       } catch (e) {}
     },
