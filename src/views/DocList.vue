@@ -3,7 +3,7 @@
     <van-overlay :show="loadingApi" style="z-index:9999;text-align:center">
       <van-loading type="spinner" />
     </van-overlay>
-    <header>{{ searchBy.includes("熱門") ? "熱門" : searchBy }}名醫</header>
+    <header>{{ searchBy.includes("熱門") ? "熱門" : searchBy }}名醫 {{ countDocs }}</header>
 
     <main v-for="(item, i) in docs" :key="i" class="doc-item mt-1">
       <van-card @click="viewDetail(item)" :price="item.price" currency="NT" :desc="getDesc(item)" :title="getTitle(item)" :thumb="getImgPath(item, i)">
@@ -38,11 +38,16 @@ export default {
       loadingApi: false,
       jsonOutput: "",
       favList: [],
+      count: 0,
     };
   },
   computed: {
     unFinishOrders() {
       return this.myPreviousOrders.filter((s) => s.status != "finish");
+    },
+    countDocs() {
+      const str = `(共${this.count}位)`;
+      return str;
     },
   },
   methods: {
@@ -103,6 +108,7 @@ export default {
         const url = this.id ? "doctors?cid_eq=" + this.id : `doctors?_limit=30&_start=${this.skip}`;
         //url += "&state=published";
         this.docs = await axios.get(url);
+        this.count = this.docs.length;
       } catch (e) {}
     },
     async getOrderHistory() {
