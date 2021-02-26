@@ -80,10 +80,10 @@ export default {
       return 3;
     },
     viewDetail(item) {
-      // window.scrollTo({
-      //   top: 0,
-      //   behavior: "smooth",
-      // });
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
       const ok = this.isOrderAble(item);
       ok ? (item.status = "waiting") : (item.status = "finish");
       store.selectedDoctor = item;
@@ -116,6 +116,18 @@ export default {
     },
   },
   async mounted() {
+    setTimeout(
+      () =>
+        window.scrollTo({
+          top: 10,
+          behavior: "smooth",
+        }),
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      }),
+      300
+    );
     const { id, searchBy } = this.$route.query;
     this.id = +id;
     this.name = searchBy;
