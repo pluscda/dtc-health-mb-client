@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/card.svg"
   },
   {
-    "revision": "f80b4863f8e7e58758e6",
+    "revision": "9177a20172afbf23706c",
     "url": "/css/app.6fa576cc.css"
   },
   {
@@ -22,6 +22,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "8be380136641e68c4034",
     "url": "/css/chunk-03f76895.6af7b527.css"
+  },
+  {
+    "revision": "15fc452cc2a388d95a29",
+    "url": "/css/chunk-0d27968a.39f6b60b.css"
   },
   {
     "revision": "74f625dbabb4e755144d",
@@ -50,10 +54,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "0e35f48fc863aaa4c12a",
     "url": "/css/chunk-560e2a8a.ab073d19.css"
-  },
-  {
-    "revision": "c03e5468c9a26c261f52",
-    "url": "/css/chunk-5db1c00f.e6cadefb.css"
   },
   {
     "revision": "30fdc8c91e54a27b568d",
@@ -112,12 +112,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/markers_default@2x.0e04541b.png"
   },
   {
-    "revision": "9379ff08dd96ec6fe819e697cd4c7b1f",
+    "revision": "018ed9f36ae0e773e9b624e0ebcf4dc4",
     "url": "/index.html"
   },
   {
-    "revision": "f80b4863f8e7e58758e6",
-    "url": "/js/app.b46fc428.js"
+    "revision": "9177a20172afbf23706c",
+    "url": "/js/app.e3bb5504.js"
   },
   {
     "revision": "b8bd418fe6dae2bf5e18",
@@ -126,6 +126,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "8be380136641e68c4034",
     "url": "/js/chunk-03f76895.c1978445.js"
+  },
+  {
+    "revision": "15fc452cc2a388d95a29",
+    "url": "/js/chunk-0d27968a.ce0e1f89.js"
   },
   {
     "revision": "74f625dbabb4e755144d",
@@ -154,10 +158,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "0e35f48fc863aaa4c12a",
     "url": "/js/chunk-560e2a8a.6ea4d3b2.js"
-  },
-  {
-    "revision": "c03e5468c9a26c261f52",
-    "url": "/js/chunk-5db1c00f.7922b0fa.js"
   },
   {
     "revision": "30fdc8c91e54a27b568d",
