@@ -80,10 +80,10 @@ export default {
       return 3;
     },
     viewDetail(item) {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+      // window.scrollTo({
+      //   top: 0,
+      //   behavior: "smooth",
+      // });
       const ok = this.isOrderAble(item);
       ok ? (item.status = "waiting") : (item.status = "finish");
       store.selectedDoctor = item;
@@ -101,7 +101,7 @@ export default {
     async getDocList() {
       try {
         const url = this.id ? "doctors?cid_eq=" + this.id : `doctors?_limit=30&_start=${this.skip}`;
-        url += "&status=published";
+        //url += "&state=published";
         this.docs = await axios.get(url);
       } catch (e) {}
     },
