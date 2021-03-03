@@ -141,7 +141,7 @@ export default {
       this.loadingApi = true;
       await this.getOrderHistory();
       this.cates = await actions.getCancerTypes();
-      searchBy ? (this.id = this.cates.find((s) => s.name.includes(searchBy)).cid) : (this.id = "");
+      searchBy ? (this.id = this.cates.find((s) => s.name.includes(searchBy.slice(0, 2))).cid) : (this.id = "");
       await this.getDocList();
     } catch (e) {
       alert("error " + e);
