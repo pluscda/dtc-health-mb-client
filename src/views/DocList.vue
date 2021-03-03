@@ -139,8 +139,8 @@ export default {
     const { searchBy, gis, id } = this.$route.query;
     this.gis = gis;
     this.id = id;
-    this.name = searchBy;
     this.searchBy = searchBy ? searchBy : "熱門醫生";
+    this.name = this.searchBy;
     try {
       this.loadingApi = true;
       await this.getOrderHistory();
