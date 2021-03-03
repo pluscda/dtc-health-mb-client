@@ -57,7 +57,7 @@
         線上病理諮詢 <span>{{ $t("省時省心名醫指導好的快") }}</span>
       </h2>
       <nav class="grid-2-img mb-4">
-        <div v-for="(item, i) in onlines" :key="i" :data-msg="item.text" @click="$router.push(`doclist?searchBy=${item.text}`)">
+        <div v-for="(item, i) in onlines" :key="i" :data-msg="item.text" @click="$router.push(`doclist?searchBy=${item.text}&id=${i + 40}`)">
           <img :src="item.src + '.png'" :alt="item.text" width="208" hieght="156" />
         </div>
         <div style="grid-column:1/-1" data-msg="成年慢性病" @click="$router.push(`doclist?searchBy=成年慢性病`)">
