@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/card.svg"
   },
   {
-    "revision": "9846a82f0af74ee3ae63",
+    "revision": "5d341937d4fb02bf3d26",
     "url": "/css/app.6fa576cc.css"
   },
   {
@@ -44,6 +44,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/css/chunk-3e121f72.ca9b96fd.css"
   },
   {
+    "revision": "10605a2bf3dc0f7412f7",
+    "url": "/css/chunk-41fc41d3.b8184b07.css"
+  },
+  {
     "revision": "d3f085b5d9cf240b60d8",
     "url": "/css/chunk-5454b040.f3a9a9cc.css"
   },
@@ -58,10 +62,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "0337e8c9317312d2559f",
     "url": "/css/chunk-62772614.3dab0618.css"
-  },
-  {
-    "revision": "81b689b3e3980e3049f2",
-    "url": "/css/chunk-74589b46.03d5d623.css"
   },
   {
     "revision": "450deff7df044a5d710a",
@@ -112,12 +112,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/markers_default@2x.0e04541b.png"
   },
   {
-    "revision": "f8af11d178b8173355e2da52c2f5a829",
+    "revision": "ee7c6f2e338861d73a400e8b8e4cda00",
     "url": "/index.html"
   },
   {
-    "revision": "9846a82f0af74ee3ae63",
-    "url": "/js/app.ed6a10fd.js"
+    "revision": "5d341937d4fb02bf3d26",
+    "url": "/js/app.e0ffa9ef.js"
   },
   {
     "revision": "b8bd418fe6dae2bf5e18",
@@ -148,6 +148,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/js/chunk-3e121f72.90dae0d8.js"
   },
   {
+    "revision": "10605a2bf3dc0f7412f7",
+    "url": "/js/chunk-41fc41d3.83b0d092.js"
+  },
+  {
     "revision": "d3f085b5d9cf240b60d8",
     "url": "/js/chunk-5454b040.1ad45b19.js"
   },
@@ -162,10 +166,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "0337e8c9317312d2559f",
     "url": "/js/chunk-62772614.246c3afd.js"
-  },
-  {
-    "revision": "81b689b3e3980e3049f2",
-    "url": "/js/chunk-74589b46.33215421.js"
   },
   {
     "revision": "450deff7df044a5d710a",

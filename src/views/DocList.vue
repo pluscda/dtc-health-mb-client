@@ -46,7 +46,7 @@ export default {
       return this.myPreviousOrders.filter((s) => s.status != "finish");
     },
     countDocs() {
-      const str = `(共${this.count}位)`;
+      const str = this.count ? `(共${this.count}位)` : "";
       return str;
     },
   },
@@ -105,7 +105,7 @@ export default {
     },
     async getDocList() {
       try {
-        const url = this.id ? "doctors?cid_eq=" + this.id : `doctors?_limit=30&_start=${this.skip}`;
+        const url = this.id ? "doctors?cid_eq=" + this.id : `doctors?_limit=111130&_start=${this.skip}`;
         //url += "&state=published";
         this.docs = await axios.get(url);
         this.count = this.docs.length;
