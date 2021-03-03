@@ -134,15 +134,15 @@ export default {
       }),
       300
     );
-    const { id, searchBy } = this.$route.query;
-    this.id = +id;
+    const { searchBy } = this.$route.query;
     this.name = searchBy;
     this.searchBy = searchBy ? searchBy : "熱門醫生";
     try {
       this.loadingApi = true;
       await this.getOrderHistory();
-      await this.getDocList();
       this.cates = await actions.getCancerTypes();
+      searchBy ? (this.id = this.cates.find((s) => s.name.includes(searchBy)).cid) : (this.id = "");
+      await this.getDocList();
     } catch (e) {
       alert("error " + e);
     } finally {
