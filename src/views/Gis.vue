@@ -98,7 +98,7 @@ export default {
     },
     clickItem(item) {
       this.selectedItem = item;
-      this.$router.push("doclist");
+      this.$router.push("doclist?gis=" + item.name);
     },
     addZoomControl() {
       if (this.mapObj.zoomControl) {

@@ -39,6 +39,7 @@ export default {
       jsonOutput: "",
       favList: [],
       count: 0,
+      gis: "",
     };
   },
   computed: {
@@ -105,7 +106,8 @@ export default {
     },
     async getDocList() {
       try {
-        const url = this.id ? "doctors?cid_eq=" + this.id : `doctors?_limit=111130&_start=${this.skip}`;
+        let url = this.id ? "doctors?cid_eq=" + this.id : `doctors?_limit=300&_start=${this.skip}`;
+        this.gis ? (url = "doctors?fullHotspitalName=" + this.gis) : "";
         //url += "&state=published";
         this.docs = await axios.get(url);
         this.count = this.docs.length;
@@ -134,14 +136,16 @@ export default {
       }),
       300
     );
-    const { searchBy } = this.$route.query;
+    const { searchBy, gis, id } = this.$route.query;
+    this.gis = gis;
+    this.id = id;
     this.name = searchBy;
     this.searchBy = searchBy ? searchBy : "熱門醫生";
     try {
       this.loadingApi = true;
       await this.getOrderHistory();
       this.cates = await actions.getCancerTypes();
-      searchBy ? (this.id = this.cates.find((s) => s.name.includes(searchBy.slice(0, 2))).cid) : (this.id = "");
+      searchBy && !this.id ? (this.id = this.cates.find((s) => s.name.includes(searchBy.slice(0, 2))).cid) : "";
       await this.getDocList();
     } catch (e) {
       alert("error " + e);
