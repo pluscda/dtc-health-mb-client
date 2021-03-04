@@ -107,11 +107,12 @@ export default {
     async getDocList() {
       try {
         let url = this.id ? "doctors?cid_eq=" + this.id : `doctors?_limit=300&_start=${this.skip}`;
-        this.gis ? (url = "doctors?fullHotspitalName=" + this.gis) : "";
-        //url += "&state=published";
+        this.gis ? (url = "doctors?fullHotspitalName_eq=" + this.gis) : "";
         this.docs = await axios.get(url);
         this.count = this.docs.length;
-      } catch (e) {}
+      } catch (e) {
+        alert("" + e);
+      }
     },
     async getOrderHistory() {
       if (!window.lineId) {

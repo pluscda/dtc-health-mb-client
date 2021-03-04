@@ -11,7 +11,7 @@
           {{ doctor.name }}<span style="font-size:0.9rem;display:inline-block;margin-left:10px;color:var(--bs-dark-gray)">{{ doctor.title }}</span>
         </h4>
         <p style="font-size:13px;">{{ doctor.hospital || (doctor.position && doctor.position.length && doctor.position[0].name) }}</p>
-        <p>台灣台北市</p>
+        <p>台灣 | {{ location }}</p>
       </div>
     </main>
     <main class="px-2">
@@ -70,6 +70,7 @@
 
 <script>
 import { store, mutations, actions } from "@/store/global.js";
+import GISJSON from "@/assets/gis.json";
 export default {
   name: "docdetails",
   data() {
@@ -81,6 +82,10 @@ export default {
   computed: {
     docImg() {
       return store.imgPrefix + this.doctor.cover.url;
+    },
+    location() {
+      const obj = GISJSON.find((s) => s.name == this.doctor.fullHotspitalName);
+      return obj ? obj.address.slice(0, 3) : "";
     },
   },
   components: {},
