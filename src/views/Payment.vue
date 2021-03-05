@@ -22,31 +22,31 @@
 </template>
 
 <script>
-import Vue from "vue";
-import { store, mutations, actions } from "@/store/global.js";
+import Vue from 'vue';
+import { store, mutations, actions } from '@/store/global.js';
 export default {
-  name: "docList",
+  name: 'docList',
   data() {
     return {
-      id: "",
+      id: '',
       docs: [],
       cates: [],
       skip: 0,
-      cat: "",
-      searchBy: "",
+      cat: '',
+      searchBy: '',
       myPreviousOrders: [],
       loadingApi: false,
-      jsonOutput: "",
+      jsonOutput: '',
       favList: [],
-      username: "",
-      phone: "",
+      username: '',
+      phone: '',
       canGetPrime: false,
       failInput: false,
     };
   },
   computed: {
     unFinishOrders() {
-      return this.myPreviousOrders.filter((s) => s.status != "finish");
+      return this.myPreviousOrders.filter((s) => s.status != 'finish');
     },
     enableSubmitBtn() {
       return this.canGetPrime && this.phone && this.username && !this.failInput;
@@ -67,15 +67,15 @@ export default {
         payObj.partner_key = store.tappayId;
         payObj.prime = `${result.card.prime}`;
         payObj.amount = +item.price;
-        payObj.merchant_id = "pluscda_CTBC";
+        payObj.merchant_id = 'pluscda_CTBC';
         payObj.details = item.name;
         const cardInfo = {
-          phone_number: "+886" + this.phone.slice(1),
+          phone_number: '+886' + this.phone.slice(1),
           name: this.username,
-          email: "",
-          zip_code: "",
-          address: "",
-          national_id: "",
+          email: '',
+          zip_code: '',
+          address: '',
+          national_id: '',
         };
         payObj.cardholder = cardInfo;
         try {
@@ -83,7 +83,7 @@ export default {
           this.book(item);
         } catch (e) {
           this.loadingApi = false;
-          alert("" + e);
+          alert('' + e);
         }
       });
     },
@@ -97,7 +97,7 @@ export default {
         realName: item.name,
         orderPhoneNum: window.lineId,
         paidAmount: item.price,
-        orderStatus: "waiting",
+        orderStatus: 'waiting',
         orderDate: new Date().toISOString(),
         doctorPhone: item.phone,
         inqueryCate: item.cid,
@@ -108,25 +108,25 @@ export default {
       try {
         this.loadingApi = true;
         const ret = await actions.addOrder(orderItem);
-        Vue.$toast.success("您已預約成功");
+        Vue.$toast.success('您已預約成功');
         await this.getOrderHistory();
         this.docs = [...this.docs];
-        const lineId = item.orderPhoneNum?.length > 10 ? item.orderPhoneNum : "U60dea79b6fcd77b9c9e3eeb21fcce0a1";
+        const lineId = item.phone?.length > 10 ? item.phone : 'U60dea79b6fcd77b9c9e3eeb21fcce0a1';
         const obj2 = { id: lineId };
-        let url = store.lineUrl + "orderid=" + ret.id;
+        let url = store.lineUrl + 'orderid=' + ret.id;
         const im = `你有一筆新訂單NT${orderItem.paidAmount}元\n客戶名稱: ${orderItem.lineClientDisplayName}\n客戶手機:${this.phone}\n\n${url}`;
         obj2.msg = im;
         await actions.lineMsg(obj2);
         if (item.cid < store.MIN_NON_CANCER_NUM) {
           const obj3 = { id: window.lineId };
-          obj3.msg = "需要您的報告,請您用郵件掛號寄出:\n新北市中和區中正路866號15F\n\n合華科技股份有限公司";
+          obj3.msg = '需要您的報告,請您用郵件掛號寄出:\n新北市中和區中正路866號15F\n\n合華科技股份有限公司';
           await actions.lineSelf(obj3);
         }
-        this.$router.push("/myorderlist");
+        this.$router.push('/myorderlist');
       } catch (e) {
-        Vue.$toast.error("order fail" + e);
+        Vue.$toast.error('order fail' + e);
       } finally {
-        window.orderedDocPhone = "";
+        window.orderedDocPhone = '';
         this.loadingApi = false;
       }
     },
@@ -136,18 +136,18 @@ export default {
     viewDetail(item) {
       window.scrollTo({
         top: 0,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
       const ok = this.isOrderAble(item);
-      ok ? (item.status = "waiting") : (item.status = "finish");
+      ok ? (item.status = 'waiting') : (item.status = 'finish');
       store.selectedDoctor = item;
-      this.$router.push("doctordetails");
+      this.$router.push('doctordetails');
     },
     getDesc(item) {
-      return "擅長: " + item.description;
+      return '擅長: ' + item.description;
     },
     getTitle(item) {
-      return item.name + " | " + item.hospital + " | " + item.title;
+      return item.name + ' | ' + item.hospital + ' | ' + item.title;
     },
     getImgPath(item, i) {
       return store.imgPrefix + item.cover.url;
@@ -159,7 +159,7 @@ export default {
     },
     async getOrderHistory() {},
     constructTapPay() {
-      actions.initTapPay("#tappay-container");
+      actions.initTapPay('#tappay-container');
       TPDirect.card.onUpdate(async (update) => {
         this.canGetPrime = update.canGetPrime;
       });
@@ -175,7 +175,7 @@ export default {
       this.cates = await actions.getCancerTypes();
       setTimeout(() => this.constructTapPay(), 800);
     } catch (e) {
-      alert("error " + e);
+      alert('error ' + e);
     } finally {
       this.loadingApi = false;
     }
@@ -215,7 +215,7 @@ export default {
   border-bottom: 1px solid #ebedf0;
 }
 #tappay-container {
-  font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
   margin: 0;
   outline: 0;
   -webkit-appearance: none;
