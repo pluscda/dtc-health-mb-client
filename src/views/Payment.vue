@@ -111,9 +111,9 @@ export default {
         Vue.$toast.success("您已預約成功");
         await this.getOrderHistory();
         this.docs = [...this.docs];
-        const lineId = item.orderPhoneNum?.length > 10 ? item.orderPhoneNum : "U60dea79b6fcd77b9c9e3eeb21fcce0a1";
+        const lineId = item.orderPhoneNum; // item.orderPhoneNum?.length > 10 ? item.orderPhoneNum : "U60dea79b6fcd77b9c9e3eeb21fcce0a1";
         const obj2 = { id: lineId };
-        let url = store.lineUrl + "orderid=" + ret.id;
+        let url = store.lineUrl + "orderid=" + window.orderedDocPhone;
         const im = `你有一筆新訂單NT${orderItem.paidAmount}元\n客戶名稱: ${orderItem.lineClientDisplayName}\n客戶手機:${this.phone}\n\n${url}`;
         obj2.msg = im;
         await actions.lineMsg(obj2);
