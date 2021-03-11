@@ -14,11 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-<<<<<<< HEAD
-  "/precache-manifest.9c1b00961a9fec321bb9a2cc733304ec.js"
-=======
-  "/precache-manifest.ce8f13e4ea66be49dc3b3c1af23c1b58.js"
->>>>>>> 44e623596f51c5bc78d00695f3c9e5a77993d89c
+  "/precache-manifest.b1dfb4475550fe039139920ce5881a66.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "dtc-health"});
