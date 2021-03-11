@@ -99,7 +99,7 @@ export default {
       let name = this.orders[0].lineClientDisplayName ? this.orders[0].lineClientDisplayName : store.lineProfile.displayName;
       name ? "" : (name = "DTC Tester");
       const lineMsg = `您的客戶: ${name}\n新增留言:\n${msg}\n\n${url}`;
-      const lineId = this.orders[0].doctorPhone.length > 10 ? this.orders[0].doctorPhone : "U60dea79b6fcd77b9c9e3eeb21fcce0a1";
+      const lineId = this.orders[0].doctorPhone; //this.orders[0].doctorPhone.length > 10 ? this.orders[0].doctorPhone : "U60dea79b6fcd77b9c9e3eeb21fcce0a1";
       actions.lineMsg({ id: lineId, msg: lineMsg });
       this.myMsg = "";
       this.orderMsgs = [...this.orders[0].message].reverse();

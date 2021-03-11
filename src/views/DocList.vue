@@ -8,7 +8,7 @@
     <main v-for="(item, i) in docs" :key="i" class="doc-item mt-1">
       <van-card @click="viewDetail(item)" :price="item.price" currency="NT" :desc="getDesc(item)" :title="getTitle(item)" :thumb="getImgPath(item, i)">
         <template #tags>
-          <van-tag plain type="danger">可預約數量剩餘({{ getBooksNum() }})</van-tag>
+          <van-tag hidden plain type="danger">可預約數量剩餘({{ getBooksNum() }})</van-tag>
         </template>
         <template #footer>
           <van-button size="small" class="mr-2" @click.stop="addCollection(item)">收藏</van-button>
