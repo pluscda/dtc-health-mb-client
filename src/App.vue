@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <van-overlay style="z-index:999999999" :show="showOverlay" />
-    <div v-if="gisInfo" class="gis-info">{{ this.gisInfo }}</div>
+    <div v-if="gisInfo && !showShareSheet" class="gis-info">{{ this.gisInfo }}</div>
     <img hidden :src="avatorImg" />
     <router-view></router-view>
     <van-popup v-model="showGisPopup" position="bottom">
@@ -47,7 +47,7 @@ let countries = [...mySet]
   }))
   .sort((a, b) => b.count - a.count);
 
-countries = splitEvery(5, countries);
+countries = splitEvery(7, countries);
 
 export default {
   name: 'app',
