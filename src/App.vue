@@ -13,19 +13,20 @@
       <nav class="gis-btn" @click="openGisOps" v-if="active == 2">
         <img src="pen.svg" />
       </nav>
-      <van-tabbar-item icon="wap-home-o" @click="tabClick('/home')">{{ $t("醫療首頁") }}</van-tabbar-item>
-      <van-tabbar-item icon="search" @click="tabClick('/doclist')">{{ $t("找醫師") }}</van-tabbar-item>
+      <van-tabbar-item icon="wap-home-o" @click="tabClick('/home')">{{ $t('醫療首頁') }}</van-tabbar-item>
+      <van-tabbar-item icon="search" @click="tabClick('/doclist')">{{ $t('找醫師') }}</van-tabbar-item>
       <van-tabbar-item icon="bookmark-o" @click="tabClick('/gis')">找醫院</van-tabbar-item>
-      <van-tabbar-item icon="setting-o" @click="tabClick('/login')">{{ $t("我的") }}</van-tabbar-item>
+      <van-tabbar-item icon="setting-o" @click="tabClick('/login')">{{ $t('我的') }}</van-tabbar-item>
     </van-tabbar>
   </div>
 </template>
 
 <script>
-import { store, mutations, actions } from "@/store/global.js";
-import Vue from "vue";
-import GISJSON from "@/assets/gis.json";
-import liff from "@line/liff";
+import { store, mutations, actions } from '@/store/global.js';
+import Vue from 'vue';
+import GISJSON from '@/assets/gis.json';
+import liff from '@line/liff';
+import { splitEvery } from 'ramda';
 
 let features = GISJSON.filter((s) => store.hotMapIds.find((s2) => s2 == +s.myID));
 const mySet = new Set(features.map((s) => s.address.slice(0, 3)));
@@ -36,27 +37,29 @@ features.reduce((_, obj) => {
   //console.log(obj.address.slice(0, 3));
 });
 
-const countries = [...mySet]
+let countries = [...mySet]
   .map((s) => ({
     name: s,
-    icon: "custom-icon-light.png",
+    icon: 'custom-icon-light.png',
     count: acc[s],
     description: acc[s],
   }))
   .sort((a, b) => b.count - a.count);
 
+countries = splitEvery(5, countries);
+
 export default {
-  name: "app",
+  name: 'app',
   data() {
     return {
       showShareSheet: false,
-      gisOptions: [countries.slice(0, 5), countries.slice(5, 5 + 5), countries.slice(15, 1000)],
+      gisOptions: countries,
       active: 0,
       locs: [],
-      name: "",
+      name: '',
       columns: [],
       showGisPopup: false,
-      gisInfo: "",
+      gisInfo: '',
       showOverlay: true,
     };
   },
@@ -67,7 +70,7 @@ export default {
     },
     avatorImg() {
       const str = store.lineProfile?.pictureUrl;
-      return str ? str : "http://unsplash.it/126/126";
+      return str ? str : 'http://unsplash.it/126/126';
     },
   },
   methods: {
@@ -77,14 +80,14 @@ export default {
         window.token = jwt1;
         if (!window.token) {
           const { jwt: jwt2 } = await this.registerStrapi().catch((e) => {
-            alert("something wrong at app jwt connectWithStrapi");
+            alert('something wrong at app jwt connectWithStrapi');
             return;
           });
           window.token = jwt2;
         }
         mutations.login(store.lineProfile.userId);
       } catch (e) {
-        alert("請檢查驗證號碼" + e);
+        alert('請檢查驗證號碼' + e);
       }
     },
     async registerStrapi() {
@@ -96,7 +99,7 @@ export default {
         const { jwt } = await actions.loginStrapi({ identifier: store.lineProfile.userId, password: store.PASSWORD });
         return { jwt };
       } catch (e) {
-        return { jwt: "" };
+        return { jwt: '' };
       }
     },
     async getLineInfo() {
@@ -104,7 +107,7 @@ export default {
       store.isLineApp = liff.isInClient();
       if (store.isLineApp) {
         if (!localStorage.lineProfile) {
-          await liff.init({ liffId: "1655679414-AdYmjyMx" });
+          await liff.init({ liffId: '1655679414-AdYmjyMx' });
           store.lineProfile = await liff.getProfile();
         } else {
           store.lineProfile = JSON.parse(localStorage.lineProfile);
@@ -121,12 +124,12 @@ export default {
       this.showGisPopup = false;
       const { address, phone } = GISJSON.find((s) => s.name == value);
       this.gisInfo = phone ? `${address} / ${phone}` : address;
-      this.$root.$emit("gis-name", value);
+      this.$root.$emit('gis-name', value);
     },
     openGisOps() {
       this.showShareSheet = true;
-      this.gisInfo = "";
-      this.$router.push("/gis");
+      this.gisInfo = '';
+      this.$router.push('/gis');
     },
     onSelectGis(option) {
       this.name = option.name;
@@ -137,21 +140,21 @@ export default {
     tabClick(name) {
       window.scrollTo({
         top: 0,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
       requestAnimationFrame(() => this.$router.push(name));
     },
     checkOrderId() {
-      let id = location.href.split("#")[0];
+      let id = location.href.split('#')[0];
       id = id.split(store.lineQs)[1];
       if (!id) {
         return;
       }
-      setTimeout(() => this.$router.push("/mymsgboard?id=" + id), 300);
+      setTimeout(() => this.$router.push('/mymsgboard?id=' + id), 300);
     },
   },
   async mounted() {
-    this.$root.$on("show-gis-label", (obj) => {
+    this.$root.$on('show-gis-label', (obj) => {
       this.gisInfo = obj.phone ? `${obj.address} / ${obj.phone}` : obj.address;
     });
     try {
@@ -159,22 +162,22 @@ export default {
       this.checkOrderId();
       this.showOverlay = false;
     } catch (e) {
-      alert(e + "");
+      alert(e + '');
       this.showOverlay = false;
     }
   },
   async beforeCreate() {},
   watch: {
     $route(to, from) {
-      this.gisInfo = "";
-      if (to.path.includes("home")) {
+      this.gisInfo = '';
+      if (to.path.includes('home')) {
         this.active = 0;
-      } else if (to.path.includes("doclist")) {
+      } else if (to.path.includes('doclist')) {
         this.active = 1;
-      } else if (to.path.includes("gis")) {
+      } else if (to.path.includes('gis')) {
         this.active = 2;
         this.openGisOps();
-      } else if (to.path.includes("login")) {
+      } else if (to.path.includes('login')) {
         this.active = 3;
       }
     },
