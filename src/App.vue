@@ -40,8 +40,9 @@ const countries = [...mySet]
   .map((s) => ({
     name: s,
     icon: "custom-icon-light.png",
-    count: acc[s],
-    description: acc[s],
+    //fixed: 28 is missing at gis.json file ,新光醫療財團法人新光吳火獅紀念醫院
+    count: s.includes("台北市") ? acc[s] + 1 : acc[s],
+    description: s.includes("台北市") ? acc[s] + 1 : acc[s],
   }))
   .sort((a, b) => b.count - a.count);
 
