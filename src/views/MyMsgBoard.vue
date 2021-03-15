@@ -113,6 +113,7 @@ export default {
         this.loadingApi = true;
         const { count, items } = await actions.getOrders(qs);
         if (!count) return;
+        alert(count);
         qs = "phone=" + items[0].doctorPhone;
         const { items: docs } = await actions.getDoctors(qs);
         items[0].details = docs[0];
@@ -126,7 +127,12 @@ export default {
     },
   },
   mounted() {
-    store.selectedDoctor ? (this.orders = [{ ...store.selectedDoctor }]) : this.getOrderHistoryList();
+    if (store.selectedDoctor) {
+      this.orders = [{ ...store.selectedDoctor }];
+      this.orderMsgs = [...this.orders[0].message].reverse();
+    } else {
+      this.getOrderHistoryList();
+    }
     store.selectedDoctor = "";
   },
   watch: {},
