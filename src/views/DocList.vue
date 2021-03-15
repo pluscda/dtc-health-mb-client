@@ -5,7 +5,7 @@
     </van-overlay>
     <header>{{ searchBy.includes("熱門") ? "熱門" : searchBy }}名醫 {{ countDocs }}</header>
 
-    <main v-for="(item, i) in docs" :key="i" class="doc-item mt-1">
+    <main v-for="(item, i) in docs.slice(0, 20)" :key="i" class="doc-item mt-1">
       <van-card @click="viewDetail(item)" :price="item.price" currency="NT" :desc="getDesc(item)" :title="getTitle(item)" :thumb="getImgPath(item, i)">
         <template #tags>
           <van-tag hidden plain type="danger">可預約數量剩餘({{ getBooksNum() }})</van-tag>
@@ -47,7 +47,7 @@ export default {
       return this.myPreviousOrders.filter((s) => s.status != "finish");
     },
     countDocs() {
-      const str = this.count ? `(共${this.count}位)` : "";
+      const str = this.count && this.count < 48 ? `(共${this.count}位)` : "";
       return str;
     },
   },
