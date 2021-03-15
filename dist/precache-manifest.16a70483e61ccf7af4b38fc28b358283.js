@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/card.svg"
   },
   {
-    "revision": "e8133c730076cc4c3b41",
+    "revision": "2a8e212b44fec1fc1a7c",
     "url": "/css/app.819e2744.css"
   },
   {
@@ -26,6 +26,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "5c450475328b062aa576",
     "url": "/css/chunk-0facaad8.13487918.css"
+  },
+  {
+    "revision": "3f55b088506879711e79",
+    "url": "/css/chunk-1373e77f.26eba365.css"
   },
   {
     "revision": "663e6088b5d37516ab0a",
@@ -50,10 +54,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "44c0b5b1ec05e6575342",
     "url": "/css/chunk-560e2a8a.ab073d19.css"
-  },
-  {
-    "revision": "cafdd9774ea460923c49",
-    "url": "/css/chunk-58fd727e.d541742f.css"
   },
   {
     "revision": "17aeebd9387175446aff",
@@ -112,12 +112,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/markers_default@2x.0e04541b.png"
   },
   {
-    "revision": "d6f262364dff9e1b483f3c0079296f93",
+    "revision": "5589a72de552c83bdb924a1cd175b49a",
     "url": "/index.html"
   },
   {
-    "revision": "e8133c730076cc4c3b41",
-    "url": "/js/app.2be348a1.js"
+    "revision": "2a8e212b44fec1fc1a7c",
+    "url": "/js/app.338a6a34.js"
   },
   {
     "revision": "30362e7aa0ae2b917c9a",
@@ -130,6 +130,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "5c450475328b062aa576",
     "url": "/js/chunk-0facaad8.e7ce9f3a.js"
+  },
+  {
+    "revision": "3f55b088506879711e79",
+    "url": "/js/chunk-1373e77f.51aca714.js"
   },
   {
     "revision": "663e6088b5d37516ab0a",
@@ -154,10 +158,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "44c0b5b1ec05e6575342",
     "url": "/js/chunk-560e2a8a.50c38190.js"
-  },
-  {
-    "revision": "cafdd9774ea460923c49",
-    "url": "/js/chunk-58fd727e.988ff4fc.js"
   },
   {
     "revision": "17aeebd9387175446aff",

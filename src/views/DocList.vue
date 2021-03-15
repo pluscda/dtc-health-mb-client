@@ -47,7 +47,7 @@ export default {
       return this.myPreviousOrders.filter((s) => s.status != "finish");
     },
     countDocs() {
-      const str = this.count && this.count < 48 ? `(共${this.count}位)` : "";
+      const str = this.count && this.count < 20 ? `(共${this.count}位)` : "";
       return str;
     },
   },
