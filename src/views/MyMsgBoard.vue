@@ -113,7 +113,6 @@ export default {
         this.loadingApi = true;
         const { count, items } = await actions.getOrders(qs);
         if (!count) return;
-        alert(count);
         qs = "phone=" + items[0].doctorPhone;
         const { items: docs } = await actions.getDoctors(qs);
         items[0].details = docs[0];

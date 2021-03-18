@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/card.svg"
   },
   {
-    "revision": "2a8e212b44fec1fc1a7c",
+    "revision": "0d57b8473680086495df",
     "url": "/css/app.819e2744.css"
   },
   {
@@ -26,10 +26,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "5c450475328b062aa576",
     "url": "/css/chunk-0facaad8.13487918.css"
-  },
-  {
-    "revision": "3f55b088506879711e79",
-    "url": "/css/chunk-1373e77f.26eba365.css"
   },
   {
     "revision": "663e6088b5d37516ab0a",
@@ -84,6 +80,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/css/chunk-b2ed0078.b4050482.css"
   },
   {
+    "revision": "6c0f2b82ce540a1550ae",
+    "url": "/css/chunk-feab65ee.ec10c909.css"
+  },
+  {
     "revision": "f971778ef41d5af92d52",
     "url": "/css/chunk-vendors.5aec3833.css"
   },
@@ -112,12 +112,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/markers_default@2x.0e04541b.png"
   },
   {
-    "revision": "5589a72de552c83bdb924a1cd175b49a",
+    "revision": "e5c154ed013b8d5cce6a53038f0ed9a2",
     "url": "/index.html"
   },
   {
-    "revision": "2a8e212b44fec1fc1a7c",
-    "url": "/js/app.338a6a34.js"
+    "revision": "0d57b8473680086495df",
+    "url": "/js/app.096dd00d.js"
   },
   {
     "revision": "30362e7aa0ae2b917c9a",
@@ -130,10 +130,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "5c450475328b062aa576",
     "url": "/js/chunk-0facaad8.e7ce9f3a.js"
-  },
-  {
-    "revision": "3f55b088506879711e79",
-    "url": "/js/chunk-1373e77f.51aca714.js"
   },
   {
     "revision": "663e6088b5d37516ab0a",
@@ -186,6 +182,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "fa965cf686ff62354946",
     "url": "/js/chunk-b2ed0078.f0b6ab02.js"
+  },
+  {
+    "revision": "6c0f2b82ce540a1550ae",
+    "url": "/js/chunk-feab65ee.cfee3c76.js"
   },
   {
     "revision": "f971778ef41d5af92d52",
