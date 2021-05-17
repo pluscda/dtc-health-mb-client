@@ -5,7 +5,7 @@ import axios from "axios";
 let config = {
   ///dtchealth.datacom.com.tw
   //baseURL: process.env.NODE_ENV === 'production'? 'https://dtc-health.herokuapp.com/' : `https://dtchealth.datacom.com.tw/`,
-  baseURL: process.env.NODE_ENV === 'production'? 'https://dtchealth.datacom.com.tw/' : `http://${location.hostname}:1337/`,
+  baseURL: process.env.NODE_ENV === 'production'? 'https://console.datacom.com.tw/' : `http://${location.hostname}:1337/`,
   // baseURL: process.env.NODE_ENV === 'production'? 'https://dtchealth.datacom.com.tw/' : `https://dtchealth.datacom.com.tw/`,
   headers: {
     "Content-Type": "application/json"
